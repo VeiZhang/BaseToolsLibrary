@@ -26,13 +26,13 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 	@Override
 	public int getCount()
 	{
-		return mDatas.size();
+		return mDatas == null ? 0 : mDatas.size();
 	}
 
 	@Override
 	public T getItem(int position)
 	{
-		return mDatas.get(position);
+		return mDatas == null ? null : mDatas.get(position);
 	}
 
 	@Override
