@@ -1,2 +1,2 @@
 # BaseAdapterLibrary
-reduce code when set adapter for gridview or listview 
+gridview，listview的通用适配器
