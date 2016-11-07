@@ -1,1 +1,1 @@
-include ':DemoTest', ':BaseAdapterLibrary'
+include ':DemoTest', ':basetoolslibrary'
