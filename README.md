@@ -17,9 +17,10 @@
 
 ##1.CommonAdapter
 
-gridview，listview的通用适配器
+####gridview，listview的通用适配器
 
-示例：AdapterActivity
+示例：[AdapterActivity][AdapterActivity]
+
 
 ```使用CommonAdapter
     创建adapter类继承CommonAdapter
@@ -41,6 +42,7 @@ gridview，listview的通用适配器
     }
 ```
 
+
 ```使用ViewHolder
     ViewHolder内有一些方便的方法
     
@@ -54,6 +56,7 @@ gridview，listview的通用适配器
     其他方法有待增加
 ```
 
+
 ```刷新
     刷新适配器
     adapter.notifyNewData(data);
@@ -61,3 +64,4 @@ gridview，listview的通用适配器
 
 
 [bintray]:https://bintray.com/veizhang/maven/BaseTools "Bintray"
+[AdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/AdapterActivity.java
