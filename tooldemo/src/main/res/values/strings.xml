@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ToolDemo</string>
+    <string name="base_adapter">GridView ListView通用适配器</string>
+    <string name="refresh">刷新</string>
+</resources>

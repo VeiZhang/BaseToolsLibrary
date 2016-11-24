@@ -1,1 +1,1 @@
-include ':DemoTest', ':basetoolslibrary'
+include ':tooldemo', ':basetoolslibrary'

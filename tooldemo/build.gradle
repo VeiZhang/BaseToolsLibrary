@@ -1,11 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
+        applicationId "com.excellence.tooldemo"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -29,14 +29,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
     testCompile 'junit:junit:4.12'
-}
 
-/**发布到我的Bintray仓库**/
-publish {
-    userOrg = 'veizhang'
-    groupId = 'com.excellence'
-    artifactId = 'BaseTools'
-    publishVersion = '1.0.1'
-    desc = '通用的适配器'
-    website = 'https://github.com/VeiZhang/BaseToolsLibrary'
+    /**可以使用远程库或者使用本地Module Library*/
+    /**远程库**/
+    compile 'com.excellence:BaseTools:1.0.1'
+
+    /**本地Library**/
+    // compile project(':basetoolslibrary')
 }
