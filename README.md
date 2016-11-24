@@ -3,14 +3,14 @@
 <!--[Maven](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
 [Maven Control][bintray][1.0.1]
 <!-- you should configure jcenter repository-->
-##导入
-添加到module里的build.gradle：
+##导入Android Studio
+添加jCenter远程依赖到module里的build.gradle：
 ```
   dependencies {
     compile 'com.excellence:BaseTools:1.0.1'
   }
 ```
-或者直接添加Library依赖
+或者直接添加本地Library依赖
 ```
     compile project(':basetoolslibrary')
 ```
