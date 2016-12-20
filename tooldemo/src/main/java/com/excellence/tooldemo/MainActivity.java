@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (position)
         {
             case 0:
-                intent = new Intent(this, AdapterActivity.class);
+                intent = new Intent(this, GridAdapterActivity.class);
                 break;
 
+			case 1:
+				intent = new Intent(this, RecyclerAdapterActivity.class);
             default:
                 break;
         }

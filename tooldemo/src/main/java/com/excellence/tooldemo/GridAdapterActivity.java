@@ -20,9 +20,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener
+public class GridAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-	private static final String TAG = AdapterActivity.class.getSimpleName();
+	private static final String TAG = GridAdapterActivity.class.getSimpleName();
 
 	private Button mRefreshBtn = null;
 	private GridView mGridView = null;
@@ -34,7 +34,7 @@ public class AdapterActivity extends AppCompatActivity implements View.OnClickLi
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_adapter);
+		setContentView(R.layout.activity_grid_adapter);
 
 		init();
 		setAdapter();

@@ -2,5 +2,6 @@
 <resources>
     <string-array name="function_list">
         <item>@string/base_adapter</item>
+        <item>@string/recycle_view_adapter</item>
     </string-array>
 </resources>

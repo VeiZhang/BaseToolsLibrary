@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/activity_adapter"
+    android:id="@+id/activity_recycler"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.excellence.tooldemo.AdapterActivity">
+    tools:context="com.excellence.tooldemo.RecyclerAdapterActivity">
 
     <Button
-        android:id="@+id/refresh_btn"
+        android:id="@+id/recycler_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:text="@string/refresh"/>
 
-    <GridView
-        android:id="@+id/adapter_gridview"
+    <view
+        android:id="@+id/recycler_view"
+        class="android.support.v7.widget.RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/refresh_btn"
-        android:numColumns="3">
-    </GridView>
-
+        android:layout_below="@+id/recycler_refresh"/>
 </RelativeLayout>
