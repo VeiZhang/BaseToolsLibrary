@@ -1,25 +1,24 @@
 package com.excellence.tooldemo;
 
+import java.util.List;
+
+import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter;
+import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
+import com.excellence.basetoolslibrary.utils.PackageUtils;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.excellence.basetoolslibrary.utils.PackageUtils;
-
-import java.util.List;
-
-public class RecyclerAdapterActivity extends AppCompatActivity implements View.OnClickListener
+public class RecyclerAdapterActivity extends AppCompatActivity implements View.OnClickListener, BaseRecyclerAdapter.OnItemClickListener
 {
 	private static final String TAG = RecyclerAdapterActivity.class.getSimpleName();
 
@@ -66,6 +65,7 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 	private void setListener()
 	{
 		mRefreshBtn.setOnClickListener(this);
+		mAdapter.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -74,66 +74,34 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 		setAdapter();
 	}
 
-	private class AppRecyclerAdapter extends RecyclerView.Adapter<ViewHolder>
+	@Override
+	public void onItemClick(RecyclerViewHolder viewHolder, View v, int position)
 	{
-		private Context mContext = null;
-		private List<ResolveInfo> mAppList = null;
-		private int mLayoutId = 0;
+		Toast.makeText(this, "position " + position + " : " + ((TextView) viewHolder.getView(android.R.id.text1)).getText(), Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position)
+	{
+		return false;
+	}
+
+	private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
+	{
 		private PackageManager mPackageManager = null;
 
-		public AppRecyclerAdapter(Context context, List<ResolveInfo> appList, int layoutId)
+		public AppRecyclerAdapter(Context context, List<ResolveInfo> datas, int layoutId)
 		{
-			mContext = context;
-			mAppList = appList;
-			mLayoutId = layoutId;
+			super(context, datas, layoutId);
 			mPackageManager = context.getPackageManager();
 		}
 
 		@Override
-		public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+		public void convert(RecyclerViewHolder viewHolder, ResolveInfo item, int position)
 		{
-			View itemView = LayoutInflater.from(mContext).inflate(mLayoutId, parent, false);
-			return new ViewHolder(itemView);
+			viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
+			viewHolder.setImageDrawable(android.R.id.icon, item.loadIcon(mPackageManager));
 		}
 
-		@Override
-		public void onBindViewHolder(final ViewHolder holder, final int position)
-		{
-			holder.mTextView.setText(mAppList.get(position).loadLabel(mPackageManager));
-			holder.mImageView.setImageDrawable(mAppList.get(position).loadIcon(mPackageManager));
-			holder.itemView.setOnClickListener(new View.OnClickListener()
-			{
-				@Override
-				public void onClick(View v)
-				{
-					Toast.makeText(mContext, "position " + position + " : " + holder.mTextView.getText(), Toast.LENGTH_SHORT).show();
-				}
-			});
-		}
-
-		@Override
-		public int getItemCount()
-		{
-			return mAppList == null ? 0 : mAppList.size();
-		}
-
-		public void notifyNewData(List<ResolveInfo> appList)
-		{
-			mAppList = appList;
-			notifyDataSetChanged();
-		}
-	}
-
-	private class ViewHolder extends RecyclerView.ViewHolder
-	{
-		TextView mTextView;
-		ImageView mImageView;
-
-		public ViewHolder(View itemView)
-		{
-			super(itemView);
-			mTextView = (TextView) itemView.findViewById(android.R.id.text1);
-			mImageView = (ImageView) itemView.findViewById(android.R.id.icon);
-		}
 	}
 }

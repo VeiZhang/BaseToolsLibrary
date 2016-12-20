@@ -1,11 +1,11 @@
-package com.excellence.basetoolslibrary;
+package com.excellence.basetoolslibrary.baseadapter;
+
+import java.util.List;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
-import java.util.List;
 
 /**
  * Created by ZhangWei on 2016/6/1.

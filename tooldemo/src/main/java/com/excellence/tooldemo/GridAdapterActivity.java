@@ -3,8 +3,8 @@ package com.excellence.tooldemo;
 import java.util.Collections;
 import java.util.List;
 
-import com.excellence.basetoolslibrary.CommonAdapter;
-import com.excellence.basetoolslibrary.ViewHolder;
+import com.excellence.basetoolslibrary.baseadapter.CommonAdapter;
+import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -100,7 +100,7 @@ public class GridAdapterActivity extends AppCompatActivity implements View.OnCli
 		{
 			ImageView iconView = viewHolder.getView(android.R.id.icon);
 			iconView.setImageDrawable(item.loadIcon(mPackageManager));
-			viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager).toString());
+			viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
 		}
 	}
 }

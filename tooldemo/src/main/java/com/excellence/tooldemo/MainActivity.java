@@ -3,8 +3,8 @@ package com.excellence.tooldemo;
 import java.util.Arrays;
 import java.util.List;
 
-import com.excellence.basetoolslibrary.CommonAdapter;
-import com.excellence.basetoolslibrary.ViewHolder;
+import com.excellence.basetoolslibrary.baseadapter.CommonAdapter;
+import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
 
 import android.content.Context;
 import android.content.Intent;
