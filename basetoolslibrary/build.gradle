@@ -31,12 +31,18 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
 }
 
-/**å‘å¸ƒåˆ°æˆ‘çš„Bintrayä»“åº“**/
+/**·¢²¼µ½ÎÒµÄBintray²Ö¿â**/
 publish {
     userOrg = 'veizhang'
     groupId = 'com.excellence'
     artifactId = 'BaseTools'
-    publishVersion = '1.0.1'
-    desc = 'é€šç”¨çš„é€‚é…å™¨'
+    publishVersion = '1.1.0'
+    desc = 'Í¨ÓÃÊÊÅäÆ÷'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "UTF-8"
 }

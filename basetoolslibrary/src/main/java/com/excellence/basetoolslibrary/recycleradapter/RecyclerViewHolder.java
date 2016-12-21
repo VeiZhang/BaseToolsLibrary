@@ -65,10 +65,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 		return (T) view;
 	}
 
-	/**** ä»¥ä¸‹ä¸ºè¾…åŠ©æ–¹æ³• åŒ com.excellence.basetoolslibrary.baseadapter.ViewHolder *****/
+	/**** ÒÔÏÂÎª¸¨Öú·½·¨ Í¬ com.excellence.basetoolslibrary.baseadapter.ViewHolder *****/
 
 	/**
-	 * å…³äºå±æ€§
+	 * ¹ØÓÚÊôĞÔ
 	 */
 
 	public RecyclerViewHolder setText(int viewId, int strId)
@@ -243,8 +243,9 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * å…³äºäº‹ä»¶çš„
+	 * ¹ØÓÚÊÂ¼şµÄ
 	 */
+
 	public RecyclerViewHolder setOnClickListener(int viewId, View.OnClickListener listener)
 	{
 		View view = getView(viewId);

@@ -61,10 +61,10 @@ public class ViewHolder
 		return (T) view;
 	}
 
-	/**** ä»¥ä¸‹ä¸ºè¾…åŠ©æ–¹æ³• *****/
+	/**** ÒÔÏÂÎª¸¨Öú·½·¨ *****/
 
 	/**
-	 * å…³äºå±æ€§
+	 * ¹ØÓÚÊôĞÔ
 	 */
 
 	public ViewHolder setText(int viewId, int strId)
@@ -239,8 +239,9 @@ public class ViewHolder
 	}
 
 	/**
-	 * å…³äºäº‹ä»¶çš„
+	 * ¹ØÓÚÊÂ¼şµÄ
 	 */
+
 	public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener)
 	{
 		View view = getView(viewId);

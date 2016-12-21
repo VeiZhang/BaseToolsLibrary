@@ -1,12 +1,12 @@
 package com.excellence.basetoolslibrary.utils;
 
+import java.util.Collections;
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by ZhangWei on 2016/12/19.
@@ -21,7 +21,7 @@ public class PackageUtils
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 		PackageManager packageManager = context.getPackageManager();
 		List<ResolveInfo> apps = packageManager.queryIntentActivities(mainIntent, 0);
-		// è¿›è¡Œæ’åº
+		// ½øĞĞÅÅĞò
 		Collections.sort(apps, new ResolveInfo.DisplayNameComparator(packageManager));
 		return apps;
 	}
