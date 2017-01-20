@@ -5,11 +5,11 @@
 <!--[Bintray][Bintray]-->
 
 <!--[![Bintray](https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg)](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
-[![Bintray][icon_Bintray]](https://bintray.com/veizhang/maven/BaseTools "Bintray")
-[![GitHub issues][icon_issues]](https://github.com/VeiZhang/BaseToolsLibrary/issues)
-[![GitHub forks][icon_forks]](https://github.com/VeiZhang/BaseToolsLibrary/network)
-[![GitHub stars][icon_starts]](https://github.com/VeiZhang/BaseToolsLibrary/stargazers)
-[![Twitter][icon_twitter]](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+[![Bintray][icon_Bintray]][Bintray]
+[![GitHub issues][icon_issues]][issues]
+[![GitHub forks][icon_forks]][forks]
+[![GitHub stars][icon_starts]][starts]
+[![Twitter][icon_twitter]][twitter]
 
 <!-- you should configure jcenter repository-->
 ## 导入Android Studio
@@ -122,17 +122,21 @@
 
 
 <!-- 引用网站链接 -->
-[bintray]:https://bintray.com/veizhang/maven/BaseTools "Bintray"
+[Bintray]:https://bintray.com/zv/maven/BaseTools "Bintray"
+[issues]:https://github.com/VeiZhang/BaseToolsLibrary/issues
+[forks]:https://github.com/VeiZhang/BaseToolsLibrary/network
+[starts]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
+[twitter]:https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 [ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter
 
 <!-- 图片链接 -->
+[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg
 [icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg
 [icon_twitter]:https://img.shields.io/twitter/url/https/github.com/VeiZhang/BaseToolsLibrary.svg?style=social
-[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
 
 <!-- 版本 -->
 [BaseToolsV1.0.0]:https://bintray.com/zv/maven/BaseTools/1.0.0
