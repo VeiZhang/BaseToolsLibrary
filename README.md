@@ -134,8 +134,8 @@
 <!-- 图片链接 -->
 [icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
-[icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg
-[icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg
+[icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
+[icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_twitter]:https://img.shields.io/twitter/url/https/github.com/VeiZhang/BaseToolsLibrary.svg?style=social
 
 <!-- 版本 -->
