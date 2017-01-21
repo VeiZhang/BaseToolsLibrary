@@ -1,7 +1,16 @@
 # BaseToolsLibrary 常用的工具
 
 <!--[Maven](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
-[Maven Control][bintray][1.1.0]
+<!--[Maven Control][bintray][1.1.0]-->
+<!--[Bintray][Bintray]-->
+
+<!--[![Bintray](https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg)](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
+[![Bintray][icon_Bintray]][Bintray]
+[![GitHub issues][icon_issues]][issues]
+[![GitHub forks][icon_forks]][forks]
+[![GitHub stars][icon_starts]][starts]
+[![Twitter][icon_twitter]][twitter]
+
 <!-- you should configure jcenter repository-->
 ## 导入Android Studio
 添加jCenter远程依赖到module里的build.gradle：
@@ -106,14 +115,29 @@
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
 | [1.1.0][BaseToolsV1.1.0] | 增加RecyclerView的通用适配器和辅助方法，增加CommonAdapter里的辅助方法 |
-| [1.0.1][BaseToolsV1.0.1] | 创建ListView、GridView的通用适配器，一些辅助方法                    |
+| [1.0.0][BaseToolsV1.0.0] | 创建ListView、GridView的通用适配器，一些辅助方法                    |
 
 
 ### [参考][ZhangHongYang]
 
-[bintray]:https://bintray.com/veizhang/maven/BaseTools "Bintray"
+
+<!-- 引用网站链接 -->
+[Bintray]:https://bintray.com/zv/maven/BaseTools "Bintray"
+[issues]:https://github.com/VeiZhang/BaseToolsLibrary/issues
+[forks]:https://github.com/VeiZhang/BaseToolsLibrary/network
+[starts]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
+[twitter]:https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 [ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter
-[BaseToolsV1.0.1]:https://bintray.com/veizhang/maven/BaseTools/1.0.1
-[BaseToolsV1.1.0]:https://bintray.com/veizhang/maven/BaseTools/1.1.0
+
+<!-- 图片链接 -->
+[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
+[icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
+[icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg
+[icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg
+[icon_twitter]:https://img.shields.io/twitter/url/https/github.com/VeiZhang/BaseToolsLibrary.svg?style=social
+
+<!-- 版本 -->
+[BaseToolsV1.0.0]:https://bintray.com/zv/maven/BaseTools/1.0.0
+[BaseToolsV1.1.0]:https://bintray.com/zv/maven/BaseTools/1.1.0

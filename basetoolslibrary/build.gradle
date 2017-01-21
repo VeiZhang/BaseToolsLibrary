@@ -33,16 +33,10 @@ dependencies {
 
 /**发布到我的Bintray仓库**/
 publish {
-    userOrg = 'veizhang'
+    userOrg = 'zv'
     groupId = 'com.excellence'
     artifactId = 'BaseTools'
     publishVersion = '1.1.0'
     desc = '通用适配器'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.encoding = "UTF-8"
 }
