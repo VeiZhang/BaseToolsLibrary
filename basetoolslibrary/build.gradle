@@ -33,7 +33,7 @@ dependencies {
 
 /**发布到我的Bintray仓库**/
 publish {
-    userOrg = 'zv'
+    userOrg = 'veizhang'
     groupId = 'com.excellence'
     artifactId = 'BaseTools'
     publishVersion = '1.1.0'

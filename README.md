@@ -115,14 +115,14 @@
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
 | [1.1.0][BaseToolsV1.1.0] | 增加RecyclerView的通用适配器和辅助方法，增加CommonAdapter里的辅助方法 |
-| [1.0.0][BaseToolsV1.0.0] | 创建ListView、GridView的通用适配器，一些辅助方法                    |
+| [1.0.1][BaseToolsV1.0.1] | 创建ListView、GridView的通用适配器，一些辅助方法                    |
 
 
 ### [参考][ZhangHongYang]
 
 
 <!-- 引用网站链接 -->
-[Bintray]:https://bintray.com/zv/maven/BaseTools "Bintray"
+[Bintray]:https://bintray.com/veizhang/maven/BaseTools "Bintray"
 [issues]:https://github.com/VeiZhang/BaseToolsLibrary/issues
 [forks]:https://github.com/VeiZhang/BaseToolsLibrary/network
 [starts]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
@@ -139,5 +139,5 @@
 [icon_twitter]:https://img.shields.io/twitter/url/https/github.com/VeiZhang/BaseToolsLibrary.svg?style=social
 
 <!-- 版本 -->
-[BaseToolsV1.0.0]:https://bintray.com/zv/maven/BaseTools/1.0.0
-[BaseToolsV1.1.0]:https://bintray.com/zv/maven/BaseTools/1.1.0
+[BaseToolsV1.0.1]:https://bintray.com/veizhang/maven/BaseTools/1.0.1
+[BaseToolsV1.1.0]:https://bintray.com/veizhang/maven/BaseTools/1.1.0
