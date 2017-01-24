@@ -74,7 +74,7 @@ public class FileUtils
 	 * 
 	 * @param dirPath
 	 */
-	public static void deleteAPKFiles(String dirPath, String postfix)
+	public static void deletePostfixFiles(String dirPath, String postfix)
 	{
 		File dir = new File(dirPath);
 		if (!dir.exists() || TextUtils.isEmpty(postfix))

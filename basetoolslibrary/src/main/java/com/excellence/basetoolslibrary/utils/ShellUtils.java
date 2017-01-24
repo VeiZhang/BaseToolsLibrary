@@ -14,7 +14,13 @@ import java.io.InputStreamReader;
  */
 public class ShellUtils
 {
-	private static CommandResult execProceeBuilderCommand(String... command)
+	/**
+	 * 执行命令
+	 * 
+	 * @param command
+	 * @return
+	 */
+	public static CommandResult execProceeBuilderCommand(String... command)
 	{
 		Process process = null;
 		StringBuilder msg = null;
@@ -39,7 +45,13 @@ public class ShellUtils
 		return new CommandResult(resultCode, msg == null ? null : msg.toString());
 	}
 
-	private static CommandResult execRuntimeCommand(String shell)
+	/**
+	 * 执行命令
+	 * 
+	 * @param shell
+	 * @return
+	 */
+	public static CommandResult execRuntimeCommand(String shell)
 	{
 		Process process = null;
 		StringBuilder msg = null;
@@ -67,6 +79,13 @@ public class ShellUtils
 		return new CommandResult(resultCode, msg == null ? null : msg.toString());
 	}
 
+	/**
+	 * 信息流
+	 * 
+	 * @param inputStream
+	 * @return
+	 * @throws IOException
+	 */
 	private static StringBuilder getInputStream(InputStream inputStream) throws IOException
 	{
 		BufferedReader stdin = new BufferedReader(new InputStreamReader(inputStream));
@@ -80,6 +99,9 @@ public class ShellUtils
 		return result;
 	}
 
+	/**
+	 * 命令结果
+	 */
 	public static class CommandResult
 	{
 		public int resultCode = -1;

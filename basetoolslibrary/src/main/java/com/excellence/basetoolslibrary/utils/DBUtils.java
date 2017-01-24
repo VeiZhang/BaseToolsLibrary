@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
  */
 
 /**
- * 分辨率相关
+ * 存储相关
  */
 public class DBUtils
 {

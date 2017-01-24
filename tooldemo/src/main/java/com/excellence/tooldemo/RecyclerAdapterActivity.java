@@ -49,7 +49,7 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 	private void setAdapter()
 	{
 		if (mAppList == null)
-			mAppList = PackageUtils.getResolveInfoApps(this);
+			mAppList = PackageUtils.getInstalledApps(this);
 		else
 			mAppList = null;
 

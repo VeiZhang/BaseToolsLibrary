@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ public class PackageUtils
 	 * @param context
 	 * @return
 	 */
-	public static List<ResolveInfo> getResolveInfoApps(Context context)
+	public static List<ResolveInfo> getInstalledApps(Context context)
 	{
 		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -48,7 +49,7 @@ public class PackageUtils
 	 */
 	public static List<ResolveInfo> getUserInstalledApps(Context context)
 	{
-		List<ResolveInfo> allApps = getResolveInfoApps(context);
+		List<ResolveInfo> allApps = getInstalledApps(context);
 		List<ResolveInfo> userInstalledApps = new ArrayList<>();
 		for (ResolveInfo resolveInfo : allApps)
 		{
@@ -171,7 +172,7 @@ public class PackageUtils
 		try
 		{
 			PackageInfo packageInfo = manager.getPackageInfo(context.getPackageName(), PackageManager.GET_CONFIGURATIONS);
-			time = new SimpleDateFormat("yyyy-MM-dd").format(new Date(new File(packageInfo.applicationInfo.sourceDir).lastModified()));
+			time = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date(new File(packageInfo.applicationInfo.sourceDir).lastModified()));
 		}
 		catch (PackageManager.NameNotFoundException e)
 		{

@@ -21,7 +21,6 @@ import java.security.MessageDigest;
  */
 public class SignerUtils
 {
-	private static final char[] HEX_CHAR = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
 	/**
 	 * 获取apk文件的签名
@@ -116,24 +115,7 @@ public class SignerUtils
 	{
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		byte[] digest = md5.digest(signature.toByteArray());
-		return toHexString(digest);
+		return ConvertUtils.bytesToHexString(digest);
 	}
 
-	/**
-	 * 转换16进制
-	 * 
-	 * @param rawByteArray
-	 * @return
-	 */
-	private static String toHexString(byte[] rawByteArray)
-	{
-		char[] chars = new char[rawByteArray.length * 2];
-		for (int i = 0; i < rawByteArray.length; i++)
-		{
-			byte b = rawByteArray[i];
-			chars[i * 2] = HEX_CHAR[(b >>> 4 & 0x0F)];
-			chars[i * 2 + 1] = HEX_CHAR[(b & 0x0F)];
-		}
-		return new String(chars);
-	}
 }

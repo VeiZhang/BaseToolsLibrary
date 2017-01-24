@@ -8,6 +8,9 @@ import android.view.WindowManager;
  * Created by ZhangWei on 2017/1/23.
  */
 
+/**
+ * 分辨率相关
+ */
 public class DensityUtils
 {
 	/**
