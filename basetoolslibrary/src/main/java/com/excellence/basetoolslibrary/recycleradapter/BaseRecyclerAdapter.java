@@ -3,6 +3,7 @@ package com.excellence.basetoolslibrary.recycleradapter;
 import java.util.List;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	private int mLayoutId;
 	private OnItemClickListener mOnItemClickListener = null;
 
-	public BaseRecyclerAdapter(Context context, List<T> datas, int layoutId)
+	/**
+	 *
+	 * @param context 上下文
+	 * @param datas 数据源
+	 * @param layoutId 布局资源Id
+     */
+	public BaseRecyclerAdapter(Context context, List<T> datas, @LayoutRes int layoutId)
 	{
 		mContext = context;
 		mDatas = datas;
@@ -67,6 +74,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 		return mDatas == null ? 0 : mDatas.size();
 	}
 
+	/**
+	 * 刷新视图
+	 * @param datas 数据源
+     */
 	public void notifyNewData(List<T> datas)
 	{
 		mDatas = datas;

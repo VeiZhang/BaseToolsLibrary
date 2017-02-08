@@ -1,17 +1,11 @@
 package com.excellence.tooldemo;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.excellence.basetoolslibrary.baseadapter.CommonAdapter;
-import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
@@ -31,47 +25,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 	private void init()
 	{
-		String[] strings = getResources().getStringArray(R.array.function_list);
-		List<String> stringList = Arrays.asList(strings);
 		mListView = (ListView) findViewById(R.id.function_list);
-		mListView.setAdapter(new FunctionAdapter(this, stringList, android.R.layout.simple_list_item_1));
+		mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.function_list)));
 		mListView.setOnItemClickListener(this);
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-        Intent intent = null;
-        switch (position)
-        {
-            case 0:
-                intent = new Intent(this, GridAdapterActivity.class);
-                break;
-
-			case 1:
-				intent = new Intent(this, RecyclerAdapterActivity.class);
-            default:
-                break;
-        }
-
-        if (intent != null)
-        {
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        }
-	}
-
-	private class FunctionAdapter extends CommonAdapter<String>
-	{
-		public FunctionAdapter(Context context, List<String> datas, int layoutId)
+		Intent intent = null;
+		switch (position)
 		{
-			super(context, datas, layoutId);
+		case 0:
+			intent = new Intent(this, GridAdapterActivity.class);
+			break;
+
+		case 1:
+			intent = new Intent(this, RecyclerAdapterActivity.class);
+		default:
+			break;
 		}
 
-		@Override
-		public void convert(ViewHolder viewHolder, String item, int position)
+		if (intent != null)
 		{
-			viewHolder.setText(android.R.id.text1, item);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
 		}
 	}
+
 }
