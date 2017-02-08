@@ -1,5 +1,6 @@
 package com.excellence.basetoolslibrary.baseadapter;
 
+import java.util.Arrays;
 import java.util.List;
 
 import android.content.Context;
@@ -20,13 +21,26 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 	/**
 	 *
 	 * @param context 上下文
-	 * @param datas 数据源
+	 * @param datas 列表数据源
 	 * @param layoutId 布局资源Id
      */
 	public CommonAdapter(Context context, List<T> datas, @LayoutRes int layoutId)
 	{
 		mContext = context;
 		mDatas = datas;
+		mLayoutId = layoutId;
+	}
+
+	/**
+	 *
+	 * @param context 上下文
+	 * @param datas 数组数据源
+	 * @param layoutId 布局资源Id
+     */
+	public CommonAdapter(Context context, T[] datas, @LayoutRes int layoutId)
+	{
+		mContext = context;
+		mDatas = Arrays.asList(datas);
 		mLayoutId = layoutId;
 	}
 
