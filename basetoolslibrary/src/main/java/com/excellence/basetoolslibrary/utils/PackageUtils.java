@@ -3,6 +3,7 @@ package com.excellence.basetoolslibrary.utils;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -20,36 +21,56 @@ import android.content.pm.ResolveInfo;
  */
 
 /**
- * �����
+ * 包相关
  */
 public class PackageUtils
 {
 	/**
-	 * ��ȡ��װ��Ӧ��
-	 * 
+	 * 获取安装的所有应用
+	 *
 	 * @param context
 	 * @return
 	 */
-	public static List<ResolveInfo> getInstalledApps(Context context)
+	public static List<ResolveInfo> getAllInstalledApps(Context context)
 	{
 		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 		PackageManager packageManager = context.getPackageManager();
 		List<ResolveInfo> apps = packageManager.queryIntentActivities(mainIntent, 0);
-		// ��������
+		// 进行排序
 		Collections.sort(apps, new ResolveInfo.DisplayNameComparator(packageManager));
 		return apps;
 	}
 
 	/**
-	 * ��ȡ�û�Ӧ��
-	 * 
+	 * 获取安装的系统应用
+	 *
+	 * @param context
+	 * @return
+     */
+	public static List<ResolveInfo> getSystemInstalledApps(Context context)
+	{
+		List<ResolveInfo> allApps = getAllInstalledApps(context);
+		List<ResolveInfo> systemInstalledApps = new ArrayList<>();
+		for (ResolveInfo resolveInfo : allApps)
+		{
+			if ((resolveInfo.activityInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0)
+			{
+				systemInstalledApps.add(resolveInfo);
+			}
+		}
+		return systemInstalledApps;
+	}
+
+	/**
+	 * 获取安装的第三方应用
+	 *
 	 * @param context
 	 * @return
 	 */
 	public static List<ResolveInfo> getUserInstalledApps(Context context)
 	{
-		List<ResolveInfo> allApps = getInstalledApps(context);
+		List<ResolveInfo> allApps = getAllInstalledApps(context);
 		List<ResolveInfo> userInstalledApps = new ArrayList<>();
 		for (ResolveInfo resolveInfo : allApps)
 		{
@@ -62,8 +83,8 @@ public class PackageUtils
 	}
 
 	/**
-	 * �ж�Ӧ���Ƿ�װ
-	 * 
+	 * 判断应用是否安装
+	 *
 	 * @param context
 	 * @param packageName
 	 * @return
@@ -81,21 +102,67 @@ public class PackageUtils
 	}
 
 	/**
-	 * ����ִ�е�Ȩ��
-	 * 
+	 * 获取某应用的所有权限
+	 *
 	 * @param context
-	 * @param unCheckedPermission
+	 * @param packageName 某应用包名
+     * @return
+     */
+	public static List<String> getPermissionList(Context context, String packageName)
+	{
+		List<String> permissionList = new ArrayList<>();
+		try
+		{
+			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
+			if (packageInfo != null && packageInfo.requestedPermissions != null)
+				permissionList.addAll(Arrays.asList(packageInfo.requestedPermissions));
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return permissionList;
+	}
+
+	/**
+	 * 获取当前应用的所有权限
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static List<String> getPermissionList(Context context)
+	{
+		return getPermissionList(context, context.getPackageName());
+	}
+
+	/**
+	 * 检测某应用是否有某权限
+	 *
+	 * @param context
+	 * @param unCheckedPermission 待检测的权限
+	 * @param packageName 某应用包名
+     * @return
+     */
+	public static boolean checkPermission(Context context, String unCheckedPermission, String packageName)
+	{
+		return PackageManager.PERMISSION_GRANTED == context.getPackageManager().checkPermission(unCheckedPermission, packageName);
+	}
+
+	/**
+	 * 检测当前应用是否有某权限
+	 *
+	 * @param context
+	 * @param unCheckedPermission 待检测的权限
 	 * @return
 	 */
 	public static boolean checkPermission(Context context, String unCheckedPermission)
 	{
-		PackageManager pm = context.getPackageManager();
-		return PackageManager.PERMISSION_GRANTED == pm.checkPermission(unCheckedPermission, context.getPackageName());
+		return checkPermission(context, unCheckedPermission, context.getPackageName());
 	}
 
 	/**
-	 * ��ȡ��ǰӦ�ð汾��
-	 * 
+	 * 获取当前应用版本名
+	 *
 	 * @param context
 	 * @return
 	 */
@@ -116,7 +183,7 @@ public class PackageUtils
 	}
 
 	/**
-	 * ��ȡ��ǰӦ�ð汾��
+	 * 获取当前应用版本号
 	 *
 	 * @param context
 	 * @return
@@ -138,8 +205,8 @@ public class PackageUtils
 	}
 
 	/**
-	 * ��ȡ��ǰӦ�ô�С
-	 * 
+	 * 获取当前应用大小
+	 *
 	 * @param context
 	 * @return
 	 */
@@ -160,8 +227,8 @@ public class PackageUtils
 	}
 
 	/**
-	 * ��ȡ��ǰӦ�ð�װʱ��
-	 * 
+	 * 获取当前应用安装时间
+	 *
 	 * @param context
 	 * @return
 	 */

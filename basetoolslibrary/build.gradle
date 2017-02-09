@@ -31,12 +31,12 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
 }
 
-/**·¢²¼µ½ÎÒµÄBintray²Ö¿â**/
+/**å‘å¸ƒåˆ°æˆ‘çš„Bintrayä»“åº“**/
 publish {
     userOrg = 'veizhang'
     groupId = 'com.excellence'
     artifactId = 'BaseTools'
     publishVersion = '1.1.0'
-    desc = 'Í¨ÓÃÊÊÅäÆ÷'
+    desc = 'é€šç”¨é€‚é…å™¨'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
 }

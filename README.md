@@ -174,14 +174,16 @@ checkNetState : 检测网络连接
 
 > - **包相关→[PackageUtils.java][PackageUtils]**
 ```
-getInstalledApps     : 获取安装的应用
-getUserInstalledApps : 获取用户应用
-isAppInstalled       : 判断应用是否安装
-checkPermission      : 检查可执行的权限
-getAppVersionName    : 获取当前应用版本名
-getAppVersionCode    : 获取当前应用版本号
-getAppSize           : 获取当前应用大小
-getAppTime           : 获取当前应用安装时间
+getInstalledApps       : 获取安装的全部应用
+getSystemInstalledApps : 获取安装的系统应用
+getUserInstalledApps   : 获取安装的第三方应用
+isAppInstalled         : 判断应用是否安装
+getPermissionList      : 获取某应用的所有权限
+checkPermission        : 检测某应用是否有某权限
+getAppVersionName      : 获取当前应用版本名
+getAppVersionCode      : 获取当前应用版本号
+getAppSize             : 获取当前应用大小
+getAppTime             : 获取当前应用安装时间
 ```
 
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
