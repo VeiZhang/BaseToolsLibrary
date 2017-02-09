@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.excellence.basetoolslibrary.baseadapter.CommonAdapter;
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
+import com.excellence.basetoolslibrary.utils.ActivityUtils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class GridAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener
@@ -84,8 +84,9 @@ public class GridAdapterActivity extends AppCompatActivity implements View.OnCli
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		TextView textView = (TextView) view.findViewById(android.R.id.text1);
-		Toast.makeText(this, "position " + position + " : " + textView.getText(), Toast.LENGTH_SHORT).show();
+		boolean result = ActivityUtils.startAnotherActivity(this, mAppList.get(position).activityInfo.packageName);
+		if (!result)
+			Toast.makeText(this, mAppList.get(position).loadLabel(getPackageManager()) + "打开失败", Toast.LENGTH_SHORT).show();
 	}
 
 	private class AppGridAdapter extends CommonAdapter<ResolveInfo>

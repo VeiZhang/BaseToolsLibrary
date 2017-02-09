@@ -74,6 +74,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 
 	/**
 	 * 刷新视图
+	 *
 	 * @param datas 数据源
      */
 	public void notifyNewData(List<T> datas)

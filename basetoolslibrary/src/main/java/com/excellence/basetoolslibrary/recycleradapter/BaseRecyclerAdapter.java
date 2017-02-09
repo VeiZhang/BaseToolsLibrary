@@ -90,6 +90,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
 	/**
 	 * 刷新视图
+	 *
 	 * @param datas 数据源
      */
 	public void notifyNewData(List<T> datas)

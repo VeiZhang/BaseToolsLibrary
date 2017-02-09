@@ -1,12 +1,13 @@
 package com.excellence.tooldemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.excellence.basetoolslibrary.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
@@ -33,23 +34,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		Intent intent = null;
 		switch (position)
 		{
 		case 0:
-			intent = new Intent(this, GridAdapterActivity.class);
+			ActivityUtils.startAnotherActivity(this, GridAdapterActivity.class);
 			break;
 
 		case 1:
-			intent = new Intent(this, RecyclerAdapterActivity.class);
+			ActivityUtils.startAnotherActivity(this, RecyclerAdapterActivity.class);
 		default:
 			break;
-		}
-
-		if (intent != null)
-		{
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(intent);
 		}
 	}
 

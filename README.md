@@ -118,6 +118,7 @@
 ```
 startAnotherActivity   : Activity跳转
 setActivityWindowAlpha : 设置Activity窗口透明值
+isActivityTopStack     : 判断Activity是否在栈顶
 ```
 
 > - **进制相关→[ConvertUtils.java][ConvertUtils]**

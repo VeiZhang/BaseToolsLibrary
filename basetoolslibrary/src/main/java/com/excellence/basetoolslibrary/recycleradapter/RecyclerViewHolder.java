@@ -62,6 +62,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 获取view控件
 	 *
 	 * @param viewId 控件资源Id
 	 * @return 获取view对象
@@ -84,6 +85,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 */
 
 	/**
+	 * 设置文本
 	 *
 	 * @param viewId 控件资源Id
 	 * @param strId 字符串资源Id
@@ -97,6 +99,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置文本
 	 *
 	 * @param viewId 控件资源Id
 	 * @param text 字符串
@@ -110,6 +113,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置文本
 	 *
 	 * @param viewId 控件资源Id
 	 * @param text 字符串
@@ -123,6 +127,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置文字颜色
 	 *
 	 * @param viewId 控件资源Id
 	 * @param textColor 颜色资源
@@ -136,6 +141,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置文字颜色
 	 *
 	 * @param viewId 控件资源Id
 	 * @param textColorRes 颜色资源Id
@@ -149,6 +155,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置图片
 	 *
 	 * @param viewId 控件资源Id
 	 * @param resId 图片资源Id
@@ -162,6 +169,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置图片
 	 *
 	 * @param viewId 控件资源Id
 	 * @param bitmap 位图资源
@@ -175,6 +183,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置图片
 	 *
 	 * @param viewId 控件资源Id
 	 * @param drawable 图片资源
@@ -188,6 +197,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置背景颜色
 	 *
 	 * @param viewId 控件资源Id
 	 * @param color 背景图片颜色
@@ -201,6 +211,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置背景图片
 	 *
 	 * @param viewId 控件资源Id
 	 * @param backgroundRes 背景图片资源Id
@@ -214,6 +225,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置透明度
 	 *
 	 * @param viewId 控件资源Id
 	 * @param value 透明度
@@ -238,6 +250,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置控件是否可见
 	 *
 	 * @param viewId 控件资源Id
 	 * @param visible 是否可见
@@ -251,6 +264,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置文本链接
 	 *
 	 * @param viewId 控件资源Id
 	 * @return 超链接
@@ -263,6 +277,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置文字字体样式
 	 *
 	 * @param typeface 字体样式
 	 * @param viewIds 控件资源Id
@@ -280,6 +295,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置进度条进度
 	 *
 	 * @param viewId 控件资源Id
 	 * @param progress 进度
@@ -293,6 +309,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置进度条进度和最大值
 	 *
 	 * @param viewId 控件资源Id
 	 * @param progress 进度
@@ -308,6 +325,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置进度条最大值
 	 *
 	 * @param viewId 控件资源Id
 	 * @param max 最大进度
@@ -321,6 +339,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置评分
 	 *
 	 * @param viewId 控件资源Id
 	 * @param rating 评分
@@ -334,6 +353,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置评分和最大值
 	 *
 	 * @param viewId 控件资源Id
 	 * @param rating 评分
@@ -349,6 +369,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置标签
 	 *
 	 * @param viewId 控件资源Id
 	 * @param tag 标签
@@ -362,6 +383,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置标签
 	 *
 	 * @param viewId 控件资源Id
 	 * @param key 键值
@@ -376,6 +398,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
+	 * 设置check状态
 	 *
 	 * @param viewId 控件资源Id
 	 * @param checked check状态
