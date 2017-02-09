@@ -22,10 +22,15 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 {
 	private static final String TAG = RecyclerAdapterActivity.class.getSimpleName();
 
+	private static final int APP_TYPE_ALL = 0;
+	private static final int APP_TYPE_SYSTEM = 1;
+	private static final int APP_TYPE_USER = 2;
+
 	private Button mRefreshBtn = null;
 	private RecyclerView mRecyclerView = null;
 	private AppRecyclerAdapter mAdapter = null;
 	private List<ResolveInfo> mAppList = null;
+	private int mAppType = APP_TYPE_ALL;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -48,10 +53,28 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 
 	private void setAdapter()
 	{
-		if (mAppList == null)
-			mAppList = PackageUtils.getInstalledApps(this);
-		else
-			mAppList = null;
+		// 模拟刷新
+		if (mAppList != null)
+			mAppList.clear();
+
+		switch (mAppType % 3)
+		{
+		case APP_TYPE_ALL:
+			mAppList = PackageUtils.getAllInstalledApps(this);
+			mRefreshBtn.setText(R.string.all_apps);
+			break;
+
+		case APP_TYPE_SYSTEM:
+			mAppList = PackageUtils.getSystemInstalledApps(this);
+			mRefreshBtn.setText(R.string.system_apps);
+			break;
+
+		case APP_TYPE_USER:
+			mAppList = PackageUtils.getUserInstalledApps(this);
+			mRefreshBtn.setText(R.string.user_apps);
+			break;
+		}
+		mAppType++;
 
 		if (mAdapter == null)
 		{
