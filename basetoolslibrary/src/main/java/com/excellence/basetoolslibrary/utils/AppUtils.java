@@ -21,9 +21,9 @@ import android.content.pm.ResolveInfo;
  */
 
 /**
- * 包相关
+ * 应用相关
  */
-public class PackageUtils
+public class AppUtils
 {
 	/**
 	 * 获取安装的所有应用
@@ -246,5 +246,47 @@ public class PackageUtils
 			e.printStackTrace();
 		}
 		return time;
+	}
+
+	/**
+	 * 获取App路径
+	 *
+	 * @param context
+	 * @return
+     */
+	public static String getAppPath(Context context)
+	{
+		try
+		{
+			PackageManager pm = context.getPackageManager();
+			PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), 0);
+			return packageInfo == null ? null : packageInfo.applicationInfo.sourceDir;
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 判断App是否是Debug版本
+	 *
+	 * @param context
+	 * @return
+     */
+	public static boolean isAppDebug(Context context)
+	{
+		try
+		{
+			PackageManager pm = context.getPackageManager();
+			ApplicationInfo info = pm.getApplicationInfo(context.getPackageName(), 0);
+			return info != null && (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

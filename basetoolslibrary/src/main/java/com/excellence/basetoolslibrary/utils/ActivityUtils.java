@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.view.WindowManager;
@@ -85,5 +86,23 @@ public class ActivityUtils
 				return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 获取某应用入口Activity
+	 *
+	 * @param context
+	 * @param packageName
+     * @return
+     */
+	public static String getLauncherActivity(Context context, String packageName)
+	{
+		List<ResolveInfo> infos = AppUtils.getAllInstalledApps(context);
+		for (ResolveInfo info : infos)
+		{
+			if (info.activityInfo.packageName.equals(packageName))
+				return info.activityInfo.name;
+		}
+		return null;
 	}
 }

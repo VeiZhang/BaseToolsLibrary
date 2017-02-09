@@ -119,6 +119,23 @@
 startAnotherActivity   : Activity跳转
 setActivityWindowAlpha : 设置Activity窗口透明值
 isActivityTopStack     : 判断Activity是否在栈顶
+getLauncherActivity    : 获取某应用入口Activity
+```
+
+> - **应用相关→[AppUtils.java][AppUtils]**
+```
+getInstalledApps       : 获取安装的全部应用
+getSystemInstalledApps : 获取安装的系统应用
+getUserInstalledApps   : 获取安装的第三方应用
+isAppInstalled         : 判断应用是否安装
+getPermissionList      : 获取某应用的所有权限
+checkPermission        : 检测某应用是否有某权限
+getAppVersionName      : 获取当前应用版本名
+getAppVersionCode      : 获取当前应用版本号
+getAppSize             : 获取当前应用大小
+getAppTime             : 获取当前应用安装时间
+getAppPath             : 获取当前应用路径
+isAppDebug             : 判断当前应用是否是Debug版本
 ```
 
 > - **进制相关→[ConvertUtils.java][ConvertUtils]**
@@ -172,20 +189,6 @@ HandlerHolder: 使用必读
 checkNetState : 检测网络连接
 ```
 
-> - **包相关→[PackageUtils.java][PackageUtils]**
-```
-getInstalledApps       : 获取安装的全部应用
-getSystemInstalledApps : 获取安装的系统应用
-getUserInstalledApps   : 获取安装的第三方应用
-isAppInstalled         : 判断应用是否安装
-getPermissionList      : 获取某应用的所有权限
-checkPermission        : 检测某应用是否有某权限
-getAppVersionName      : 获取当前应用版本名
-getAppVersionCode      : 获取当前应用版本号
-getAppSize             : 获取当前应用大小
-getAppTime             : 获取当前应用安装时间
-```
-
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
 ```
 isMobileSimple : 验证手机号（简单）
@@ -224,6 +227,7 @@ getPackageSignature : 获取包签名--即当前应用签名
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
 ```
+millisec2String : 时间戳转时间字符串
 ```
 
 <br><br>
@@ -261,7 +265,9 @@ getPackageSignature : 获取包签名--即当前应用签名
 <!-- 代码引用 -->
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
+
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
+[AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.java
 [ConvertUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ConvertUtils.java
 [DBUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DBUtils.java
 [DensityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DensityUtils.java
@@ -270,7 +276,6 @@ getPackageSignature : 获取包签名--即当前应用签名
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
-[PackageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PackageUtils.java
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
 [SignerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SignerUtils.java

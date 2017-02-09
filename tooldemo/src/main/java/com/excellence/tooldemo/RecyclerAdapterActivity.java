@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter;
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
-import com.excellence.basetoolslibrary.utils.PackageUtils;
+import com.excellence.basetoolslibrary.utils.AppUtils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -60,17 +60,17 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 		switch (mAppType % 3)
 		{
 		case APP_TYPE_ALL:
-			mAppList = PackageUtils.getAllInstalledApps(this);
+			mAppList = AppUtils.getAllInstalledApps(this);
 			mRefreshBtn.setText(R.string.all_apps);
 			break;
 
 		case APP_TYPE_SYSTEM:
-			mAppList = PackageUtils.getSystemInstalledApps(this);
+			mAppList = AppUtils.getSystemInstalledApps(this);
 			mRefreshBtn.setText(R.string.system_apps);
 			break;
 
 		case APP_TYPE_USER:
-			mAppList = PackageUtils.getUserInstalledApps(this);
+			mAppList = AppUtils.getUserInstalledApps(this);
 			mRefreshBtn.setText(R.string.user_apps);
 			break;
 		}
