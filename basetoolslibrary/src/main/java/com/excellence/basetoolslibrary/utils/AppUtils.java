@@ -343,6 +343,18 @@ public class AppUtils
 	}
 
 	/**
+	 * 获取当前应用的签名
+	 *
+	 * @param context
+	 * @return 证书MD5值:32位16进制 如:D17A70403EB7CD52181004C847180287
+     */
+	@Nullable
+	public static String getPackageSignature(Context context)
+	{
+		return getPackageSignature(context, context.getPackageName());
+	}
+
+	/**
 	 * MD5值
 	 *
 	 * @param signature

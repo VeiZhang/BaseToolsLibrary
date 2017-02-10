@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
+		/**
+		 * List可存储Activity.class
+		 * List存储Activity名字，通过名字查找Activity.class
+		 */
 		switch (position)
 		{
 		case 0:
