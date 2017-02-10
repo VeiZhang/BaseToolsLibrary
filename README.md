@@ -127,7 +127,6 @@ getLauncherActivity    : 获取某应用入口Activity
 getInstalledApps       : 获取安装的全部应用
 getSystemInstalledApps : 获取安装的系统应用
 getUserInstalledApps   : 获取安装的第三方应用
-isAppInstalled         : 判断应用是否安装
 getPermissionList      : 获取某应用的所有权限
 checkPermission        : 检测某应用是否有某权限
 getAppVersionName      : 获取当前应用版本名
@@ -135,6 +134,9 @@ getAppVersionCode      : 获取当前应用版本号
 getAppSize             : 获取当前应用大小
 getAppTime             : 获取当前应用安装时间
 getAppPath             : 获取当前应用路径
+getAPKFileSignature    : 获取apk文件的签名
+getPackageSignature    : 获取某安装应用的签名
+isAppInstalled         : 判断应用是否安装
 isAppDebug             : 判断当前应用是否是Debug版本
 ```
 
@@ -215,12 +217,6 @@ execProceeBuilderCommand : 执行命令
 execRuntimeCommand       : 执行命令
 ```
 
-> - **签名相关→[SignerUtils.java][SignerUtils]**
-```
-getAPKFileSignature : 获取apk文件的签名
-getPackageSignature : 获取包签名--即当前应用签名
-```
-
 > - **SpannableString相关→[SpannableStringUtils.java][SpannableStringUtils]**
 ```
 ```
@@ -278,6 +274,5 @@ millisec2String : 时间戳转时间字符串
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
-[SignerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SignerUtils.java
 [SpannableStringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SpannableStringUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java

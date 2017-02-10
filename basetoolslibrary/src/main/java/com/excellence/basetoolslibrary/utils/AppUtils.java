@@ -1,6 +1,10 @@
 package com.excellence.basetoolslibrary.utils;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +19,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.pm.Signature;
+import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
 
 /**
  * Created by ZhangWei on 2016/12/19.
@@ -80,25 +87,6 @@ public class AppUtils
 			}
 		}
 		return userInstalledApps;
-	}
-
-	/**
-	 * 判断应用是否安装
-	 *
-	 * @param context
-	 * @param packageName
-	 * @return
-	 */
-	public static PackageInfo isAppInstalled(Context context, String packageName)
-	{
-		try
-		{
-			return context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-		}
-		catch (PackageManager.NameNotFoundException e)
-		{
-			return null;
-		}
 	}
 
 	/**
@@ -270,11 +258,129 @@ public class AppUtils
 	}
 
 	/**
+	 * 获取apk文件的签名
+	 * 需要权限 {@link android.Manifest.permission.READ_EXTERNAL_STORAGE}
+	 *
+	 * @param apkPath apk文件路径
+	 * @return 证书MD5值:32位16进制 如:D17A70403EB7CD52181004C847180287
+	 */
+	@Nullable
+	public static String getAPKFileSignature(String apkPath)
+	{
+		String signatureMD5 = null;
+		try
+		{
+			String PATH_PackageParser = "android.content.pm.PackageParser";
+			Class pkgParserCls = Class.forName(PATH_PackageParser);
+			Class[] typeArgs = new Class[1];
+			typeArgs[0] = String.class;
+			Constructor pkgParserCt = pkgParserCls.getConstructor(typeArgs);
+			Object[] valueArgs = new Object[1];
+			valueArgs[0] = apkPath;
+			Object pkgParser = pkgParserCt.newInstance(valueArgs);
+
+			DisplayMetrics metrics = new DisplayMetrics();
+			metrics.setToDefaults();
+
+			typeArgs = new Class[4];
+			typeArgs[0] = File.class;
+			typeArgs[1] = String.class;
+			typeArgs[2] = DisplayMetrics.class;
+			typeArgs[3] = Integer.TYPE;
+			Method pkgParser_parsePackageMtd = pkgParserCls.getDeclaredMethod("parsePackage", typeArgs);
+			valueArgs = new Object[4];
+			valueArgs[0] = new File(apkPath);
+			valueArgs[1] = apkPath;
+			valueArgs[2] = metrics;
+			valueArgs[3] = PackageManager.GET_SIGNATURES;
+			Object pkgParserPkg = pkgParser_parsePackageMtd.invoke(pkgParser, valueArgs);
+
+			typeArgs = new Class[2];
+			typeArgs[0] = pkgParserPkg.getClass();
+			typeArgs[1] = Integer.TYPE;
+			Method pkgParser_collectCertificatesMtd = pkgParserCls.getDeclaredMethod("collectCertificates", typeArgs);
+			valueArgs = new Object[2];
+			valueArgs[0] = pkgParserPkg;
+			valueArgs[1] = PackageManager.GET_SIGNATURES;
+			pkgParser_collectCertificatesMtd.invoke(pkgParser, valueArgs);
+
+			Field packageInfoFld = pkgParserPkg.getClass().getDeclaredField("mSignatures");
+			Signature[] signatures = (Signature[]) packageInfoFld.get(pkgParserPkg);
+			if (signatures.length > 0)
+				signatureMD5 = getSignatureMD5(signatures[0]);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return signatureMD5;
+	}
+
+	/**
+	 * 获取某安装应用的签名
+	 *
+	 * @param context
+	 * @param packageName
+	 * @return 证书MD5值:32位16进制 如:D17A70403EB7CD52181004C847180287
+	 */
+	@Nullable
+	public static String getPackageSignature(Context context, String packageName)
+	{
+		String signatureMD5 = null;
+		try
+		{
+			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+			if (packageInfo.signatures.length > 0)
+			{
+				signatureMD5 = getSignatureMD5(packageInfo.signatures[0]);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return signatureMD5;
+	}
+
+	/**
+	 * MD5值
+	 *
+	 * @param signature
+	 * @return
+	 * @throws Exception
+	 */
+	private static String getSignatureMD5(Signature signature) throws Exception
+	{
+		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		byte[] digest = md5.digest(signature.toByteArray());
+		return ConvertUtils.bytesToHexString(digest);
+	}
+
+	/**
+	 * 判断应用是否安装
+	 *
+	 * @param context
+	 * @param packageName
+	 * @return
+	 */
+	public static PackageInfo isAppInstalled(Context context, String packageName)
+	{
+		try
+		{
+			return context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+			return null;
+		}
+	}
+
+	/**
 	 * 判断App是否是Debug版本
 	 *
 	 * @param context
 	 * @return
-     */
+	 */
 	public static boolean isAppDebug(Context context)
 	{
 		try
