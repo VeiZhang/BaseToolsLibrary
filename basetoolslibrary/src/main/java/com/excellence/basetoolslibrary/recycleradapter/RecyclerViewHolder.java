@@ -62,10 +62,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è·å–viewæ§ä»¶
+	 * »ñÈ¡view¿Ø¼ş
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @return è·å–viewå¯¹è±¡
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @return »ñÈ¡view¶ÔÏó
 	 */
 	public <T extends View> T getView(@IdRes int viewId)
 	{
@@ -78,17 +78,17 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 		return (T) view;
 	}
 
-	/**** ä»¥ä¸‹ä¸ºè¾…åŠ©æ–¹æ³• åŒ com.excellence.basetoolslibrary.baseadapter.ViewHolder *****/
+	/**** ÒÔÏÂÎª¸¨Öú·½·¨ Í¬ com.excellence.basetoolslibrary.baseadapter.ViewHolder *****/
 
 	/**
-	 * å…³äºå±æ€§
+	 * ¹ØÓÚÊôĞÔ
 	 */
 
 	/**
-	 * è®¾ç½®æ–‡æœ¬
+	 * ÉèÖÃÎÄ±¾
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param strId å­—ç¬¦ä¸²èµ„æºId
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param strId ×Ö·û´®×ÊÔ´Id
 	 * @return
 	 */
 	public RecyclerViewHolder setText(@IdRes int viewId, @StringRes int strId)
@@ -99,10 +99,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ–‡æœ¬
+	 * ÉèÖÃÎÄ±¾
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param text å­—ç¬¦ä¸²
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param text ×Ö·û´®
 	 * @return
 	 */
 	public RecyclerViewHolder setText(@IdRes int viewId, String text)
@@ -113,10 +113,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ–‡æœ¬
+	 * ÉèÖÃÎÄ±¾
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param text å­—ç¬¦ä¸²
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param text ×Ö·û´®
 	 * @return
 	 */
 	public RecyclerViewHolder setText(@IdRes int viewId, CharSequence text)
@@ -127,10 +127,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ–‡å­—é¢œè‰²
+	 * ÉèÖÃÎÄ×ÖÑÕÉ«
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param textColor é¢œè‰²èµ„æº
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param textColor ÑÕÉ«×ÊÔ´
 	 * @return
 	 */
 	public RecyclerViewHolder setTextColor(@IdRes int viewId, @ColorInt int textColor)
@@ -141,10 +141,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ–‡å­—é¢œè‰²
+	 * ÉèÖÃÎÄ×ÖÑÕÉ«
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param textColorRes é¢œè‰²èµ„æºId
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param textColorRes ÑÕÉ«×ÊÔ´Id
 	 * @return
 	 */
 	public RecyclerViewHolder setTextColorRes(@IdRes int viewId, @ColorRes int textColorRes)
@@ -155,10 +155,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®å›¾ç‰‡
+	 * ÉèÖÃÍ¼Æ¬
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param resId å›¾ç‰‡èµ„æºId
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param resId Í¼Æ¬×ÊÔ´Id
 	 * @return
 	 */
 	public RecyclerViewHolder setImageResource(@IdRes int viewId, @DrawableRes int resId)
@@ -169,10 +169,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®å›¾ç‰‡
+	 * ÉèÖÃÍ¼Æ¬
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param bitmap ä½å›¾èµ„æº
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param bitmap Î»Í¼×ÊÔ´
 	 * @return
 	 */
 	public RecyclerViewHolder setImageBitmap(@IdRes int viewId, Bitmap bitmap)
@@ -183,10 +183,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®å›¾ç‰‡
+	 * ÉèÖÃÍ¼Æ¬
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param drawable å›¾ç‰‡èµ„æº
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param drawable Í¼Æ¬×ÊÔ´
 	 * @return
 	 */
 	public RecyclerViewHolder setImageDrawable(@IdRes int viewId, Drawable drawable)
@@ -197,10 +197,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®èƒŒæ™¯é¢œè‰²
+	 * ÉèÖÃ±³¾°ÑÕÉ«
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param color èƒŒæ™¯å›¾ç‰‡é¢œè‰²
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param color ±³¾°Í¼Æ¬ÑÕÉ«
 	 * @return
 	 */
 	public RecyclerViewHolder setBackgroundColor(@IdRes int viewId, @ColorInt int color)
@@ -211,10 +211,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®èƒŒæ™¯å›¾ç‰‡
+	 * ÉèÖÃ±³¾°Í¼Æ¬
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param backgroundRes èƒŒæ™¯å›¾ç‰‡èµ„æºId
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param backgroundRes ±³¾°Í¼Æ¬×ÊÔ´Id
 	 * @return
 	 */
 	public RecyclerViewHolder setBackgroundRes(@IdRes int viewId, @DrawableRes int backgroundRes)
@@ -225,10 +225,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®é€æ˜åº¦
+	 * ÉèÖÃÍ¸Ã÷¶È
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param value é€æ˜åº¦
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param value Í¸Ã÷¶È
 	 * @return
 	 */
 	@SuppressLint("NewApi")
@@ -250,10 +250,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ§ä»¶æ˜¯å¦å¯è§
+	 * ÉèÖÃ¿Ø¼şÊÇ·ñ¿É¼û
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param visible æ˜¯å¦å¯è§
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param visible ÊÇ·ñ¿É¼û
 	 * @return
 	 */
 	public RecyclerViewHolder setVisible(@IdRes int viewId, boolean visible)
@@ -264,10 +264,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ–‡æœ¬é“¾æ¥
+	 * ÉèÖÃÎÄ±¾Á´½Ó
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @return è¶…é“¾æ¥
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @return ³¬Á´½Ó
 	 */
 	public RecyclerViewHolder linkify(@IdRes int viewId)
 	{
@@ -277,10 +277,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ–‡å­—å­—ä½“æ ·å¼
+	 * ÉèÖÃÎÄ×Ö×ÖÌåÑùÊ½
 	 *
-	 * @param typeface å­—ä½“æ ·å¼
-	 * @param viewIds æ§ä»¶èµ„æºId
+	 * @param typeface ×ÖÌåÑùÊ½
+	 * @param viewIds ¿Ø¼ş×ÊÔ´Id
 	 * @return
 	 */
 	public RecyclerViewHolder setTypeface(Typeface typeface, int... viewIds)
@@ -295,10 +295,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®è¿›åº¦æ¡è¿›åº¦
+	 * ÉèÖÃ½ø¶ÈÌõ½ø¶È
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param progress è¿›åº¦
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param progress ½ø¶È
 	 * @return
 	 */
 	public RecyclerViewHolder setProgress(@IdRes int viewId, int progress)
@@ -309,11 +309,11 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®è¿›åº¦æ¡è¿›åº¦å’Œæœ€å¤§å€¼
+	 * ÉèÖÃ½ø¶ÈÌõ½ø¶ÈºÍ×î´óÖµ
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param progress è¿›åº¦
-	 * @param max æœ€å¤§è¿›åº¦
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param progress ½ø¶È
+	 * @param max ×î´ó½ø¶È
 	 * @return
 	 */
 	public RecyclerViewHolder setProgress(@IdRes int viewId, int progress, int max)
@@ -325,10 +325,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®è¿›åº¦æ¡æœ€å¤§å€¼
+	 * ÉèÖÃ½ø¶ÈÌõ×î´óÖµ
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param max æœ€å¤§è¿›åº¦
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param max ×î´ó½ø¶È
 	 * @return
 	 */
 	public RecyclerViewHolder setMax(@IdRes int viewId, int max)
@@ -339,10 +339,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®è¯„åˆ†
+	 * ÉèÖÃÆÀ·Ö
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param rating è¯„åˆ†
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param rating ÆÀ·Ö
 	 * @return
 	 */
 	public RecyclerViewHolder setRating(@IdRes int viewId, float rating)
@@ -353,11 +353,11 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®è¯„åˆ†å’Œæœ€å¤§å€¼
+	 * ÉèÖÃÆÀ·ÖºÍ×î´óÖµ
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param rating è¯„åˆ†
-	 * @param max æœ€å¤§åˆ†æ•°
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param rating ÆÀ·Ö
+	 * @param max ×î´ó·ÖÊı
 	 * @return
 	 */
 	public RecyclerViewHolder setRating(@IdRes int viewId, float rating, int max)
@@ -369,10 +369,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ ‡ç­¾
+	 * ÉèÖÃ±êÇ©
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param tag æ ‡ç­¾
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param tag ±êÇ©
 	 * @return
 	 */
 	public RecyclerViewHolder setTag(@IdRes int viewId, Object tag)
@@ -383,11 +383,11 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®æ ‡ç­¾
+	 * ÉèÖÃ±êÇ©
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param key é”®å€¼
-	 * @param tag æ ‡ç­¾
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param key ¼üÖµ
+	 * @param tag ±êÇ©
 	 * @return
 	 */
 	public RecyclerViewHolder setTag(@IdRes int viewId, int key, Object tag)
@@ -398,10 +398,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * è®¾ç½®checkçŠ¶æ€
+	 * ÉèÖÃcheck×´Ì¬
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param checked checkçŠ¶æ€
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param checked check×´Ì¬
 	 * @return
 	 */
 	public RecyclerViewHolder setChecked(@IdRes int viewId, boolean checked)
@@ -412,13 +412,13 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	}
 
 	/**
-	 * å…³äºäº‹ä»¶çš„
+	 * ¹ØÓÚÊÂ¼şµÄ
 	 */
 
 	/**
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param listener ç‚¹å‡»äº‹ä»¶
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param listener µã»÷ÊÂ¼ş
 	 * @return
 	 */
 	public RecyclerViewHolder setOnClickListener(@IdRes int viewId, View.OnClickListener listener)
@@ -430,8 +430,8 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 
 	/**
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param listener è§¦æ‘¸äº‹ä»¶
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param listener ´¥ÃşÊÂ¼ş
 	 * @return
 	 */
 	public RecyclerViewHolder setOnTouchListener(@IdRes int viewId, View.OnTouchListener listener)
@@ -443,8 +443,8 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 
 	/**
 	 *
-	 * @param viewId æ§ä»¶èµ„æºId
-	 * @param listener é•¿æŒ‰äº‹ä»¶
+	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param listener ³¤°´ÊÂ¼ş
 	 * @return
 	 */
 	public RecyclerViewHolder setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener)

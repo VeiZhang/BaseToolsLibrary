@@ -17,13 +17,13 @@ import java.util.List;
  */
 
 /**
- * Activityç›¸å…³
+ * ActivityÏà¹Ø
  */
 public class ActivityUtils
 {
 	/**
-	 * Activityè·³è½¬
-	 * 
+	 * ActivityÌø×ª
+	 *
 	 * @param context
 	 * @param activityCls
 	 */
@@ -35,12 +35,12 @@ public class ActivityUtils
 	}
 
 	/**
-	 * Activityè·³è½¬
+	 * ActivityÌø×ª
 	 *
 	 * @param context
 	 * @param packageName
-     * @return æ˜¯å¦æˆåŠŸè·³è½¬
-     */
+	 * @return ÊÇ·ñ³É¹¦Ìø×ª
+	 */
 	public static boolean startAnotherActivity(Context context, String packageName)
 	{
 		Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
@@ -54,8 +54,8 @@ public class ActivityUtils
 	}
 
 	/**
-	 * è®¾ç½®Activityçª—å£é€æ˜åº¦
-	 * 
+	 * ÉèÖÃActivity´°¿ÚÍ¸Ã÷¶È
+	 *
 	 * @param activity
 	 * @param alpha
 	 */
@@ -68,13 +68,13 @@ public class ActivityUtils
 	}
 
 	/**
-	 * åˆ¤æ–­Activityæ˜¯å¦åœ¨æ ˆé¡¶
-	 * éœ€è¦æƒé™ {@link android.Manifest.permission.GET_TASKS}
+	 * ÅĞ¶ÏActivityÊÇ·ñÔÚÕ»¶¥
+	 * ĞèÒªÈ¨ÏŞ {@link android.Manifest.permission.GET_TASKS}
 	 *
 	 * @param context
 	 * @param activityCls
-     * @return
-     */
+	 * @return
+	 */
 	public static boolean isActivityTopStack(Context context, @NonNull Class<? extends Activity> activityCls)
 	{
 		ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -89,12 +89,12 @@ public class ActivityUtils
 	}
 
 	/**
-	 * è·å–æŸåº”ç”¨å…¥å£Activity
+	 * »ñÈ¡Ä³Ó¦ÓÃÈë¿ÚActivity
 	 *
 	 * @param context
 	 * @param packageName
-     * @return
-     */
+	 * @return
+	 */
 	public static String getLauncherActivity(Context context, String packageName)
 	{
 		List<ResolveInfo> infos = AppUtils.getAllInstalledApps(context);

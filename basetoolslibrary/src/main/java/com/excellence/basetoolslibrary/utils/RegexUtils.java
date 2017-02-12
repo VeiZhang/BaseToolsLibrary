@@ -10,242 +10,242 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * æ­£åˆ™è¡¨è¾¾å¼ç›¸å…³
+ * ÕıÔò±í´ïÊ½Ïà¹Ø
  */
 public class RegexUtils
 {
-    /******************** æ­£åˆ™ç›¸å…³å¸¸é‡ ********************/
+    /******************** ÕıÔòÏà¹Ø³£Á¿ ********************/
     /**
-     * æ­£åˆ™ï¼šæ•°å­—
+     * ÕıÔò£ºÊı×Ö
      */
     public static final String REGEX_NUM = "[^0-9]";
 
     /**
-     * æ­£åˆ™ï¼šæ‰‹æœºå·ï¼ˆç®€å•ï¼‰
+     * ÕıÔò£ºÊÖ»úºÅ£¨¼òµ¥£©
      */
     public static final String REGEX_MOBILE_SIMPLE = "^[1]\\d{10}$";
     /**
-     * æ­£åˆ™ï¼šæ‰‹æœºå·ï¼ˆç²¾ç¡®ï¼‰
-     * <p>ç§»åŠ¨ï¼š134(0-8)ã€135ã€136ã€137ã€138ã€139ã€147ã€150ã€151ã€152ã€157ã€158ã€159ã€178ã€182ã€183ã€184ã€187ã€188</p>
-     * <p>è”é€šï¼š130ã€131ã€132ã€145ã€155ã€156ã€175ã€176ã€185ã€186</p>
-     * <p>ç”µä¿¡ï¼š133ã€153ã€173ã€177ã€180ã€181ã€189</p>
-     * <p>å…¨çƒæ˜Ÿï¼š1349</p>
-     * <p>è™šæ‹Ÿè¿è¥å•†ï¼š170</p>
+     * ÕıÔò£ºÊÖ»úºÅ£¨¾«È·£©
+     * <p>ÒÆ¶¯£º134(0-8)¡¢135¡¢136¡¢137¡¢138¡¢139¡¢147¡¢150¡¢151¡¢152¡¢157¡¢158¡¢159¡¢178¡¢182¡¢183¡¢184¡¢187¡¢188</p>
+     * <p>ÁªÍ¨£º130¡¢131¡¢132¡¢145¡¢155¡¢156¡¢175¡¢176¡¢185¡¢186</p>
+     * <p>µçĞÅ£º133¡¢153¡¢173¡¢177¡¢180¡¢181¡¢189</p>
+     * <p>È«ÇòĞÇ£º1349</p>
+     * <p>ĞéÄâÔËÓªÉÌ£º170</p>
      */
     public static final String REGEX_MOBILE_EXACT  = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|(147))\\d{8}$";
     /**
-     * æ­£åˆ™ï¼šç”µè¯å·ç 
+     * ÕıÔò£ºµç»°ºÅÂë
      */
     public static final String REGEX_TEL           = "^0\\d{2,3}[- ]?\\d{7,8}";
     /**
-     * æ­£åˆ™ï¼šèº«ä»½è¯å·ç 15ä½
+     * ÕıÔò£ºÉí·İÖ¤ºÅÂë15Î»
      */
     public static final String REGEX_ID_CARD15     = "^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$";
     /**
-     * æ­£åˆ™ï¼šèº«ä»½è¯å·ç 18ä½
+     * ÕıÔò£ºÉí·İÖ¤ºÅÂë18Î»
      */
     public static final String REGEX_ID_CARD18     = "^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9Xx])$";
     /**
-     * æ­£åˆ™ï¼šé‚®ç®±
+     * ÕıÔò£ºÓÊÏä
      */
     public static final String REGEX_EMAIL         = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
     /**
-     * æ­£åˆ™ï¼šURL
+     * ÕıÔò£ºURL
      */
     public static final String REGEX_URL           = "[a-zA-z]+://[^\\s]*";
     /**
-     * æ­£åˆ™ï¼šæ±‰å­—
+     * ÕıÔò£ººº×Ö
      */
     public static final String REGEX_ZH            = "^[\\u4e00-\\u9fa5]+$";
     /**
-     * æ­£åˆ™ï¼šç”¨æˆ·åï¼Œå–å€¼èŒƒå›´ä¸ºa-z,A-Z,0-9,"_",æ±‰å­—ï¼Œä¸èƒ½ä»¥"_"ç»“å°¾,ç”¨æˆ·åå¿…é¡»æ˜¯6-20ä½
+     * ÕıÔò£ºÓÃ»§Ãû£¬È¡Öµ·¶Î§Îªa-z,A-Z,0-9,"_",ºº×Ö£¬²»ÄÜÒÔ"_"½áÎ²,ÓÃ»§Ãû±ØĞëÊÇ6-20Î»
      */
     public static final String REGEX_USERNAME      = "^[\\w\\u4e00-\\u9fa5]{6,20}(?<!_)$";
     /**
-     * æ­£åˆ™ï¼šyyyy-MM-ddæ ¼å¼çš„æ—¥æœŸæ ¡éªŒï¼Œå·²è€ƒè™‘å¹³é—°å¹´
+     * ÕıÔò£ºyyyy-MM-dd¸ñÊ½µÄÈÕÆÚĞ£Ñé£¬ÒÑ¿¼ÂÇÆ½ÈòÄê
      */
     public static final String REGEX_DATE          = "^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$";
     /**
-     * æ­£åˆ™ï¼šIPåœ°å€
+     * ÕıÔò£ºIPµØÖ·
      */
     public static final String REGEX_IP            = "((2[0-4]\\d|25[0-5]|[01]?\\d\\d?)\\.){3}(2[0-4]\\d|25[0-5]|[01]?\\d\\d?)";
 
-    /************** ä»¥ä¸‹æ‘˜è‡ªhttp://tool.oschina.net/regex **************/
+    /************** ÒÔÏÂÕª×Ôhttp://tool.oschina.net/regex **************/
     /**
-     * æ­£åˆ™ï¼šåŒå­—èŠ‚å­—ç¬¦(åŒ…æ‹¬æ±‰å­—åœ¨å†…)
+     * ÕıÔò£ºË«×Ö½Ú×Ö·û(°üÀ¨ºº×ÖÔÚÄÚ)
      */
     public static final String REGEX_DOUBLE_BYTE_CHAR     = "[^\\x00-\\xff]";
     /**
-     * æ­£åˆ™ï¼šç©ºç™½è¡Œ
+     * ÕıÔò£º¿Õ°×ĞĞ
      */
     public static final String REGEX_BLANK_LINE           = "\\n\\s*\\r";
     /**
-     * æ­£åˆ™ï¼šQQå·
+     * ÕıÔò£ºQQºÅ
      */
     public static final String REGEX_TENCENT_NUM          = "[1-9][0-9]{4,}";
     /**
-     * æ­£åˆ™ï¼šä¸­å›½é‚®æ”¿ç¼–ç 
+     * ÕıÔò£ºÖĞ¹úÓÊÕş±àÂë
      */
     public static final String REGEX_ZIP_CODE             = "[1-9]\\d{5}(?!\\d)";
     /**
-     * æ­£åˆ™ï¼šæ­£æ•´æ•°
+     * ÕıÔò£ºÕıÕûÊı
      */
     public static final String REGEX_POSITIVE_INTEGER     = "^[1-9]\\d*$";
     /**
-     * æ­£åˆ™ï¼šè´Ÿæ•´æ•°
+     * ÕıÔò£º¸ºÕûÊı
      */
     public static final String REGEX_NEGATIVE_INTEGER     = "^-[1-9]\\d*$";
     /**
-     * æ­£åˆ™ï¼šæ•´æ•°
+     * ÕıÔò£ºÕûÊı
      */
     public static final String REGEX_INTEGER              = "^-?[1-9]\\d*$";
     /**
-     * æ­£åˆ™ï¼šéè´Ÿæ•´æ•°(æ­£æ•´æ•° + 0)
+     * ÕıÔò£º·Ç¸ºÕûÊı(ÕıÕûÊı + 0)
      */
     public static final String REGEX_NOT_NEGATIVE_INTEGER = "^[1-9]\\d*|0$";
     /**
-     * æ­£åˆ™ï¼šéæ­£æ•´æ•°ï¼ˆè´Ÿæ•´æ•° + 0ï¼‰
+     * ÕıÔò£º·ÇÕıÕûÊı£¨¸ºÕûÊı + 0£©
      */
     public static final String REGEX_NOT_POSITIVE_INTEGER = "^-[1-9]\\d*|0$";
     /**
-     * æ­£åˆ™ï¼šæ­£æµ®ç‚¹æ•°
+     * ÕıÔò£ºÕı¸¡µãÊı
      */
     public static final String REGEX_POSITIVE_FLOAT       = "^[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*$";
     /**
-     * æ­£åˆ™ï¼šè´Ÿæµ®ç‚¹æ•°
+     * ÕıÔò£º¸º¸¡µãÊı
      */
     public static final String REGEX_NEGATIVE_FLOAT       = "^-[1-9]\\d*\\.\\d*|-0\\.\\d*[1-9]\\d*$";
 
     /************** If u want more please visit http://toutiao.com/i6231678548520731137/ **************/
 
     /**
-     * éªŒè¯æ‰‹æœºå·ï¼ˆç®€å•ï¼‰
+     * ÑéÖ¤ÊÖ»úºÅ£¨¼òµ¥£©
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isMobileSimple(CharSequence input) {
         return isMatch(REGEX_MOBILE_SIMPLE, input);
     }
 
     /**
-     * éªŒè¯æ‰‹æœºå·ï¼ˆç²¾ç¡®ï¼‰
+     * ÑéÖ¤ÊÖ»úºÅ£¨¾«È·£©
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isMobileExact(CharSequence input) {
         return isMatch(REGEX_MOBILE_EXACT, input);
     }
 
     /**
-     * éªŒè¯ç”µè¯å·ç 
+     * ÑéÖ¤µç»°ºÅÂë
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isTel(CharSequence input) {
         return isMatch(REGEX_TEL, input);
     }
 
     /**
-     * éªŒè¯èº«ä»½è¯å·ç 15ä½
+     * ÑéÖ¤Éí·İÖ¤ºÅÂë15Î»
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isIDCard15(CharSequence input) {
         return isMatch(REGEX_ID_CARD15, input);
     }
 
     /**
-     * éªŒè¯èº«ä»½è¯å·ç 18ä½
+     * ÑéÖ¤Éí·İÖ¤ºÅÂë18Î»
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isIDCard18(CharSequence input) {
         return isMatch(REGEX_ID_CARD18, input);
     }
 
     /**
-     * éªŒè¯é‚®ç®±
+     * ÑéÖ¤ÓÊÏä
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isEmail(CharSequence input) {
         return isMatch(REGEX_EMAIL, input);
     }
 
     /**
-     * éªŒè¯URL
+     * ÑéÖ¤URL
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isURL(CharSequence input) {
         return isMatch(REGEX_URL, input);
     }
 
     /**
-     * éªŒè¯æ±‰å­—
+     * ÑéÖ¤ºº×Ö
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isZh(CharSequence input) {
         return isMatch(REGEX_ZH, input);
     }
 
     /**
-     * éªŒè¯ç”¨æˆ·å
-     * <p>å–å€¼èŒƒå›´ä¸ºa-z,A-Z,0-9,"_",æ±‰å­—ï¼Œä¸èƒ½ä»¥"_"ç»“å°¾,ç”¨æˆ·åå¿…é¡»æ˜¯6-20ä½</p>
+     * ÑéÖ¤ÓÃ»§Ãû
+     * <p>È¡Öµ·¶Î§Îªa-z,A-Z,0-9,"_",ºº×Ö£¬²»ÄÜÒÔ"_"½áÎ²,ÓÃ»§Ãû±ØĞëÊÇ6-20Î»</p>
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isUsername(CharSequence input) {
         return isMatch(REGEX_USERNAME, input);
     }
 
     /**
-     * éªŒè¯yyyy-MM-ddæ ¼å¼çš„æ—¥æœŸæ ¡éªŒï¼Œå·²è€ƒè™‘å¹³é—°å¹´
+     * ÑéÖ¤yyyy-MM-dd¸ñÊ½µÄÈÕÆÚĞ£Ñé£¬ÒÑ¿¼ÂÇÆ½ÈòÄê
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isDate(CharSequence input) {
         return isMatch(REGEX_DATE, input);
     }
 
     /**
-     * éªŒè¯IPåœ°å€
+     * ÑéÖ¤IPµØÖ·
      *
-     * @param input å¾…éªŒè¯æ–‡æœ¬
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param input ´ıÑéÖ¤ÎÄ±¾
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isIP(CharSequence input) {
         return isMatch(REGEX_IP, input);
     }
 
     /**
-     * åˆ¤æ–­æ˜¯å¦åŒ¹é…æ­£åˆ™
+     * ÅĞ¶ÏÊÇ·ñÆ¥ÅäÕıÔò
      *
-     * @param regex æ­£åˆ™è¡¨è¾¾å¼
-     * @param input è¦åŒ¹é…çš„å­—ç¬¦ä¸²
-     * @return {@code true}: åŒ¹é…<br>{@code false}: ä¸åŒ¹é…
+     * @param regex ÕıÔò±í´ïÊ½
+     * @param input ÒªÆ¥ÅäµÄ×Ö·û´®
+     * @return {@code true}: Æ¥Åä<br>{@code false}: ²»Æ¥Åä
      */
     public static boolean isMatch(String regex, CharSequence input) {
         return input != null && input.length() > 0 && Pattern.matches(regex, input);
     }
 
     /**
-     * è·å–æ­£åˆ™åŒ¹é…çš„éƒ¨åˆ†
+     * »ñÈ¡ÕıÔòÆ¥ÅäµÄ²¿·Ö
      *
-     * @param regex æ­£åˆ™è¡¨è¾¾å¼
-     * @param input è¦åŒ¹é…çš„å­—ç¬¦ä¸²
-     * @return æ­£åˆ™åŒ¹é…çš„éƒ¨åˆ†
+     * @param regex ÕıÔò±í´ïÊ½
+     * @param input ÒªÆ¥ÅäµÄ×Ö·û´®
+     * @return ÕıÔòÆ¥ÅäµÄ²¿·Ö
      */
     public static List<String> getMatches(String regex, CharSequence input) {
         if (input == null) return null;
@@ -259,11 +259,11 @@ public class RegexUtils
     }
 
     /**
-     * è·å–æ­£åˆ™åŒ¹é…åˆ†ç»„
+     * »ñÈ¡ÕıÔòÆ¥Åä·Ö×é
      *
-     * @param input è¦åˆ†ç»„çš„å­—ç¬¦ä¸²
-     * @param regex æ­£åˆ™è¡¨è¾¾å¼
-     * @return æ­£åˆ™åŒ¹é…åˆ†ç»„
+     * @param input Òª·Ö×éµÄ×Ö·û´®
+     * @param regex ÕıÔò±í´ïÊ½
+     * @return ÕıÔòÆ¥Åä·Ö×é
      */
     public static String[] getSplits(String input, String regex) {
         if (input == null) return null;
@@ -271,12 +271,12 @@ public class RegexUtils
     }
 
     /**
-     * æ›¿æ¢æ­£åˆ™åŒ¹é…çš„ç¬¬ä¸€éƒ¨åˆ†
+     * Ìæ»»ÕıÔòÆ¥ÅäµÄµÚÒ»²¿·Ö
      *
-     * @param input       è¦æ›¿æ¢çš„å­—ç¬¦ä¸²
-     * @param regex       æ­£åˆ™è¡¨è¾¾å¼
-     * @param replacement ä»£æ›¿è€…
-     * @return æ›¿æ¢æ­£åˆ™åŒ¹é…çš„ç¬¬ä¸€éƒ¨åˆ†
+     * @param input       ÒªÌæ»»µÄ×Ö·û´®
+     * @param regex       ÕıÔò±í´ïÊ½
+     * @param replacement ´úÌæÕß
+     * @return Ìæ»»ÕıÔòÆ¥ÅäµÄµÚÒ»²¿·Ö
      */
     public static String getReplaceFirst(String input, String regex, String replacement) {
         if (input == null) return null;
@@ -284,12 +284,12 @@ public class RegexUtils
     }
 
     /**
-     * æ›¿æ¢æ‰€æœ‰æ­£åˆ™åŒ¹é…çš„éƒ¨åˆ†
+     * Ìæ»»ËùÓĞÕıÔòÆ¥ÅäµÄ²¿·Ö
      *
-     * @param input       è¦æ›¿æ¢çš„å­—ç¬¦ä¸²
-     * @param regex       æ­£åˆ™è¡¨è¾¾å¼
-     * @param replacement ä»£æ›¿è€…
-     * @return æ›¿æ¢æ‰€æœ‰æ­£åˆ™åŒ¹é…çš„éƒ¨åˆ†
+     * @param input       ÒªÌæ»»µÄ×Ö·û´®
+     * @param regex       ÕıÔò±í´ïÊ½
+     * @param replacement ´úÌæÕß
+     * @return Ìæ»»ËùÓĞÕıÔòÆ¥ÅäµÄ²¿·Ö
      */
     public static String getReplaceAll(String input, String regex, String replacement) {
         if (input == null) return null;

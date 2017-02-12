@@ -5,7 +5,7 @@ package com.excellence.basetoolslibrary.utils;
  */
 
 /**
- * 杩涘埗杞崲
+ * 进制转换
  */
 public class ConvertUtils
 {
@@ -13,7 +13,7 @@ public class ConvertUtils
 	private static final char[] HEX_CHAR = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
 	/**
-	 * bytes杞崲16杩涘埗
+	 * bytes转换16进制
 	 *
 	 * @param rawByteArray
 	 * @return

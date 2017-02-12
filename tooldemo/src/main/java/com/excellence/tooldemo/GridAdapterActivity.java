@@ -55,7 +55,7 @@ public class GridAdapterActivity extends AppCompatActivity implements View.OnCli
 
 	private void setAdapter()
 	{
-		// æ¨¡æ‹Ÿåˆ·æ–°
+		// Ä£ÄâË¢ÐÂ
 		if (mAppList != null)
 			mAppList.clear();
 
@@ -98,7 +98,7 @@ public class GridAdapterActivity extends AppCompatActivity implements View.OnCli
 	{
 		boolean result = ActivityUtils.startAnotherActivity(this, mAppList.get(position).activityInfo.packageName);
 		if (!result)
-			Toast.makeText(this, mAppList.get(position).loadLabel(getPackageManager()) + "æ‰“å¼€å¤±è´¥", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, mAppList.get(position).loadLabel(getPackageManager()) + "´ò¿ªÊ§°Ü", Toast.LENGTH_SHORT).show();
 	}
 
 	private class AppGridAdapter extends CommonAdapter<ResolveInfo>

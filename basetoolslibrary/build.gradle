@@ -31,12 +31,17 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
 }
 
-/**å‘å¸ƒåˆ°æˆ‘çš„Bintrayä»“åº“**/
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'GBK')
+}
+
+/**·¢²¼µ½ÎÒµÄBintray²Ö¿â**/
 publish {
     userOrg = 'veizhang'
     groupId = 'com.excellence'
     artifactId = 'BaseTools'
-    publishVersion = '1.1.0'
-    desc = 'é€šç”¨é€‚é…å™¨'
+    publishVersion = '1.1.1'
+    desc = 'Í¨ÓÃÊÊÅäÆ÷'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
 }

@@ -9,13 +9,13 @@ import android.view.WindowManager;
  */
 
 /**
- * åˆ†è¾¨ç‡ç›¸å…³
+ * ·Ö±æÂÊÏà¹Ø
  */
 public class DensityUtils
 {
 	/**
-	 * è·å–å½“å‰å±å¹•åˆ†è¾¨ç‡
-	 * 
+	 * »ñÈ¡µ±Ç°ÆÁÄ»·Ö±æÂÊ
+	 *
 	 * @param context
 	 * @return
 	 */
@@ -30,8 +30,8 @@ public class DensityUtils
 	}
 
 	/**
-	 * è·å–å½“å‰æ–‡å­—åˆ†è¾¨ç‡
-	 * 
+	 * »ñÈ¡µ±Ç°ÎÄ×Ö·Ö±æÂÊ
+	 *
 	 * @param context
 	 * @return
 	 */
@@ -41,8 +41,8 @@ public class DensityUtils
 	}
 
 	/**
-	 * dpè½¬px
-	 * 
+	 * dp×ªpx
+	 *
 	 * @param context
 	 * @param dpValue
 	 * @return
@@ -53,8 +53,8 @@ public class DensityUtils
 	}
 
 	/**
-	 * pxè½¬dp
-	 * 
+	 * px×ªdp
+	 *
 	 * @param context
 	 * @param pxValue
 	 * @return
@@ -65,8 +65,8 @@ public class DensityUtils
 	}
 
 	/**
-	 * spè½¬px
-	 * 
+	 * sp×ªpx
+	 *
 	 * @param context
 	 * @param spValue
 	 * @return
@@ -77,8 +77,8 @@ public class DensityUtils
 	}
 
 	/**
-	 * pxè½¬sp
-	 * 
+	 * px×ªsp
+	 *
 	 * @param context
 	 * @param pxValue
 	 * @return

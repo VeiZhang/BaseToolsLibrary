@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
  */
 
 /**
- * ç½‘ç»œç›¸å…³
+ * ÍøÂçÏà¹Ø
  */
 public class NetworkUtils
 {
@@ -19,8 +19,8 @@ public class NetworkUtils
 	public static final int TYPE_3G = 3;
 
 	/**
-	 * æ£€æµ‹ç½‘ç»œè¿žæŽ¥
-	 * 
+	 * ¼ì²âÍøÂçÁ¬½Ó
+	 *
 	 * @param context
 	 * @return
 	 */
@@ -32,15 +32,15 @@ public class NetworkUtils
 			int iType = networkInfo.getType();
 			switch (iType)
 			{
-			case TYPE_ETHERNET:
-				return TYPE_ETHERNET;
+				case TYPE_ETHERNET:
+					return TYPE_ETHERNET;
 
-			case TYPE_WIFI:
-				return TYPE_WIFI;
+				case TYPE_WIFI:
+					return TYPE_WIFI;
 
-			default:
-				// 3G
-				return TYPE_3G;
+				default:
+					// 3G
+					return TYPE_3G;
 			}
 		}
 		return NO_NETWORK;

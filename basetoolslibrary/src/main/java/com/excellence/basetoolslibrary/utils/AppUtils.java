@@ -28,12 +28,12 @@ import android.util.DisplayMetrics;
  */
 
 /**
- * åº”ç”¨ç›¸å…³
+ * Ó¦ÓÃÏà¹Ø
  */
 public class AppUtils
 {
 	/**
-	 * è·å–å®‰è£…çš„æ‰€æœ‰åº”ç”¨
+	 * »ñÈ¡°²×°µÄËùÓĞÓ¦ÓÃ
 	 *
 	 * @param context
 	 * @return
@@ -44,17 +44,17 @@ public class AppUtils
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 		PackageManager packageManager = context.getPackageManager();
 		List<ResolveInfo> apps = packageManager.queryIntentActivities(mainIntent, 0);
-		// è¿›è¡Œæ’åº
+		// ½øĞĞÅÅĞò
 		Collections.sort(apps, new ResolveInfo.DisplayNameComparator(packageManager));
 		return apps;
 	}
 
 	/**
-	 * è·å–å®‰è£…çš„ç³»ç»Ÿåº”ç”¨
+	 * »ñÈ¡°²×°µÄÏµÍ³Ó¦ÓÃ
 	 *
 	 * @param context
 	 * @return
-     */
+	 */
 	public static List<ResolveInfo> getSystemInstalledApps(Context context)
 	{
 		List<ResolveInfo> allApps = getAllInstalledApps(context);
@@ -70,7 +70,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å®‰è£…çš„ç¬¬ä¸‰æ–¹åº”ç”¨
+	 * »ñÈ¡°²×°µÄµÚÈı·½Ó¦ÓÃ
 	 *
 	 * @param context
 	 * @return
@@ -90,12 +90,12 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–æŸåº”ç”¨çš„æ‰€æœ‰æƒé™
+	 * »ñÈ¡Ä³Ó¦ÓÃµÄËùÓĞÈ¨ÏŞ
 	 *
 	 * @param context
-	 * @param packageName æŸåº”ç”¨åŒ…å
-     * @return
-     */
+	 * @param packageName Ä³Ó¦ÓÃ°üÃû
+	 * @return
+	 */
 	public static List<String> getPermissionList(Context context, String packageName)
 	{
 		List<String> permissionList = new ArrayList<>();
@@ -113,7 +113,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å½“å‰åº”ç”¨çš„æ‰€æœ‰æƒé™
+	 * »ñÈ¡µ±Ç°Ó¦ÓÃµÄËùÓĞÈ¨ÏŞ
 	 *
 	 * @param context
 	 * @return
@@ -124,23 +124,23 @@ public class AppUtils
 	}
 
 	/**
-	 * æ£€æµ‹æŸåº”ç”¨æ˜¯å¦æœ‰æŸæƒé™
+	 * ¼ì²âÄ³Ó¦ÓÃÊÇ·ñÓĞÄ³È¨ÏŞ
 	 *
 	 * @param context
-	 * @param unCheckedPermission å¾…æ£€æµ‹çš„æƒé™
-	 * @param packageName æŸåº”ç”¨åŒ…å
-     * @return
-     */
+	 * @param unCheckedPermission ´ı¼ì²âµÄÈ¨ÏŞ
+	 * @param packageName Ä³Ó¦ÓÃ°üÃû
+	 * @return
+	 */
 	public static boolean checkPermission(Context context, String unCheckedPermission, String packageName)
 	{
 		return PackageManager.PERMISSION_GRANTED == context.getPackageManager().checkPermission(unCheckedPermission, packageName);
 	}
 
 	/**
-	 * æ£€æµ‹å½“å‰åº”ç”¨æ˜¯å¦æœ‰æŸæƒé™
+	 * ¼ì²âµ±Ç°Ó¦ÓÃÊÇ·ñÓĞÄ³È¨ÏŞ
 	 *
 	 * @param context
-	 * @param unCheckedPermission å¾…æ£€æµ‹çš„æƒé™
+	 * @param unCheckedPermission ´ı¼ì²âµÄÈ¨ÏŞ
 	 * @return
 	 */
 	public static boolean checkPermission(Context context, String unCheckedPermission)
@@ -149,7 +149,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å½“å‰åº”ç”¨ç‰ˆæœ¬å
+	 * »ñÈ¡µ±Ç°Ó¦ÓÃ°æ±¾Ãû
 	 *
 	 * @param context
 	 * @return
@@ -171,7 +171,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å½“å‰åº”ç”¨ç‰ˆæœ¬å·
+	 * »ñÈ¡µ±Ç°Ó¦ÓÃ°æ±¾ºÅ
 	 *
 	 * @param context
 	 * @return
@@ -193,7 +193,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å½“å‰åº”ç”¨å¤§å°
+	 * »ñÈ¡µ±Ç°Ó¦ÓÃ´óĞ¡
 	 *
 	 * @param context
 	 * @return
@@ -215,7 +215,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å½“å‰åº”ç”¨å®‰è£…æ—¶é—´
+	 * »ñÈ¡µ±Ç°Ó¦ÓÃ°²×°Ê±¼ä
 	 *
 	 * @param context
 	 * @return
@@ -237,11 +237,11 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–Appè·¯å¾„
+	 * »ñÈ¡AppÂ·¾¶
 	 *
 	 * @param context
 	 * @return
-     */
+	 */
 	public static String getAppPath(Context context)
 	{
 		try
@@ -258,11 +258,11 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–apkæ–‡ä»¶çš„ç­¾å
-	 * éœ€è¦æƒé™ {@link android.Manifest.permission.READ_EXTERNAL_STORAGE}
+	 * »ñÈ¡apkÎÄ¼şµÄÇ©Ãû
+	 * ĞèÒªÈ¨ÏŞ {@link android.Manifest.permission.READ_EXTERNAL_STORAGE}
 	 *
-	 * @param apkPath apkæ–‡ä»¶è·¯å¾„
-	 * @return è¯ä¹¦MD5å€¼:32ä½16è¿›åˆ¶ å¦‚:D17A70403EB7CD52181004C847180287
+	 * @param apkPath apkÎÄ¼şÂ·¾¶
+	 * @return Ö¤ÊéMD5Öµ:32Î»16½øÖÆ Èç:D17A70403EB7CD52181004C847180287
 	 */
 	@Nullable
 	public static String getAPKFileSignature(String apkPath)
@@ -317,11 +317,11 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–æŸå®‰è£…åº”ç”¨çš„ç­¾å
+	 * »ñÈ¡Ä³°²×°Ó¦ÓÃµÄÇ©Ãû
 	 *
 	 * @param context
 	 * @param packageName
-	 * @return è¯ä¹¦MD5å€¼:32ä½16è¿›åˆ¶ å¦‚:D17A70403EB7CD52181004C847180287
+	 * @return Ö¤ÊéMD5Öµ:32Î»16½øÖÆ Èç:D17A70403EB7CD52181004C847180287
 	 */
 	@Nullable
 	public static String getPackageSignature(Context context, String packageName)
@@ -343,11 +343,11 @@ public class AppUtils
 	}
 
 	/**
-	 * è·å–å½“å‰åº”ç”¨çš„ç­¾å
+	 * »ñÈ¡µ±Ç°Ó¦ÓÃµÄÇ©Ãû
 	 *
 	 * @param context
-	 * @return è¯ä¹¦MD5å€¼:32ä½16è¿›åˆ¶ å¦‚:D17A70403EB7CD52181004C847180287
-     */
+	 * @return Ö¤ÊéMD5Öµ:32Î»16½øÖÆ Èç:D17A70403EB7CD52181004C847180287
+	 */
 	@Nullable
 	public static String getPackageSignature(Context context)
 	{
@@ -355,7 +355,7 @@ public class AppUtils
 	}
 
 	/**
-	 * MD5å€¼
+	 * MD5Öµ
 	 *
 	 * @param signature
 	 * @return
@@ -369,7 +369,7 @@ public class AppUtils
 	}
 
 	/**
-	 * åˆ¤æ–­åº”ç”¨æ˜¯å¦å®‰è£…
+	 * ÅĞ¶ÏÓ¦ÓÃÊÇ·ñ°²×°
 	 *
 	 * @param context
 	 * @param packageName
@@ -388,7 +388,7 @@ public class AppUtils
 	}
 
 	/**
-	 * åˆ¤æ–­Appæ˜¯å¦æ˜¯Debugç‰ˆæœ¬
+	 * ÅĞ¶ÏAppÊÇ·ñÊÇDebug°æ±¾
 	 *
 	 * @param context
 	 * @return

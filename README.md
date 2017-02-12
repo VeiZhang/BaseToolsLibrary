@@ -1,7 +1,7 @@
-# BaseToolsLibrary å¸¸ç”¨çš„å·¥å…·
+# BaseToolsLibrary ³£ÓÃµÄ¹¤¾ß
 
 <!--[Maven](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
-<!--[Maven Control][bintray][1.1.0]-->
+<!--[Maven Control][bintray][1.1.1]-->
 <!--[Bintray][Bintray]-->
 
 <!--[![Bintray](https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg)](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
@@ -11,27 +11,27 @@
 [![GitHub stars][icon_starts]][starts]
 
 <!-- you should configure jcenter repository-->
-## å¯¼å…¥Android Studio
-æ·»åŠ jCenterè¿œç¨‹ä¾èµ–åˆ°moduleé‡Œçš„build.gradleï¼š
+## µ¼ÈëAndroid Studio
+Ìí¼ÓjCenterÔ¶³ÌÒÀÀµµ½moduleÀïµÄbuild.gradle£º
 ```
   dependencies {
-    compile 'com.excellence:BaseTools:1.1.0'
+    compile 'com.excellence:BaseTools:1.1.1'
   }
 ```
-æˆ–è€…ç›´æ¥æ·»åŠ æœ¬åœ°Libraryä¾èµ–
+»òÕßÖ±½ÓÌí¼Ó±¾µØLibraryÒÀÀµ
 ```
     compile project(':basetoolslibrary')
 ```
 
 ## 1.CommonAdapter
 
-#### gridviewï¼Œlistviewçš„é€šç”¨é€‚é…å™¨
+#### gridview£¬listviewµÄÍ¨ÓÃÊÊÅäÆ÷
 
-ç¤ºä¾‹ï¼š[GridAdapterActivity][GridAdapterActivity]
+Ê¾Àı£º[GridAdapterActivity][GridAdapterActivity]
 
 
-```ä½¿ç”¨CommonAdapter
-    åˆ›å»ºadapterç±»ç»§æ‰¿CommonAdapter
+```Ê¹ÓÃCommonAdapter
+    ´´½¨adapterÀà¼Ì³ĞCommonAdapter
     
     private class AppGridAdapter extends CommonAdapter<ResolveInfo>
     {
@@ -51,35 +51,35 @@
 ```
 
 
-```ä½¿ç”¨ViewHolder
-    ViewHolderè¾…åŠ©æ–¹æ³•
+```Ê¹ÓÃViewHolder
+    ViewHolder¸¨Öú·½·¨
     
-    public <T extends View> T getView(int viewId); ç”¨äºè·å–Itemå†…çš„å­æ§ä»¶ï¼Œå‚æ•°ä¸ºæ§ä»¶çš„id
-    public ViewHolder setText(int viewId, int strId); ç”¨äºè®¾ç½®æ–‡æœ¬ï¼Œå‚æ•°æ§ä»¶idã€å­—ç¬¦ä¸²id
-    public ViewHolder setBackgroundResource(int viewId, int resId); ç”¨äºè®¾ç½®èƒŒæ™¯å›¾ç‰‡ï¼Œå‚æ•°æ§ä»¶idã€å›¾ç‰‡id
-    public ViewHolder setImageResource(int viewId, int resId); ç”¨äºè®¾ç½®ImageViewå›¾ç‰‡èµ„æºï¼Œå‚æ•°æ§ä»¶idã€å›¾ç‰‡id
-    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener); ç”¨äºç‚¹å‡»äº‹ä»¶ç›‘å¬
+    public <T extends View> T getView(int viewId); ÓÃÓÚ»ñÈ¡ItemÄÚµÄ×Ó¿Ø¼ş£¬²ÎÊıÎª¿Ø¼şµÄid
+    public ViewHolder setText(int viewId, int strId); ÓÃÓÚÉèÖÃÎÄ±¾£¬²ÎÊı¿Ø¼şid¡¢×Ö·û´®id
+    public ViewHolder setBackgroundResource(int viewId, int resId); ÓÃÓÚÉèÖÃ±³¾°Í¼Æ¬£¬²ÎÊı¿Ø¼şid¡¢Í¼Æ¬id
+    public ViewHolder setImageResource(int viewId, int resId); ÓÃÓÚÉèÖÃImageViewÍ¼Æ¬×ÊÔ´£¬²ÎÊı¿Ø¼şid¡¢Í¼Æ¬id
+    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener); ÓÃÓÚµã»÷ÊÂ¼ş¼àÌı
     *
     * 
     * 
-    å¯æ‹“å±•å…¶ä»–æ–¹æ³•
+    ¿ÉÍØÕ¹ÆäËû·½·¨
 ```
 
 
-```åˆ·æ–°
-    åˆ·æ–°é€‚é…å™¨
+```Ë¢ĞÂ
+    Ë¢ĞÂÊÊÅäÆ÷
     adapter.notifyNewData(data);
 ```
 
 
 ## 2.BaseRecyclerAdapter
 
-#### RecyclerViewçš„é€šç”¨é€‚é…å™¨
+#### RecyclerViewµÄÍ¨ÓÃÊÊÅäÆ÷
 
-ç¤ºä¾‹ï¼š[RecyclerAdapterActivity][RecyclerAdapterActivity]
+Ê¾Àı£º[RecyclerAdapterActivity][RecyclerAdapterActivity]
 
-```ä½¿ç”¨CommonAdapter
-    åˆ›å»ºadapterç±»ç»§æ‰¿BaseRecyclerAdapter
+```Ê¹ÓÃCommonAdapter
+    ´´½¨adapterÀà¼Ì³ĞBaseRecyclerAdapter
 
     private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
     {
@@ -102,8 +102,8 @@
 ```
 
 
-```ä½¿ç”¨RecyclerViewHolder
-    RecyclerViewHolderè¾…åŠ©æ–¹æ³•ç±»åŒViewHolderè¾…åŠ©æ–¹æ³•
+```Ê¹ÓÃRecyclerViewHolder
+    RecyclerViewHolder¸¨Öú·½·¨ÀàÍ¬ViewHolder¸¨Öú·½·¨
     *
     *
     *
@@ -112,172 +112,174 @@
 
 ## 3.Utils
 
-#### é€šç”¨çš„æ–¹æ³•
+#### Í¨ÓÃµÄ·½·¨
 
-> - **Activityç›¸å…³â†’[ActivityUtils.java][ActivityUtils]**
+> - **ActivityÏà¹Ø¡ú[ActivityUtils.java][ActivityUtils]**
 ```
-startAnotherActivity   : Activityè·³è½¬
-setActivityWindowAlpha : è®¾ç½®Activityçª—å£é€æ˜å€¼
-isActivityTopStack     : åˆ¤æ–­Activityæ˜¯å¦åœ¨æ ˆé¡¶
-getLauncherActivity    : è·å–æŸåº”ç”¨å…¥å£Activity
-```
-
-> - **åº”ç”¨ç›¸å…³â†’[AppUtils.java][AppUtils]**
-```
-getInstalledApps       : è·å–å®‰è£…çš„å…¨éƒ¨åº”ç”¨
-getSystemInstalledApps : è·å–å®‰è£…çš„ç³»ç»Ÿåº”ç”¨
-getUserInstalledApps   : è·å–å®‰è£…çš„ç¬¬ä¸‰æ–¹åº”ç”¨
-getPermissionList      : è·å–æŸåº”ç”¨çš„æ‰€æœ‰æƒé™
-checkPermission        : æ£€æµ‹æŸåº”ç”¨æ˜¯å¦æœ‰æŸæƒé™
-getAppVersionName      : è·å–å½“å‰åº”ç”¨ç‰ˆæœ¬å
-getAppVersionCode      : è·å–å½“å‰åº”ç”¨ç‰ˆæœ¬å·
-getAppSize             : è·å–å½“å‰åº”ç”¨å¤§å°
-getAppTime             : è·å–å½“å‰åº”ç”¨å®‰è£…æ—¶é—´
-getAppPath             : è·å–å½“å‰åº”ç”¨è·¯å¾„
-getAPKFileSignature    : è·å–apkæ–‡ä»¶çš„ç­¾å
-getPackageSignature    : è·å–æŸå®‰è£…åº”ç”¨çš„ç­¾å
-isAppInstalled         : åˆ¤æ–­åº”ç”¨æ˜¯å¦å®‰è£…
-isAppDebug             : åˆ¤æ–­å½“å‰åº”ç”¨æ˜¯å¦æ˜¯Debugç‰ˆæœ¬
+startAnotherActivity   : ActivityÌø×ª
+setActivityWindowAlpha : ÉèÖÃActivity´°¿ÚÍ¸Ã÷Öµ
+isActivityTopStack     : ÅĞ¶ÏActivityÊÇ·ñÔÚÕ»¶¥
+getLauncherActivity    : »ñÈ¡Ä³Ó¦ÓÃÈë¿ÚActivity
 ```
 
-> - **è¿›åˆ¶ç›¸å…³â†’[ConvertUtils.java][ConvertUtils]**
+> - **Ó¦ÓÃÏà¹Ø¡ú[AppUtils.java][AppUtils]**
 ```
-bytesToHexString : bytesè½¬16è¿›åˆ¶
-```
-
-> - **å­˜å‚¨ç›¸å…³â†’[DBUtils.java][DBUtils]**
-```
-setStringSharedPreferences  : å­˜å‚¨String
-getStringSharedPreferences  : è¯»å–String
-setBooleanSharedPreferences : å­˜å‚¨Boolean
-getBooleanSharedPreferences : è¯»å–Boolean
-```
-
-> - **åˆ†è¾¨ç‡ç›¸å…³â†’[DensityUtils.java][DensityUtils]**
-```
-getDensity      : è·å–å½“å‰å±å¹•åˆ†è¾¨ç‡
-getScaleDensity : è·å–å½“å‰æ–‡å­—åˆ†è¾¨ç‡
-dp2px           : dpè½¬px
-px2dp           : pxè½¬dp
-sp2px           : spè½¬px
-px2sp           : pxè½¬sp
+getInstalledApps       : »ñÈ¡°²×°µÄÈ«²¿Ó¦ÓÃ
+getSystemInstalledApps : »ñÈ¡°²×°µÄÏµÍ³Ó¦ÓÃ
+getUserInstalledApps   : »ñÈ¡°²×°µÄµÚÈı·½Ó¦ÓÃ
+getPermissionList      : »ñÈ¡Ä³Ó¦ÓÃµÄËùÓĞÈ¨ÏŞ
+checkPermission        : ¼ì²âÄ³Ó¦ÓÃÊÇ·ñÓĞÄ³È¨ÏŞ
+getAppVersionName      : »ñÈ¡µ±Ç°Ó¦ÓÃ°æ±¾Ãû
+getAppVersionCode      : »ñÈ¡µ±Ç°Ó¦ÓÃ°æ±¾ºÅ
+getAppSize             : »ñÈ¡µ±Ç°Ó¦ÓÃ´óĞ¡
+getAppTime             : »ñÈ¡µ±Ç°Ó¦ÓÃ°²×°Ê±¼ä
+getAppPath             : »ñÈ¡µ±Ç°Ó¦ÓÃÂ·¾¶
+getAPKFileSignature    : »ñÈ¡apkÎÄ¼şµÄÇ©Ãû
+getPackageSignature    : »ñÈ¡Ä³°²×°Ó¦ÓÃµÄÇ©Ãû
+isAppInstalled         : ÅĞ¶ÏÓ¦ÓÃÊÇ·ñ°²×°
+isAppDebug             : ÅĞ¶Ïµ±Ç°Ó¦ÓÃÊÇ·ñÊÇDebug°æ±¾
 ```
 
-> - **åˆ¤æ–­ç©ºç›¸å…³â†’[EmptyUtils.java][EmptyUtils]**
+> - **½øÖÆÏà¹Ø¡ú[ConvertUtils.java][ConvertUtils]**
 ```
-isEmpty    : åˆ¤æ–­å¯¹è±¡æ˜¯å¦ä¸ºç©º
-isNotEmpty : åˆ¤æ–­å¯¹è±¡æ˜¯å¦éç©º
-```
-
-> - **æ–‡ä»¶ç›¸å…³â†’[FileUtils.java][FileUtils]**
-```
-formatFileSize     : æ ¼å¼åŒ–æ–‡ä»¶å¤§å°
-deleteDir          : åˆ é™¤ç›®å½•
-deletePostfixFiles : åˆ é™¤ç›®å½•ä¸‹çš„æŸåç¼€æ–‡ä»¶
-deleteFile         : åˆ é™¤æ–‡ä»¶
+bytesToHexString : bytes×ª16½øÖÆ
 ```
 
-> - **Handlerç›¸å…³â†’[HandlerUtils.java][HandlerUtils]**
+> - **´æ´¢Ïà¹Ø¡ú[DBUtils.java][DBUtils]**
 ```
-HandlerHolder: ä½¿ç”¨å¿…è¯»
-```
-
-> - **Imageç›¸å…³â†’[ImageUtils.java][ImageUtils]**
-```
-drawable2Bitmap : drawableè½¬bitmap
-bitmap2Drawable : bitmapè½¬drawable
-view2Bitmap     : viewè½¬Bitmap
+setStringSharedPreferences  : ´æ´¢String
+getStringSharedPreferences  : ¶ÁÈ¡String
+setBooleanSharedPreferences : ´æ´¢Boolean
+getBooleanSharedPreferences : ¶ÁÈ¡Boolean
 ```
 
-> - **ç½‘ç»œç›¸å…³â†’[NetworkUtils.java][NetworkUtils]**
+> - **·Ö±æÂÊÏà¹Ø¡ú[DensityUtils.java][DensityUtils]**
 ```
-checkNetState : æ£€æµ‹ç½‘ç»œè¿æ¥
-```
-
-> - **æ­£åˆ™è¡¨è¾¾å¼ç›¸å…³â†’[RegexUtils.java][RegexUtils]**
-```
-isMobileSimple : éªŒè¯æ‰‹æœºå·ï¼ˆç®€å•ï¼‰
-isMobileExact  : éªŒè¯æ‰‹æœºå·ï¼ˆç²¾ç¡®ï¼‰
-isTel          : éªŒè¯ç”µè¯å·ç 
-isIDCard15     : éªŒè¯èº«ä»½è¯å·ç 15ä½
-isIDCard18     : éªŒè¯èº«ä»½è¯å·ç 18ä½
-isEmail        : éªŒè¯é‚®ç®±
-isURL          : éªŒè¯URL
-isZh           : éªŒè¯æ±‰å­—
-isUsername     : éªŒè¯ç”¨æˆ·å
-isDate         : éªŒè¯yyyy-MM-ddæ ¼å¼çš„æ—¥æœŸæ ¡éªŒï¼Œå·²è€ƒè™‘å¹³é—°å¹´
-isIP           : éªŒè¯IPåœ°å€
-isMatch        : åˆ¤æ–­æ˜¯å¦åŒ¹é…æ­£åˆ™
-getMatches     : è·å–æ­£åˆ™åŒ¹é…çš„éƒ¨åˆ†
-getSplits      : è·å–æ­£åˆ™åŒ¹é…åˆ†ç»„
-getReplaceFirst: æ›¿æ¢æ­£åˆ™åŒ¹é…çš„ç¬¬ä¸€éƒ¨åˆ†
-getReplaceAll  : æ›¿æ¢æ‰€æœ‰æ­£åˆ™åŒ¹é…çš„éƒ¨åˆ†
+getDensity      : »ñÈ¡µ±Ç°ÆÁÄ»·Ö±æÂÊ
+getScaleDensity : »ñÈ¡µ±Ç°ÎÄ×Ö·Ö±æÂÊ
+dp2px           : dp×ªpx
+px2dp           : px×ªdp
+sp2px           : sp×ªpx
+px2sp           : px×ªsp
 ```
 
-> - **å‘½ä»¤ç›¸å…³â†’[ShellUtils.java][ShellUtils]**
+> - **ÅĞ¶Ï¿ÕÏà¹Ø¡ú[EmptyUtils.java][EmptyUtils]**
 ```
-execProceeBuilderCommand : æ‰§è¡Œå‘½ä»¤
-execRuntimeCommand       : æ‰§è¡Œå‘½ä»¤
-```
-
-> - **SpannableStringç›¸å…³â†’[SpannableStringUtils.java][SpannableStringUtils]**
-```
+isEmpty    : ÅĞ¶Ï¶ÔÏóÊÇ·ñÎª¿Õ
+isNotEmpty : ÅĞ¶Ï¶ÔÏóÊÇ·ñ·Ç¿Õ
 ```
 
-> - **æ—¶é—´ç›¸å…³â†’[TimeUtils.java][TimeUtils]**
+> - **ÎÄ¼şÏà¹Ø¡ú[FileUtils.java][FileUtils]**
 ```
-millisec2String  : æ—¶é—´æˆ³è½¬æ—¶é—´å­—ç¬¦ä¸²
-string2Date      : æ—¶é—´å­—ç¬¦ä¸²è½¬Dateç±»å‹
-string2Millisec  : æ—¶é—´å­—ç¬¦ä¸²è½¬æ¯«ç§’æ—¶é—´æˆ³
-date2String      : Dateè½¬æ—¶é—´å­—ç¬¦ä¸²
-getTimeSpan      : è·å–ä¸¤ä¸ªæ—¶é—´å·®
-getNowTimeMillis : è·å–å½“å‰æ¯«ç§’æ—¶é—´æˆ³
-getNowTimeDate   : è·å–å½“å‰Dateæ—¶é—´
-getNowTimeString : è·å–å½“å‰æ—¶é—´å­—ç¬¦ä¸²
-getTimeSpanByNow : è·å–æŸæ—¶é—´ä¸å½“å‰æ—¶é—´çš„å·®
-isSameDay        : åˆ¤æ–­æ—¶é—´æ˜¯å¦æ˜¯åŒä¸€å¤©
-isToday          : åˆ¤æ–­æ—¶é—´æ˜¯å¦æ˜¯ä»Šå¤©
-isLeapYear       : åˆ¤æ–­æ˜¯å¦æ˜¯é—°å¹´
-getWeek          : è·å–æ˜ŸæœŸå‡ 
-getWeekOfMonth   : è·å–æœˆä»½ä¸­ç¬¬å‡ å‘¨
-getWeekOfYear    : è·å–å¹´ä»½ä¸­çš„ç¬¬å‡ å‘¨
-getChineseZodiac : è·å–ç”Ÿè‚–
-getZodiac        : è·å–æ˜Ÿåº§
+formatFileSize     : ¸ñÊ½»¯ÎÄ¼ş´óĞ¡
+deleteDir          : É¾³ıÄ¿Â¼
+deletePostfixFiles : É¾³ıÄ¿Â¼ÏÂµÄÄ³ºó×ºÎÄ¼ş
+deleteFile         : É¾³ıÎÄ¼ş
+```
+
+> - **HandlerÏà¹Ø¡ú[HandlerUtils.java][HandlerUtils]**
+```
+HandlerHolder: Ê¹ÓÃ±Ø¶Á
+```
+
+> - **ImageÏà¹Ø¡ú[ImageUtils.java][ImageUtils]**
+```
+drawable2Bitmap : drawable×ªbitmap
+bitmap2Drawable : bitmap×ªdrawable
+view2Bitmap     : view×ªBitmap
+```
+
+> - **ÍøÂçÏà¹Ø¡ú[NetworkUtils.java][NetworkUtils]**
+```
+checkNetState : ¼ì²âÍøÂçÁ¬½Ó
+```
+
+> - **ÕıÔò±í´ïÊ½Ïà¹Ø¡ú[RegexUtils.java][RegexUtils]**
+```
+isMobileSimple : ÑéÖ¤ÊÖ»úºÅ£¨¼òµ¥£©
+isMobileExact  : ÑéÖ¤ÊÖ»úºÅ£¨¾«È·£©
+isTel          : ÑéÖ¤µç»°ºÅÂë
+isIDCard15     : ÑéÖ¤Éí·İÖ¤ºÅÂë15Î»
+isIDCard18     : ÑéÖ¤Éí·İÖ¤ºÅÂë18Î»
+isEmail        : ÑéÖ¤ÓÊÏä
+isURL          : ÑéÖ¤URL
+isZh           : ÑéÖ¤ºº×Ö
+isUsername     : ÑéÖ¤ÓÃ»§Ãû
+isDate         : ÑéÖ¤yyyy-MM-dd¸ñÊ½µÄÈÕÆÚĞ£Ñé£¬ÒÑ¿¼ÂÇÆ½ÈòÄê
+isIP           : ÑéÖ¤IPµØÖ·
+isMatch        : ÅĞ¶ÏÊÇ·ñÆ¥ÅäÕıÔò
+getMatches     : »ñÈ¡ÕıÔòÆ¥ÅäµÄ²¿·Ö
+getSplits      : »ñÈ¡ÕıÔòÆ¥Åä·Ö×é
+getReplaceFirst: Ìæ»»ÕıÔòÆ¥ÅäµÄµÚÒ»²¿·Ö
+getReplaceAll  : Ìæ»»ËùÓĞÕıÔòÆ¥ÅäµÄ²¿·Ö
+```
+
+> - **ÃüÁîÏà¹Ø¡ú[ShellUtils.java][ShellUtils]**
+```
+execProceeBuilderCommand : Ö´ĞĞÃüÁî
+execRuntimeCommand       : Ö´ĞĞÃüÁî
+```
+
+> - **SpannableStringÏà¹Ø¡ú[SpannableStringUtils.java][SpannableStringUtils]**
+```
+```
+
+> - **Ê±¼äÏà¹Ø¡ú[TimeUtils.java][TimeUtils]**
+```
+millisec2String  : Ê±¼ä´Á×ªÊ±¼ä×Ö·û´®
+string2Date      : Ê±¼ä×Ö·û´®×ªDateÀàĞÍ
+string2Millisec  : Ê±¼ä×Ö·û´®×ªºÁÃëÊ±¼ä´Á
+date2String      : Date×ªÊ±¼ä×Ö·û´®
+getTimeSpan      : »ñÈ¡Á½¸öÊ±¼ä²î
+getNowTimeMillis : »ñÈ¡µ±Ç°ºÁÃëÊ±¼ä´Á
+getNowTimeDate   : »ñÈ¡µ±Ç°DateÊ±¼ä
+getNowTimeString : »ñÈ¡µ±Ç°Ê±¼ä×Ö·û´®
+getTimeSpanByNow : »ñÈ¡Ä³Ê±¼äÓëµ±Ç°Ê±¼äµÄ²î
+isSameDay        : ÅĞ¶ÏÊ±¼äÊÇ·ñÊÇÍ¬Ò»Ìì
+isToday          : ÅĞ¶ÏÊ±¼äÊÇ·ñÊÇ½ñÌì
+isLeapYear       : ÅĞ¶ÏÊÇ·ñÊÇÈòÄê
+getWeek          : »ñÈ¡ĞÇÆÚ¼¸
+getWeekOfMonth   : »ñÈ¡ÔÂ·İÖĞµÚ¼¸ÖÜ
+getWeekOfYear    : »ñÈ¡Äê·İÖĞµÄµÚ¼¸ÖÜ
+getChineseZodiac : »ñÈ¡ÉúĞ¤
+getZodiac        : »ñÈ¡ĞÇ×ù
 ```
 
 <br><br>
 
-|            ç‰ˆæœ¬          |                              æè¿°                               |
+|            °æ±¾          |                              ÃèÊö                               |
 |------------------------- | -------------------------------------------------------------- |
-| [1.1.0][BaseToolsV1.1.0] | å¢åŠ RecyclerViewçš„é€šç”¨é€‚é…å™¨å’Œè¾…åŠ©æ–¹æ³•ï¼Œå¢åŠ CommonAdapteré‡Œçš„è¾…åŠ©æ–¹æ³• |
-| [1.0.1][BaseToolsV1.0.1] | åˆ›å»ºListViewã€GridViewçš„é€šç”¨é€‚é…å™¨ï¼Œä¸€äº›è¾…åŠ©æ–¹æ³•                    |
+| [1.1.1][BaseToolsV1.1.1] | UtilsÔö¼ÓÒ»Ğ©³£ÓÃµÄ¹¤¾ßÀà:Ó¦ÓÃ¡¢Êı¾İ¿â¡¢·Ö±æÂÊ¡¢ÎÄ¼ş¡¢ÕıÔò±í´ïÊ½¡¢ÃüÁî¡¢Ê±¼äµÈ |
+| [1.1.0][BaseToolsV1.1.0] | Ôö¼ÓRecyclerViewµÄÍ¨ÓÃÊÊÅäÆ÷ºÍ¸¨Öú·½·¨£¬Ôö¼ÓCommonAdapterÀïµÄ¸¨Öú·½·¨ |
+| [1.0.1][BaseToolsV1.0.1] | ´´½¨ListView¡¢GridViewµÄÍ¨ÓÃÊÊÅäÆ÷£¬Ò»Ğ©¸¨Öú·½·¨                    |
 
-#### å‚è€ƒ
-> - [å¼ é¸¿æ´‹][ZhangHongYang]
-> - [å¸ƒå…°æŸ¯åŸº][Blankj]
+#### ²Î¿¼
+> - [ÕÅºèÑó][ZhangHongYang]
+> - [²¼À¼¿Â»ù][Blankj]
 
 
-<!-- å¼•ç”¨ç½‘ç«™é“¾æ¥ -->
+<!-- ÒıÓÃÍøÕ¾Á´½Ó -->
 [Bintray]:https://bintray.com/veizhang/maven/BaseTools "Bintray"
 [issues]:https://github.com/VeiZhang/BaseToolsLibrary/issues
 [forks]:https://github.com/VeiZhang/BaseToolsLibrary/network
 [starts]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
 
-<!-- å›¾ç‰‡é“¾æ¥ -->
-[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
+<!-- Í¼Æ¬Á´½Ó -->
+[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.1-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
 
-<!-- ç‰ˆæœ¬ -->
+<!-- °æ±¾ -->
 [BaseToolsV1.0.1]:https://bintray.com/veizhang/maven/BaseTools/1.0.1
 [BaseToolsV1.1.0]:https://bintray.com/veizhang/maven/BaseTools/1.1.0
+[BaseToolsV1.1.1]:https://bintray.com/veizhang/maven/BaseTools/1.1.1
 
-<!-- å¤§ç¥å¼•ç”¨ -->
-[ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter "é€šç”¨é€‚é…å™¨"
-[Blankj]:https://github.com/Blankj/AndroidUtilCode "å¸¸ç”¨å·¥å…·ç±»"
+<!-- ´óÉñÒıÓÃ -->
+[ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter "Í¨ÓÃÊÊÅäÆ÷"
+[Blankj]:https://github.com/Blankj/AndroidUtilCode "³£ÓÃ¹¤¾ßÀà"
 
-<!-- ä»£ç å¼•ç”¨ -->
+<!-- ´úÂëÒıÓÃ -->
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 

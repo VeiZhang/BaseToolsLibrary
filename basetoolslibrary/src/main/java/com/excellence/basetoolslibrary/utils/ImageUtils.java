@@ -15,16 +15,16 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.view.View;
 
 /**
- * 鍥剧墖鐩稿叧
+ * 图片相关
  */
 public class ImageUtils
 {
-    /**
-     * drawable杞琤itmap
-     *
-     * @param drawable drawable瀵硅薄
-     * @return bitmap
-     */
+	/**
+	 * drawable转bitmap
+	 *
+	 * @param drawable drawable对象
+	 * @return bitmap
+	 */
 	public static Bitmap drawable2Bitmap(Drawable drawable)
 	{
 		if (drawable instanceof BitmapDrawable)
@@ -46,24 +46,24 @@ public class ImageUtils
 		}
 	}
 
-    /**
-     * bitmap杞琩rawable
-     *
-     * @param context
-     * @param bitmap bitmap瀵硅薄
-     * @return drawable
-     */
+	/**
+	 * bitmap转drawable
+	 *
+	 * @param context
+	 * @param bitmap bitmap对象
+	 * @return drawable
+	 */
 	public static Drawable bitmap2Drawable(Context context, Bitmap bitmap)
 	{
 		return bitmap == null ? null : new BitmapDrawable(context.getResources(), bitmap);
 	}
 
-    /**
-     * view杞珺itmap
-     *
-     * @param view 瑙嗗浘
-     * @return bitmap
-     */
+	/**
+	 * view转Bitmap
+	 *
+	 * @param view 视图
+	 * @return bitmap
+	 */
 	public static Bitmap view2Bitmap(View view)
 	{
 		if (view == null)

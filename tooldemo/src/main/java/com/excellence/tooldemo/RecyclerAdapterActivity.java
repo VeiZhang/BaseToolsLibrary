@@ -53,7 +53,7 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 
 	private void setAdapter()
 	{
-		// æ¨¡æ‹Ÿåˆ·æ–°
+		// Ä£ÄâË¢ÐÂ
 		if (mAppList != null)
 			mAppList.clear();
 

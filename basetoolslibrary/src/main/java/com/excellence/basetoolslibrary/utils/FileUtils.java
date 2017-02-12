@@ -9,13 +9,13 @@ import java.io.File;
  */
 
 /**
- * æ–‡ä»¶ç›¸å…³
+ * ÎÄ¼şÏà¹Ø
  */
 public class FileUtils
 {
 	/**
-	 * æ ¼å¼åŒ–æ–‡ä»¶å¤§å°
-	 * 
+	 * ¸ñÊ½»¯ÎÄ¼ş´óĞ¡
+	 *
 	 * @param filesize
 	 * @return
 	 */
@@ -47,8 +47,8 @@ public class FileUtils
 	}
 
 	/**
-	 * åˆ é™¤ç›®å½•
-	 * 
+	 * É¾³ıÄ¿Â¼
+	 *
 	 * @param dir
 	 * @return
 	 */
@@ -70,8 +70,8 @@ public class FileUtils
 	}
 
 	/**
-	 * åˆ é™¤ç›®å½•ä¸‹çš„æŸåç¼€æ–‡ä»¶
-	 * 
+	 * É¾³ıÄ¿Â¼ÏÂµÄÄ³ºó×ºÎÄ¼ş
+	 *
 	 * @param dirPath
 	 */
 	public static void deletePostfixFiles(String dirPath, String postfix)
@@ -93,8 +93,8 @@ public class FileUtils
 	}
 
 	/**
-	 * åˆ é™¤æ–‡ä»¶
-	 * 
+	 * É¾³ıÎÄ¼ş
+	 *
 	 * @param filePath
 	 */
 	public static void deleteFile(String filePath)
