@@ -223,7 +223,23 @@ execRuntimeCommand       : 执行命令
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
 ```
-millisec2String : 时间戳转时间字符串
+millisec2String  : 时间戳转时间字符串
+string2Date      : 时间字符串转Date类型
+string2Millisec  : 时间字符串转毫秒时间戳
+date2String      : Date转时间字符串
+getTimeSpan      : 获取两个时间差
+getNowTimeMillis : 获取当前毫秒时间戳
+getNowTimeDate   : 获取当前Date时间
+getNowTimeString : 获取当前时间字符串
+getTimeSpanByNow : 获取某时间与当前时间的差
+isSameDay        : 判断时间是否是同一天
+isToday          : 判断时间是否是今天
+isLeapYear       : 判断是否是闰年
+getWeek          : 获取星期几
+getWeekOfMonth   : 获取月份中第几周
+getWeekOfYear    : 获取年份中的第几周
+getChineseZodiac : 获取生肖
+getZodiac        : 获取星座
 ```
 
 <br><br>

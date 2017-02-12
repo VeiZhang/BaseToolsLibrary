@@ -139,10 +139,10 @@ public class TimeUtils
     }
 
     /**
-     * date转时间字符串
+     * Date转时间字符串
      * <p>自定时间格式</p>
      *
-     * @param date date类型
+     * @param date Date类型
      * @param pattern 自定时间格式
      * @return 时间字符串
      */
@@ -152,10 +152,10 @@ public class TimeUtils
     }
 
     /**
-     * date转时间字符串
+     * Date转时间字符串
      * <p>默认时间格式</p>
      *
-     * @param date date类型
+     * @param date Date类型
      * @return 时间字符串
      */
     public static String date2String(Date date)
@@ -412,7 +412,7 @@ public class TimeUtils
     }
 
     /**
-     * 判断是否是闰年
+     * 判断年份是否是闰年
      *
      * @param year 年份
      * @return
@@ -581,7 +581,7 @@ public class TimeUtils
     }
 
     /**
-     * 获取生肖
+     * 根据Date获取生肖
      *
      * @param date Date类型
      * @return 生肖
@@ -594,7 +594,43 @@ public class TimeUtils
     }
 
     /**
-     * 获取星座
+     * 根据毫秒时间戳获取生肖
+     *
+     * @param millisec 毫秒时间戳
+     * @return 生肖
+     */
+    public static String getChineseZodiac(long millisec)
+    {
+        return getChineseZodiac(new Date(millisec));
+    }
+
+    /**
+     * 根据时间字符串获取生肖
+     * <p>自定时间格式</p>
+     *
+     * @param time 时间字符串
+     * @param pattern 自定时间格式
+     * @return 生肖
+     */
+    public static String getChineseZodiac(String time, String pattern)
+    {
+        return getChineseZodiac(string2Date(time, pattern));
+    }
+
+    /**
+     * 根据时间字符串获取生肖
+     * <p>默认时间格式</p>
+     *
+     * @param time 时间字符串
+     * @return 生肖
+     */
+    public static String getChineseZodiac(String time)
+    {
+        return getChineseZodiac(time, DEFAULT_PATTERN);
+    }
+
+    /**
+     * 根据月日获取星座
      *
      * @param month 月
      * @param day 日
@@ -606,7 +642,7 @@ public class TimeUtils
 	}
 
     /**
-     * 获取星座
+     * 根据Date获取星座
      * 注意:0对应一月 11对应十二月 {@link Calendar.MONTH}
      *
      * @param date Data类型
@@ -621,5 +657,39 @@ public class TimeUtils
         return getZodiac(month, day);
     }
 
+    /**
+     * 根据毫秒时间戳获取星座
+     *
+     * @param millisec 毫秒时间戳
+     * @return 星座
+     */
+    public static String getZodiac(long millisec)
+    {
+        return getZodiac(new Date(millisec));
+    }
 
+    /**
+     * 根据时间字符串获取星座
+     * <p>自定时间格式</p>
+     *
+     * @param time 时间字符串
+     * @param pattern 自定时间格式
+     * @return 星座
+     */
+    public static String getZodiac(String time, String pattern)
+    {
+        return getZodiac(string2Date(time, pattern));
+    }
+
+    /**
+     * 根据时间字符串获取星座
+     * <p>默认时间格式</p>
+     *
+     * @param time 时间字符串
+     * @return 星座
+     */
+    public static String getZodiac(String time)
+    {
+        return getZodiac(time, DEFAULT_PATTERN);
+    }
 }
