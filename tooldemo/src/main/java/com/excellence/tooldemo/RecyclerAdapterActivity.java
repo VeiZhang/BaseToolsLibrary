@@ -53,26 +53,26 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 
 	private void setAdapter()
 	{
-		// Ä£ÄâË¢ÐÂ
+		// æ¨¡æ‹Ÿåˆ·æ–°
 		if (mAppList != null)
 			mAppList.clear();
 
 		switch (mAppType % 3)
 		{
-		case APP_TYPE_ALL:
-			mAppList = AppUtils.getAllInstalledApps(this);
-			mRefreshBtn.setText(R.string.all_apps);
-			break;
+			case APP_TYPE_ALL:
+				mAppList = AppUtils.getAllInstalledApps(this);
+				mRefreshBtn.setText(R.string.all_apps);
+				break;
 
-		case APP_TYPE_SYSTEM:
-			mAppList = AppUtils.getSystemInstalledApps(this);
-			mRefreshBtn.setText(R.string.system_apps);
-			break;
+			case APP_TYPE_SYSTEM:
+				mAppList = AppUtils.getSystemInstalledApps(this);
+				mRefreshBtn.setText(R.string.system_apps);
+				break;
 
-		case APP_TYPE_USER:
-			mAppList = AppUtils.getUserInstalledApps(this);
-			mRefreshBtn.setText(R.string.user_apps);
-			break;
+			case APP_TYPE_USER:
+				mAppList = AppUtils.getUserInstalledApps(this);
+				mRefreshBtn.setText(R.string.user_apps);
+				break;
 		}
 		mAppType++;
 

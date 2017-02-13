@@ -35,19 +35,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
 		/**
-		 * List可存储Activity.class
-		 * List存储Activity名字，通过名字查找Activity.class
+		 * List鍙瓨鍌ˋctivity.class
+		 * List瀛樺偍Activity鍚嶅瓧锛岄�氳繃鍚嶅瓧鏌ユ壘Activity.class
 		 */
 		switch (position)
 		{
-		case 0:
-			ActivityUtils.startAnotherActivity(this, GridAdapterActivity.class);
-			break;
+			case 0:
+				ActivityUtils.startAnotherActivity(this, GridAdapterActivity.class);
+				break;
 
-		case 1:
-			ActivityUtils.startAnotherActivity(this, RecyclerAdapterActivity.class);
-		default:
-			break;
+			case 1:
+				ActivityUtils.startAnotherActivity(this, RecyclerAdapterActivity.class);
+			default:
+				break;
 		}
 	}
 

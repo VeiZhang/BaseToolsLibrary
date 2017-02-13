@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Ê±¼äÏà¹Ø
+ * æ—¶é—´ç›¸å…³
  */
 public class TimeUtils
 {
@@ -29,17 +29,17 @@ public class TimeUtils
      *       yyyy-MM-dd HH:mm:ss.SSSZ 1970-01-01 00:00:00.000+0000
      *     yyyy-MM-dd'T'HH:mm:ss.SSSZ 1969-12-31T16:00:00.000-0800
      *     yyyy-MM-dd'T'HH:mm:ss.SSSZ 1970-01-01T00:00:00.000+0000
-     *     yyyy-MM-dd HH:mm:ss E      2017-02-09 23:20:26 ÖÜËÄ  (* E ¸ù¾İÏµÍ³ÓïÑÔ¸Ä±ä£¬Ó¢ÎÄÔòÊÇThu)
-     *     yyyy-MM-dd HH:mm:ss EEEE   2017-02-09 23:20:26 ĞÇÆÚËÄ (* EEEE ¸ù¾İÏµÍ³ÓïÑÔ¸Ä±ä£¬Ó¢ÎÄÔòÊÇThursday)
+     *     yyyy-MM-dd HH:mm:ss E      2017-02-09 23:20:26 å‘¨å››  (* E æ ¹æ®ç³»ç»Ÿè¯­è¨€æ”¹å˜ï¼Œè‹±æ–‡åˆ™æ˜¯Thu)
+     *     yyyy-MM-dd HH:mm:ss EEEE   2017-02-09 23:20:26 æ˜ŸæœŸå›› (* EEEE æ ¹æ®ç³»ç»Ÿè¯­è¨€æ”¹å˜ï¼Œè‹±æ–‡åˆ™æ˜¯Thursday)
      * </pre>
      */
     public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String DAY_PATTERN = "yyyy-MM-dd";
     public static final String WEEK_PATTERN = "EEEE";
 
-    private static final String[] CHINESE_ZODIAC = { "ºï", "¼¦", "¹·", "Öí", "Êó", "Å£", "»¢", "ÍÃ", "Áú", "Éß", "Âí", "Ñò" };
+    private static final String[] CHINESE_ZODIAC = { "çŒ´", "é¸¡", "ç‹—", "çŒª", "é¼ ", "ç‰›", "è™", "å…”", "é¾™", "è›‡", "é©¬", "ç¾Š" };
 
-    private final static String[] ZODIAC = new String[] { "Ä¦ôÉ×ù", "Ë®Æ¿×ù", "Ë«Óã×ù", "°×Ñò×ù", "½ğÅ£×ù", "Ë«×Ó×ù", "¾ŞĞ·×ù", "Ê¨×Ó×ù", "´¦Å®×ù", "Ìì³Ó×ù", "ÌìĞ«×ù", "ÉäÊÖ×ù", "Ä¦ôÉ×ù" };
+    private final static String[] ZODIAC = new String[] { "æ‘©ç¾¯åº§", "æ°´ç“¶åº§", "åŒé±¼åº§", "ç™½ç¾Šåº§", "é‡‘ç‰›åº§", "åŒå­åº§", "å·¨èŸ¹åº§", "ç‹®å­åº§", "å¤„å¥³åº§", "å¤©ç§¤åº§", "å¤©èåº§", "å°„æ‰‹åº§", "æ‘©ç¾¯åº§" };
     private final static int[] ZODIAC_FLAGS = new int[] { 20, 19, 21, 20, 21, 22, 23, 23, 23, 24, 23, 22 };
 
     public static final int SEC = 1000;
@@ -56,12 +56,12 @@ public class TimeUtils
     }
 
     /**
-     * Ê±¼ä´Á×ªÊ±¼ä×Ö·û´®
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ—¶é—´æˆ³è½¬æ—¶é—´å­—ç¬¦ä¸²
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return Ê±¼ä×Ö·û´®
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return æ—¶é—´å­—ç¬¦ä¸²
      */
     public static String millisec2String(long millisec, String pattern)
     {
@@ -69,11 +69,11 @@ public class TimeUtils
     }
 
     /**
-     * Ê±¼ä´Á×ªÊ±¼ä×Ö·û´®
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ—¶é—´æˆ³è½¬æ—¶é—´å­—ç¬¦ä¸²
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @return Ê±¼ä×Ö·û´®
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @return æ—¶é—´å­—ç¬¦ä¸²
      */
     public static String millisec2String(long millisec)
     {
@@ -81,12 +81,12 @@ public class TimeUtils
     }
 
     /**
-     * Ê±¼ä×Ö·û´®×ªDateÀàĞÍ
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ—¶é—´å­—ç¬¦ä¸²è½¬Dateç±»å‹
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return DateÀàĞÍ
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return Dateç±»å‹
      */
     public static Date string2Date(String time, String pattern)
     {
@@ -94,11 +94,11 @@ public class TimeUtils
     }
 
     /**
-     * Ê±¼ä×Ö·û´®×ªDateÀàĞÍ
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ—¶é—´å­—ç¬¦ä¸²è½¬Dateç±»å‹
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @return DateÀàĞÍ
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @return Dateç±»å‹
      */
     public static Date string2Date(String time)
     {
@@ -106,12 +106,12 @@ public class TimeUtils
     }
 
     /**
-     * Ê±¼ä×Ö·û´®×ªºÁÃëÊ±¼ä´Á
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ—¶é—´å­—ç¬¦ä¸²è½¬æ¯«ç§’æ—¶é—´æˆ³
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return ºÁÃëÊ±¼ä´Á
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return æ¯«ç§’æ—¶é—´æˆ³
      */
     public static long string2Millisec(String time, String pattern)
     {
@@ -127,11 +127,11 @@ public class TimeUtils
     }
 
     /**
-     * Ê±¼ä×Ö·û´®×ªºÁÃëÊ±¼ä´Á
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ—¶é—´å­—ç¬¦ä¸²è½¬æ¯«ç§’æ—¶é—´æˆ³
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @return ºÁÃëÊ±¼ä´Á
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @return æ¯«ç§’æ—¶é—´æˆ³
      */
     public static long string2Millisec(String time)
     {
@@ -139,12 +139,12 @@ public class TimeUtils
     }
 
     /**
-     * Date×ªÊ±¼ä×Ö·û´®
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * Dateè½¬æ—¶é—´å­—ç¬¦ä¸²
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param date DateÀàĞÍ
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return Ê±¼ä×Ö·û´®
+     * @param date Dateç±»å‹
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return æ—¶é—´å­—ç¬¦ä¸²
      */
     public static String date2String(Date date, String pattern)
     {
@@ -152,11 +152,11 @@ public class TimeUtils
     }
 
     /**
-     * Date×ªÊ±¼ä×Ö·û´®
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * Dateè½¬æ—¶é—´å­—ç¬¦ä¸²
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param date DateÀàĞÍ
-     * @return Ê±¼ä×Ö·û´®
+     * @param date Dateç±»å‹
+     * @return æ—¶é—´å­—ç¬¦ä¸²
      */
     public static String date2String(Date date)
     {
@@ -164,19 +164,19 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Á½¸öÊ±¼ä²î
+     * è·å–ä¸¤ä¸ªæ—¶é—´å·®
      *
-     * @param millisec0 ºÁÃëÊ±¼ä´Á0
-     * @param millisec1 ºÁÃëÊ±¼ä´Á1
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param millisec0 æ¯«ç§’æ—¶é—´æˆ³0
+     * @param millisec1 æ¯«ç§’æ—¶é—´æˆ³1
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpan(long millisec0, long millisec1, TimeUnit unit)
     {
@@ -202,21 +202,21 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Á½¸öÊ±¼ä²î
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * è·å–ä¸¤ä¸ªæ—¶é—´å·®
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time0 ×Ö·û´®Ê±¼ä0
-     * @param time1 ×Ö·û´®Ê±¼ä1
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param time0 å­—ç¬¦ä¸²æ—¶é—´0
+     * @param time1 å­—ç¬¦ä¸²æ—¶é—´1
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpan(String time0, String time1, String pattern, TimeUnit unit)
     {
@@ -224,20 +224,20 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Á½¸öÊ±¼ä²î
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * è·å–ä¸¤ä¸ªæ—¶é—´å·®
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time0 ×Ö·û´®Ê±¼ä0
-     * @param time1 ×Ö·û´®Ê±¼ä1
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param time0 å­—ç¬¦ä¸²æ—¶é—´0
+     * @param time1 å­—ç¬¦ä¸²æ—¶é—´1
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpan(String time0, String time1, TimeUnit unit)
     {
@@ -245,19 +245,19 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Á½¸öÊ±¼ä²î
+     * è·å–ä¸¤ä¸ªæ—¶é—´å·®
      *
-     * @param date0 DateÀàĞÍÊ±¼ä0
-     * @param date1 DateÀàĞÍÊ±¼ä1
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param date0 Dateç±»å‹æ—¶é—´0
+     * @param date1 Dateç±»å‹æ—¶é—´1
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpan(Date date0, Date date1, TimeUnit unit)
     {
@@ -265,9 +265,9 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡µ±Ç°ºÁÃëÊ±¼ä´Á
+     * è·å–å½“å‰æ¯«ç§’æ—¶é—´æˆ³
      *
-     * @return ºÁÃëÊ±¼ä´Á
+     * @return æ¯«ç§’æ—¶é—´æˆ³
      */
     public static long getNowTimeMillis()
     {
@@ -275,9 +275,9 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡µ±Ç°DateÊ±¼ä
+     * è·å–å½“å‰Dateæ—¶é—´
      *
-     * @return DateÀàĞÍÊ±¼ä
+     * @return Dateç±»å‹æ—¶é—´
      */
     public static Date getNowTimeDate()
     {
@@ -285,11 +285,11 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ê±¼ä×Ö·û´®
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * è·å–å½“å‰æ—¶é—´å­—ç¬¦ä¸²
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return Ê±¼ä×Ö·û´®
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return æ—¶é—´å­—ç¬¦ä¸²
      */
     public static String getNowTimeString(String pattern)
     {
@@ -297,10 +297,10 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ê±¼ä×Ö·û´®
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * è·å–å½“å‰æ—¶é—´å­—ç¬¦ä¸²
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @return Ê±¼ä×Ö·û´®
+     * @return æ—¶é—´å­—ç¬¦ä¸²
      */
     public static String getNowTimeString()
     {
@@ -308,18 +308,18 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Ä³ºÁÃëÊ±¼ä´ÁÓëµ±Ç°Ê±¼äµÄ²î
+     * è·å–æŸæ¯«ç§’æ—¶é—´æˆ³ä¸å½“å‰æ—¶é—´çš„å·®
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpanByNow(long millisec, TimeUnit unit)
     {
@@ -327,20 +327,20 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Ä³Ê±¼ä×Ö·û´®Óëµ±Ç°Ê±¼äµÄ²î
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * è·å–æŸæ—¶é—´å­—ç¬¦ä¸²ä¸å½“å‰æ—¶é—´çš„å·®
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpanByNow(String time, String pattern, TimeUnit unit)
     {
@@ -348,19 +348,19 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Ä³Ê±¼ä×Ö·û´®Óëµ±Ç°Ê±¼äµÄ²î
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * è·å–æŸæ—¶é—´å­—ç¬¦ä¸²ä¸å½“å‰æ—¶é—´çš„å·®
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpanByNow(String time, TimeUnit unit)
     {
@@ -368,18 +368,18 @@ public class TimeUtils
     }
 
     /**
-     * »ñÈ¡Ä³DateÊ±¼äÓëµ±Ç°Ê±¼äµÄ²î
+     * è·å–æŸDateæ—¶é—´ä¸å½“å‰æ—¶é—´çš„å·®
      *
-     * @param date DateÀàĞÍ
-     * @param unit µ¥Î»ÀàĞÍ
+     * @param date Dateç±»å‹
+     * @param unit å•ä½ç±»å‹
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: ºÁÃë</li>
-     *          <li>{@link TimeUnit.SEC}: Ãë</li>
-     *          <li>{@link TimeUnit.MIN}: ·Ö</li>
-     *          <li>{@link TimeUnit.HOUR}: Ê±</li>
-     *          <li>{@link TimeUnit.DAY}: Ìì</li>
+     *          <li>{@link TimeUnit.MSEC}: æ¯«ç§’</li>
+     *          <li>{@link TimeUnit.SEC}: ç§’</li>
+     *          <li>{@link TimeUnit.MIN}: åˆ†</li>
+     *          <li>{@link TimeUnit.HOUR}: æ—¶</li>
+     *          <li>{@link TimeUnit.DAY}: å¤©</li>
      *        </ul>
-     * @return Ê±¼ä²î
+     * @return æ—¶é—´å·®
      */
     public static long getTimeSpanByNow(Date date, TimeUnit unit)
     {
@@ -387,10 +387,10 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶ÏºÁÃëÊ±¼ä´ÁÊÇ·ñÊÇÍ¬Ò»Ìì
+     * åˆ¤æ–­æ¯«ç§’æ—¶é—´æˆ³æ˜¯å¦æ˜¯åŒä¸€å¤©
      *
-     * @param millisec0 ºÁÃëÊ±¼ä´Á0
-     * @param millisec1 ºÁÃëÊ±¼ä´Á1
+     * @param millisec0 æ¯«ç§’æ—¶é—´æˆ³0
+     * @param millisec1 æ¯«ç§’æ—¶é—´æˆ³1
      * @return
      */
     public static boolean isSameDay(long millisec0, long millisec1)
@@ -401,9 +401,9 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶ÏºÁÃëÊ±¼ä´ÁÊÇ·ñÊÇ½ñÌì
+     * åˆ¤æ–­æ¯«ç§’æ—¶é—´æˆ³æ˜¯å¦æ˜¯ä»Šå¤©
      *
-     * @param millisec Ê±¼ä´Á
+     * @param millisec æ—¶é—´æˆ³
      * @return
      */
     public static boolean isToday(long millisec)
@@ -412,9 +412,9 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶ÏÄê·İÊÇ·ñÊÇÈòÄê
+     * åˆ¤æ–­å¹´ä»½æ˜¯å¦æ˜¯é—°å¹´
      *
-     * @param year Äê·İ
+     * @param year å¹´ä»½
      * @return
      */
     public static boolean isLeapYear(int year)
@@ -423,9 +423,9 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶ÏDateÊÇ·ñÊÇÈòÄê
+     * åˆ¤æ–­Dateæ˜¯å¦æ˜¯é—°å¹´
      *
-     * @param date DateÀàĞÍ
+     * @param date Dateç±»å‹
      * @return
      */
     public static boolean isLeapYear(Date date)
@@ -436,9 +436,9 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶ÏºÁÃëÊ±¼ä´ÁÊÇ·ñÊÇÈòÄê
+     * åˆ¤æ–­æ¯«ç§’æ—¶é—´æˆ³æ˜¯å¦æ˜¯é—°å¹´
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
      * @return
      */
     public static boolean isLeapYear(long millisec)
@@ -447,11 +447,11 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶Ï×Ö·û´®Ê±¼äÊÇ·ñÊÇÈòÄê
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * åˆ¤æ–­å­—ç¬¦ä¸²æ—¶é—´æ˜¯å¦æ˜¯é—°å¹´
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time ×Ö·û´®Ê±¼ä
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
+     * @param time å­—ç¬¦ä¸²æ—¶é—´
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
      * @return
      */
     public static boolean isLeapYear(String time, String pattern)
@@ -460,10 +460,10 @@ public class TimeUtils
     }
 
     /**
-     * ÅĞ¶Ï×Ö·û´®Ê±¼äÊÇ·ñÊÇÈòÄê
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * åˆ¤æ–­å­—ç¬¦ä¸²æ—¶é—´æ˜¯å¦æ˜¯é—°å¹´
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time ×Ö·û´®Ê±¼ä
+     * @param time å­—ç¬¦ä¸²æ—¶é—´
      * @return
      */
     public static boolean isLeapYear(String time)
@@ -472,10 +472,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İDate»ñÈ¡ĞÇÆÚ
+     * æ ¹æ®Dateè·å–æ˜ŸæœŸ
      *
-     * @param date DateÀàĞÍ
-     * @return ĞÇÆÚ×Ö·û´®
+     * @param date Dateç±»å‹
+     * @return æ˜ŸæœŸå­—ç¬¦ä¸²
      */
     public static String getWeek(Date date)
     {
@@ -483,10 +483,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İºÁÃëÊ±¼ä´Á»ñÈ¡ĞÇÆÚ
+     * æ ¹æ®æ¯«ç§’æ—¶é—´æˆ³è·å–æ˜ŸæœŸ
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @return ĞÇÆÚ×Ö·û´®
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @return æ˜ŸæœŸå­—ç¬¦ä¸²
      */
     public static String getWeek(long millisec)
     {
@@ -494,12 +494,12 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÊ±¼ä×Ö·û´®»ñÈ¡ĞÇÆÚ
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ ¹æ®æ—¶é—´å­—ç¬¦ä¸²è·å–æ˜ŸæœŸ
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return ĞÇÆÚ×Ö·û´®
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return æ˜ŸæœŸå­—ç¬¦ä¸²
      */
     public static String getWeek(String time, String pattern)
     {
@@ -507,11 +507,11 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÊ±¼ä×Ö·û´®»ñÈ¡ĞÇÆÚ
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ ¹æ®æ—¶é—´å­—ç¬¦ä¸²è·å–æ˜ŸæœŸ
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @return ĞÇÆÚ×Ö·û´®
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @return æ˜ŸæœŸå­—ç¬¦ä¸²
      */
     public static String getWeek(String time)
     {
@@ -519,10 +519,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İDate»ñÈ¡ÔÂ·İÖĞµÚ¼¸ÖÜ
+     * æ ¹æ®Dateè·å–æœˆä»½ä¸­ç¬¬å‡ å‘¨
      *
-     * @param date DateÀàĞÍ
-     * @return µÚ¼¸ÖÜ
+     * @param date Dateç±»å‹
+     * @return ç¬¬å‡ å‘¨
      */
     public static int getWeekOfMonth(Date date)
     {
@@ -532,10 +532,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İºÁÃëÊ±¼ä´Á»ñÈ¡ÔÂ·İÖĞµÚ¼¸ÖÜ
+     * æ ¹æ®æ¯«ç§’æ—¶é—´æˆ³è·å–æœˆä»½ä¸­ç¬¬å‡ å‘¨
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @return µÚ¼¸ÖÜ
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @return ç¬¬å‡ å‘¨
      */
     public static int getWeekOfMonth(long millisec)
     {
@@ -543,12 +543,12 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İ×Ö·û´®Ê±¼ä»ñÈ¡ÔÂ·İÖĞµÄµÚ¼¸ÖÜ
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ ¹æ®å­—ç¬¦ä¸²æ—¶é—´è·å–æœˆä»½ä¸­çš„ç¬¬å‡ å‘¨
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return µÚ¼¸ÖÜ
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return ç¬¬å‡ å‘¨
      */
     public static int getWeekOfMonth(String time, String pattern)
     {
@@ -556,11 +556,11 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İ×Ö·û´®Ê±¼ä»ñÈ¡ÔÂ·İÖĞµÄµÚ¼¸ÖÜ
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ ¹æ®å­—ç¬¦ä¸²æ—¶é—´è·å–æœˆä»½ä¸­çš„ç¬¬å‡ å‘¨
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @return µÚ¼¸ÖÜ
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @return ç¬¬å‡ å‘¨
      */
     public static int getWeekOfMonth(String time)
     {
@@ -568,10 +568,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İDate»ñÈ¡Äê·İÖĞµÄµÚ¼¸ÖÜ
+     * æ ¹æ®Dateè·å–å¹´ä»½ä¸­çš„ç¬¬å‡ å‘¨
      *
-     * @param date DateÀàĞÍ
-     * @return µÚ¼¸ÖÜ
+     * @param date Dateç±»å‹
+     * @return ç¬¬å‡ å‘¨
      */
     public static int getWeekOfYear(Date date)
     {
@@ -581,10 +581,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İDate»ñÈ¡ÉúĞ¤
+     * æ ¹æ®Dateè·å–ç”Ÿè‚–
      *
-     * @param date DateÀàĞÍ
-     * @return ÉúĞ¤
+     * @param date Dateç±»å‹
+     * @return ç”Ÿè‚–
      */
     public static String getChineseZodiac(Date date)
     {
@@ -594,10 +594,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İºÁÃëÊ±¼ä´Á»ñÈ¡ÉúĞ¤
+     * æ ¹æ®æ¯«ç§’æ—¶é—´æˆ³è·å–ç”Ÿè‚–
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @return ÉúĞ¤
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @return ç”Ÿè‚–
      */
     public static String getChineseZodiac(long millisec)
     {
@@ -605,12 +605,12 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÊ±¼ä×Ö·û´®»ñÈ¡ÉúĞ¤
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ ¹æ®æ—¶é—´å­—ç¬¦ä¸²è·å–ç”Ÿè‚–
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return ÉúĞ¤
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return ç”Ÿè‚–
      */
     public static String getChineseZodiac(String time, String pattern)
     {
@@ -618,11 +618,11 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÊ±¼ä×Ö·û´®»ñÈ¡ÉúĞ¤
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ ¹æ®æ—¶é—´å­—ç¬¦ä¸²è·å–ç”Ÿè‚–
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @return ÉúĞ¤
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @return ç”Ÿè‚–
      */
     public static String getChineseZodiac(String time)
     {
@@ -630,11 +630,11 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÔÂÈÕ»ñÈ¡ĞÇ×ù
+     * æ ¹æ®æœˆæ—¥è·å–æ˜Ÿåº§
      *
-     * @param month ÔÂ
-     * @param day ÈÕ
-     * @return ĞÇ×ù
+     * @param month æœˆ
+     * @param day æ—¥
+     * @return æ˜Ÿåº§
      */
     public static String getZodiac(int month, int day)
     {
@@ -642,11 +642,11 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İDate»ñÈ¡ĞÇ×ù
-     * ×¢Òâ:0¶ÔÓ¦Ò»ÔÂ 11¶ÔÓ¦Ê®¶şÔÂ {@link Calendar.MONTH}
+     * æ ¹æ®Dateè·å–æ˜Ÿåº§
+     * æ³¨æ„:0å¯¹åº”ä¸€æœˆ 11å¯¹åº”åäºŒæœˆ {@link Calendar.MONTH}
      *
-     * @param date DataÀàĞÍ
-     * @return ĞÇ×ù
+     * @param date Dataç±»å‹
+     * @return æ˜Ÿåº§
      */
     public static String getZodiac(Date date)
     {
@@ -658,10 +658,10 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İºÁÃëÊ±¼ä´Á»ñÈ¡ĞÇ×ù
+     * æ ¹æ®æ¯«ç§’æ—¶é—´æˆ³è·å–æ˜Ÿåº§
      *
-     * @param millisec ºÁÃëÊ±¼ä´Á
-     * @return ĞÇ×ù
+     * @param millisec æ¯«ç§’æ—¶é—´æˆ³
+     * @return æ˜Ÿåº§
      */
     public static String getZodiac(long millisec)
     {
@@ -669,12 +669,12 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÊ±¼ä×Ö·û´®»ñÈ¡ĞÇ×ù
-     * <p>×Ô¶¨Ê±¼ä¸ñÊ½</p>
+     * æ ¹æ®æ—¶é—´å­—ç¬¦ä¸²è·å–æ˜Ÿåº§
+     * <p>è‡ªå®šæ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @param pattern ×Ô¶¨Ê±¼ä¸ñÊ½
-     * @return ĞÇ×ù
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @param pattern è‡ªå®šæ—¶é—´æ ¼å¼
+     * @return æ˜Ÿåº§
      */
     public static String getZodiac(String time, String pattern)
     {
@@ -682,11 +682,11 @@ public class TimeUtils
     }
 
     /**
-     * ¸ù¾İÊ±¼ä×Ö·û´®»ñÈ¡ĞÇ×ù
-     * <p>Ä¬ÈÏÊ±¼ä¸ñÊ½</p>
+     * æ ¹æ®æ—¶é—´å­—ç¬¦ä¸²è·å–æ˜Ÿåº§
+     * <p>é»˜è®¤æ—¶é—´æ ¼å¼</p>
      *
-     * @param time Ê±¼ä×Ö·û´®
-     * @return ĞÇ×ù
+     * @param time æ—¶é—´å­—ç¬¦ä¸²
+     * @return æ˜Ÿåº§
      */
     public static String getZodiac(String time)
     {

@@ -29,9 +29,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:23.2.1'
-    /**¿ÉÒÔÊ¹ÓÃÔ¶³Ì¿â»òÕßÊ¹ÓÃ±¾µØModule Library*/
-    /**Ô¶³Ì¿â**/
+    /**å¯ä»¥ä½¿ç”¨è¿œç¨‹åº“æˆ–è€…ä½¿ç”¨æœ¬åœ°Module Library*/
+    /**è¿œç¨‹åº“**/
     // compile 'com.excellence:BaseTools:1.1.1'
-    /**±¾µØLibrary**/
+    /**æœ¬åœ°Library**/
     compile project(':basetoolslibrary')
 }

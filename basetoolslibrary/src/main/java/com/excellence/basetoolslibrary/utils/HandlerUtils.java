@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
  */
 
 /**
- * Handler相关
+ * Handler鐩稿叧
  */
 public class HandlerUtils
 {
@@ -19,10 +19,10 @@ public class HandlerUtils
 		WeakReference<OnReceiveMessageListener> mListenerWeakReference;
 
 		/**
-		 * 使用必读：推荐在Activity或者Activity内部持有类中实现该接口，不要使用匿名类，可能会被GC
+		 * 浣跨敤蹇呰锛氭帹鑽愬湪Activity鎴栬�匒ctivity鍐呴儴鎸佹湁绫讳腑瀹炵幇璇ユ帴鍙ｏ紝涓嶈浣跨敤鍖垮悕绫伙紝鍙兘浼氳GC
 		 *
 		 * @param listener
-		 *            收到消息回调接口
+		 *            鏀跺埌娑堟伅鍥炶皟鎺ュ彛
 		 */
 		public HandlerHolder(OnReceiveMessageListener listener)
 		{
@@ -40,7 +40,7 @@ public class HandlerUtils
 	}
 
 	/**
-	 * 收到消息回调接口
+	 * 鏀跺埌娑堟伅鍥炶皟鎺ュ彛
 	 */
 	public interface OnReceiveMessageListener
 	{

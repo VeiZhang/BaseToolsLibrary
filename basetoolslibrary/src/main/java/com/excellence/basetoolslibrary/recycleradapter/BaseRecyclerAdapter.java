@@ -22,9 +22,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
 	/**
 	 *
-	 * @param context ÉÏÏÂÎÄ
-	 * @param datas ÁÐ±íÊý¾ÝÔ´
-	 * @param layoutId ²¼¾Ö×ÊÔ´Id
+	 * @param context ä¸Šä¸‹æ–‡
+	 * @param datas åˆ—è¡¨æ•°æ®æº
+	 * @param layoutId å¸ƒå±€èµ„æºId
 	 */
 	public BaseRecyclerAdapter(Context context, List<T> datas, @LayoutRes int layoutId)
 	{
@@ -35,9 +35,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
 	/**
 	 *
-	 * @param context ÉÏÏÂÎÄ
-	 * @param datas Êý×éÊý¾ÝÔ´
-	 * @param layoutId ²¼¾Ö×ÊÔ´Id
+	 * @param context ä¸Šä¸‹æ–‡
+	 * @param datas æ•°ç»„æ•°æ®æº
+	 * @param layoutId å¸ƒå±€èµ„æºId
 	 */
 	public BaseRecyclerAdapter(Context context, T[] datas, @LayoutRes int layoutId)
 	{
@@ -89,9 +89,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	}
 
 	/**
-	 * Ë¢ÐÂÊÓÍ¼
+	 * åˆ·æ–°è§†å›¾
 	 *
-	 * @param datas Êý¾ÝÔ´
+	 * @param datas æ•°æ®æº
 	 */
 	public void notifyNewData(List<T> datas)
 	{

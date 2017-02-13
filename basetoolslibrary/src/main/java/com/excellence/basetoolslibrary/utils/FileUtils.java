@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
  */
 
 /**
- * ÎÄ¼şÏà¹Ø
+ * æ–‡ä»¶ç›¸å…³
  */
 public class FileUtils
 {
@@ -22,13 +22,13 @@ public class FileUtils
 	public static final String DEFAULT_FORMAT_PATTERN = "#.##";
 
 	/**
-	 * ¸ñÊ½»¯ÎÄ¼ş´óĞ¡
-	 * <p>×Ô¶¨¸ñÊ½£¬±£ÁôÎ»Êı</p>
+	 * æ ¼å¼åŒ–æ–‡ä»¶å¤§å°
+	 * <p>è‡ªå®šæ ¼å¼ï¼Œä¿ç•™ä½æ•°</p>
 	 *
-	 * @param fileSize ÎÄ¼ş´óĞ¡
-	 * @param pattern ±£Áô¸ñÊ½
-     * @return ×ª»»ºóÎÄ¼ş´óĞ¡
-     */
+	 * @param fileSize æ–‡ä»¶å¤§å°
+	 * @param pattern ä¿ç•™æ ¼å¼
+	 * @return è½¬æ¢åæ–‡ä»¶å¤§å°
+	 */
 	public static String formatFileSize(long fileSize, String pattern)
 	{
 		DecimalFormat sizeFormat = new DecimalFormat(pattern);
@@ -58,11 +58,11 @@ public class FileUtils
 	}
 
 	/**
-	 * ¸ñÊ½»¯ÎÄ¼ş´óĞ¡
-	 * <p>Ä¬ÈÏ¸ñÊ½£¬±£ÁôÁ½Î»Ğ¡Êı</p>
+	 * æ ¼å¼åŒ–æ–‡ä»¶å¤§å°
+	 * <p>é»˜è®¤æ ¼å¼ï¼Œä¿ç•™ä¸¤ä½å°æ•°</p>
 	 *
-	 * @param fileSize ÎÄ¼ş´óĞ¡
-	 * @return ×ª»»ºóÎÄ¼ş´óĞ¡
+	 * @param fileSize æ–‡ä»¶å¤§å°
+	 * @return è½¬æ¢åæ–‡ä»¶å¤§å°
 	 */
 	public static String formatFileSize(long fileSize)
 	{
@@ -70,7 +70,7 @@ public class FileUtils
 	}
 
 	/**
-	 * É¾³ıÄ¿Â¼
+	 * åˆ é™¤ç›®å½•
 	 *
 	 * @param dir
 	 * @return
@@ -93,7 +93,7 @@ public class FileUtils
 	}
 
 	/**
-	 * É¾³ıÄ¿Â¼ÏÂµÄÄ³ºó×ºÎÄ¼ş
+	 * åˆ é™¤ç›®å½•ä¸‹çš„æŸåç¼€æ–‡ä»¶
 	 *
 	 * @param dirPath
 	 */
@@ -116,7 +116,7 @@ public class FileUtils
 	}
 
 	/**
-	 * É¾³ıÎÄ¼ş
+	 * åˆ é™¤æ–‡ä»¶
 	 *
 	 * @param filePath
 	 */

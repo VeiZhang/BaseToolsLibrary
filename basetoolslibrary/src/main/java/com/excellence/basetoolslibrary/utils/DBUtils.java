@@ -8,17 +8,17 @@ import android.content.SharedPreferences;
  */
 
 /**
- * ´æ´¢Ïà¹Ø
+ * å­˜å‚¨ç›¸å…³
  */
 public class DBUtils
 {
 	/**
-	 * ´æ´¢ÎÄ¼şÃû
+	 * å­˜å‚¨æ–‡ä»¶å
 	 */
 	private static String SHAREPREFERENCES_FILE_NAME = DBUtils.class.getSimpleName();
 
 	/**
-	 * ´æ´¢String
+	 * å­˜å‚¨String
 	 *
 	 * @param context
 	 * @param key
@@ -33,7 +33,7 @@ public class DBUtils
 	}
 
 	/**
-	 * ¶ÁÈ¡String
+	 * è¯»å–String
 	 *
 	 * @param context
 	 * @param key
@@ -46,7 +46,7 @@ public class DBUtils
 	}
 
 	/**
-	 * ´æ´¢Boolean
+	 * å­˜å‚¨Boolean
 	 *
 	 * @param context
 	 * @param key
@@ -61,7 +61,7 @@ public class DBUtils
 	}
 
 	/**
-	 * ¶ÁÈ¡Boolean
+	 * è¯»å–Boolean
 	 *
 	 * @param context
 	 * @param key

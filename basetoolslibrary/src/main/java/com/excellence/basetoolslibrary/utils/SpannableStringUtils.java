@@ -5,7 +5,7 @@ package com.excellence.basetoolslibrary.utils;
  */
 
 /**
- * SpannableStringÏà¹Ø
+ * SpannableStringç›¸å…³
  */
 public class SpannableStringUtils
 {

@@ -58,9 +58,9 @@ public class ViewHolder
 	}
 
 	/**
-	 * »ñÈ¡view¿Ø¼ş
+	 * è·å–viewæ§ä»¶
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
+	 * @param viewId æ§ä»¶èµ„æºId
 	 * @return view
 	 */
 	public <T extends View> T getView(@IdRes int viewId)
@@ -74,17 +74,17 @@ public class ViewHolder
 		return (T) view;
 	}
 
-	/**** ÒÔÏÂÎª¸¨Öú·½·¨ *****/
+	/**** ä»¥ä¸‹ä¸ºè¾…åŠ©æ–¹æ³• *****/
 
 	/**
-	 * ¹ØÓÚÊôĞÔ
+	 * å…³äºå±æ€§
 	 */
 
 	/**
-	 * ÉèÖÃÎÄ±¾
+	 * è®¾ç½®æ–‡æœ¬
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param strId ×Ö·û´®×ÊÔ´Id
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param strId å­—ç¬¦ä¸²èµ„æºId
 	 * @return
 	 */
 	public ViewHolder setText(@IdRes int viewId, @StringRes int strId)
@@ -95,10 +95,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÎÄ±¾
+	 * è®¾ç½®æ–‡æœ¬
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param text ×Ö·û´®
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param text å­—ç¬¦ä¸²
 	 * @return
 	 */
 	public ViewHolder setText(@IdRes int viewId, String text)
@@ -109,10 +109,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÎÄ±¾
+	 * è®¾ç½®æ–‡æœ¬
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param text ×Ö·û´®
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param text å­—ç¬¦ä¸²
 	 * @return
 	 */
 	public ViewHolder setText(@IdRes int viewId, CharSequence text)
@@ -123,10 +123,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÎÄ×ÖÑÕÉ«
+	 * è®¾ç½®æ–‡å­—é¢œè‰²
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param textColor ÑÕÉ«×ÊÔ´
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param textColor é¢œè‰²èµ„æº
 	 * @return
 	 */
 	public ViewHolder setTextColor(@IdRes int viewId, @ColorInt int textColor)
@@ -137,10 +137,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÎÄ×ÖÑÕÉ«
+	 * è®¾ç½®æ–‡å­—é¢œè‰²
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param textColorRes ÑÕÉ«×ÊÔ´Id
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param textColorRes é¢œè‰²èµ„æºId
 	 * @return
 	 */
 	public ViewHolder setTextColorRes(@IdRes int viewId, @ColorRes int textColorRes)
@@ -151,10 +151,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÍ¼Æ¬
+	 * è®¾ç½®å›¾ç‰‡
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param resId Í¼Æ¬×ÊÔ´Id
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param resId å›¾ç‰‡èµ„æºId
 	 * @return
 	 */
 	public ViewHolder setImageResource(@IdRes int viewId, @DrawableRes int resId)
@@ -165,10 +165,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÍ¼Æ¬
+	 * è®¾ç½®å›¾ç‰‡
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param bitmap Î»Í¼×ÊÔ´
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param bitmap ä½å›¾èµ„æº
 	 * @return
 	 */
 	public ViewHolder setImageBitmap(@IdRes int viewId, Bitmap bitmap)
@@ -179,10 +179,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÍ¼Æ¬
+	 * è®¾ç½®å›¾ç‰‡
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param drawable Í¼Æ¬×ÊÔ´
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param drawable å›¾ç‰‡èµ„æº
 	 * @return
 	 */
 	public ViewHolder setImageDrawable(@IdRes int viewId, @Nullable Drawable drawable)
@@ -193,10 +193,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ±³¾°ÑÕÉ«
+	 * è®¾ç½®èƒŒæ™¯é¢œè‰²
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param color ±³¾°Í¼Æ¬ÑÕÉ«
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param color èƒŒæ™¯å›¾ç‰‡é¢œè‰²
 	 * @return
 	 */
 	public ViewHolder setBackgroundColor(@IdRes int viewId, @ColorInt int color)
@@ -207,10 +207,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ±³¾°Í¼Æ¬
+	 * è®¾ç½®èƒŒæ™¯å›¾ç‰‡
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param backgroundRes ±³¾°Í¼Æ¬×ÊÔ´Id
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param backgroundRes èƒŒæ™¯å›¾ç‰‡èµ„æºId
 	 * @return
 	 */
 	public ViewHolder setBackgroundRes(@IdRes int viewId, @DrawableRes int backgroundRes)
@@ -221,10 +221,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÍ¸Ã÷¶È
+	 * è®¾ç½®é€æ˜åº¦
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param value Í¸Ã÷¶È
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param value é€æ˜åº¦
 	 * @return
 	 */
 	@SuppressLint("NewApi")
@@ -246,10 +246,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ¿Ø¼şÊÇ·ñ¿É¼û
+	 * è®¾ç½®æ§ä»¶æ˜¯å¦å¯è§
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param visible ÊÇ·ñ¿É¼û
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param visible æ˜¯å¦å¯è§
 	 * @return
 	 */
 	public ViewHolder setVisible(@IdRes int viewId, boolean visible)
@@ -260,10 +260,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÎÄ±¾Á´½Ó
+	 * è®¾ç½®æ–‡æœ¬é“¾æ¥
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @return ³¬Á´½Ó
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @return è¶…é“¾æ¥
 	 */
 	public ViewHolder linkify(@IdRes int viewId)
 	{
@@ -273,10 +273,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÎÄ×Ö×ÖÌåÑùÊ½
+	 * è®¾ç½®æ–‡å­—å­—ä½“æ ·å¼
 	 *
-	 * @param typeface ×ÖÌåÑùÊ½
-	 * @param viewIds ¿Ø¼ş×ÊÔ´Id
+	 * @param typeface å­—ä½“æ ·å¼
+	 * @param viewIds æ§ä»¶èµ„æºId
 	 * @return
 	 */
 	public ViewHolder setTypeface(Typeface typeface, int... viewIds)
@@ -291,10 +291,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ½ø¶ÈÌõ½ø¶È
+	 * è®¾ç½®è¿›åº¦æ¡è¿›åº¦
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param progress ½ø¶È
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param progress è¿›åº¦
 	 * @return
 	 */
 	public ViewHolder setProgress(@IdRes int viewId, int progress)
@@ -305,11 +305,11 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ½ø¶ÈÌõ½ø¶ÈºÍ×î´óÖµ
+	 * è®¾ç½®è¿›åº¦æ¡è¿›åº¦å’Œæœ€å¤§å€¼
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param progress ½ø¶È
-	 * @param max ×î´ó½ø¶È
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param progress è¿›åº¦
+	 * @param max æœ€å¤§è¿›åº¦
 	 * @return
 	 */
 	public ViewHolder setProgress(@IdRes int viewId, int progress, int max)
@@ -321,10 +321,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ½ø¶ÈÌõ×î´óÖµ
+	 * è®¾ç½®è¿›åº¦æ¡æœ€å¤§å€¼
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param max ×î´óÖµ
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param max æœ€å¤§å€¼
 	 * @return
 	 */
 	public ViewHolder setMax(@IdRes int viewId, int max)
@@ -335,10 +335,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÆÀ·Ö
+	 * è®¾ç½®è¯„åˆ†
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param rating ÆÀ·Ö
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param rating è¯„åˆ†
 	 * @return
 	 */
 	public ViewHolder setRating(@IdRes int viewId, float rating)
@@ -349,11 +349,11 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃÆÀ·ÖºÍ×î´óÖµ
+	 * è®¾ç½®è¯„åˆ†å’Œæœ€å¤§å€¼
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param rating ÆÀ·Ö
-	 * @param max ×î´óÖµ
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param rating è¯„åˆ†
+	 * @param max æœ€å¤§å€¼
 	 * @return
 	 */
 	public ViewHolder setRating(@IdRes int viewId, float rating, int max)
@@ -365,10 +365,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ±êÇ©
+	 * è®¾ç½®æ ‡ç­¾
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param tag ±êÇ©
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param tag æ ‡ç­¾
 	 * @return
 	 */
 	public ViewHolder setTag(@IdRes int viewId, Object tag)
@@ -379,11 +379,11 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃ±êÇ©
+	 * è®¾ç½®æ ‡ç­¾
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param key ¼üÖµ
-	 * @param tag ±êÇ©
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param key é”®å€¼
+	 * @param tag æ ‡ç­¾
 	 * @return
 	 */
 	public ViewHolder setTag(@IdRes int viewId, int key, Object tag)
@@ -394,10 +394,10 @@ public class ViewHolder
 	}
 
 	/**
-	 * ÉèÖÃcheck×´Ì¬
+	 * è®¾ç½®checkçŠ¶æ€
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param checked check×´Ì¬
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param checked checkçŠ¶æ€
 	 * @return
 	 */
 	public ViewHolder setChecked(@IdRes int viewId, boolean checked)
@@ -408,13 +408,13 @@ public class ViewHolder
 	}
 
 	/**
-	 * ¹ØÓÚÊÂ¼şµÄ
+	 * å…³äºäº‹ä»¶çš„
 	 */
 
 	/**
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param listener µã»÷ÊÂ¼ş
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param listener ç‚¹å‡»äº‹ä»¶
 	 * @return
 	 */
 	public ViewHolder setOnClickListener(@IdRes int viewId, View.OnClickListener listener)
@@ -426,8 +426,8 @@ public class ViewHolder
 
 	/**
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param listener ´¥ÃşÊÂ¼ş
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param listener è§¦æ‘¸äº‹ä»¶
 	 * @return
 	 */
 	public ViewHolder setOnTouchListener(@IdRes int viewId, View.OnTouchListener listener)
@@ -439,8 +439,8 @@ public class ViewHolder
 
 	/**
 	 *
-	 * @param viewId ¿Ø¼ş×ÊÔ´Id
-	 * @param listener ³¤°´ÊÂ¼ş
+	 * @param viewId æ§ä»¶èµ„æºId
+	 * @param listener é•¿æŒ‰äº‹ä»¶
 	 * @return
 	 */
 	public ViewHolder setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener)

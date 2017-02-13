@@ -20,9 +20,9 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 
 	/**
 	 *
-	 * @param context ÉÏÏÂÎÄ
-	 * @param datas ÁĞ±íÊı¾İÔ´
-	 * @param layoutId ²¼¾Ö×ÊÔ´Id
+	 * @param context ä¸Šä¸‹æ–‡
+	 * @param datas åˆ—è¡¨æ•°æ®æº
+	 * @param layoutId å¸ƒå±€èµ„æºId
 	 */
 	public CommonAdapter(Context context, List<T> datas, @LayoutRes int layoutId)
 	{
@@ -33,9 +33,9 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 
 	/**
 	 *
-	 * @param context ÉÏÏÂÎÄ
-	 * @param datas Êı×éÊı¾İÔ´
-	 * @param layoutId ²¼¾Ö×ÊÔ´Id
+	 * @param context ä¸Šä¸‹æ–‡
+	 * @param datas æ•°ç»„æ•°æ®æº
+	 * @param layoutId å¸ƒå±€èµ„æºId
 	 */
 	public CommonAdapter(Context context, T[] datas, @LayoutRes int layoutId)
 	{
@@ -73,9 +73,9 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 	public abstract void convert(ViewHolder viewHolder, T item, int position);
 
 	/**
-	 * Ë¢ĞÂÊÓÍ¼
+	 * åˆ·æ–°è§†å›¾
 	 *
-	 * @param datas Êı¾İÔ´
+	 * @param datas æ•°æ®æº
 	 */
 	public void notifyNewData(List<T> datas)
 	{

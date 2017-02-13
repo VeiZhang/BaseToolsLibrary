@@ -10,12 +10,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * ÃüÁîÏà¹Ø
+ * å‘½ä»¤ç›¸å…³
  */
 public class ShellUtils
 {
 	/**
-	 * Ö´ĞĞÃüÁî
+	 * æ‰§è¡Œå‘½ä»¤
 	 *
 	 * @param command
 	 * @return
@@ -46,7 +46,7 @@ public class ShellUtils
 	}
 
 	/**
-	 * Ö´ĞĞÃüÁî
+	 * æ‰§è¡Œå‘½ä»¤
 	 *
 	 * @param shell
 	 * @return
@@ -80,7 +80,7 @@ public class ShellUtils
 	}
 
 	/**
-	 * ĞÅÏ¢Á÷
+	 * ä¿¡æ¯æµ
 	 *
 	 * @param inputStream
 	 * @return
@@ -100,7 +100,7 @@ public class ShellUtils
 	}
 
 	/**
-	 * ÃüÁî½á¹û
+	 * å‘½ä»¤ç»“æœ
 	 */
 	public static class CommandResult
 	{

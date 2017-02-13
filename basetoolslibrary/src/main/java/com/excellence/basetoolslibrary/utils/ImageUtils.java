@@ -15,14 +15,14 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.view.View;
 
 /**
- * 图片相关
+ * 鍥剧墖鐩稿叧
  */
 public class ImageUtils
 {
 	/**
-	 * drawable转bitmap
+	 * drawable杞琤itmap
 	 *
-	 * @param drawable drawable对象
+	 * @param drawable drawable瀵硅薄
 	 * @return bitmap
 	 */
 	public static Bitmap drawable2Bitmap(Drawable drawable)
@@ -47,10 +47,10 @@ public class ImageUtils
 	}
 
 	/**
-	 * bitmap转drawable
+	 * bitmap杞琩rawable
 	 *
 	 * @param context
-	 * @param bitmap bitmap对象
+	 * @param bitmap bitmap瀵硅薄
 	 * @return drawable
 	 */
 	public static Drawable bitmap2Drawable(Context context, Bitmap bitmap)
@@ -59,9 +59,9 @@ public class ImageUtils
 	}
 
 	/**
-	 * view转Bitmap
+	 * view杞珺itmap
 	 *
-	 * @param view 视图
+	 * @param view 瑙嗗浘
 	 * @return bitmap
 	 */
 	public static Bitmap view2Bitmap(View view)

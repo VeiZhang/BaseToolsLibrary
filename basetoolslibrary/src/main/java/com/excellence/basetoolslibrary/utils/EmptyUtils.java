@@ -15,15 +15,15 @@ import java.util.Map;
  */
 
 /**
- * ÅĞ¶Ï¿ÕÏà¹Ø
+ * åˆ¤æ–­ç©ºç›¸å…³
  */
 public class EmptyUtils
 {
 	/**
-	 * ÅĞ¶Ï¶ÔÏóÊÇ·ñÎª¿Õ
+	 * åˆ¤æ–­å¯¹è±¡æ˜¯å¦ä¸ºç©º
 	 *
-	 * @param obj ¶ÔÏó
-	 * @return {@code true}: Îª¿Õ<br>{@code false}: ²»Îª¿Õ
+	 * @param obj å¯¹è±¡
+	 * @return {@code true}: ä¸ºç©º<br>{@code false}: ä¸ä¸ºç©º
 	 */
 	public static boolean isEmpty(Object obj)
 	{
@@ -70,10 +70,10 @@ public class EmptyUtils
 	}
 
 	/**
-	 * ÅĞ¶Ï¶ÔÏóÊÇ·ñ·Ç¿Õ
+	 * åˆ¤æ–­å¯¹è±¡æ˜¯å¦éç©º
 	 *
-	 * @param obj ¶ÔÏó
-	 * @return {@code true}: ·Ç¿Õ<br>{@code false}: ¿Õ
+	 * @param obj å¯¹è±¡
+	 * @return {@code true}: éç©º<br>{@code false}: ç©º
 	 */
 	public static boolean isNotEmpty(Object obj)
 	{

@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
  */
 
 /**
- * ÍøÂçÏà¹Ø
+ * ç½‘ç»œç›¸å…³
  */
 public class NetworkUtils
 {
@@ -19,7 +19,7 @@ public class NetworkUtils
 	public static final int TYPE_3G = 3;
 
 	/**
-	 * ¼ì²âÍøÂçÁ¬½Ó
+	 * æ£€æµ‹ç½‘ç»œè¿æ¥
 	 *
 	 * @param context
 	 * @return

@@ -17,12 +17,12 @@ import java.util.List;
  */
 
 /**
- * ActivityÏà¹Ø
+ * Activityç›¸å…³
  */
 public class ActivityUtils
 {
 	/**
-	 * ActivityÌø×ª
+	 * Activityè·³è½¬
 	 *
 	 * @param context
 	 * @param activityCls
@@ -35,11 +35,11 @@ public class ActivityUtils
 	}
 
 	/**
-	 * ActivityÌø×ª
+	 * Activityè·³è½¬
 	 *
 	 * @param context
 	 * @param packageName
-	 * @return ÊÇ·ñ³É¹¦Ìø×ª
+	 * @return æ˜¯å¦æˆåŠŸè·³è½¬
 	 */
 	public static boolean startAnotherActivity(Context context, String packageName)
 	{
@@ -54,7 +54,7 @@ public class ActivityUtils
 	}
 
 	/**
-	 * ÉèÖÃActivity´°¿ÚÍ¸Ã÷¶È
+	 * è®¾ç½®Activityçª—å£é€æ˜åº¦
 	 *
 	 * @param activity
 	 * @param alpha
@@ -68,8 +68,8 @@ public class ActivityUtils
 	}
 
 	/**
-	 * ÅĞ¶ÏActivityÊÇ·ñÔÚÕ»¶¥
-	 * ĞèÒªÈ¨ÏŞ {@link android.Manifest.permission.GET_TASKS}
+	 * åˆ¤æ–­Activityæ˜¯å¦åœ¨æ ˆé¡¶
+	 * éœ€è¦æƒé™ {@link android.Manifest.permission.GET_TASKS}
 	 *
 	 * @param context
 	 * @param activityCls
@@ -89,7 +89,7 @@ public class ActivityUtils
 	}
 
 	/**
-	 * »ñÈ¡Ä³Ó¦ÓÃÈë¿ÚActivity
+	 * è·å–æŸåº”ç”¨å…¥å£Activity
 	 *
 	 * @param context
 	 * @param packageName
