@@ -27,7 +27,7 @@ public class ActivityUtils
 	 * @param context
 	 * @param activityCls
 	 */
-	public static void startAnotherActivity(Context context, Class<? extends Activity> activityCls)
+	public static void startAnotherActivity(Context context, @NonNull Class<? extends Activity> activityCls)
 	{
 		Intent intent = new Intent(context, activityCls);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

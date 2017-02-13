@@ -6,4 +6,9 @@
         <item>@string/recycle_view_adapter</item>
     </string-array>
 
+    <string-array name="function_activity_list">
+        <item>com.excellence.tooldemo.GridAdapterActivity</item>
+        <item>com.excellence.tooldemo.RecyclerAdapterActivity</item>
+    </string-array>
+
 </resources>
