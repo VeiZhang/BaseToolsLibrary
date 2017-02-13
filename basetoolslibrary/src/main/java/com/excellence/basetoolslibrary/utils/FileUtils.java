@@ -3,6 +3,7 @@ package com.excellence.basetoolslibrary.utils;
 import android.text.TextUtils;
 
 import java.io.File;
+import java.text.DecimalFormat;
 
 /**
  * Created by ZhangWei on 2017/1/23.
@@ -13,37 +14,59 @@ import java.io.File;
  */
 public class FileUtils
 {
+
+	public static final long KB = 1024;
+	public static final long MB = 1024 * 1024;
+	public static final long GB = 1024 * 1024 * 1024;
+	public static final long TB = 1024 * 1024 * 1024 * 1024L;
+	public static final String DEFAULT_FORMAT_PATTERN = "#.##";
+
 	/**
 	 * 格式化文件大小
+	 * <p>自定格式，保留位数</p>
 	 *
-	 * @param filesize
-	 * @return
-	 */
-	public static String formatFileSize(long filesize)
+	 * @param fileSize 文件大小
+	 * @param pattern 保留格式
+     * @return 转换后文件大小
+     */
+	public static String formatFileSize(long fileSize, String pattern)
 	{
-		String strUnit = "Bytes";
-		String strAfterComma = "";
-		int intDivisor = 1;
-		if (filesize >= 1024 * 1024)
+		DecimalFormat sizeFormat = new DecimalFormat(pattern);
+		String unitStr = "Bytes";
+		long unit = 1;
+		if (fileSize >= TB)
 		{
-			strUnit = "MB";
-			intDivisor = 1024 * 1024;
+			unitStr = "TB";
+			unit = TB;
 		}
-		else if (filesize >= 1024)
+		else if (fileSize >= GB)
 		{
-			strUnit = "KB";
-			intDivisor = 1024;
+			unitStr = "GB";
+			unit = GB;
 		}
+		else if (fileSize >= MB)
+		{
+			unitStr = "MB";
+			unit = MB;
+		}
+		else if (fileSize >= KB)
+		{
+			unitStr = "KB";
+			unit = KB;
+		}
+		return sizeFormat.format((double) fileSize / unit) + unitStr;
+	}
 
-		if (intDivisor == 1)
-			return filesize + " " + strUnit;
-
-		strAfterComma = "" + 100 * (filesize % intDivisor) / intDivisor;
-
-		if (strAfterComma == "")
-			strAfterComma = ".0";
-
-		return filesize / intDivisor + "." + strAfterComma + " " + strUnit;
+	/**
+	 * 格式化文件大小
+	 * <p>默认格式，保留两位小数</p>
+	 *
+	 * @param fileSize 文件大小
+	 * @return 转换后文件大小
+	 */
+	public static String formatFileSize(long fileSize)
+	{
+		return formatFileSize(fileSize, DEFAULT_FORMAT_PATTERN);
 	}
 
 	/**

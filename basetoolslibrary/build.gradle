@@ -31,6 +31,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.1'
 }
 
+/** …œ¥´Bintray ±Javadoc±‡“Î¥ÌŒÛ**/
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
     options.addStringOption('encoding', 'GBK')
