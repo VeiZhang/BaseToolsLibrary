@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">ToolDemo</string>
     <string name="base_adapter">GridView ListView通用适配器</string>
+    <string name="recycle_view_adapter">RecyclerView通用适配器</string>
     <string name="refresh">刷新</string>
+
+    <string name="all_apps">所有应用</string>
+    <string name="system_apps">系统应用</string>
+    <string name="user_apps">第三方应用</string>
 </resources>
