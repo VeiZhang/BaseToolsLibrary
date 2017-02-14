@@ -226,6 +226,7 @@ execRuntimeCommand       : 执行命令
 
 > - **StringUtils相关→[StringUtils.java][StringUtils]**
 ```
+isEmpty : 判断字符串是否为空
 ```
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
