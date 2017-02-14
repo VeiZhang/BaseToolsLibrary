@@ -9,5 +9,6 @@ package com.excellence.basetoolslibrary.utils;
  */
 public class StringUtils
 {
-
+  // 李叶Test
+    public static final String TAG = StringUtils.class.getSimpleName();
 }
