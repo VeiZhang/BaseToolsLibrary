@@ -1,10 +1,10 @@
 # BaseToolsLibrary 常用的工具
 
 <!--[Maven](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
-<!--[Maven Control][bintray][1.1.1]-->
+<!--[Maven Control][bintray][1.2.0]-->
 <!--[Bintray][Bintray]-->
 
-<!--[![Bintray](https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg)](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
+<!--[![Bintray](https://img.shields.io/badge/Bintray-v1.2.0-brightgreen.svg)](https://bintray.com/veizhang/maven/BaseTools "Bintray")-->
 [![Bintray][icon_Bintray]][Bintray]
 [![GitHub issues][icon_issues]][issues]
 [![GitHub forks][icon_forks]][forks]
@@ -15,7 +15,7 @@
 添加jCenter远程依赖到module里的build.gradle：
 ```
   dependencies {
-    compile 'com.excellence:BaseTools:1.1.1'
+    compile 'com.excellence:BaseTools:1.2.0'
   }
 ```
 或者直接添加本地Library依赖
@@ -254,7 +254,7 @@ getZodiac        : 获取星座
 
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
-| [1.1.1][BaseToolsV1.1.1] | Utils增加一些常用的工具类:应用、数据库、分辨率、文件、正则表达式、命令、时间等 |
+| [1.2.0][BaseToolsV1.2.0] | Utils增加一些常用的工具类:应用、数据库、分辨率、文件、正则表达式、命令、时间等；统一编码UTF-8 |
 | [1.1.0][BaseToolsV1.1.0] | 增加RecyclerView的通用适配器和辅助方法，增加CommonAdapter里的辅助方法 |
 | [1.0.1][BaseToolsV1.0.1] | 创建ListView、GridView的通用适配器，一些辅助方法                    |
 
@@ -270,7 +270,7 @@ getZodiac        : 获取星座
 [starts]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
 
 <!-- 图片链接 -->
-[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.1-brightgreen.svg
+[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.2.0-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
@@ -278,7 +278,7 @@ getZodiac        : 获取星座
 <!-- 版本 -->
 [BaseToolsV1.0.1]:https://bintray.com/veizhang/maven/BaseTools/1.0.1
 [BaseToolsV1.1.0]:https://bintray.com/veizhang/maven/BaseTools/1.1.0
-[BaseToolsV1.1.1]:https://bintray.com/veizhang/maven/BaseTools/1.1.1
+[BaseToolsV1.2.0]:https://bintray.com/veizhang/maven/BaseTools/1.2.0
 
 <!-- 大神引用 -->
 [ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter "通用适配器"

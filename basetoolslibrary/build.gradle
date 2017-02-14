@@ -42,7 +42,7 @@ publish {
     userOrg = 'veizhang'
     groupId = 'com.excellence'
     artifactId = 'BaseTools'
-    publishVersion = '1.1.1'
+    publishVersion = '1.2.0'
     desc = '通用适配器'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
 }
