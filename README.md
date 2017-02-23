@@ -1,4 +1,4 @@
-# BaseToolsLibrary Android通用适配器和常用的工具类
+# Android通用适配器和常用的工具类
 
 [![Bintray][icon_Bintray]][Bintray]
 [![GitHub issues][icon_issues]][issues]
