@@ -3,7 +3,7 @@
 [![Bintray][icon_Bintray]][Bintray]
 [![GitHub issues][icon_issues]][issues]
 [![GitHub forks][icon_forks]][forks]
-[![GitHub stars][icon_starts]][starts]
+[![GitHub stars][icon_stars]][stars]
 
 <!-- you should configure jcenter repository-->
 ## 导入Android Studio
@@ -263,16 +263,16 @@ getZodiac        : 获取星座
 
 
 <!-- 引用网站链接 -->
-[Bintray]:https://bintray.com/veizhang "Bintray"
+[Bintray]:https://bintray.com/veizhang/maven/basetools "Bintray"
 [issues]:https://github.com/VeiZhang/BaseToolsLibrary/issues
-[forks]:https://github.com/VeiZhang/BaseToolsLibrary/network
-[starts]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
+[forks]:https://github.com/VeiZhang/BaseToolsLibrary/network/members
+[stars]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
 
 <!-- 图片链接 -->
 [icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
-[icon_starts]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
+[icon_stars]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
 
 <!-- 版本 -->
 [BaseToolsV1.1.0]:https://bintray.com/veizhang/maven/basetools/1.1.0
