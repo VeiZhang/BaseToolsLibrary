@@ -33,13 +33,7 @@ public class FileUtils
 	{
 		try
 		{
-			if (file == null)
-				return false;
-
-			if (!file.exists())
-				return file.createNewFile();
-			else
-				return true;
+			return !isFileExists(file) && file.createNewFile();
 		}
 		catch (IOException e)
 		{
@@ -56,9 +50,7 @@ public class FileUtils
 	 */
 	public static boolean createNewFile(String filePath)
 	{
-		if (StringUtils.isEmpty(filePath))
-			return false;
-		return createNewFile(new File(filePath));
+		return !StringUtils.isEmpty(filePath) && createNewFile(new File(filePath));
 	}
 
 	/**
@@ -69,13 +61,7 @@ public class FileUtils
 	 */
 	public static boolean deleteFile(File file)
 	{
-		if (file == null)
-			return false;
-
-		if (file.exists())
-			return file.delete();
-
-		return true;
+		return isFileExists(file) && file.delete();
 	}
 
 	/**
@@ -86,9 +72,7 @@ public class FileUtils
 	 */
 	public static boolean deleteFile(String filePath)
 	{
-		if (StringUtils.isEmpty(filePath))
-			return false;
-		return deleteFile(new File(filePath));
+		return !StringUtils.isEmpty(filePath) && deleteFile(new File(filePath));
 	}
 
 	/**
@@ -99,13 +83,7 @@ public class FileUtils
      */
 	public static boolean mkDir(File dir)
 	{
-		if (dir == null)
-			return false;
-
-		if (!dir.exists())
-			return dir.mkdirs();
-
-		return true;
+		return !isFileExists(dir) && dir.mkdirs();
 	}
 
 	/**
@@ -116,9 +94,7 @@ public class FileUtils
 	 */
 	public static boolean mkDir(String dirPath)
 	{
-		if (StringUtils.isEmpty(dirPath))
-			return false;
-		return mkDir(new File(dirPath));
+		return !StringUtils.isEmpty(dirPath) && mkDir(new File(dirPath));
 	}
 
 	/**
