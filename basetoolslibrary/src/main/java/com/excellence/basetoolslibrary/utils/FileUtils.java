@@ -285,4 +285,25 @@ public class FileUtils
 		chmod(file.getPath(), "777");
 	}
 
+	/**
+	 * 判断文件或目录是否存在
+	 *
+	 * @param file File类型
+	 * @return
+     */
+	public static boolean isFileExists(File file)
+	{
+		return file != null && file.exists();
+	}
+
+	/**
+	 * 判断文件或目录是否存在
+	 *
+	 * @param path 路径字符串
+	 * @return
+     */
+	public static boolean isFileExists(String path)
+	{
+		return !StringUtils.isEmpty(path) && isFileExists(new File(path));
+	}
 }

@@ -175,6 +175,7 @@ deleteDir          : 删除目录
 deletePostfixFiles : 删除目录下的某后缀文件
 formatFileSize     : 格式化文件大小
 chmod              : 修改目录、文件权限
+isFileExists       : 判断文件或目录是否存在
 ```
 
 > - **Handler相关→[HandlerUtils.java][HandlerUtils]**
