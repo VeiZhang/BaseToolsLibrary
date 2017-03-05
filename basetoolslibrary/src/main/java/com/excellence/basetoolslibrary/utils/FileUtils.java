@@ -3,6 +3,7 @@ package com.excellence.basetoolslibrary.utils;
 import android.text.TextUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
@@ -244,6 +245,84 @@ public class FileUtils
 	}
 
 	/**
+	 * 获取文件或者目录大小
+	 *
+	 * @param file File类型
+	 * @return
+     */
+	public static long getFileOrDirSize(File file)
+	{
+		long fileSize = 0;
+		if (isFileExists(file))
+		{
+			if (file.isDirectory())
+				fileSize = getDirSize(file);
+			else
+				fileSize = getFileSize(file);
+		}
+		return fileSize;
+	}
+
+	/**
+	 * 获取文件或者目录大小
+	 *
+	 * @param filePath 文件路径字符串
+	 * @return
+     */
+	public static long getFileOrDirSize(String filePath)
+	{
+		if (isFileExists(filePath))
+			return getFileOrDirSize(new File(filePath));
+		return 0;
+	}
+
+	/**
+	 * 获取文件大小
+	 *
+	 * @param file File类型
+	 * @return
+     */
+	private static long getFileSize(File file)
+	{
+		try
+		{
+			if (isFileExists(file))
+			{
+				FileInputStream inStream = new FileInputStream(file);
+				return inStream.available();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	/**
+	 * 获取目录大小
+	 *
+	 * @param dir File类型
+	 * @return
+     */
+	private static long getDirSize(File dir)
+	{
+		long size = 0;
+		if (isFileExists(dir))
+		{
+			File[] fileList = dir.listFiles();
+			for (File file : fileList)
+			{
+				if (file.isDirectory())
+					size += getDirSize(file);
+				else
+					size += getFileSize(file);
+			}
+		}
+		return size;
+	}
+
+	/**
 	 * 修改目录、文件权限
 	 *
 	 * @param path 目录、文件路径字符串
@@ -299,11 +378,11 @@ public class FileUtils
 	/**
 	 * 判断文件或目录是否存在
 	 *
-	 * @param path 路径字符串
+	 * @param filePath 路径字符串
 	 * @return
      */
-	public static boolean isFileExists(String path)
+	public static boolean isFileExists(String filePath)
 	{
-		return !StringUtils.isEmpty(path) && isFileExists(new File(path));
+		return !StringUtils.isEmpty(filePath) && isFileExists(new File(filePath));
 	}
 }
