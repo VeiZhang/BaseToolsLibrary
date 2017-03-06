@@ -139,24 +139,24 @@ public class FileUtils
 	 * @param dir File类型
 	 * @param postfix 后缀
 	 */
-	public static void deletePostfixFiles(File dir, String postfix)
+	public static boolean deletePostfixFiles(File dir, String postfix)
 	{
-		if (dir == null)
-			return;
+		if (!isFileExists(dir) || StringUtils.isEmpty(postfix))
+			return false;
 
-		if (!dir.exists() || TextUtils.isEmpty(postfix))
-			return;
 		if (dir.isFile() && dir.getName().endsWith(postfix))
-			dir.delete();
+			return dir.delete();
 		else if (dir.isDirectory())
 		{
 			File[] files = dir.listFiles();
 			for (File file : files)
 			{
-				if (file.isFile() && file.getName().endsWith(postfix))
-					file.delete();
+				boolean success = deletePostfixFiles(file, postfix);
+				if (!success)
+					return false;
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -165,11 +165,9 @@ public class FileUtils
 	 * @param dirPath 目录路径字符串
 	 * @param postfix 后缀
 	 */
-	public static void deletePostfixFiles(String dirPath, String postfix)
+	public static boolean deletePostfixFiles(String dirPath, String postfix)
 	{
-		if (StringUtils.isEmpty(dirPath))
-			return;
-		deletePostfixFiles(new File(dirPath), postfix);
+		return !StringUtils.isEmpty(dirPath) && deletePostfixFiles(new File(dirPath), postfix);
 	}
 
 	/**
