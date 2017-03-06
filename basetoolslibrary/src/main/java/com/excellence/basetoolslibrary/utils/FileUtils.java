@@ -13,6 +13,7 @@ import java.text.DecimalFormat;
 
 /**
  * 文件相关
+ * 需要权限 {@link android.Manifest.permission.WRITE_EXTERNAL_STORAGE}
  */
 public class FileUtils
 {
@@ -105,16 +106,17 @@ public class FileUtils
 	 */
 	public static boolean deleteDir(File dir)
 	{
+		if (!isFileExists(dir))
+			return false;
+
 		if (dir.isDirectory())
 		{
-			String[] children = dir.list();
-			for (int i = 0; i < children.length; i++)
+			File[] fileList = dir.listFiles();
+			for (File file : fileList)
 			{
-				boolean success = deleteDir(new File(dir, children[i]));
+				boolean success = deleteDir(file);
 				if (!success)
-				{
 					return false;
-				}
 			}
 		}
 		return dir.delete();
@@ -128,9 +130,7 @@ public class FileUtils
 	 */
 	public static boolean deleteDir(String dirPath)
 	{
-		if (StringUtils.isEmpty(dirPath))
-			return false;
-		return deleteDir(new File(dirPath));
+		return !StringUtils.isEmpty(dirPath) && deleteDir(new File(dirPath));
 	}
 
 	/**

@@ -109,7 +109,14 @@
 
 ## 3.Utils
 
-#### 通用的方法
+##### 权限
+```
+<uses-permission android:name="android.permission.GET_TASKS"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+```
+
+#### 常用的方法
 
 > - **Activity相关→[ActivityUtils.java][ActivityUtils]**
 ```
