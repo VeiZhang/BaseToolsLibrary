@@ -144,9 +144,18 @@ isAppInstalled         : 判断应用是否安装
 isAppDebug             : 判断当前应用是否是Debug版本
 ```
 
-> - **进制相关→[ConvertUtils.java][ConvertUtils]**
+> - **关闭相关→[CloseUtils.java][CloseUtils]**
 ```
-bytesToHexString : bytes转16进制
+closeIO        : 关闭IO
+closeIOQuietly : 安静关闭IO
+```
+
+> - **转换相关→[ConvertUtils.java][ConvertUtils]**
+```
+bytesToHexString         : bytes转16进制
+inputStream2OutputStream : inputStream转outPutStream
+inputStream2Bytes        : inputStream转bytes
+inputStream2String       : inputStream转字符串
 ```
 
 > - **存储相关→[DBUtils.java][DBUtils]**
@@ -299,6 +308,7 @@ getZodiac        : 获取星座
 
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.java
+[CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.java
 [ConvertUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ConvertUtils.java
 [DBUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DBUtils.java
 [DensityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DensityUtils.java

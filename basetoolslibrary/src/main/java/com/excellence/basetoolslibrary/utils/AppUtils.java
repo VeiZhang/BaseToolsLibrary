@@ -365,7 +365,7 @@ public class AppUtils
 	{
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		byte[] digest = md5.digest(signature.toByteArray());
-		return ConvertUtils.bytesToHexString(digest);
+		return ConvertUtils.bytes2HexString(digest);
 	}
 
 	/**
