@@ -28,8 +28,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 /**
- * Created by ZhangWei on 2016/12/20.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2016/12/20
+ *     desc   : BaseRecyclerAdapter控件方法
+ * </pre>
  */
+
 public class RecyclerViewHolder extends RecyclerView.ViewHolder
 {
 	private Context mContext = null;

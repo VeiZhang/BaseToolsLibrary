@@ -10,8 +10,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 /**
- * Created by ZhangWei on 2016/6/1.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2016/6/1
+ *     desc   : ListView、GridView通用适配器
+ * </pre>
  */
+
 public abstract class CommonAdapter<T> extends BaseAdapter
 {
 	private Context mContext = null;

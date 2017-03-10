@@ -1,20 +1,20 @@
 package com.excellence.basetoolslibrary.utils;
 
-import android.text.TextUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 /**
- * Created by ZhangWei on 2017/1/23.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/23
+ *     desc   : 文件相关工具类
+ *     			权限 {@link android.Manifest.permission.WRITE_EXTERNAL_STORAGE}
+ * </pre>
  */
 
-/**
- * 文件相关
- * 需要权限 {@link android.Manifest.permission.WRITE_EXTERNAL_STORAGE}
- */
 public class FileUtils
 {
 

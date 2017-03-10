@@ -1,5 +1,13 @@
 package com.excellence.basetoolslibrary.utils;
 
+import android.support.annotation.NonNull;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
  * <pre>
  *     author : VeiZhang
@@ -8,11 +16,6 @@ package com.excellence.basetoolslibrary.utils;
  *     desc   : 转换相关工具类
  * </pre>
  */
-
-import android.support.annotation.NonNull;
-
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 
 public class ConvertUtils
 {
@@ -86,10 +89,31 @@ public class ConvertUtils
 	 *
 	 * @param is 输入流
 	 * @return 字符串
-     */
+	 */
 	public static String inputStream2String(@NonNull InputStream is)
 	{
 		byte[] bytes = inputStream2Bytes(is);
 		return bytes == null ? null : new String(bytes);
 	}
+
+	/**
+	 * 信息流
+	 *
+	 * @param is 输入流
+	 * @return StringBuilder
+	 * @throws IOException
+	 */
+	public static StringBuilder inputStream2StringBuilder(@NonNull InputStream is) throws IOException
+	{
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		StringBuilder result = new StringBuilder();
+		String line = null;
+		while ((line = reader.readLine()) != null)
+		{
+			result.append(line);
+		}
+		reader.close();
+		return result;
+	}
+
 }

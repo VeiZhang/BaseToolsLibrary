@@ -5,19 +5,21 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 /**
- * Created by ZhangWei on 2017/1/23.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/23
+ *     desc   : 分辨率相关工具类
+ * </pre>
  */
 
-/**
- * 分辨率相关
- */
 public class DensityUtils
 {
 	/**
 	 * 获取当前屏幕分辨率
 	 *
-	 * @param context
-	 * @return
+	 * @param context 上下文
+	 * @return 分辨率
 	 */
 	public static float getDensity(Context context)
 	{
@@ -32,8 +34,8 @@ public class DensityUtils
 	/**
 	 * 获取当前文字分辨率
 	 *
-	 * @param context
-	 * @return
+	 * @param context 上下文
+	 * @return 分辨率
 	 */
 	public static float getScaleDensity(Context context)
 	{
@@ -43,9 +45,9 @@ public class DensityUtils
 	/**
 	 * dp转px
 	 *
-	 * @param context
-	 * @param dpValue
-	 * @return
+	 * @param context 上下文
+	 * @param dpValue dp
+	 * @return px
 	 */
 	public static int dp2px(Context context, int dpValue)
 	{
@@ -55,9 +57,9 @@ public class DensityUtils
 	/**
 	 * px转dp
 	 *
-	 * @param context
-	 * @param pxValue
-	 * @return
+	 * @param context 上下文
+	 * @param pxValue px
+	 * @return dp
 	 */
 	public static int px2dp(Context context, float pxValue)
 	{
@@ -67,9 +69,9 @@ public class DensityUtils
 	/**
 	 * sp转px
 	 *
-	 * @param context
-	 * @param spValue
-	 * @return
+	 * @param context 上下文
+	 * @param spValue sp
+	 * @return px
 	 */
 	public static int sp2px(Context context, float spValue)
 	{
@@ -79,9 +81,9 @@ public class DensityUtils
 	/**
 	 * px转sp
 	 *
-	 * @param context
-	 * @param pxValue
-	 * @return
+	 * @param context 上下文
+	 * @param pxValue px
+	 * @return sp
 	 */
 	public static int px2sp(Context context, float pxValue)
 	{

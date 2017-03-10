@@ -10,7 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by ZhangWei on 2016/12/20.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2016/12/20
+ *     desc   : RecyclerView通用适配器
+ * </pre>
  */
 
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder>

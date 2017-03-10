@@ -152,10 +152,11 @@ closeIOQuietly : 安静关闭IO
 
 > - **转换相关→[ConvertUtils.java][ConvertUtils]**
 ```
-bytesToHexString         : bytes转16进制
-inputStream2OutputStream : inputStream转outPutStream
-inputStream2Bytes        : inputStream转bytes
-inputStream2String       : inputStream转字符串
+bytesToHexString          : bytes转16进制
+inputStream2OutputStream  : inputStream转outPutStream
+inputStream2Bytes         : inputStream转bytes
+inputStream2String        : inputStream转字符串
+inputStream2StringBuilder : inputStream转StringBuilder
 ```
 
 > - **存储相关→[DBUtils.java][DBUtils]**
@@ -240,11 +241,7 @@ execProceeBuilderCommand : 执行命令
 execRuntimeCommand       : 执行命令
 ```
 
-> - **SpannableString相关→[SpannableStringUtils.java][SpannableStringUtils]**
-```
-```
-
-> - **StringUtils相关→[StringUtils.java][StringUtils]**
+> - **字符串相关→[StringUtils.java][StringUtils]**
 ```
 isEmpty : 判断字符串是否为空
 ```
@@ -319,6 +316,5 @@ getZodiac        : 获取星座
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
-[SpannableStringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SpannableStringUtils.java
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java

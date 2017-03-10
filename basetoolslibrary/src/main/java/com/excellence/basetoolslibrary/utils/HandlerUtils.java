@@ -6,12 +6,14 @@ import android.os.Message;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by ZhangWei on 2017/1/24.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/24
+ *     desc   : Handler相关工具类
+ * </pre>
  */
 
-/**
- * Handler相关
- */
 public class HandlerUtils
 {
 	public static class HandlerHolder extends Handler

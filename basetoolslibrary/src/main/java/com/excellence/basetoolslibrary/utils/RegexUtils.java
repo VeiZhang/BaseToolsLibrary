@@ -1,17 +1,19 @@
 package com.excellence.basetoolslibrary.utils;
 
-/**
- * Created by ZhangWei on 2017/1/23.
- */
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 正则表达式相关
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/23
+ *     desc   : 正则表达式相关工具类
+ * </pre>
  */
+
 public class RegexUtils
 {
     /******************** 正则相关常量 ********************/

@@ -11,12 +11,14 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created by ZhangWei on 2017/1/24.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/24
+ *     desc   : 判断空相关工具类
+ * </pre>
  */
 
-/**
- * 判断空相关
- */
 public class EmptyUtils
 {
 	/**

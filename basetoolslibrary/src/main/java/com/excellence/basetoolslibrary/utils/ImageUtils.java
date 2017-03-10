@@ -1,9 +1,5 @@
 package com.excellence.basetoolslibrary.utils;
 
-/**
- * Created by ZhangWei on 2017/1/24.
- */
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,8 +11,14 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.view.View;
 
 /**
- * 图片相关
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/24
+ *     desc   : 图片相关工具类
+ * </pre>
  */
+
 public class ImageUtils
 {
 	/**

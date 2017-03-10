@@ -13,19 +13,21 @@ import android.view.WindowManager;
 import java.util.List;
 
 /**
- * Created by ZhangWei on 2017/1/23.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/23
+ *     desc   : Activity相关工具类
+ * </pre>
  */
 
-/**
- * Activity相关
- */
 public class ActivityUtils
 {
 	/**
 	 * Activity跳转
 	 *
-	 * @param context
-	 * @param activityCls
+	 * @param context 上下文
+	 * @param activityCls Activity.class
 	 */
 	public static void startAnotherActivity(Context context, @NonNull Class<? extends Activity> activityCls)
 	{
@@ -37,8 +39,8 @@ public class ActivityUtils
 	/**
 	 * Activity跳转
 	 *
-	 * @param context
-	 * @param packageName
+	 * @param context 上下文
+	 * @param packageName 包名
 	 * @return 是否成功跳转
 	 */
 	public static boolean startAnotherActivity(Context context, String packageName)
@@ -56,8 +58,8 @@ public class ActivityUtils
 	/**
 	 * 设置Activity窗口透明度
 	 *
-	 * @param activity
-	 * @param alpha
+	 * @param activity Activity
+	 * @param alpha 透明度
 	 */
 	public static void setActivityWindowAlpha(Activity activity, @FloatRange(from = 0.0, to = 1.0) float alpha)
 	{
@@ -71,8 +73,8 @@ public class ActivityUtils
 	 * 判断Activity是否在栈顶
 	 * 需要权限 {@link android.Manifest.permission.GET_TASKS}
 	 *
-	 * @param context
-	 * @param activityCls
+	 * @param context 上下文
+	 * @param activityCls Activity.class
 	 * @return
 	 */
 	public static boolean isActivityTopStack(Context context, @NonNull Class<? extends Activity> activityCls)
@@ -91,8 +93,8 @@ public class ActivityUtils
 	/**
 	 * 获取某应用入口Activity
 	 *
-	 * @param context
-	 * @param packageName
+	 * @param context 上下文
+	 * @param packageName 包名
 	 * @return
 	 */
 	public static String getLauncherActivity(Context context, String packageName)

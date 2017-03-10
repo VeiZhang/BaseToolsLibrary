@@ -27,8 +27,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 /**
- * Created by ZhangWei on 2016/6/1.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2016/6/1
+ *     desc   : CommonAdapter控件方法
+ * </pre>
  */
+
 public class ViewHolder
 {
 	private Context mContext = null;

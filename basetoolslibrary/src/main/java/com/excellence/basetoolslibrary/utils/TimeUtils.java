@@ -1,9 +1,5 @@
 package com.excellence.basetoolslibrary.utils;
 
-/**
- * Created by ZhangWei on 2017/1/24.
- */
-
 import android.text.format.DateUtils;
 
 import java.text.ParseException;
@@ -13,8 +9,14 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * 时间相关
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/24
+ *     desc   : 时间相关工具类
+ * </pre>
  */
+
 public class TimeUtils
 {
     /**

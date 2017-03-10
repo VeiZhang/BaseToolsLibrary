@@ -1,21 +1,23 @@
 package com.excellence.basetoolslibrary.utils;
 
-/**
- * Created by ZhangWei on 2017/2/13.
- */
-
 import android.text.TextUtils;
 
 /**
- * 字符串相关
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/2/13
+ *     desc   : 字符串相关工具类
+ * </pre>
  */
+
 public class StringUtils
 {
     /**
      * 判断字符串是否为空
      *
      * @param text 只读序列 {@link String }
-     * @return
+     * @return {@code true}：空<br>{@code false}：不为空
      */
 	public static boolean isEmpty(String text)
     {
@@ -26,10 +28,10 @@ public class StringUtils
      * 判断字符串是否为空
      *
      * @param text 可读可写序列 {@link CharSequence}
-     * @return
+     * @return {@code true}：空<br>{@code false}：不为空
      */
     public static boolean isEmpty(CharSequence text)
     {
-        return isEmpty(text.toString());
+        return TextUtils.isEmpty(text);
     }
 }

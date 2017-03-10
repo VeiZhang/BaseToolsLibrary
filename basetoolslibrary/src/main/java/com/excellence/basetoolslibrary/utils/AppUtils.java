@@ -24,12 +24,14 @@ import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 
 /**
- * Created by ZhangWei on 2016/12/19.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2016/12/19
+ *     desc   : 应用相关工具类
+ * </pre>
  */
 
-/**
- * 应用相关
- */
 public class AppUtils
 {
 	/**

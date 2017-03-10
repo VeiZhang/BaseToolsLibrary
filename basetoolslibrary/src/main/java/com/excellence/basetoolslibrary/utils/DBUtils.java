@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by ZhangWei on 2017/1/23.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/23
+ *     desc   : 存储相关工具类
+ * </pre>
  */
 
-/**
- * 存储相关
- */
 public class DBUtils
 {
 	/**
@@ -18,11 +20,11 @@ public class DBUtils
 	private static String SHAREPREFERENCES_FILE_NAME = DBUtils.class.getSimpleName();
 
 	/**
-	 * 存储String
+	 * 存储字符串
 	 *
-	 * @param context
-	 * @param key
-	 * @param value
+	 * @param context 上下文
+	 * @param key 键值
+	 * @param value 字符串
 	 */
 	public static void setStringSharedPreferences(Context context, String key, String value)
 	{
@@ -33,11 +35,11 @@ public class DBUtils
 	}
 
 	/**
-	 * 读取String
+	 * 读取字符串
 	 *
-	 * @param context
-	 * @param key
-	 * @return
+	 * @param context 上下文
+	 * @param key 键值
+	 * @return 字符串
 	 */
 	public static String getStringSharedPreferences(Context context, String key)
 	{
@@ -46,11 +48,11 @@ public class DBUtils
 	}
 
 	/**
-	 * 存储Boolean
+	 * 存储布尔类型
 	 *
-	 * @param context
-	 * @param key
-	 * @param value
+	 * @param context 上下文
+	 * @param key 键值
+	 * @param value boolean
 	 */
 	public static void setBooleanSharedPreferences(Context context, String key, boolean value)
 	{
@@ -61,11 +63,11 @@ public class DBUtils
 	}
 
 	/**
-	 * 读取Boolean
+	 * 读取布尔类型
 	 *
-	 * @param context
-	 * @param key
-	 * @return
+	 * @param context 上下文
+	 * @param key 键值
+	 * @return boolean
 	 */
 	public static boolean getBooleanSharedPreferences(Context context, String key)
 	{

@@ -1,24 +1,21 @@
 package com.excellence.basetoolslibrary.utils;
 
 /**
- * Created by ZhangWei on 2017/1/23.
+ * <pre>
+ *     author : VeiZhang
+ *     github : https://github.com/VeiZhang
+ *     time   : 2017/1/23
+ *     desc   : 命令相关工具类
+ * </pre>
  */
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-/**
- * 命令相关
- */
 public class ShellUtils
 {
 	/**
 	 * 执行命令
 	 *
-	 * @param command
-	 * @return
+	 * @param command 字符串数组命令
+	 * @return 执行结果
 	 */
 	public static CommandResult execProceeBuilderCommand(String... command)
 	{
@@ -28,7 +25,7 @@ public class ShellUtils
 		try
 		{
 			process = new ProcessBuilder(command).redirectErrorStream(true).start();
-			msg = getInputStream(process.getInputStream());
+			msg = new StringBuilder(ConvertUtils.inputStream2StringBuilder(process.getInputStream()));
 			resultCode = process.waitFor();
 		}
 		catch (Exception e)
@@ -48,8 +45,8 @@ public class ShellUtils
 	/**
 	 * 执行命令
 	 *
-	 * @param shell
-	 * @return
+	 * @param shell 字符串命令
+	 * @return 执行结果
 	 */
 	public static CommandResult execRuntimeCommand(String shell)
 	{
@@ -59,10 +56,8 @@ public class ShellUtils
 		try
 		{
 			process = Runtime.getRuntime().exec(shell);
-			msg = new StringBuilder();
-			StringBuilder successMsg = getInputStream(process.getInputStream());
-			StringBuilder errorMsg = getInputStream(process.getErrorStream());
-			msg.append(successMsg).append(errorMsg);
+			msg = new StringBuilder(ConvertUtils.inputStream2StringBuilder(process.getInputStream()));
+			msg.append(ConvertUtils.inputStream2StringBuilder(process.getErrorStream()));
 			resultCode = process.waitFor();
 		}
 		catch (Exception e)
@@ -77,26 +72,6 @@ public class ShellUtils
 			}
 		}
 		return new CommandResult(resultCode, msg == null ? null : msg.toString());
-	}
-
-	/**
-	 * 信息流
-	 *
-	 * @param inputStream
-	 * @return
-	 * @throws IOException
-	 */
-	private static StringBuilder getInputStream(InputStream inputStream) throws IOException
-	{
-		BufferedReader stdin = new BufferedReader(new InputStreamReader(inputStream));
-		StringBuilder result = new StringBuilder();
-		String line = null;
-		while ((line = stdin.readLine()) != null)
-		{
-			result.append(line);
-		}
-		stdin.close();
-		return result;
 	}
 
 	/**
