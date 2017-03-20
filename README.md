@@ -27,8 +27,8 @@
 示例：[GridAdapterActivity][GridAdapterActivity]
 
 
-```使用CommonAdapter
-    创建adapter类继承CommonAdapter
+```java
+    // 创建adapter类继承CommonAdapter
 
     private class AppGridAdapter extends CommonAdapter<ResolveInfo>
     {
@@ -48,23 +48,23 @@
 ```
 
 
-```使用ViewHolder
-    ViewHolder辅助方法
+```java
+    // ViewHolder辅助方法
 
-    public <T extends View> T getView(int viewId); 用于获取Item内的子控件，参数为控件的id
-    public ViewHolder setText(int viewId, int strId); 用于设置文本，参数控件id、字符串id
-    public ViewHolder setBackgroundResource(int viewId, int resId); 用于设置背景图片，参数控件id、图片id
-    public ViewHolder setImageResource(int viewId, int resId); 用于设置ImageView图片资源，参数控件id、图片id
-    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener); 用于点击事件监听
+    public <T extends View> T getView(int viewId);                                    // 用于获取Item内的子控件，参数为控件的id
+    public ViewHolder setText(int viewId, int strId);                                 // 用于设置文本，参数控件id、字符串id
+    public ViewHolder setBackgroundResource(int viewId, int resId);                   // 用于设置背景图片，参数控件id、图片id
+    public ViewHolder setImageResource(int viewId, int resId);                        // 用于设置ImageView图片资源，参数控件id、图片id
+    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener);  // 用于点击事件监听
     *
     *
     *
-    可拓展其他方法
+    // 可拓展其他方法
 ```
 
 
-```刷新
-    刷新适配器
+```java
+    // 刷新适配器
     adapter.notifyNewData(data);
 ```
 
@@ -75,8 +75,8 @@
 
 示例：[RecyclerAdapterActivity][RecyclerAdapterActivity]
 
-```使用CommonAdapter
-    创建adapter类继承BaseRecyclerAdapter
+```java
+    // 创建adapter类继承BaseRecyclerAdapter
 
     private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
     {
@@ -99,8 +99,8 @@
 ```
 
 
-```使用RecyclerViewHolder
-    RecyclerViewHolder辅助方法类同ViewHolder辅助方法
+```java
+    // RecyclerViewHolder辅助方法类同ViewHolder辅助方法
     *
     *
     *
