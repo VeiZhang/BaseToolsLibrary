@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/24
  *     desc   : Handler相关工具类
  * </pre>

@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2016/6/1
  *     desc   : ListView、GridView通用适配器
  * </pre>

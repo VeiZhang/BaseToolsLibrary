@@ -29,7 +29,7 @@ import android.widget.TextView;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2016/6/1
  *     desc   : CommonAdapter控件方法
  * </pre>

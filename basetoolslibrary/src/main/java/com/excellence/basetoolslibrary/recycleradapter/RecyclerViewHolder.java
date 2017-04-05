@@ -30,7 +30,7 @@ import android.widget.TextView;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2016/12/20
  *     desc   : BaseRecyclerAdapter控件方法
  * </pre>

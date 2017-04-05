@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/24
  *     desc   : 转换相关工具类
  * </pre>

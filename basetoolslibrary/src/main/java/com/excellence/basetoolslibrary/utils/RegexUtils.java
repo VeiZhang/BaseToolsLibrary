@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/23
  *     desc   : 正则表达式相关工具类
  * </pre>

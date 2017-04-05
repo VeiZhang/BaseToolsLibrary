@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2017/3/10
  *     desc   : 关闭相关工具类
  * </pre>

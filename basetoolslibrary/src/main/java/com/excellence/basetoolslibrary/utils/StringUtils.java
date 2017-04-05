@@ -5,7 +5,7 @@ import android.text.TextUtils;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2017/2/13
  *     desc   : 字符串相关工具类
  * </pre>

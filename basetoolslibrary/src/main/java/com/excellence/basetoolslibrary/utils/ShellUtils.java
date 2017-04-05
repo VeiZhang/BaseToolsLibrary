@@ -3,7 +3,7 @@ package com.excellence.basetoolslibrary.utils;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/23
  *     desc   : 命令相关工具类
  * </pre>

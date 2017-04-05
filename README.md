@@ -277,6 +277,7 @@ getZodiac        : 获取星座
 #### 参考
 > - [张鸿洋][ZhangHongYang]
 > - [布兰柯基][Blankj]
+> - [马天宇][litesuits]
 
 
 <!-- 引用网站链接 -->
@@ -298,6 +299,7 @@ getZodiac        : 获取星座
 <!-- 大神引用 -->
 [ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter "通用适配器"
 [Blankj]:https://github.com/Blankj/AndroidUtilCode "常用工具类"
+[litesuits]:https://github.com/litesuits/android-common
 
 <!-- 代码引用 -->
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java

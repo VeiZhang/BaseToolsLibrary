@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2016/12/20
  *     desc   : RecyclerView通用适配器
  * </pre>

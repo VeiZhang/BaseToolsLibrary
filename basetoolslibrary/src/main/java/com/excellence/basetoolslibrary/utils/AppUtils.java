@@ -26,7 +26,7 @@ import android.util.DisplayMetrics;
 /**
  * <pre>
  *     author : VeiZhang
- *     github : https://github.com/VeiZhang
+ *     blog   : https://veizhang.github.io/
  *     time   : 2016/12/19
  *     desc   : 应用相关工具类
  * </pre>
