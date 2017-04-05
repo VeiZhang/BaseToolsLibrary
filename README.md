@@ -114,6 +114,10 @@
 <uses-permission android:name="android.permission.GET_TASKS"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 ```
 
 #### 常用的方法
@@ -212,7 +216,20 @@ view2Bitmap     : view转Bitmap
 
 > - **网络相关→[NetworkUtils.java][NetworkUtils]**
 ```
-checkNetState : 检测网络连接
+getActiveNetworkInfo : 获取活动的网络信息
+isConnected : 检查网络是否连接
+isAvailableByPing : 判断网络是否可用
+isMobileDataEnabled : 判断移动数据是否打开
+setMobileDataEnabled : 打开或关闭移动数据（舍弃不可用）
+is4G : 判断是否是4G网络
+isWiFiEnabled : 判断是否打开WiFi
+setWiFiEnabled : 打开或关闭WiFi
+isWiFiConnected : 判断WiFi是否连接
+isWiFiAvailable : 判断WiFi是否可用
+getNetworkOperatorName : 获取网络运营商名称
+getNetworkType : 获取当前网络类型
+getIPAddress : 获取网络IP地址
+getDomainAddress : 根据域名获取ip
 ```
 
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
