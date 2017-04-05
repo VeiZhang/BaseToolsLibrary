@@ -200,7 +200,7 @@ isFileExists       : 判断文件或目录是否存在
 
 > - **Handler相关→[HandlerUtils.java][HandlerUtils]**
 ```
-HandlerHolder: 使用必读
+HandlerHolder : 使用必读
 ```
 
 > - **Image相关→[ImageUtils.java][ImageUtils]**
@@ -267,6 +267,14 @@ getChineseZodiac : 获取生肖
 getZodiac        : 获取星座
 ```
 
+
+## 4.Assist
+> - **WeakHandler转载→[WeakHandler.java][WeakHandler]**
+```
+WeakHandler : 使用描述
+```
+
+
 <br><br>
 
 |            版本          |                              描述                               |
@@ -305,6 +313,7 @@ getZodiac        : 获取星座
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 
+<!-- 常用方法 -->
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.java
 [CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.java
@@ -320,3 +329,6 @@ getZodiac        : 获取星座
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
+
+<!-- 转载方法 -->
+[WeakHandler]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/assist/WeakHandler.java

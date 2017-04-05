@@ -10,7 +10,10 @@ import java.lang.ref.WeakReference;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/24
- *     desc   : Handler相关工具类
+ *     desc   : Handler相关工具类，
+ *     			转载自：https://github.com/Blankj/AndroidUtilCode/blob/master/utilcode/src/main/java/com/blankj/utilcode/util/HandlerUtils.java
+ *     			在销毁时清除所有消息，需要手动执行removeCallbacksAndMessages(null);
+ *				可以使用{@link com.excellence.basetoolslibrary.assist.WeakHandler}
  * </pre>
  */
 
