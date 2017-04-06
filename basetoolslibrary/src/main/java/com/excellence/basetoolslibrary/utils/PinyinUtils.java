@@ -17,12 +17,12 @@ import com.excellence.basetoolslibrary.assist.HanziToPinyin;
 public class PinyinUtils
 {
 	/**
-	 * 汉字转拼音
+	 * 中文转拼音
 	 * {@link Exception}:There is no Chinese collator, HanziToPinyin is disabled，
 	 * 出现该异常时，注意添加对应的{@link Locale}如{@link Locale#CHINESE}
 	 * 修改位置 {@link HanziToPinyin#getInstance()}:L406
 	 *
-	 * @param ccs 汉字
+	 * @param ccs 中文
 	 * @return 拼音字符串
 	 */
 	public static String ccs2Pinyin(String ccs)
@@ -40,5 +40,17 @@ public class PinyinUtils
 			}
 		}
 		return stringBuilder.toString().toLowerCase();
+	}
+
+	/**
+	 * 获取中文首字母
+	 *
+	 * @param ccs 中文
+	 * @return 首字母
+	 */
+	public static String getPinYinHeadChar(String ccs)
+	{
+		String letter = ccs2Pinyin(ccs);
+		return StringUtils.isEmpty(letter) ? null : String.valueOf(letter.charAt(0));
 	}
 }

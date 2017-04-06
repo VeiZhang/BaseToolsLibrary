@@ -234,7 +234,8 @@ getDomainAddress : 根据域名获取ip
 
 > - **拼音相关→[PinyinUtils.java][PinyinUtils]**
 ```
-ccs2Pinyin : 汉字转拼音
+ccs2Pinyin        : 中文转拼音
+getPinYinHeadChar : 获取中文首字母
 ```
 
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
