@@ -232,6 +232,11 @@ getIPAddress : 获取网络IP地址
 getDomainAddress : 根据域名获取ip
 ```
 
+> - **拼音相关→[PinyinUtils.java][PinyinUtils]**
+```
+ccs2Pinyin : 汉字转拼音
+```
+
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
 ```
 isMobileSimple  : 验证手机号（简单）
@@ -288,9 +293,13 @@ getZodiac        : 获取星座
 ## 4.Assist
 > - **WeakHandler转载→[WeakHandler.java][WeakHandler]**
 ```
-WeakHandler : 使用描述
+WeakHandler : 使用描述，性能优化，避免内存泄漏
 ```
 
+> - **HanziToPinyin转载→[HanziToPinyin.java][HanziToPinyin]**
+```
+HanziToPinyin : Android汉字转拼音类
+```
 
 <br><br>
 
@@ -342,6 +351,7 @@ WeakHandler : 使用描述
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
+[PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
@@ -349,3 +359,4 @@ WeakHandler : 使用描述
 
 <!-- 转载方法 -->
 [WeakHandler]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/assist/WeakHandler.java
+[HanziToPinyin]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/assist/HanziToPinyin.java
