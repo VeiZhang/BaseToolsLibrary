@@ -172,11 +172,11 @@ public class TimeUtils
      * @param millisec1 毫秒时间戳1
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -212,11 +212,11 @@ public class TimeUtils
      * @param pattern 自定时间格式
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -233,11 +233,11 @@ public class TimeUtils
      * @param time1 字符串时间1
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -253,11 +253,11 @@ public class TimeUtils
      * @param date1 Date类型时间1
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -315,11 +315,11 @@ public class TimeUtils
      * @param millisec 毫秒时间戳
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -336,11 +336,11 @@ public class TimeUtils
      * @param pattern 自定时间格式
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -356,11 +356,11 @@ public class TimeUtils
      * @param time 时间字符串
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -375,11 +375,11 @@ public class TimeUtils
      * @param date Date类型
      * @param unit 单位类型
      *        <ul>
-     *          <li>{@link TimeUnit.MSEC}: 毫秒</li>
-     *          <li>{@link TimeUnit.SEC}: 秒</li>
-     *          <li>{@link TimeUnit.MIN}: 分</li>
-     *          <li>{@link TimeUnit.HOUR}: 时</li>
-     *          <li>{@link TimeUnit.DAY}: 天</li>
+     *          <li>{@link TimeUnit#MSEC}: 毫秒</li>
+     *          <li>{@link TimeUnit#SEC }: 秒</li>
+     *          <li>{@link TimeUnit#MIN }: 分</li>
+     *          <li>{@link TimeUnit#HOUR}: 时</li>
+     *          <li>{@link TimeUnit#DAY }: 天</li>
      *        </ul>
      * @return 时间差
      */
@@ -645,7 +645,7 @@ public class TimeUtils
 
     /**
      * 根据Date获取星座
-     * 注意:0对应一月 11对应十二月 {@link Calendar.MONTH}
+     * 注意:0对应一月 11对应十二月 {@link Calendar#MONTH}
      *
      * @param date Data类型
      * @return 星座

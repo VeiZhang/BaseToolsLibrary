@@ -259,7 +259,12 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * 设置控件是否可见
 	 *
 	 * @param viewId 控件资源Id
-	 * @param visibility One of {@link View.VISIBLE}, {@link View.INVISIBLE}, or {@link View.GONE}.
+	 * @param visibility
+	 *        <ul>
+	 *          <li>{@link View#VISIBLE  }</li>
+	 *          <li>{@link View#INVISIBLE}</li>
+	 *          <li>{@link View#GONE     }</li>
+	 *        </ul>
      * @return
      */
 	public RecyclerViewHolder setVisible(@IdRes int viewId, int visibility)

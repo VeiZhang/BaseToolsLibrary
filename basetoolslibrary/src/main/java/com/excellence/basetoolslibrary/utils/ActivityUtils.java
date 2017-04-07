@@ -71,7 +71,7 @@ public class ActivityUtils
 
 	/**
 	 * 判断Activity是否在栈顶
-	 * 需要权限 {@link android.Manifest.permission.GET_TASKS}
+	 * 需要权限 {@link android.Manifest.permission#GET_TASKS}
 	 *
 	 * @param context 上下文
 	 * @param activityCls Activity.class

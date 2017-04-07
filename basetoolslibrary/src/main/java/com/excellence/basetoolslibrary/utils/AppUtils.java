@@ -261,7 +261,7 @@ public class AppUtils
 
 	/**
 	 * 获取apk文件的签名
-	 * 需要权限 {@link android.Manifest.permission.READ_EXTERNAL_STORAGE}
+	 * 需要权限 {@link android.Manifest.permission#READ_EXTERNAL_STORAGE}
 	 *
 	 * @param apkPath apk文件路径
 	 * @return 证书MD5值:32位16进制 如:D17A70403EB7CD52181004C847180287

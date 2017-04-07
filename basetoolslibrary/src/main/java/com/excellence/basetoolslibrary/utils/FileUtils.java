@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/23
  *     desc   : 文件相关工具类
- *     			权限 {@link android.Manifest.permission.WRITE_EXTERNAL_STORAGE}
+ *     			权限 {@link android.Manifest.permission#WRITE_EXTERNAL_STORAGE}
  * </pre>
  */
 

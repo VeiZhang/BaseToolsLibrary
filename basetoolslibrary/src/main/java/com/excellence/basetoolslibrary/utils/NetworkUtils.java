@@ -21,10 +21,10 @@ import java.util.concurrent.Future;
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/24
  *     desc   : 网络相关工具类
- *     			权限：{@link android.Manifest.permission.INTERNET				}
- *     			 	 {@link android.Manifest.permission.ACCESS_NETWORK_STATE}
- *     			 	 {@link android.Manifest.permission.ACCESS_WIFI_STATE	}
- *     				 {@link android.Manifest.permission.CHANGE_WIFI_STATE	}
+ *     			权限：{@link android.Manifest.permission#INTERNET				}
+ *     			 	 {@link android.Manifest.permission#ACCESS_NETWORK_STATE}
+ *     			 	 {@link android.Manifest.permission#ACCESS_WIFI_STATE	}
+ *     				 {@link android.Manifest.permission#CHANGE_WIFI_STATE	}
  *
  *     			isAvailable、isConnected：1，显示连接已保存，但标题栏没有，即没有实质连接上   not connect， available
  *										 2，显示连接已保存，标题栏也有已连接上的图标，          connect， available
@@ -218,14 +218,14 @@ public class NetworkUtils
 	 *
 	 * @param context 上下文
 	 * @return NetworkType网络类型
-	 * <ul>
-	 * <li>{@link NetworkType.NETWORK_WIFI   } </li>
-	 * <li>{@link NetworkType.NETWORK_4G     } </li>
-	 * <li>{@link NetworkType.NETWORK_3G     } </li>
-	 * <li>{@link NetworkType.NETWORK_2G     } </li>
-	 * <li>{@link NetworkType.NETWORK_UNKNOWN} </li>
-	 * <li>{@link NetworkType.NETWORK_NO     } </li>
-	 * </ul>
+	 *         <ul>
+	 *           <li>{@link NetworkType#NETWORK_WIFI   } </li>
+	 *           <li>{@link NetworkType#NETWORK_4G     } </li>
+	 *           <li>{@link NetworkType#NETWORK_3G     } </li>
+	 *           <li>{@link NetworkType#NETWORK_2G     } </li>
+	 *           <li>{@link NetworkType#NETWORK_UNKNOWN} </li>
+	 *           <li>{@link NetworkType#NETWORK_NO     } </li>
+	 *         </ul>
 	 */
 	public static NetworkType getNetworkType(Context context)
 	{

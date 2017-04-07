@@ -60,7 +60,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *     desc   : Handler相关工具类，
  *              转载自：https://github.com/badoo/android-weak-handler，
  *              销毁时，自动清除所有未处理的消息动作，
- *              作用等同于{@link Handler}里的方法：removeCallbacksAndMessages(null);
+ *              作用等同于{@link Handler#removeCallbacksAndMessages(Object)}
  * </pre>
  */
 
