@@ -10,7 +10,7 @@
 添加jCenter远程依赖到module里的build.gradle：
 ```
   dependencies {
-    compile 'com.excellence:basetools:1.1.0'
+    compile 'com.excellence:basetools:1.2.0'
     // 或者直接使用最新版本
     // compile 'com.excellence:basetools:+'
   }
@@ -312,6 +312,7 @@ HanziToPinyin : Android汉字转拼音类
 
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
+| [1.2.0][BaseToolsV1.2.0] | 新增网络、拼音、异常打印等工具类 |
 | [1.1.0][BaseToolsV1.1.0] | Utils增加一些常用的工具类:应用、数据库、分辨率、文件、正则表达式、命令、时间等 |
 | [1.0.0][BaseToolsV1.0.0] | 创建ListView、GridView、RecyclerView的通用适配器，一些辅助方法 |
 
@@ -328,12 +329,13 @@ HanziToPinyin : Android汉字转拼音类
 [stars]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
 
 <!-- 图片链接 -->
-[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.1.0-brightgreen.svg
+[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.2.0-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_stars]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
 
 <!-- 版本 -->
+[BaseToolsV1.2.0]:https://bintray.com/veizhang/maven/basetools/1.2.0
 [BaseToolsV1.1.0]:https://bintray.com/veizhang/maven/basetools/1.1.0
 [BaseToolsV1.0.0]:https://bintray.com/veizhang/maven/basetools/1.0.0
 
