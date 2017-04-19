@@ -4,11 +4,13 @@
     <string-array name="function_list">
         <item>@string/base_adapter</item>
         <item>@string/recycle_view_adapter</item>
+        <item>@string/multi_item_adapter</item>
     </string-array>
 
     <string-array name="function_activity_list">
         <item>com.excellence.tooldemo.GridAdapterActivity</item>
         <item>com.excellence.tooldemo.RecyclerAdapterActivity</item>
+        <item>com.excellence.tooldemo.MultiItemAdapterActivity</item>
     </string-array>
 
 </resources>

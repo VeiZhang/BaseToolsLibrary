@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".RecyclerAdapterActivity">
         </activity>
+        <activity android:name=".MultiItemAdapterActivity">
+        </activity>
     </application>
 
 </manifest>

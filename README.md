@@ -68,6 +68,67 @@
     adapter.notifyNewData(data);
 ```
 
+#### gridview，listview的多布局通用适配器
+
+示例：[MultiItemAdapterActivity][MultiItemAdapterActivity]
+
+```java
+// 多布局适配器
+private class ChatAdapter extends MultiItemTypeAdapter<ChatMessage>
+{
+    public ChatAdapter(Context context, List<ChatMessage> messages)
+    {
+        super(context, messages);
+        addItemViewDelegate(new AskerDelegate());
+        addItemViewDelegate(new AnswerDelegate());
+    }
+}
+
+// 提问者布局视图
+private class AskerDelegate implements ItemViewDelegate<ChatMessage>
+{
+
+    @Override
+    public int getItemViewLayoutId()
+    {
+        return R.layout.item_asker;
+    }
+
+    @Override
+    public boolean isForViewType(ChatMessage item, int position)
+    {
+        return item.isAsker();
+    }
+
+    @Override
+    public void convert(ViewHolder viewHolder, ChatMessage item, int position)
+    {
+        viewHolder.setText(R.id.asker_text, item.getMsg());
+    }
+}
+
+// 回答者布局视图
+private class AnswerDelegate implements ItemViewDelegate<ChatMessage>
+{
+    @Override
+    public int getItemViewLayoutId()
+    {
+        return R.layout.item_answer;
+    }
+
+    @Override
+    public boolean isForViewType(ChatMessage item, int position)
+    {
+        return !item.isAsker();
+    }
+
+    @Override
+    public void convert(ViewHolder viewHolder, ChatMessage item, int position)
+    {
+        viewHolder.setText(R.id.answer_text, item.getMsg());
+    }
+}
+```
 
 ## 2.BaseRecyclerAdapter
 
@@ -347,6 +408,7 @@ HanziToPinyin : Android汉字转拼音类
 <!-- 代码引用 -->
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
+[MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.java
 
 <!-- 常用方法 -->
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
