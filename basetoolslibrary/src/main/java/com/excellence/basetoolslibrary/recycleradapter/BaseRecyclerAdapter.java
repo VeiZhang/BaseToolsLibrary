@@ -28,6 +28,17 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	/**
 	 *
 	 * @param context 上下文
+	 * @param datas 数组数据源
+	 * @param layoutId 布局资源Id
+	 */
+	public BaseRecyclerAdapter(Context context, T[] datas, @LayoutRes int layoutId)
+	{
+		this(context, datas == null ? null : Arrays.asList(datas), layoutId);
+	}
+
+	/**
+	 *
+	 * @param context 上下文
 	 * @param datas 列表数据源
 	 * @param layoutId 布局资源Id
 	 */
@@ -35,19 +46,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	{
 		mContext = context;
 		mDatas = datas;
-		mLayoutId = layoutId;
-	}
-
-	/**
-	 *
-	 * @param context 上下文
-	 * @param datas 数组数据源
-	 * @param layoutId 布局资源Id
-	 */
-	public BaseRecyclerAdapter(Context context, T[] datas, @LayoutRes int layoutId)
-	{
-		mContext = context;
-		mDatas = Arrays.asList(datas);
 		mLayoutId = layoutId;
 	}
 
