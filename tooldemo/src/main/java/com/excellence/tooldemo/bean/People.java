@@ -5,19 +5,17 @@ package com.excellence.tooldemo.bean;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/4/19
- *     desc   :
+ *     desc   : 数据基类
  * </pre>
  */
 
-public class ChatMessage
+public class People
 {
 	private String mMsg = null;
-	private boolean isAsker = true;
 
-	public ChatMessage(String msg, boolean isAsker)
+	public People(String msg)
 	{
 		setMsg(msg);
-		setAsker(isAsker);
 	}
 
 	public String getMsg()
@@ -28,15 +26,5 @@ public class ChatMessage
 	public void setMsg(String msg)
 	{
 		mMsg = msg;
-	}
-
-	public boolean isAsker()
-	{
-		return isAsker;
-	}
-
-	public void setAsker(boolean asker)
-	{
-		isAsker = asker;
 	}
 }

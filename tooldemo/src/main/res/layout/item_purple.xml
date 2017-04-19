@@ -7,12 +7,16 @@
         android:id="@+id/portrait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/asker"/>
+        android:layout_alignParentRight="true"
+        android:src="@drawable/purple"/>
 
     <TextView
-        android:id="@+id/asker_text"
+        android:id="@+id/purple_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/portrait"/>
+        android:layout_toLeftOf="@+id/portrait"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="24sp"
+    />
 </RelativeLayout>

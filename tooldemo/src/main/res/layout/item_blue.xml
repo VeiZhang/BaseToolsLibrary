@@ -7,14 +7,14 @@
         android:id="@+id/portrait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/answer"/>
+        android:src="@drawable/blue"/>
 
     <TextView
-        android:id="@+id/answer_text"
+        android:id="@+id/blue_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_toLeftOf="@+id/portrait"
-    />
+        android:layout_toRightOf="@+id/portrait"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="24sp"/>
 </RelativeLayout>

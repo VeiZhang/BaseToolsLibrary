@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/computer_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/computer"
+        android:gravity="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="28sp"/>
+</RelativeLayout>

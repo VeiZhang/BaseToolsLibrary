@@ -8,7 +8,9 @@ import android.widget.ListView;
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
 import com.excellence.basetoolslibrary.baseadapter.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.baseadapter.MultiItemTypeAdapter;
-import com.excellence.tooldemo.bean.ChatMessage;
+import com.excellence.tooldemo.bean.PurpleData;
+import com.excellence.tooldemo.bean.BlueData;
+import com.excellence.tooldemo.bean.People;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
 public class MultiItemAdapterActivity extends AppCompatActivity
 {
 	private ListView mListView = null;
-	private List<ChatMessage> mMessages = null;
+	private List<People> mMessages = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -32,63 +34,91 @@ public class MultiItemAdapterActivity extends AppCompatActivity
 	private void initMsg()
 	{
 		mMessages = new ArrayList<>();
-		mMessages.add(new ChatMessage("有大吗？", true));
-		mMessages.add(new ChatMessage("30秒！", false));
-		mMessages.add(new ChatMessage("ad注意走位", true));
-		mMessages.add(new ChatMessage("我被抓了。", true));
-		mMessages.add(new ChatMessage("ACE!", false));
+		mMessages.add(new ComputerData("全军出击！"));
+		mMessages.add(new BlueData("有大吗？"));
+		mMessages.add(new PurpleData("30秒！"));
+		mMessages.add(new BlueData("ad注意走位"));
+		mMessages.add(new ComputerData("killing spree！"));
+		mMessages.add(new PurpleData("我被抓了。"));
+		mMessages.add(new PurpleData("救我。。。"));
+		mMessages.add(new BlueData("保护我"));
+		mMessages.add(new ComputerData("Legendary"));
+		mMessages.add(new ComputerData("penta kill"));
+		mMessages.add(new ComputerData("ACE!"));
 	}
 
-	private class ChatAdapter extends MultiItemTypeAdapter<ChatMessage>
+	private class ChatAdapter extends MultiItemTypeAdapter<People>
 	{
-		public ChatAdapter(Context context, List<ChatMessage> messages)
+		public ChatAdapter(Context context, List<People> messages)
 		{
 			super(context, messages);
-			addItemViewDelegate(new AskerDelegate());
-			addItemViewDelegate(new AnswerDelegate());
+			addItemViewDelegate(new ComputerDelegate());
+			addItemViewDelegate(new BlueDelegate());
+			addItemViewDelegate(new PurpleDelegate());
 		}
 	}
 
-	private class AskerDelegate implements ItemViewDelegate<ChatMessage>
+	private class ComputerDelegate implements ItemViewDelegate<People>
+	{
+		@Override
+		public int getItemViewLayoutId()
+		{
+			return R.layout.item_computer;
+		}
+
+		@Override
+		public boolean isForViewType(People item, int position)
+		{
+			return item instanceof ComputerData;
+		}
+
+		@Override
+		public void convert(ViewHolder viewHolder, People item, int position)
+		{
+			viewHolder.setText(R.id.computer_text, item.getMsg());
+		}
+	}
+
+	private class BlueDelegate implements ItemViewDelegate<People>
 	{
 
 		@Override
 		public int getItemViewLayoutId()
 		{
-			return R.layout.item_asker;
+			return R.layout.item_blue;
 		}
 
 		@Override
-		public boolean isForViewType(ChatMessage item, int position)
+		public boolean isForViewType(People item, int position)
 		{
-			return item.isAsker();
+			return item instanceof BlueData;
 		}
 
 		@Override
-		public void convert(ViewHolder viewHolder, ChatMessage item, int position)
+		public void convert(ViewHolder viewHolder, People item, int position)
 		{
-			viewHolder.setText(R.id.asker_text, item.getMsg());
+			viewHolder.setText(R.id.blue_text, item.getMsg());
 		}
 	}
 
-	private class AnswerDelegate implements ItemViewDelegate<ChatMessage>
+	private class PurpleDelegate implements ItemViewDelegate<People>
 	{
 		@Override
 		public int getItemViewLayoutId()
 		{
-			return R.layout.item_answer;
+			return R.layout.item_purple;
 		}
 
 		@Override
-		public boolean isForViewType(ChatMessage item, int position)
+		public boolean isForViewType(People item, int position)
 		{
-			return !item.isAsker();
+			return item instanceof PurpleData;
 		}
 
 		@Override
-		public void convert(ViewHolder viewHolder, ChatMessage item, int position)
+		public void convert(ViewHolder viewHolder, People item, int position)
 		{
-			viewHolder.setText(R.id.answer_text, item.getMsg());
+			viewHolder.setText(R.id.purple_text, item.getMsg());
 		}
 	}
 }

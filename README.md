@@ -74,58 +74,81 @@
 
 ```java
 // 多布局适配器
-private class ChatAdapter extends MultiItemTypeAdapter<ChatMessage>
+private class ChatAdapter extends MultiItemTypeAdapter<People>
 {
-    public ChatAdapter(Context context, List<ChatMessage> messages)
+    public ChatAdapter(Context context, List<People> messages)
     {
         super(context, messages);
-        addItemViewDelegate(new AskerDelegate());
-        addItemViewDelegate(new AnswerDelegate());
+        addItemViewDelegate(new ComputerDelegate());
+        addItemViewDelegate(new BlueDelegate());
+        addItemViewDelegate(new PurpleDelegate());
     }
 }
 
-// 提问者布局视图
-private class AskerDelegate implements ItemViewDelegate<ChatMessage>
+// 电脑方布局
+private class ComputerDelegate implements ItemViewDelegate<People>
+{
+    @Override
+    public int getItemViewLayoutId()
+    {
+        return R.layout.item_computer;
+    }
+
+    @Override
+    public boolean isForViewType(People item, int position)
+    {
+        return item instanceof ComputerData;
+    }
+
+    @Override
+    public void convert(ViewHolder viewHolder, People item, int position)
+    {
+        viewHolder.setText(R.id.computer_text, item.getMsg());
+    }
+}
+
+// 蓝色方布局
+private class BlueDelegate implements ItemViewDelegate<People>
 {
 
     @Override
     public int getItemViewLayoutId()
     {
-        return R.layout.item_asker;
+        return R.layout.item_blue;
     }
 
     @Override
-    public boolean isForViewType(ChatMessage item, int position)
+    public boolean isForViewType(People item, int position)
     {
-        return item.isAsker();
+        return item instanceof BlueData;
     }
 
     @Override
-    public void convert(ViewHolder viewHolder, ChatMessage item, int position)
+    public void convert(ViewHolder viewHolder, People item, int position)
     {
-        viewHolder.setText(R.id.asker_text, item.getMsg());
+        viewHolder.setText(R.id.blue_text, item.getMsg());
     }
 }
 
-// 回答者布局视图
-private class AnswerDelegate implements ItemViewDelegate<ChatMessage>
+// 紫色方布局
+private class PurpleDelegate implements ItemViewDelegate<People>
 {
     @Override
     public int getItemViewLayoutId()
     {
-        return R.layout.item_answer;
+        return R.layout.item_purple;
     }
 
     @Override
-    public boolean isForViewType(ChatMessage item, int position)
+    public boolean isForViewType(People item, int position)
     {
-        return !item.isAsker();
+        return item instanceof PurpleData;
     }
 
     @Override
-    public void convert(ViewHolder viewHolder, ChatMessage item, int position)
+    public void convert(ViewHolder viewHolder, People item, int position)
     {
-        viewHolder.setText(R.id.answer_text, item.getMsg());
+        viewHolder.setText(R.id.purple_text, item.getMsg());
     }
 }
 ```
