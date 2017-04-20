@@ -2,6 +2,7 @@ package com.excellence.basetoolslibrary.recycleradapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegate;
@@ -21,8 +22,9 @@ import java.util.List;
 
 public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder>
 {
-	private Context mContext = null;
-	private List<T> mDatas = null;
+	protected Context mContext = null;
+	protected List<T> mDatas = null;
+	private OnItemClickListener mOnItemClickListener = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
 
 	public MultiItemTypeRecyclerAdapter(Context context, T[] datas)
@@ -122,5 +124,51 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	{
 		ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItemViewType(position));
 		delegate.convert(holder, mDatas.get(position), position);
+		setViewListener(holder, position);
+	}
+
+	protected void setViewListener(final RecyclerViewHolder viewHolder, final int position)
+	{
+		viewHolder.getConvertView().setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if (mOnItemClickListener != null)
+					mOnItemClickListener.onItemClick(viewHolder, v, position);
+			}
+		});
+
+		viewHolder.getConvertView().setOnLongClickListener(new View.OnLongClickListener()
+		{
+			@Override
+			public boolean onLongClick(View v)
+			{
+				return mOnItemClickListener != null && mOnItemClickListener.onItemLongClick(viewHolder, v, position);
+			}
+		});
+	}
+
+	/**
+	 * 刷新视图
+	 *
+	 * @param datas 数据源
+	 */
+	public void notifyNewData(List<T> datas)
+	{
+		mDatas = datas;
+		notifyDataSetChanged();
+	}
+
+	public interface OnItemClickListener
+	{
+		void onItemClick(RecyclerViewHolder viewHolder, View v, int position);
+
+		boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position);
+	}
+
+	public void setOnItemClickListener(OnItemClickListener onItemClickListener)
+	{
+		mOnItemClickListener = onItemClickListener;
 	}
 }

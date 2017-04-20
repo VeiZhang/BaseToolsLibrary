@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.excellence.basetoolslibrary.recycleradapter.MultiItemTypeRecyclerAdapter;
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
@@ -17,9 +18,10 @@ import com.excellence.tooldemo.bean.PurpleData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiItemRecyclerAdapterActivity extends AppCompatActivity
+public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implements MultiItemTypeRecyclerAdapter.OnItemClickListener
 {
 	private RecyclerView mRecyclerView = null;
+	private WarAdapter mWarAdapter = null;
 	private List<People> mMessages = null;
 
 	@Override
@@ -31,7 +33,9 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity
 		initMsg();
 		mRecyclerView = (RecyclerView) findViewById(R.id.multi_item_recyclerview);
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-		mRecyclerView.setAdapter(new WarAdapter(this, mMessages));
+		mWarAdapter = new WarAdapter(this, mMessages);
+		mWarAdapter.setOnItemClickListener(this);
+		mRecyclerView.setAdapter(mWarAdapter);
 	}
 
 	private void initMsg()
@@ -45,6 +49,19 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity
 		mMessages.add(new PurpleData("Miss，怎么可能"));
 		mMessages.add(new BlueData("阿木木"));
 		mMessages.add(new ComputerData("Victory!"));
+	}
+
+	@Override
+	public void onItemClick(RecyclerViewHolder viewHolder, View v, int position)
+	{
+		mMessages.get(position).setMsg("defeat");
+		mWarAdapter.notifyNewData(mMessages);
+	}
+
+	@Override
+	public boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position)
+	{
+		return false;
 	}
 
 	private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
