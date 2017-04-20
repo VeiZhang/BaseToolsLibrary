@@ -55,14 +55,4 @@ public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T>
 
 	public abstract void convert(ViewHolder viewHolder, T item, int position);
 
-	/**
-	 * 刷新视图
-	 *
-	 * @param datas 数据源
-	 */
-	public void notifyNewData(List<T> datas)
-	{
-		mDatas = datas;
-		notifyDataSetChanged();
-	}
 }

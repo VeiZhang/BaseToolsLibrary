@@ -153,4 +153,15 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter
 		delegate.convert(viewHolder, getItem(position), position);
 		return viewHolder.getConvertView();
 	}
+
+	/**
+	 * 刷新视图
+	 *
+	 * @param datas 数据源
+	 */
+	public void notifyNewData(List<T> datas)
+	{
+		mDatas = datas;
+		notifyDataSetChanged();
+	}
 }

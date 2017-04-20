@@ -3,6 +3,8 @@ package com.excellence.tooldemo;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
@@ -16,7 +18,7 @@ import com.excellence.tooldemo.bean.People;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiItemAdapterActivity extends AppCompatActivity
+public class MultiItemAdapterActivity extends AppCompatActivity implements AdapterView.OnItemClickListener
 {
 	private ListView mListView = null;
 	private List<People> mMessages = null;
@@ -30,6 +32,7 @@ public class MultiItemAdapterActivity extends AppCompatActivity
 		initMsg();
 		mListView = (ListView) findViewById(R.id.multi_item_listview);
 		mListView.setAdapter(new ChatAdapter(this, mMessages));
+		mListView.setOnItemClickListener(this);
 	}
 
 	private void initMsg()
@@ -46,6 +49,14 @@ public class MultiItemAdapterActivity extends AppCompatActivity
 		mMessages.add(new ComputerData("Legendary"));
 		mMessages.add(new ComputerData("penta kill"));
 		mMessages.add(new ComputerData("ACE!"));
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+	{
+		ChatAdapter adapter = (ChatAdapter) parent.getAdapter();
+		mMessages.get(position).setMsg("要死了，要死了。。。");
+		adapter.notifyNewData(mMessages);
 	}
 
 	private class ChatAdapter extends MultiItemTypeAdapter<People>
