@@ -39,7 +39,7 @@ compile project(':basetoolslibrary')
 
 <br>
 
-## CommonAdapter
+## CommonAdapter<a name="CommonAdapter">
 
 ### gridview，listview的通用适配器<a name="通用适配器">
 
