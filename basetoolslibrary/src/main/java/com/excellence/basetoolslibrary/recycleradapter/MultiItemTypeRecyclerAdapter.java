@@ -50,6 +50,43 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	}
 
 	/**
+	 * 添加视图
+	 *
+	 * @param viewType 布局类型
+	 * @param delegate 视图
+	 * @return
+	 */
+	public MultiItemTypeRecyclerAdapter<T> addItemViewDelegate(int viewType, ItemViewDelegate<T> delegate)
+	{
+		mItemViewDelegateManager.addDelegate(viewType, delegate);
+		return this;
+	}
+
+	/**
+	 * 移除视图
+	 *
+	 * @param delegate 视图
+	 * @return
+	 */
+	public MultiItemTypeRecyclerAdapter<T> removeItemViewDelegate(ItemViewDelegate<T> delegate)
+	{
+		mItemViewDelegateManager.removeDelegate(delegate);
+		return this;
+	}
+
+	/**
+	 * 移除视图
+	 *
+	 * @param viewType 布局类型
+	 * @return
+	 */
+	public MultiItemTypeRecyclerAdapter<T> removeItemViewDelegate(int viewType)
+	{
+		mItemViewDelegateManager.removeDelegate(viewType);
+		return this;
+	}
+
+	/**
 	 * 判断视图是否可用
 	 *
 	 * @return {@code true}:是<br>{@code false}:否

@@ -16,7 +16,7 @@ import java.util.List;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/4/19
- *     desc   : 多布局通用适配器
+ *     desc   : 多布局Gridview Listview通用适配器
  * </pre>
  */
 
@@ -38,33 +38,70 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
-    /**
-     * 添加视图
-     *
-     * @param delegate 视图
-     * @return
-     */
+	/**
+	 * 添加视图
+	 *
+	 * @param delegate 视图
+	 * @return
+	 */
 	public MultiItemTypeAdapter<T> addItemViewDelegate(ItemViewDelegate<T> delegate)
 	{
 		mItemViewDelegateManager.addDelegate(delegate);
 		return this;
 	}
 
-    /**
-     * 判断视图是否可用
-     *
-     * @return {@code true}:是<br>{@code false}:否
-     */
+	/**
+	 * 添加视图
+	 *
+	 * @param viewType 布局类型
+	 * @param delegate 视图
+	 * @return
+	 */
+	public MultiItemTypeAdapter<T> addItemViewDelegate(int viewType, ItemViewDelegate<T> delegate)
+	{
+		mItemViewDelegateManager.addDelegate(viewType, delegate);
+		return this;
+	}
+
+	/**
+	 * 移除视图
+	 *
+	 * @param delegate 视图
+	 * @return
+	 */
+	public MultiItemTypeAdapter<T> removeItemViewDelegate(ItemViewDelegate<T> delegate)
+	{
+		mItemViewDelegateManager.removeDelegate(delegate);
+		return this;
+	}
+
+	/**
+	 * 移除视图
+	 *
+	 * @param viewType 布局类型
+	 * @return
+	 */
+	public MultiItemTypeAdapter<T> removeItemViewDelegate(int viewType)
+	{
+		mItemViewDelegateManager.removeDelegate(viewType);
+		return this;
+	}
+
+	/**
+	 * 判断视图是否可用
+	 *
+	 * @return {@code true}:是<br>{@code false}:否
+	 */
 	private boolean userItemViewDelegateManager()
 	{
 		return mItemViewDelegateManager.getItemViewDelegateCount() > 0;
 	}
 
-    /**
-     * 获取视图数量
-     *
-     * @return 视图数量
-     */
+	/**
+	 * 获取视图数量
+	 *
+	 * @return 视图数量
+	 */
 	@Override
 	public int getViewTypeCount()
 	{
@@ -73,12 +110,12 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter
 		return super.getViewTypeCount();
 	}
 
-    /**
-     * 获取视图类型
-     *
-     * @param position 位置
-     * @return 视图类型
-     */
+	/**
+	 * 获取视图类型
+	 *
+	 * @param position 位置
+	 * @return 视图类型
+	 */
 	@Override
 	public int getItemViewType(int position)
 	{
