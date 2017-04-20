@@ -1,6 +1,4 @@
-package com.excellence.tooldemo;
-
-import com.excellence.tooldemo.bean.People;
+package com.excellence.tooldemo.bean;
 
 /**
  * <pre>

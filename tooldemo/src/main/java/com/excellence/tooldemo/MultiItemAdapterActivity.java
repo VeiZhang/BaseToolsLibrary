@@ -8,6 +8,7 @@ import android.widget.ListView;
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
 import com.excellence.basetoolslibrary.baseadapter.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.baseadapter.MultiItemTypeAdapter;
+import com.excellence.tooldemo.bean.ComputerData;
 import com.excellence.tooldemo.bean.PurpleData;
 import com.excellence.tooldemo.bean.BlueData;
 import com.excellence.tooldemo.bean.People;
