@@ -5,70 +5,87 @@
 [![GitHub forks][icon_forks]][forks]
 [![GitHub stars][icon_stars]][stars]
 
+## 目录<a name="目录">
+* [使用](#使用)
+* [CommonAdapter](#CommonAdapter)
+    * [通用适配器](#通用适配器)
+    * [多布局通用适配器](#多布局通用适配器)
+* [BaseRecyclerAdapter](#BaseRecyclerAdapter)
+    * [RecyclerView通用适配器](#RecyclerView通用适配器)
+    * [RecyclerView多布局通用适配器](#RecyclerView多布局通用适配器)
+* [Utils](#Utils)
+    * [权限](#权限)
+    * [常用工具类](#常用工具类)
+* [Assist](#Assist)
+* [版本更新](#版本更新)
+* [感谢](#感谢)
+
+<br>
+
 <!-- you should configure jcenter repository-->
-## 导入Android Studio
+## 导入Android Studio<a name="使用">
 添加jCenter远程依赖到module里的build.gradle：
 ```
-  dependencies {
+dependencies {
     compile 'com.excellence:basetools:1.2.0'
     // 或者直接使用最新版本
     // compile 'com.excellence:basetools:+'
-  }
+}
 ```
 或者直接添加本地Library依赖
 ```
-    compile project(':basetoolslibrary')
+compile project(':basetoolslibrary')
 ```
 
-## 1.CommonAdapter
+<br>
 
-#### gridview，listview的通用适配器
+## CommonAdapter
+
+### gridview，listview的通用适配器<a name="通用适配器">
 
 示例：[GridAdapterActivity][GridAdapterActivity]
 
 
 ```java
-    // 创建adapter类继承CommonAdapter
-
-    private class AppGridAdapter extends CommonAdapter<ResolveInfo>
+// 创建adapter类继承CommonAdapter
+private class AppGridAdapter extends CommonAdapter<ResolveInfo>
+{
+    public AppGridAdapter(Context context, List<ResolveInfo> datas, int layoutId)
     {
-        public AppGridAdapter(Context context, List<ResolveInfo> datas, int layoutId)
-        {
-            super(context, datas, layoutId);
-        }
-
-        @Override
-        public void convert(ViewHolder viewHolder, ResolveInfo item, int position)
-        {
-            ImageView iconView = viewHolder.getView(android.R.id.icon);
-            iconView.setImageDrawable(item.loadIcon(mPackageManager));
-            viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager).toString());
-        }
+        super(context, datas, layoutId);
     }
+
+    @Override
+    public void convert(ViewHolder viewHolder, ResolveInfo item, int position)
+    {
+        ImageView iconView = viewHolder.getView(android.R.id.icon);
+        iconView.setImageDrawable(item.loadIcon(mPackageManager));
+        viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager).toString());
+    }
+}
 ```
 
 
 ```java
-    // ViewHolder辅助方法
-
-    public <T extends View> T getView(int viewId);                                    // 用于获取Item内的子控件，参数为控件的id
-    public ViewHolder setText(int viewId, int strId);                                 // 用于设置文本，参数控件id、字符串id
-    public ViewHolder setBackgroundResource(int viewId, int resId);                   // 用于设置背景图片，参数控件id、图片id
-    public ViewHolder setImageResource(int viewId, int resId);                        // 用于设置ImageView图片资源，参数控件id、图片id
-    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener);  // 用于点击事件监听
-    *
-    *
-    *
-    // 可拓展其他方法
+// ViewHolder辅助方法
+public <T extends View> T getView(int viewId);                                    // 用于获取Item内的子控件，参数为控件的id
+public ViewHolder setText(int viewId, int strId);                                 // 用于设置文本，参数控件id、字符串id
+public ViewHolder setBackgroundResource(int viewId, int resId);                   // 用于设置背景图片，参数控件id、图片id
+public ViewHolder setImageResource(int viewId, int resId);                        // 用于设置ImageView图片资源，参数控件id、图片id
+public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener);  // 用于点击事件监听
+*
+*
+*
+// 可拓展其他方法
 ```
 
 
 ```java
-    // 刷新适配器
-    adapter.notifyNewData(data);
+// 刷新适配器
+adapter.notifyNewData(data);
 ```
 
-#### gridview，listview的多布局通用适配器
+### gridview，listview的多布局通用适配器<a name="多布局通用适配器">
 
 示例：[MultiItemAdapterActivity][MultiItemAdapterActivity]
 
@@ -85,7 +102,7 @@ private class ChatAdapter extends MultiItemTypeAdapter<People>
     }
 }
 
-// 电脑方布局
+// 不同的布局视图
 private class ComputerDelegate implements ItemViewDelegate<People>
 {
     @Override
@@ -106,94 +123,91 @@ private class ComputerDelegate implements ItemViewDelegate<People>
         viewHolder.setText(R.id.computer_text, item.getMsg());
     }
 }
-
-// 蓝色方布局
-private class BlueDelegate implements ItemViewDelegate<People>
-{
-
-    @Override
-    public int getItemViewLayoutId()
-    {
-        return R.layout.item_blue;
-    }
-
-    @Override
-    public boolean isForViewType(People item, int position)
-    {
-        return item instanceof BlueData;
-    }
-
-    @Override
-    public void convert(ViewHolder viewHolder, People item, int position)
-    {
-        viewHolder.setText(R.id.blue_text, item.getMsg());
-    }
-}
-
-// 紫色方布局
-private class PurpleDelegate implements ItemViewDelegate<People>
-{
-    @Override
-    public int getItemViewLayoutId()
-    {
-        return R.layout.item_purple;
-    }
-
-    @Override
-    public boolean isForViewType(People item, int position)
-    {
-        return item instanceof PurpleData;
-    }
-
-    @Override
-    public void convert(ViewHolder viewHolder, People item, int position)
-    {
-        viewHolder.setText(R.id.purple_text, item.getMsg());
-    }
-}
 ```
 
-## 2.BaseRecyclerAdapter
+<br>
 
-#### RecyclerView的通用适配器
+## BaseRecyclerAdapter<a name="BaseRecyclerAdapter">
+
+### RecyclerView的通用适配器<a name="RecyclerView通用适配器">
 
 示例：[RecyclerAdapterActivity][RecyclerAdapterActivity]
 
 ```java
-    // 创建adapter类继承BaseRecyclerAdapter
+// 创建adapter类继承BaseRecyclerAdapter
+private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
+{
+    private PackageManager mPackageManager = null;
 
-    private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
+    public AppRecyclerAdapter(Context context, List<ResolveInfo> datas, int layoutId)
     {
-        private PackageManager mPackageManager = null;
-
-        public AppRecyclerAdapter(Context context, List<ResolveInfo> datas, int layoutId)
-        {
-            super(context, datas, layoutId);
-            mPackageManager = context.getPackageManager();
-        }
-
-        @Override
-        public void convert(RecyclerViewHolder viewHolder, ResolveInfo item, int position)
-        {
-            viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
-            viewHolder.setImageDrawable(android.R.id.icon, item.loadIcon(mPackageManager));
-        }
-
+        super(context, datas, layoutId);
+        mPackageManager = context.getPackageManager();
     }
+
+    @Override
+    public void convert(RecyclerViewHolder viewHolder, ResolveInfo item, int position)
+    {
+        viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
+        viewHolder.setImageDrawable(android.R.id.icon, item.loadIcon(mPackageManager));
+    }
+
+}
 ```
 
 
 ```java
-    // RecyclerViewHolder辅助方法类同ViewHolder辅助方法
-    *
-    *
-    *
+// RecyclerViewHolder辅助方法类同ViewHolder辅助方法
+*
+*
+*
 ```
 
+### RecyclerView的多布局通用适配器<a name="RecyclerView多布局通用适配器">
 
-## 3.Utils
+示例：[MultiItemRecyclerAdapterActivity][MultiItemRecyclerAdapterActivity]
 
-##### 权限
+```java
+// 多布局适配器
+private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
+{
+    public WarAdapter(Context context, List<People> datas)
+    {
+        super(context, datas);
+        addItemViewDelegate(new ComputerRecyclerDelegate());
+        addItemViewDelegate(new BlueRecyclerDelegate());
+        addItemViewDelegate(new PurpleRecyclerDelegate());
+    }
+}
+
+// 不同的布局视图
+private class ComputerRecyclerDelegate implements ItemViewDelegate<People>
+{
+    @Override
+    public int getItemViewLayoutId()
+    {
+        return R.layout.item_computer;
+    }
+
+    @Override
+    public boolean isForViewType(People item, int position)
+    {
+        return item instanceof ComputerData;
+    }
+
+    @Override
+    public void convert(RecyclerViewHolder viewHolder, People item, int position)
+    {
+        viewHolder.setText(R.id.computer_text, item.getMsg());
+    }
+}
+```
+
+<br>
+
+## Utils<a name="Utils">
+
+### 权限<a name="权限">
 ```
 <uses-permission android:name="android.permission.GET_TASKS"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -204,7 +218,8 @@ private class PurpleDelegate implements ItemViewDelegate<People>
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 ```
 
-#### 常用的方法
+
+### 常用工具类<a name="常用工具类">
 
 > - **Activity相关→[ActivityUtils.java][ActivityUtils]**
 ```
@@ -380,8 +395,9 @@ getChineseZodiac : 获取生肖
 getZodiac        : 获取星座
 ```
 
+<br>
 
-## 4.Assist
+## Assist<a name="Assist">
 > - **WeakHandler转载→[WeakHandler.java][WeakHandler]**
 ```
 WeakHandler : 使用描述，性能优化，避免内存泄漏
@@ -392,18 +408,25 @@ WeakHandler : 使用描述，性能优化，避免内存泄漏
 HanziToPinyin : Android汉字转拼音类
 ```
 
-<br><br>
+<br>
 
+## 版本更新<a name="版本更新">
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
 | [1.2.0][BaseToolsV1.2.0] | 新增网络、拼音、异常打印等工具类  2017-4-13 |
 | [1.1.0][BaseToolsV1.1.0] | Utils增加一些常用的工具类:应用、数据库、分辨率、文件、正则表达式、命令、时间等  2017-2-23 |
 | [1.0.0][BaseToolsV1.0.0] | 创建ListView、GridView、RecyclerView的通用适配器，一些辅助方法  2016-12-20 |
 
-#### 参考
+<br>
+
+## 感谢<a name="感谢">
 > - [张鸿洋][ZhangHongYang]
 > - [布兰柯基][Blankj]
 > - [马天宇][litesuits]
+
+<br>
+
+[返回目录](#目录)
 
 
 <!-- 引用网站链接 -->
@@ -432,6 +455,7 @@ HanziToPinyin : Android汉字转拼音类
 [GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 [MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.java
+[MultiItemRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemRecyclerAdapterActivity.java
 
 <!-- 常用方法 -->
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
