@@ -18,10 +18,8 @@ import android.widget.BaseAdapter;
  * </pre>
  */
 
-public abstract class CommonAdapter<T> extends BaseAdapter
+public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T>
 {
-	private Context mContext = null;
-	private List<T> mDatas = null;
 	private int mLayoutId;
 
 	/**
@@ -43,27 +41,8 @@ public abstract class CommonAdapter<T> extends BaseAdapter
 	 */
 	public CommonAdapter(Context context, List<T> datas, @LayoutRes int layoutId)
 	{
-		mContext = context;
-		mDatas = datas;
+		super(context, datas);
 		mLayoutId = layoutId;
-	}
-
-	@Override
-	public int getCount()
-	{
-		return mDatas == null ? 0 : mDatas.size();
-	}
-
-	@Override
-	public T getItem(int position)
-	{
-		return mDatas == null ? null : mDatas.get(position);
-	}
-
-	@Override
-	public long getItemId(int position)
-	{
-		return position;
 	}
 
 	@Override

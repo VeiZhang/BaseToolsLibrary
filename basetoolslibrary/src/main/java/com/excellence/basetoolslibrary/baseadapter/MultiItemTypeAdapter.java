@@ -22,8 +22,8 @@ import java.util.List;
 
 public class MultiItemTypeAdapter<T> extends BaseAdapter
 {
-	private Context mContext;
-	private List<T> mDatas;
+	protected Context mContext;
+	protected List<T> mDatas;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager;
 
 	public MultiItemTypeAdapter(Context context, T[] datas)
