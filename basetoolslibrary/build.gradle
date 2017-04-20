@@ -46,7 +46,7 @@ publish {
     userOrg = 'veizhang'
     groupId = 'com.excellence'
     artifactId = 'basetools'
-    publishVersion = '1.2.0'
+    publishVersion = '1.2.1'
     desc = 'Android通用适配器和常用的工具类'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
 }
