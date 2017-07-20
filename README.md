@@ -333,20 +333,20 @@ view2Bitmap     : view转Bitmap
 
 > - **网络相关→[NetworkUtils.java][NetworkUtils]**
 ```
-getActiveNetworkInfo : 获取活动的网络信息
-isConnected : 检查网络是否连接
-isAvailableByPing : 判断网络是否可用
-isMobileDataEnabled : 判断移动数据是否打开
-setMobileDataEnabled : 打开或关闭移动数据（舍弃不可用）
-is4G : 判断是否是4G网络
-isWiFiEnabled : 判断是否打开WiFi
-setWiFiEnabled : 打开或关闭WiFi
-isWiFiConnected : 判断WiFi是否连接
-isWiFiAvailable : 判断WiFi是否可用
-getNetworkOperatorName : 获取网络运营商名称
-getNetworkType : 获取当前网络类型
-getIPAddress : 获取网络IP地址
-getDomainAddress : 根据域名获取ip
+getActiveNetworkInfo    : 获取活动的网络信息
+isConnected             : 检查网络是否连接
+isAvailableByPing       : 判断网络是否可用
+isMobileDataEnabled     : 判断移动数据是否打开
+setMobileDataEnabled    : 打开或关闭移动数据（舍弃不可用）
+is4G                    : 判断是否是4G网络
+isWiFiEnabled           : 判断是否打开WiFi
+setWiFiEnabled          : 打开或关闭WiFi
+isWiFiConnected         : 判断WiFi是否连接
+isWiFiAvailable         : 判断WiFi是否可用
+getNetworkOperatorName  : 获取网络运营商名称
+getNetworkType          : 获取当前网络类型
+getIPAddress            : 获取网络IP地址
+getDomainAddress        : 根据域名获取ip
 ```
 
 > - **拼音相关→[PinyinUtils.java][PinyinUtils]**
@@ -384,7 +384,10 @@ execRuntimeCommand       : 执行命令
 
 > - **字符串相关→[StringUtils.java][StringUtils]**
 ```
-isEmpty : 判断字符串是否为空
+isEmpty          : 判断字符串是否为空
+checkNULL        : 判断字符串是否为空，是否是"NULL"字符串
+equals           : 比较字符串是否相等
+equalsIgnoreCase : 比较字符串是否相等，忽略大小写
 ```
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
