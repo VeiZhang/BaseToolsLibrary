@@ -334,6 +334,106 @@ public class FileUtils
 	}
 
 	/**
+	 * 获取目录剩余空间
+	 * 剩余空间 = 总空间 - 已使用空间
+	 * 剩余空间 ！= 可用空间
+	 *
+	 * @param dir File类型
+	 * @return
+	 */
+	public static long getDirFreeSpace(File dir)
+	{
+		long freeSpace = 0;
+		if (isFileExists(dir))
+		{
+			if (dir.isDirectory())
+				freeSpace = dir.getFreeSpace();
+			else if (dir.isFile())
+				freeSpace = dir.getParentFile().getFreeSpace();
+		}
+		return freeSpace;
+	}
+
+	/**
+	 * 获取目录剩余空间
+	 * 剩余空间 = 总空间 - 已使用空间
+	 * 剩余空间 ！= 可用空间
+	 * 
+	 * @param filePath 文件路径字符串
+	 * @return
+	 */
+	public static long getDirFreeSpace(String filePath)
+	{
+		if (isFileExists(filePath))
+			return getDirFreeSpace(new File(filePath));
+		return 0;
+	}
+
+	/**
+	 * 获取目录总空间
+	 *
+	 * @param dir File类型
+	 * @return
+	 */
+	public static long getDirTotalSpace(File dir)
+	{
+		long totalSpace = 0;
+		if (isFileExists(dir))
+		{
+			if (dir.isDirectory())
+				totalSpace = dir.getTotalSpace();
+			else if (dir.isFile())
+				totalSpace = dir.getParentFile().getTotalSpace();
+		}
+		return totalSpace;
+	}
+
+	/**
+	 * 获取目录总空间
+	 * 
+	 * @param filePath 文件路径字符串
+	 * @return
+	 */
+	public static long getDirTotalSpace(String filePath)
+	{
+		if (isFileExists(filePath))
+			return getDirTotalSpace(new File(filePath));
+		return 0;
+	}
+
+	/**
+	 * 获取目录可用空间
+	 *
+	 * @param dir File类型
+	 * @return
+	 */
+	public static long getDirUsableSpace(File dir)
+	{
+		long usableSpace = 0;
+		if (isFileExists(dir))
+		{
+			if (dir.isDirectory())
+				usableSpace = dir.getUsableSpace();
+			else if (dir.isFile())
+				usableSpace = dir.getParentFile().getUsableSpace();
+		}
+		return usableSpace;
+	}
+
+	/**
+	 * 获取目录可用空间
+	 *
+	 * @param filePath 文件路径字符串
+	 * @return
+	 */
+	public static long getDirUsableSpace(String filePath)
+	{
+		if (isFileExists(filePath))
+			return getDirUsableSpace(new File(filePath));
+		return 0;
+	}
+
+	/**
 	 * 修改目录、文件权限
 	 *
 	 * @param path 目录、文件路径字符串
