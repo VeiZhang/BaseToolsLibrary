@@ -379,10 +379,19 @@ getReplaceFirst : 替换正则匹配的第一部分
 getReplaceAll   : 替换所有正则匹配的部分
 ```
 
+> - **资源相关→[ResourceUtils.java][ResourceUtils]**
+```
+getName        : 解析资源的全名
+getEntryName   : 解析资源名
+getTypeName    : 解析资源类型名
+getPackageName : 解析资源的包名
+getIdentifier  : 获取资源Id
+```
+
 > - **命令相关→[ShellUtils.java][ShellUtils]**
 ```
-execProceeBuilderCommand : 执行命令
-execRuntimeCommand       : 执行命令
+execProcessBuilderCommand : 执行命令
+execRuntimeCommand        : 执行命令
 ```
 
 > - **字符串相关→[StringUtils.java][StringUtils]**
@@ -497,6 +506,7 @@ HanziToPinyin : Android汉字转拼音类
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
+[ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java

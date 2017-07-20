@@ -441,7 +441,7 @@ public class FileUtils
 	 */
 	public static void chmod(String path, String permission)
 	{
-		ShellUtils.execProceeBuilderCommand("chmod", permission, path);
+		ShellUtils.execProcessBuilderCommand("chmod", permission, path);
 	}
 
 	/**

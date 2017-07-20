@@ -17,7 +17,7 @@ public class ShellUtils
 	 * @param command 字符串数组命令
 	 * @return 执行结果
 	 */
-	public static CommandResult execProceeBuilderCommand(String... command)
+	public static CommandResult execProcessBuilderCommand(String... command)
 	{
 		Process process = null;
 		StringBuilder msg = null;
