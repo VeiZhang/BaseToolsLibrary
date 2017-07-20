@@ -359,6 +359,15 @@ getPinyinFirstLetter  : 获取中文首字母
 getPinyinFirstLetters : 获取所有中文首字母
 ```
 
+> - **反射相关→[ReflectUtils.java][ReflectUtils]**
+```
+getDeclaredFields : 获取类中所有成员
+getFields         : 获取类中所有的公有成员
+setField          : 设置私有成员的值
+getField          : 获取私有成员的值
+invokeMethod      : 调用私有方法
+```
+
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
 ```
 isMobileSimple  : 验证手机号（简单）
@@ -505,6 +514,7 @@ HanziToPinyin : Android汉字转拼音类
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
+[ReflectUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ReflectUtils.java
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
 [ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
