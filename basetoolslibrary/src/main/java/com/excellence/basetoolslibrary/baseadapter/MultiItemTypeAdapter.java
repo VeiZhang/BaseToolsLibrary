@@ -16,7 +16,7 @@ import java.util.List;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/4/19
- *     desc   : 多布局Gridview Listview通用适配器
+ *     desc   : 多种类型GridView ListView通用适配器
  * </pre>
  */
 

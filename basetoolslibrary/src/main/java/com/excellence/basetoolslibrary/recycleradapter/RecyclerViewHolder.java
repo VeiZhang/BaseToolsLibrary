@@ -27,6 +27,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.excellence.basetoolslibrary.helper.ViewHelper;
+
 /**
  * <pre>
  *     author : VeiZhang
@@ -36,7 +38,7 @@ import android.widget.TextView;
  * </pre>
  */
 
-public class RecyclerViewHolder extends RecyclerView.ViewHolder
+public class RecyclerViewHolder extends RecyclerView.ViewHolder implements ViewHelper<RecyclerViewHolder>
 {
 	private Context mContext = null;
 	private View mConvertView = null;
@@ -97,6 +99,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param strId 字符串资源Id
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setText(@IdRes int viewId, @StringRes int strId)
 	{
 		TextView view = getView(viewId);
@@ -111,6 +114,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param text 字符串
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setText(@IdRes int viewId, String text)
 	{
 		TextView view = getView(viewId);
@@ -125,6 +129,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param text 字符串
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setText(@IdRes int viewId, CharSequence text)
 	{
 		TextView view = getView(viewId);
@@ -139,6 +144,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param textColor 颜色资源
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setTextColor(@IdRes int viewId, @ColorInt int textColor)
 	{
 		TextView view = getView(viewId);
@@ -153,6 +159,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param textColorRes 颜色资源Id
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setTextColorRes(@IdRes int viewId, @ColorRes int textColorRes)
 	{
 		TextView view = getView(viewId);
@@ -167,6 +174,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param resId 图片资源Id
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setImageResource(@IdRes int viewId, @DrawableRes int resId)
 	{
 		ImageView view = getView(viewId);
@@ -181,6 +189,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param bitmap 位图资源
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setImageBitmap(@IdRes int viewId, Bitmap bitmap)
 	{
 		ImageView view = getView(viewId);
@@ -195,6 +204,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param drawable 图片资源
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setImageDrawable(@IdRes int viewId, Drawable drawable)
 	{
 		ImageView view = getView(viewId);
@@ -209,6 +219,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param color 背景图片颜色
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setBackgroundColor(@IdRes int viewId, @ColorInt int color)
 	{
 		View view = getView(viewId);
@@ -223,6 +234,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param backgroundRes 背景图片资源Id
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setBackgroundRes(@IdRes int viewId, @DrawableRes int backgroundRes)
 	{
 		View view = getView(viewId);
@@ -238,6 +250,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @return
 	 */
 	@SuppressLint("NewApi")
+	@Override
 	public RecyclerViewHolder setAlpha(@IdRes int viewId, @FloatRange(from = 0.0, to = 1.0) float value)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
@@ -267,6 +280,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 *        </ul>
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setVisible(@IdRes int viewId, int visibility)
 	{
 		View view = getView(viewId);
@@ -281,6 +295,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param visible 是否可见
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setVisible(@IdRes int viewId, boolean visible)
 	{
 		View view = getView(viewId);
@@ -294,6 +309,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param viewId 控件资源Id
 	 * @return 超链接
 	 */
+	@Override
 	public RecyclerViewHolder linkify(@IdRes int viewId)
 	{
 		TextView view = getView(viewId);
@@ -301,6 +317,14 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 		return this;
 	}
 
+	/**
+	 * 设置文字字体样式
+	 *
+	 * @param viewId 控件资源Id
+	 * @param typeface 字体样式
+	 * @return
+	 */
+	@Override
 	public RecyclerViewHolder setTypeface(int viewId, Typeface typeface)
 	{
 		TextView view = getView(viewId);
@@ -316,6 +340,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param viewIds 控件资源Ids
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setTypeface(Typeface typeface, int... viewIds)
 	{
 		for (int viewId : viewIds)
@@ -332,6 +357,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param progress 进度
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setProgress(@IdRes int viewId, int progress)
 	{
 		ProgressBar view = getView(viewId);
@@ -347,6 +373,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param max 最大进度
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setProgress(@IdRes int viewId, int progress, int max)
 	{
 		ProgressBar view = getView(viewId);
@@ -362,6 +389,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param max 最大进度
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setMax(@IdRes int viewId, int max)
 	{
 		ProgressBar view = getView(viewId);
@@ -376,6 +404,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param rating 评分
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setRating(@IdRes int viewId, float rating)
 	{
 		RatingBar view = getView(viewId);
@@ -391,6 +420,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param max 最大分数
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setRating(@IdRes int viewId, float rating, int max)
 	{
 		RatingBar view = getView(viewId);
@@ -406,6 +436,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param tag 标签
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setTag(@IdRes int viewId, Object tag)
 	{
 		View view = getView(viewId);
@@ -421,6 +452,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param tag 标签
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setTag(@IdRes int viewId, int key, Object tag)
 	{
 		View view = getView(viewId);
@@ -435,6 +467,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param checked check状态
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setChecked(@IdRes int viewId, boolean checked)
 	{
 		Checkable view = (Checkable) getView(viewId);
@@ -452,6 +485,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param listener 点击事件
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setOnClickListener(@IdRes int viewId, View.OnClickListener listener)
 	{
 		View view = getView(viewId);
@@ -465,6 +499,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param listener 触摸事件
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setOnTouchListener(@IdRes int viewId, View.OnTouchListener listener)
 	{
 		View view = getView(viewId);
@@ -478,6 +513,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 * @param listener 长按事件
 	 * @return
 	 */
+	@Override
 	public RecyclerViewHolder setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener)
 	{
 		View view = getView(viewId);

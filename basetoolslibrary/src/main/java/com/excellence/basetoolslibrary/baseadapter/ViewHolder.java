@@ -26,6 +26,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.excellence.basetoolslibrary.helper.ViewHelper;
+
 /**
  * <pre>
  *     author : VeiZhang
@@ -35,7 +37,7 @@ import android.widget.TextView;
  * </pre>
  */
 
-public class ViewHolder
+public class ViewHolder implements ViewHelper<ViewHolder>
 {
 	private Context mContext = null;
 	private View mConvertView = null;
@@ -93,6 +95,7 @@ public class ViewHolder
 	 * @param strId 字符串资源Id
 	 * @return
 	 */
+	@Override
 	public ViewHolder setText(@IdRes int viewId, @StringRes int strId)
 	{
 		TextView view = getView(viewId);
@@ -107,6 +110,7 @@ public class ViewHolder
 	 * @param text 字符串
 	 * @return
 	 */
+	@Override
 	public ViewHolder setText(@IdRes int viewId, String text)
 	{
 		TextView view = getView(viewId);
@@ -121,6 +125,7 @@ public class ViewHolder
 	 * @param text 字符串
 	 * @return
 	 */
+	@Override
 	public ViewHolder setText(@IdRes int viewId, CharSequence text)
 	{
 		TextView view = getView(viewId);
@@ -135,6 +140,7 @@ public class ViewHolder
 	 * @param textColor 颜色资源
 	 * @return
 	 */
+	@Override
 	public ViewHolder setTextColor(@IdRes int viewId, @ColorInt int textColor)
 	{
 		TextView view = getView(viewId);
@@ -149,6 +155,7 @@ public class ViewHolder
 	 * @param textColorRes 颜色资源Id
 	 * @return
 	 */
+	@Override
 	public ViewHolder setTextColorRes(@IdRes int viewId, @ColorRes int textColorRes)
 	{
 		TextView view = getView(viewId);
@@ -163,6 +170,7 @@ public class ViewHolder
 	 * @param resId 图片资源Id
 	 * @return
 	 */
+	@Override
 	public ViewHolder setImageResource(@IdRes int viewId, @DrawableRes int resId)
 	{
 		ImageView view = getView(viewId);
@@ -177,6 +185,7 @@ public class ViewHolder
 	 * @param bitmap 位图资源
 	 * @return
 	 */
+	@Override
 	public ViewHolder setImageBitmap(@IdRes int viewId, Bitmap bitmap)
 	{
 		ImageView view = getView(viewId);
@@ -191,6 +200,7 @@ public class ViewHolder
 	 * @param drawable 图片资源
 	 * @return
 	 */
+	@Override
 	public ViewHolder setImageDrawable(@IdRes int viewId, @Nullable Drawable drawable)
 	{
 		ImageView view = getView(viewId);
@@ -205,6 +215,7 @@ public class ViewHolder
 	 * @param color 背景图片颜色
 	 * @return
 	 */
+	@Override
 	public ViewHolder setBackgroundColor(@IdRes int viewId, @ColorInt int color)
 	{
 		View view = getView(viewId);
@@ -219,6 +230,7 @@ public class ViewHolder
 	 * @param backgroundRes 背景图片资源Id
 	 * @return
 	 */
+	@Override
 	public ViewHolder setBackgroundRes(@IdRes int viewId, @DrawableRes int backgroundRes)
 	{
 		View view = getView(viewId);
@@ -234,6 +246,7 @@ public class ViewHolder
 	 * @return
 	 */
 	@SuppressLint("NewApi")
+	@Override
 	public ViewHolder setAlpha(@IdRes int viewId, @FloatRange(from = 0.0, to = 1.0) float value)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
@@ -263,6 +276,7 @@ public class ViewHolder
 	 *        </ul>
 	 * @return
 	 */
+	@Override
 	public ViewHolder setVisible(@IdRes int viewId, int visibility)
 	{
 		View view = getView(viewId);
@@ -277,6 +291,7 @@ public class ViewHolder
 	 * @param visible 是否可见
 	 * @return
 	 */
+	@Override
 	public ViewHolder setVisible(@IdRes int viewId, boolean visible)
 	{
 		View view = getView(viewId);
@@ -290,6 +305,7 @@ public class ViewHolder
 	 * @param viewId 控件资源Id
 	 * @return 超链接
 	 */
+	@Override
 	public ViewHolder linkify(@IdRes int viewId)
 	{
 		TextView view = getView(viewId);
@@ -304,6 +320,7 @@ public class ViewHolder
 	 * @param typeface 字体样式
 	 * @return
 	 */
+	@Override
 	public ViewHolder setTypeface(int viewId, Typeface typeface)
 	{
 		TextView view = getView(viewId);
@@ -319,6 +336,7 @@ public class ViewHolder
 	 * @param viewIds 控件资源Ids
 	 * @return
 	 */
+	@Override
 	public ViewHolder setTypeface(Typeface typeface, int... viewIds)
 	{
 		for (int viewId : viewIds)
@@ -335,6 +353,7 @@ public class ViewHolder
 	 * @param progress 进度
 	 * @return
 	 */
+	@Override
 	public ViewHolder setProgress(@IdRes int viewId, int progress)
 	{
 		ProgressBar view = getView(viewId);
@@ -350,6 +369,7 @@ public class ViewHolder
 	 * @param max 最大进度
 	 * @return
 	 */
+	@Override
 	public ViewHolder setProgress(@IdRes int viewId, int progress, int max)
 	{
 		ProgressBar view = getView(viewId);
@@ -365,6 +385,7 @@ public class ViewHolder
 	 * @param max 最大值
 	 * @return
 	 */
+	@Override
 	public ViewHolder setMax(@IdRes int viewId, int max)
 	{
 		ProgressBar view = getView(viewId);
@@ -379,6 +400,7 @@ public class ViewHolder
 	 * @param rating 评分
 	 * @return
 	 */
+	@Override
 	public ViewHolder setRating(@IdRes int viewId, float rating)
 	{
 		RatingBar view = getView(viewId);
@@ -394,6 +416,7 @@ public class ViewHolder
 	 * @param max 最大值
 	 * @return
 	 */
+	@Override
 	public ViewHolder setRating(@IdRes int viewId, float rating, int max)
 	{
 		RatingBar view = getView(viewId);
@@ -409,6 +432,7 @@ public class ViewHolder
 	 * @param tag 标签
 	 * @return
 	 */
+	@Override
 	public ViewHolder setTag(@IdRes int viewId, Object tag)
 	{
 		View view = getView(viewId);
@@ -424,6 +448,7 @@ public class ViewHolder
 	 * @param tag 标签
 	 * @return
 	 */
+	@Override
 	public ViewHolder setTag(@IdRes int viewId, int key, Object tag)
 	{
 		View view = getView(viewId);
@@ -438,6 +463,7 @@ public class ViewHolder
 	 * @param checked check状态
 	 * @return
 	 */
+	@Override
 	public ViewHolder setChecked(@IdRes int viewId, boolean checked)
 	{
 		Checkable view = (Checkable) getView(viewId);
@@ -455,6 +481,7 @@ public class ViewHolder
 	 * @param listener 点击事件
 	 * @return
 	 */
+	@Override
 	public ViewHolder setOnClickListener(@IdRes int viewId, View.OnClickListener listener)
 	{
 		View view = getView(viewId);
@@ -468,6 +495,7 @@ public class ViewHolder
 	 * @param listener 触摸事件
 	 * @return
 	 */
+	@Override
 	public ViewHolder setOnTouchListener(@IdRes int viewId, View.OnTouchListener listener)
 	{
 		View view = getView(viewId);
@@ -481,11 +509,11 @@ public class ViewHolder
 	 * @param listener 长按事件
 	 * @return
 	 */
+	@Override
 	public ViewHolder setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener)
 	{
 		View view = getView(viewId);
 		view.setOnLongClickListener(listener);
 		return this;
 	}
-
 }
