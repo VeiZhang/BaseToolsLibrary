@@ -1,6 +1,7 @@
 package com.excellence.basetoolslibrary.utils;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
@@ -40,6 +41,46 @@ public class DensityUtils
 	public static float getScaleDensity(Context context)
 	{
 		return context.getResources().getDisplayMetrics().scaledDensity;
+	}
+
+	/**
+	 * 获取屏幕宽度 @Deprecated 使用 {@link #getScreenSize(Context)} 替代该方法
+	 *
+	 * @param context 上下文
+	 * @return
+	 */
+	@Deprecated
+	public static int getScreenWidth(Context context)
+	{
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		return wm.getDefaultDisplay().getWidth();
+	}
+
+	/**
+	 * 获取屏幕高度 @Deprecated 使用 {@link #getScreenSize(Context)} 替代该方法
+	 *
+	 * @param context 上下文
+	 * @return
+	 */
+	@Deprecated
+	public static int getScreenHeight(Context context)
+	{
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		return wm.getDefaultDisplay().getHeight();
+	}
+
+	/**
+	 * 获取屏幕宽、高
+	 *
+	 * @param context 上下文
+	 * @return
+	 */
+	public static Point getScreenSize(Context context)
+	{
+		Point point = new Point();
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		wm.getDefaultDisplay().getSize(point);
+		return point;
 	}
 
 	/**

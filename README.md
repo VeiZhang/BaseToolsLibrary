@@ -284,6 +284,9 @@ clear        : 清空配置
 ```
 getDensity      : 获取当前屏幕分辨率
 getScaleDensity : 获取当前文字分辨率
+getScreenWidth  : 获取屏幕宽度
+getScreenHeight : 获取屏幕高度
+getScreenSize   : 获取屏幕宽、高
 dp2px           : dp转px
 px2dp           : px转dp
 sp2px           : sp转px
