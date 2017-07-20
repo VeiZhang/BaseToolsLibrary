@@ -309,7 +309,7 @@ mkDir              : 创建目录
 deleteDir          : 删除目录
 deletePostfixFiles : 删除目录下的某后缀文件
 formatFileSize     : 格式化文件大小
-getFileOrDirSize   : 获取目录、文件大小
+getFilesSize       : 获取目录、文件大小
 getFileSize        : 获取文件大小
 getDirSize         : 获取目录大小
 chmod              : 修改目录、文件权限

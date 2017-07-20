@@ -29,7 +29,7 @@ public class FileUtils
 	 *
 	 * @param file File类型
 	 * @return 文件是否创建成功
-     */
+	 */
 	public static boolean createNewFile(File file)
 	{
 		try
@@ -81,7 +81,7 @@ public class FileUtils
 	 *
 	 * @param dir File类型
 	 * @return 目录是否创建成功
-     */
+	 */
 	public static boolean mkDir(File dir)
 	{
 		return !isFileExists(dir) && dir.mkdirs();
@@ -112,6 +112,8 @@ public class FileUtils
 		if (dir.isDirectory())
 		{
 			File[] fileList = dir.listFiles();
+			if (fileList == null)
+				return false;
 			for (File file : fileList)
 			{
 				boolean success = deleteDir(file);
@@ -148,8 +150,10 @@ public class FileUtils
 			return dir.delete();
 		else if (dir.isDirectory())
 		{
-			File[] files = dir.listFiles();
-			for (File file : files)
+			File[] fileList = dir.listFiles();
+			if (fileList == null)
+				return false;
+			for (File file : fileList)
 			{
 				boolean success = deletePostfixFiles(file, postfix);
 				if (!success)
@@ -223,8 +227,8 @@ public class FileUtils
 	 *
 	 * @param file File类型
 	 * @return
-     */
-	public static long getFileOrDirSize(File file)
+	 */
+	public static long getFilesSize(File file)
 	{
 		long fileSize = 0;
 		if (isFileExists(file))
@@ -242,11 +246,11 @@ public class FileUtils
 	 *
 	 * @param filePath 文件路径字符串
 	 * @return
-     */
-	public static long getFileOrDirSize(String filePath)
+	 */
+	public static long getFilesSize(String filePath)
 	{
 		if (isFileExists(filePath))
-			return getFileOrDirSize(new File(filePath));
+			return getFilesSize(new File(filePath));
 		return 0;
 	}
 
@@ -255,15 +259,20 @@ public class FileUtils
 	 *
 	 * @param file File类型
 	 * @return
-     */
-	private static long getFileSize(File file)
+	 */
+	public static long getFileSize(File file)
 	{
 		try
 		{
 			if (isFileExists(file))
 			{
-				FileInputStream inStream = new FileInputStream(file);
-				return inStream.available();
+				if (file.isFile())
+				{
+					FileInputStream inStream = new FileInputStream(file);
+					return inStream.available();
+				}
+				else if (file.isDirectory())
+					return getDirSize(file);
 			}
 		}
 		catch (Exception e)
@@ -274,17 +283,32 @@ public class FileUtils
 	}
 
 	/**
+	 * 获取文件大小
+	 *
+	 * @param filePath 文件路径字符串
+	 * @return
+	 */
+	public static long getFileSize(String filePath)
+	{
+		if (isFileExists(filePath))
+			return getFileSize(new File(filePath));
+		return 0;
+	}
+
+	/**
 	 * 获取目录大小
 	 *
 	 * @param dir File类型
 	 * @return
-     */
-	private static long getDirSize(File dir)
+	 */
+	public static long getDirSize(File dir)
 	{
 		long size = 0;
 		if (isFileExists(dir))
 		{
 			File[] fileList = dir.listFiles();
+			if (fileList == null)
+				return size;
 			for (File file : fileList)
 			{
 				if (file.isDirectory())
@@ -297,11 +321,24 @@ public class FileUtils
 	}
 
 	/**
+	 * 获取目录大小
+	 *
+	 * @param filePath 文件路径字符串
+	 * @return
+	 */
+	public static long getDirSize(String filePath)
+	{
+		if (isFileExists(filePath))
+			return getDirSize(new File(filePath));
+		return 0;
+	}
+
+	/**
 	 * 修改目录、文件权限
 	 *
 	 * @param path 目录、文件路径字符串
 	 * @param permission 权限字符串，如：777
-     */
+	 */
 	public static void chmod(String path, String permission)
 	{
 		ShellUtils.execProceeBuilderCommand("chmod", permission, path);
@@ -312,7 +349,7 @@ public class FileUtils
 	 *
 	 * @param file File类型
 	 * @param permission 权限字符串，如：777
-     */
+	 */
 	public static void chmod(File file, String permission)
 	{
 		chmod(file.getPath(), permission);
@@ -322,7 +359,7 @@ public class FileUtils
 	 * 修改目录、文件777权限
 	 *
 	 * @param path 目录、文件路径字符串
-     */
+	 */
 	public static void chmod777(String path)
 	{
 		chmod(path, "777");
@@ -332,7 +369,7 @@ public class FileUtils
 	 * 修改目录、文件777权限
 	 *
 	 * @param file File类型
-     */
+	 */
 	public static void chmod777(File file)
 	{
 		chmod(file.getPath(), "777");
@@ -343,7 +380,7 @@ public class FileUtils
 	 *
 	 * @param file File类型
 	 * @return
-     */
+	 */
 	public static boolean isFileExists(File file)
 	{
 		return file != null && file.exists();
@@ -354,7 +391,7 @@ public class FileUtils
 	 *
 	 * @param filePath 路径字符串
 	 * @return
-     */
+	 */
 	public static boolean isFileExists(String filePath)
 	{
 		return !StringUtils.isEmpty(filePath) && isFileExists(new File(filePath));
