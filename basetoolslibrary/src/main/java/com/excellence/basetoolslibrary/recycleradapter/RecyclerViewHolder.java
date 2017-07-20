@@ -265,8 +265,8 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 	 *          <li>{@link View#INVISIBLE}</li>
 	 *          <li>{@link View#GONE     }</li>
 	 *        </ul>
-     * @return
-     */
+	 * @return
+	 */
 	public RecyclerViewHolder setVisible(@IdRes int viewId, int visibility)
 	{
 		View view = getView(viewId);
@@ -301,20 +301,26 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
 		return this;
 	}
 
+	public RecyclerViewHolder setTypeface(int viewId, Typeface typeface)
+	{
+		TextView view = getView(viewId);
+		view.setTypeface(typeface);
+		view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
+		return this;
+	}
+
 	/**
 	 * 设置文字字体样式
 	 *
 	 * @param typeface 字体样式
-	 * @param viewIds 控件资源Id
+	 * @param viewIds 控件资源Ids
 	 * @return
 	 */
 	public RecyclerViewHolder setTypeface(Typeface typeface, int... viewIds)
 	{
 		for (int viewId : viewIds)
 		{
-			TextView view = getView(viewId);
-			view.setTypeface(typeface);
-			view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
+			setTypeface(viewId, typeface);
 		}
 		return this;
 	}

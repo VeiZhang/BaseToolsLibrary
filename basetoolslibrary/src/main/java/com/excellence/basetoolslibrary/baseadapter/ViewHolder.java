@@ -250,7 +250,7 @@ public class ViewHolder
 		}
 		return this;
 	}
-	
+
 	/**
 	 * 设置控件是否可见
 	 *
@@ -261,15 +261,15 @@ public class ViewHolder
 	 *          <li>{@link View#INVISIBLE}</li>
 	 *          <li>{@link View#GONE     }</li>
 	 *        </ul>
-     * @return
-     */
+	 * @return
+	 */
 	public ViewHolder setVisible(@IdRes int viewId, int visibility)
 	{
 		View view = getView(viewId);
 		view.setVisibility(visibility);
 		return this;
 	}
-	
+
 	/**
 	 * 设置控件是否可见
 	 *
@@ -300,17 +300,30 @@ public class ViewHolder
 	/**
 	 * 设置文字字体样式
 	 *
+	 * @param viewId 控件资源Id
 	 * @param typeface 字体样式
-	 * @param viewIds 控件资源Id
+	 * @return
+	 */
+	public ViewHolder setTypeface(int viewId, Typeface typeface)
+	{
+		TextView view = getView(viewId);
+		view.setTypeface(typeface);
+		view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
+		return this;
+	}
+
+	/**
+	 * 设置文字字体样式
+	 *
+	 * @param typeface 字体样式
+	 * @param viewIds 控件资源Ids
 	 * @return
 	 */
 	public ViewHolder setTypeface(Typeface typeface, int... viewIds)
 	{
 		for (int viewId : viewIds)
 		{
-			TextView view = getView(viewId);
-			view.setTypeface(typeface);
-			view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
+			setTypeface(viewId, typeface);
 		}
 		return this;
 	}
