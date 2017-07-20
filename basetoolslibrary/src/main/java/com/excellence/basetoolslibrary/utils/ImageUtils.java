@@ -85,4 +85,20 @@ public class ImageUtils
 		return ret;
 	}
 
+	/**
+	 * view转Bitmap
+	 *
+	 * @param view 视图
+	 * @return bitmap
+	 */
+	public static Bitmap viewCache2Bitmap(View view)
+	{
+		if (view == null)
+			return null;
+		view.buildDrawingCache();
+		Bitmap bitmap = view.getDrawingCache();
+		view.setDrawingCacheEnabled(false);
+		return bitmap;
+	}
+
 }
