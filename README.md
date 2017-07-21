@@ -374,6 +374,14 @@ bitmap2Drawable : bitmap转drawable
 view2Bitmap     : view转Bitmap
 ```
 
+> - **键盘相关→[KeyboardUtils.java][KeyboardUtils]**
+```
+hideSoftInput                : 隐藏软键盘
+showSoftInput                : 打开软键盘
+toggleSoftInput              : 如果输入法在窗口上已经显示，则隐藏，反之则显示
+clickBlankArea2HideSoftInput : 击屏幕空白区域隐藏软键盘
+```
+
 > - **网络相关→[NetworkUtils.java][NetworkUtils]**
 ```
 getActiveNetworkInfo    : 获取活动的网络信息
@@ -559,6 +567,7 @@ HanziToPinyin : Android汉字转拼音类
 [FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.java
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
+[KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.java
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
 [ReflectUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ReflectUtils.java
