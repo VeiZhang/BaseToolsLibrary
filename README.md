@@ -361,11 +361,16 @@ getPinyinFirstLetters : 获取所有中文首字母
 
 > - **反射相关→[ReflectUtils.java][ReflectUtils]**
 ```
-getDeclaredFields : 获取类中所有成员
-getFields         : 获取类中所有的公有成员
-setField          : 设置私有成员的值
-getField          : 获取私有成员的值
-invokeMethod      : 通过反射调用私有方法
+getDeclaredFields    : 获取类中所有成员，能访问类中所有的字段，与public、private、protect无关，不能访问从其它类继承来的方法
+getFields            : 获取类中所有的公有成员，只能访问类中声明为公有的字段，私有的字段它无法访问，能访问从其它类继承来的公有方法
+setFieldValue        : 设置类中指定成员变量的值，一般是设置私有成员变量值
+getFieldValue        : 获取类中指定成员变量的值，一般是获取私有成员变量值
+getDeclaredMethods   : 获取类中所有方法，能访问类中所有的方法，与public、private、protect无关，不能访问从其它类继承来的方法
+getMetods            : 获取类中所有的公有方法，只能访问类中声明为公有的方法，私有的方法它无法访问，能访问从其它类继承来的公有方法
+invokeDeclaredMethod : 调用类中指定的方法，能访问类中所有的方法，与public、private、protect无关，不能访问从其它类继承来的方法
+invokeMethod         : 调用类中指定的公有方法，只能访问类中声明为公有的方法，私有的方法它无法访问，能访问从其它类继承来的公有方法
+newInstance          : 创建带参数的构造函数，返回类对象
+isInstance           : 判断是否为某个类的实例
 ```
 
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
