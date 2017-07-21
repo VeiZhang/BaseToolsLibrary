@@ -1,7 +1,9 @@
 package com.excellence.basetoolslibrary.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 /**
@@ -20,6 +22,66 @@ public class KeyboardUtils
 	 * <p>在manifest.xml中activity中设置</p>
 	 * <p>android:windowSoftInputMode="adjustPan"</p>
 	 */
+
+	/**
+	 * 动态显示软键盘
+	 *
+	 * @param activity activity
+	 */
+	public static void showSoftInput(Activity activity)
+	{
+		if (activity == null)
+			return;
+		View view = activity.getCurrentFocus();
+		if (view == null)
+			view = new View(activity);
+		showSoftInput(view);
+	}
+
+	/**
+	 * 动态显示软键盘
+	 *
+	 * @param view 视图
+	 */
+	public static void showSoftInput(View view)
+	{
+		if (view == null)
+			return;
+		InputMethodManager imm = getInputMethodManager(view.getContext());
+		if (imm == null)
+			return;
+		imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
+	}
+
+	/**
+	 * 动态隐藏软键盘
+	 *
+	 * @param activity activity
+	 */
+	public static void hideSoftInput(final Activity activity)
+	{
+		if (activity == null)
+			return;
+		View view = activity.getCurrentFocus();
+		if (view == null)
+			view = new View(activity);
+		hideSoftInput(view);
+	}
+
+	/**
+	 * 动态隐藏软键盘
+	 *
+	 * @param view 视图
+	 */
+	public static void hideSoftInput(View view)
+	{
+		if (view == null)
+			return;
+		InputMethodManager imm = getInputMethodManager(view.getContext());
+		if (imm == null)
+			return;
+		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+	}
 
 	/**
 	 * 隐藏软键盘，可能不准确
