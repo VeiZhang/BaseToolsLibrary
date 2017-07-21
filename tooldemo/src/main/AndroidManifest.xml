@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".MultiItemRecyclerAdapterActivity">
         </activity>
+        <activity android:name=".ViewPagerAdapterActivity">
+        </activity>
     </application>
 
 </manifest>

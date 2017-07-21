@@ -16,6 +16,8 @@ Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种Item
 * [BaseRecyclerAdapter](#BaseRecyclerAdapter)
     * [RecyclerView通用适配器](#RecyclerView通用适配器)
     * [RecyclerView多布局通用适配器](#RecyclerView多布局通用适配器)
+* [BasePagerAdapter](#BasePagerAdapter)
+    * [ViewPager通用适配器](#ViewPager通用适配器)
 * [Utils](#Utils)
     * [权限](#权限)
     * [常用工具类](#常用工具类)
@@ -202,6 +204,44 @@ private class ComputerRecyclerDelegate implements ItemViewDelegate<People>
     public void convert(RecyclerViewHolder viewHolder, People item, int position)
     {
         viewHolder.setText(R.id.computer_text, item.getMsg());
+    }
+}
+```
+
+<br>
+
+## BasePagerAdapter<a name="BasePagerAdapter">
+
+### ViewPager通用适配器<a name="ViewPager通用适配器">
+示例：[ViewPagerAdapterActivity][ViewPagerAdapterActivity]
+
+```java
+private class NumAdapter extends BasePagerAdapter
+{
+
+    public NumAdapter(Context context, int pageCount)
+    {
+        super(context, pageCount);
+    }
+
+    @Override
+    protected View loadView(Context context, int pageIndex)
+    {
+        // 加载每页
+        TextView textView = new TextView(context);
+        textView.setText(String.valueOf(pageIndex * mNumScale));
+        textView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mNumScale *= 10;
+                mPageCount += 1;
+                // 刷新每页
+                mAdapter.notifyNewData(mPageCount);
+            }
+        });
+        return textView;
     }
 }
 ```
@@ -504,6 +544,7 @@ HanziToPinyin : Android汉字转拼音类
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 [MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.java
 [MultiItemRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemRecyclerAdapterActivity.java
+[ViewPagerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/ViewPagerAdapterActivity.java
 
 <!-- 常用方法 -->
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java

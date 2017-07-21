@@ -80,7 +80,6 @@ public class NetworkUtils
 	public static boolean isAvailableByPing()
 	{
 		ShellUtils.CommandResult result = ShellUtils.execRuntimeCommand("ping -c 1 -w 1 223.5.5.5");
-		System.out.println(result.resultString);
 		return result.resultCode == 0;
 	}
 
