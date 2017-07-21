@@ -16,7 +16,7 @@ public class ReflectUtils
 {
 
 	/**
-	 * 根据类获取类中所有成员，包括private成员
+	 * 根据类获取类中所有成员，能访问类中所有的字段,与public,private,protect无关，不能访问从其它类继承来的方法
 	 *
 	 * @param cls 类
 	 * @return
@@ -29,7 +29,7 @@ public class ReflectUtils
 	}
 
 	/**
-	 * 根据对象获取类中所有成员，包括private成员
+	 * 根据对象获取类中所有成员，能访问类中所有的字段,与public,private,protect无关，不能访问从其它类继承来的方法
 	 *
 	 * @param owner 对象
 	 * @return
@@ -42,7 +42,7 @@ public class ReflectUtils
 	}
 
 	/**
-	 * 根据类名获取类中所有成员，包括private成员
+	 * 根据类名获取类中所有成员，能访问类中所有的字段,与public,private,protect无关，不能访问从其它类继承来的方法
 	 *
 	 * @param clsName 类名
 	 * @return
@@ -63,7 +63,7 @@ public class ReflectUtils
 	}
 
 	/**
-	 * 根据类获取类中所有的公有成员，即public成员
+	 * 根据类获取类中所有的公有成员，只能访问类中声明为公有的字段,私有的字段它无法访问，能访问从其它类继承来的公有方法
 	 *
 	 * @param cls 类
 	 * @return
@@ -76,7 +76,7 @@ public class ReflectUtils
 	}
 
 	/**
-	 * 根据对象获取类中所有的公有成员，即public成员
+	 * 根据对象获取类中所有的公有成员，只能访问类中声明为公有的字段,私有的字段它无法访问，能访问从其它类继承来的公有方法
 	 *
 	 * @param owner 对象
 	 * @return
@@ -89,7 +89,7 @@ public class ReflectUtils
 	}
 
 	/**
-	 * 根据类名获取类中所有的公有成员，即public成员
+	 * 根据类名获取类中所有的公有成员，只能访问类中声明为公有的字段,私有的字段它无法访问，能访问从其它类继承来的公有方法
 	 *
 	 * @param clsName 类名
 	 * @return
@@ -116,7 +116,7 @@ public class ReflectUtils
 	 * @param fieldName 私有成员名
 	 * @param value 值
 	 */
-	public static void setField(Object owner, String fieldName, Object value)
+	public static void setFieldValue(Object owner, String fieldName, Object value)
 	{
 		try
 		{
@@ -138,7 +138,7 @@ public class ReflectUtils
 	 * @param fieldName 私有成员名
 	 * @return 值
 	 */
-	public static Object getField(Object owner, String fieldName)
+	public static Object getFieldValue(Object owner, String fieldName)
 	{
 		try
 		{
@@ -155,12 +155,110 @@ public class ReflectUtils
 	}
 
 	/**
+	 * 根据类获取类中所有方法，能访问类中所有的方法,与public,private,protect无关,不能访问从其它类继承来的方法
+	 *
+	 * @param cls 类
+	 * @return
+	 */
+	public static Method[] getDeclaredMethods(Class cls)
+	{
+		if (cls == null)
+			return null;
+		return cls.getDeclaredMethods();
+	}
+
+	/**
+	 * 根据对象获取类中所有方法，能访问类中所有的方法,与public,private,protect无关,不能访问从其它类继承来的方法
+	 *
+	 * @param owner 对象
+	 * @return
+	 */
+	public static Method[] getDeclaredMethods(Object owner)
+	{
+		if (owner == null)
+			return null;
+		return owner.getClass().getDeclaredMethods();
+	}
+
+	/**
+	 * 根据对象获取类中指定的方法，能访问类中所有的方法,与public,private,protect无关,不能访问从其它类继承来的方法
+	 *
+	 * @param owner 对象
+	 * @param methodName 方法名
+	 * @param argsCls 参数类型
+	 * @return
+	 */
+	public static Method getDeclaredMethods(Object owner, String methodName, Class[] argsCls)
+	{
+		try
+		{
+			if (owner == null)
+				return null;
+			return owner.getClass().getDeclaredMethod(methodName, argsCls);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 根据类获取类中所有的公有方法，只能访问类中声明为公有的方法,私有的方法它无法访问,能访问从其它类继承来的公有方法
+	 *
+	 * @param cls 类
+	 * @return
+	 */
+	public static Method[] getMetods(Class cls)
+	{
+		if (cls == null)
+			return null;
+		return cls.getMethods();
+	}
+
+	/**
+	 * 根据对象获取类中所有的公有方法，只能访问类中声明为公有的方法,私有的方法它无法访问,能访问从其它类继承来的公有方法
+	 *
+	 * @param owner 对象
+	 * @return
+	 */
+	public static Method[] getMethods(Object owner)
+	{
+		if (owner == null)
+			return null;
+		return owner.getClass().getMethods();
+	}
+
+	/**
+	 * 根据对象获取类中指定的公有方法，只能访问类中声明为公有的方法,私有的方法它无法访问,能访问从其它类继承来的公有方法
+	 *
+	 * @param owner 对象
+	 * @param methodName 方法名
+	 * @param argsCls 参数类型
+	 * @return
+	 */
+	public static Method getMethods(Object owner, String methodName, Class[] argsCls)
+	{
+		try
+		{
+			if (owner == null)
+				return null;
+			return owner.getClass().getMethod(methodName, argsCls);
+		}
+		catch (NoSuchMethodException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
 	 * 通过反射调用私有方法
 	 *
 	 * @param owner 类对象
 	 * @param methodName 方法名
 	 * @param args 参数
-	 * @return
+	 * @return 方法返回值
 	 */
 	public static Object invokeMethod(Object owner, String methodName, Object[] args)
 	{
@@ -203,7 +301,7 @@ public class ReflectUtils
 	 * @param methodName 方法名
 	 * @param args 参数
 	 * @param argsClass 参数类型
-	 * @return
+	 * @return 方法返回值
 	 */
 	public static Object invokeMethod(Object owner, String methodName, Object[] args, Class[] argsClass)
 	{
