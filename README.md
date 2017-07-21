@@ -365,7 +365,7 @@ getDeclaredFields : 获取类中所有成员
 getFields         : 获取类中所有的公有成员
 setField          : 设置私有成员的值
 getField          : 获取私有成员的值
-invokeMethod      : 调用私有方法
+invokeMethod      : 通过反射调用私有方法
 ```
 
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**

@@ -116,7 +116,7 @@ public class ReflectUtils
 	 * @param fieldName 私有成员名
 	 * @param value 值
 	 */
-	public static void setField(Object owner, String fieldName, String value)
+	public static void setField(Object owner, String fieldName, Object value)
 	{
 		try
 		{
@@ -155,7 +155,7 @@ public class ReflectUtils
 	}
 
 	/**
-	 * 调用私有方法
+	 * 通过反射调用私有方法
 	 *
 	 * @param owner 类对象
 	 * @param methodName 方法名
@@ -165,30 +165,29 @@ public class ReflectUtils
 	public static Object invokeMethod(Object owner, String methodName, Object[] args)
 	{
 		Object ret = null;
-		Class<? extends Object> ownerCls = owner.getClass();
-		Class[] argsCls = new Class[args.length];
-		for (int i = 0; i < args.length; i++)
-		{
-			String clsName = args[i].getClass().getName();
-			if (clsName.equals(Integer.class.getName()))
-			{
-				argsCls[i] = int.class;
-			}
-			else if (clsName.equals(Float.class.getName()))
-			{
-				argsCls[i] = float.class;
-			}
-			else if (clsName.startsWith("android.view.SurfaceView"))
-			{
-				argsCls[i] = android.view.SurfaceHolder.class;
-			}
-			else
-				argsCls[i] = args[i].getClass();
-		}
 		try
 		{
-			Method method = ownerCls.getMethod(methodName, argsCls);
-			ret = method.invoke(owner, args);
+			Class[] argsCls = new Class[args.length];
+			for (int i = 0; i < args.length; i++)
+			{
+				String clsName = args[i].getClass().getName();
+				if (clsName.equals(Integer.class.getName()))
+				{
+					argsCls[i] = int.class;
+				}
+				else if (clsName.equals(Float.class.getName()))
+				{
+					argsCls[i] = float.class;
+				}
+				else if (clsName.startsWith("android.view.SurfaceView"))
+				{
+					argsCls[i] = android.view.SurfaceHolder.class;
+				}
+				else
+					argsCls[i] = args[i].getClass();
+			}
+
+			ret = invokeMethod(owner, methodName, args, argsCls);
 		}
 		catch (Exception e)
 		{
@@ -197,4 +196,28 @@ public class ReflectUtils
 		return ret;
 	}
 
+	/**
+	 * 通过反射调用私有方法
+	 *
+	 * @param owner 类对象
+	 * @param methodName 方法名
+	 * @param args 参数
+	 * @param argsClass 参数类型
+	 * @return
+	 */
+	public static Object invokeMethod(Object owner, String methodName, Object[] args, Class[] argsClass)
+	{
+		Object ret = null;
+		try
+		{
+			Class<? extends Object> ownerClass = owner.getClass();
+			Method method = ownerClass.getMethod(methodName, argsClass);
+			ret = method.invoke(owner, args);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return ret;
+	}
 }
