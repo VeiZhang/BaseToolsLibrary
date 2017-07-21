@@ -1,9 +1,11 @@
 package com.excellence.basetoolslibrary.utils;
 
+import com.excellence.basetoolslibrary.assist.HanziToPinyin;
+
 import java.util.List;
 import java.util.Locale;
 
-import com.excellence.basetoolslibrary.assist.HanziToPinyin;
+import static com.excellence.basetoolslibrary.utils.RegexUtils.REGEX_ZH;
 
 /**
  * <pre>
@@ -22,11 +24,13 @@ public class PinyinUtils
 	 * 出现该异常时，注意添加对应的{@link Locale}如{@link Locale#CHINESE}
 	 * 修改位置 {@link HanziToPinyin#getInstance()}:L406
 	 *
-	 * @param ccs 中文
+	 * @param ccs 中文汉字
 	 * @return 拼音字符串
 	 */
 	public static String ccs2Pinyin(String ccs)
 	{
+		if (StringUtils.isEmpty(ccs))
+			return null;
 		StringBuilder stringBuilder = new StringBuilder();
 		List<HanziToPinyin.Token> tokens = HanziToPinyin.getInstance().get(ccs);
 		if (EmptyUtils.isNotEmpty(tokens))
@@ -45,21 +49,21 @@ public class PinyinUtils
 	/**
 	 * 中文转拼音
 	 *
-	 * @param charSequence 中文
+	 * @param ccs 中文汉字
 	 * @return 拼音字符串
 	 */
-	public static String ccs2Pinyin(CharSequence charSequence)
+	public static String ccs2Pinyin(CharSequence ccs)
 	{
-		return charSequence == null ? null : ccs2Pinyin(charSequence.toString());
+		return StringUtils.isEmpty(ccs) ? null : ccs2Pinyin(ccs.toString());
 	}
 
 	/**
 	 * 获取中文首字母
 	 *
-	 * @param ccs 中文
+	 * @param ccs 中文汉字
 	 * @return 首字母
 	 */
-	public static String getPinyinFirstLetter(String ccs)
+	public static String getPinyinHeadChar(String ccs)
 	{
 		String letter = ccs2Pinyin(ccs);
 		return StringUtils.isEmpty(letter) ? null : String.valueOf(letter.charAt(0));
@@ -68,21 +72,21 @@ public class PinyinUtils
 	/**
 	 * 获取中文首字母
 	 *
-	 * @param charSequence 中文
+	 * @param ccs 中文汉字
 	 * @return 首字母
 	 */
-	public static String getPinyinFirstLetter(CharSequence charSequence)
+	public static String getPinyinHeadChar(CharSequence ccs)
 	{
-		return charSequence == null ? null : getPinyinFirstLetter(charSequence.toString());
+		return StringUtils.isEmpty(ccs) ? null : getPinyinHeadChar(ccs.toString());
 	}
 
 	/**
 	 * 获取所有中文首字母
 	 *
-	 * @param ccs 中文
+	 * @param ccs 中文汉字
 	 * @return 所有中文首字母
 	 */
-	public static String getPinyinFirstLetters(String ccs)
+	public static String getPinyinHeadChars(String ccs)
 	{
 		if (StringUtils.isEmpty(ccs))
 			return null;
@@ -90,7 +94,7 @@ public class PinyinUtils
 		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < ccs.length(); i++)
 		{
-			stringBuilder.append(getPinyinFirstLetter(String.valueOf(ccs.charAt(i))));
+			stringBuilder.append(getPinyinHeadChar(String.valueOf(ccs.charAt(i))));
 		}
 		return stringBuilder.toString();
 	}
@@ -98,11 +102,29 @@ public class PinyinUtils
 	/**
 	 * 获取所有中文首字母
 	 *
-	 * @param charSequence 中文
+	 * @param ccs 中文汉字
 	 * @return 所有中文首字母
 	 */
-	public static String getPinyinFirstLetters(CharSequence charSequence)
+	public static String getPinyinHeadChars(CharSequence ccs)
 	{
-		return charSequence == null ? null : getPinyinFirstLetters(charSequence.toString());
+		return StringUtils.isEmpty(ccs) ? null : getPinyinHeadChars(ccs.toString());
+	}
+
+	/**
+	 * 判断是否全是汉字
+	 *
+	 * @param ccs
+	 * @return {@code true}:是<br>{@code false}:否
+	 */
+	public static boolean isAllHanzi(String ccs)
+	{
+		if (StringUtils.isEmpty(ccs))
+			return false;
+		for (int i = 0; i < ccs.length(); i++)
+		{
+			if (!Character.toString(ccs.charAt(i)).matches(REGEX_ZH))
+				return false;
+		}
+		return true;
 	}
 }

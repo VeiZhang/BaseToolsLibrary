@@ -395,8 +395,9 @@ getDomainAddress        : 根据域名获取ip
 > - **拼音相关→[PinyinUtils.java][PinyinUtils]**
 ```
 ccs2Pinyin            : 中文转拼音
-getPinyinFirstLetter  : 获取中文首字母
-getPinyinFirstLetters : 获取所有中文首字母
+getPinyinHeadChar     : 获取中文首字母
+getPinyinHeadChars    : 获取所有中文首字母
+isAllHanzi            : 判断是否全是汉字
 ```
 
 > - **反射相关→[ReflectUtils.java][ReflectUtils]**
