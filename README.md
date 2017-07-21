@@ -32,7 +32,7 @@ Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种Item
 添加jCenter远程依赖到module里的build.gradle：
 ```
 dependencies {
-    compile 'com.excellence:basetools:1.2.2'
+    compile 'com.excellence:basetools:1.2.3'
     // 或者直接使用最新版本
     // compile 'com.excellence:basetools:+'
 }
@@ -504,6 +504,7 @@ HanziToPinyin : Android汉字转拼音类
 ## 版本更新<a name="版本更新">
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
+| [1.2.3][BaseToolsV1.2.3] | 新增ViewPager通用适配器；拓展工具类：文件、资源、反射、键盘等  **2017-7-21** |
 | [1.2.2][BaseToolsV1.2.2] | 拓展配置文件存储  **2017-5-12** |
 | [1.2.1][BaseToolsV1.2.1] | 支持通用适配器中的多种布局  **2017-4-20** |
 | [1.2.0][BaseToolsV1.2.0] | 新增网络、拼音、异常打印等工具类  **2017-4-13** |
@@ -530,12 +531,13 @@ HanziToPinyin : Android汉字转拼音类
 [stars]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
 
 <!-- 图片链接 -->
-[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.2.2-brightgreen.svg
+[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.2.3-brightgreen.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_stars]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
 
 <!-- 版本 -->
+[BaseToolsV1.2.3]:https://bintray.com/veizhang/maven/basetools/1.2.3
 [BaseToolsV1.2.2]:https://bintray.com/veizhang/maven/basetools/1.2.2
 [BaseToolsV1.2.1]:https://bintray.com/veizhang/maven/basetools/1.2.1
 [BaseToolsV1.2.0]:https://bintray.com/veizhang/maven/basetools/1.2.0
