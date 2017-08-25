@@ -1,5 +1,10 @@
 package com.excellence.basetoolslibrary.utils;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.support.annotation.Nullable;
+
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -421,5 +426,52 @@ public class ReflectUtils
 	public static boolean isInstance(Class cls, Object owner)
 	{
 		return cls.isInstance(owner);
+	}
+
+	/**
+	 * 获取存在的、指定类型的注解，如果该类型注解不存在，返回null
+	 *
+	 * @param cls 类对象
+	 * @param annotationCls 注解
+	 * @return
+	 */
+	@Nullable
+	public static Annotation getAnnotation(Class cls, Class annotationCls)
+	{
+		return cls.getAnnotation(annotationCls);
+	}
+
+	/**
+	 * 获取类中存在的所有注解
+	 *
+	 * @param cls
+	 * @return
+	 */
+	public static Annotation[] getAnnotations(Class cls)
+	{
+		return cls.getAnnotations();
+	}
+
+	/**
+	 * 获取存在的、指定类型的注解，不包括继承的注解
+	 *
+	 * @param cls
+	 * @param annotationCls
+	 * @return
+	 */
+	@TargetApi(Build.VERSION_CODES.N)
+	public static Annotation getDeclaredAnnotation(Class cls, Class annotationCls)
+	{
+		return cls.getDeclaredAnnotation(annotationCls);
+	}
+
+	/**
+	 * 获取类中存在的所有注解，不包括继承的注解
+	 *
+	 * @return
+	 */
+	public static Annotation[] getDeclaredAnnotations(Class cls)
+	{
+		return cls.getDeclaredAnnotations();
 	}
 }
