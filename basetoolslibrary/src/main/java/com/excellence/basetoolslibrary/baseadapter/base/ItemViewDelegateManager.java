@@ -9,7 +9,8 @@ import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/4/19
- *     desc   : 多布局视图管理器
+ *     desc   : {@link com.excellence.basetoolslibrary.baseadapter.MultiItemTypeAdapter}
+ *     			多布局视图管理器
  *              默认0，1，2，3...为视图类型，且每个类型唯一；非位置标志
  * </pre>
  */

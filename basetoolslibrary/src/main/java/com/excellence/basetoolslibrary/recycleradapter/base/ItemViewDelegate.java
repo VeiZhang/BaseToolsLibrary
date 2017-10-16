@@ -1,6 +1,5 @@
 package com.excellence.basetoolslibrary.recycleradapter.base;
 
-
 import android.support.annotation.LayoutRes;
 
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
@@ -10,7 +9,8 @@ import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/4/19
- *     desc   : 多布局视图接口
+ *     desc   : {@link com.excellence.basetoolslibrary.recycleradapter.MultiItemTypeRecyclerAdapter}
+ *     			多布局视图接口
  *     			多布局使用时，多组数据集成基类，方便于判断是否使用特定视图接口
  *
  * </pre>
@@ -20,6 +20,7 @@ public interface ItemViewDelegate<T>
 {
 	/**
 	 * 布局资源Id
+	 * 
 	 * @return 布局Id
 	 */
 	@LayoutRes

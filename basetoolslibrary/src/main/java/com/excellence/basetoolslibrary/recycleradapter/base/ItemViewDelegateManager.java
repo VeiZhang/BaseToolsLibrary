@@ -1,6 +1,5 @@
 package com.excellence.basetoolslibrary.recycleradapter.base;
 
-
 import android.support.v4.util.SparseArrayCompat;
 
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
@@ -10,7 +9,8 @@ import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/4/19
- *     desc   : 多布局视图管理器
+ *     desc   : {@link com.excellence.basetoolslibrary.recycleradapter.MultiItemTypeRecyclerAdapter}
+ *     			多布局视图管理器
  *              默认0，1，2，3...为视图类型，且每个类型唯一；非位置标志
  * </pre>
  */
