@@ -48,7 +48,7 @@ public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T>
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		ViewHolder viewHolder = ViewHolder.getViewHolder(mContext, convertView, parent, mLayoutId);
-		convert(viewHolder, mDatas.get(position), position);
+		convert(viewHolder, getItem(position), position);
 		return viewHolder.getConvertView();
 	}
 
