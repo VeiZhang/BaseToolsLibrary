@@ -24,10 +24,15 @@ public class CommonBindingAdapterActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		mBinding = DataBindingUtil.setContentView(this, R.layout.activity_common_binding_adapter);
 
+		initAdapter();
+	}
+
+	private void initAdapter()
+	{
 		mFlowers = new ArrayList<>();
 		for (int i = 0; i < 10; i++)
 			mFlowers.add(new Flower("Flower" + i, R.drawable.logo));
-		CommonBindingAdapter<Flower> adapter = new CommonBindingAdapter<Flower>(mFlowers, R.layout.item_flower, BR.flower);
+		CommonBindingAdapter<Flower> adapter = new CommonBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
 		mBinding.setAdapter(adapter);
 	}
 

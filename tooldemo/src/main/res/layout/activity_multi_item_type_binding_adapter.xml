@@ -6,12 +6,18 @@
     tools:context="com.excellence.tooldemo.databinding.MultiItemTypeBindingAdapterActivity">
 
     <data>
-
+        <variable name="adapter" type="android.widget.BaseAdapter"/>
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapter="@{adapter}"/>
 
     </RelativeLayout>
 </layout>
