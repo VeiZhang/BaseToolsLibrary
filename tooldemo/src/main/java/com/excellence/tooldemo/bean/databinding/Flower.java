@@ -1,10 +1,13 @@
 package com.excellence.tooldemo.bean.databinding;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.excellence.tooldemo.BR;
 
 /**
  * <pre>
@@ -15,7 +18,7 @@ import android.widget.Toast;
  * </pre>
  */
 
-public class Flower
+public class Flower extends BaseObservable
 {
 	protected String mName = null;
 	protected int mIconRes;
@@ -26,6 +29,7 @@ public class Flower
 		mIconRes = iconRes;
 	}
 
+	@Bindable
 	public String getName()
 	{
 		return mName;
@@ -54,6 +58,11 @@ public class Flower
 
 	public void onImageClick(View view)
 	{
-		Toast.makeText(view.getContext(), "点击了图片", Toast.LENGTH_SHORT).show();
+		String flag = "[点击]";
+		if (mName.contains(flag))
+			setName(mName.replace(flag, ""));
+		else
+			setName(mName + flag);
+		notifyPropertyChanged(BR.name);
 	}
 }

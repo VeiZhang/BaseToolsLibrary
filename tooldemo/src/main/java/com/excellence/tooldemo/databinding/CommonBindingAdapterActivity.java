@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Toast;
 
 import com.excellence.basetoolslibrary.databinding.CommonBindingAdapter;
@@ -42,6 +43,21 @@ public class CommonBindingAdapterActivity extends AppCompatActivity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
+				Flower flower = mFlowers.get(position);
+				String name = flower.getName();
+				String flag = "[点击]";
+				if (name.contains(flag))
+					flower.setName(name.replace(flag, ""));
+				else
+					flower.setName(name + flag);
+
+				/**
+				 * 使用该方法不能刷新
+				 * flower.onImageClick(view);
+				 * 
+				 * 不知道MVVM里刷新是不是这样的？
+				 */
+				((BaseAdapter) parent.getAdapter()).notifyDataSetChanged();
 				Toast.makeText(CommonBindingAdapterActivity.this, "点击了" + position, Toast.LENGTH_SHORT).show();
 			}
 		});
