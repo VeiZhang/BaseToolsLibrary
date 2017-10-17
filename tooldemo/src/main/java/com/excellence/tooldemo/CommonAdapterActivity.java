@@ -1,12 +1,5 @@
 package com.excellence.tooldemo;
 
-import java.util.List;
-
-import com.excellence.basetoolslibrary.baseadapter.CommonAdapter;
-import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
-import com.excellence.basetoolslibrary.utils.ActivityUtils;
-import com.excellence.basetoolslibrary.utils.AppUtils;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -19,9 +12,16 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class GridAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener
+import com.excellence.basetoolslibrary.baseadapter.CommonAdapter;
+import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
+import com.excellence.basetoolslibrary.utils.ActivityUtils;
+import com.excellence.basetoolslibrary.utils.AppUtils;
+
+import java.util.List;
+
+public class CommonAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-	private static final String TAG = GridAdapterActivity.class.getSimpleName();
+	private static final String TAG = CommonAdapterActivity.class.getSimpleName();
 
 	private static final int APP_TYPE_ALL = 0;
 	private static final int APP_TYPE_SYSTEM = 1;

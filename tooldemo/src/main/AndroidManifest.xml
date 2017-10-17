@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GridAdapterActivity">
+        <activity android:name=".CommonAdapterActivity">
         </activity>
         <activity android:name=".RecyclerAdapterActivity">
         </activity>

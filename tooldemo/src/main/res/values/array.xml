@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="function_list">
-        <item>@string/base_adapter</item>
+        <item>@string/common_adapter</item>
         <item>@string/recycle_view_adapter</item>
         <item>@string/multi_item_adapter</item>
         <item>@string/multi_item_recycler_adapter</item>
@@ -14,7 +14,7 @@
     </string-array>
 
     <string-array name="function_activity_list">
-        <item>com.excellence.tooldemo.GridAdapterActivity</item>
+        <item>com.excellence.tooldemo.CommonAdapterActivity</item>
         <item>com.excellence.tooldemo.RecyclerAdapterActivity</item>
         <item>com.excellence.tooldemo.MultiItemAdapterActivity</item>
         <item>com.excellence.tooldemo.MultiItemRecyclerAdapterActivity</item>
