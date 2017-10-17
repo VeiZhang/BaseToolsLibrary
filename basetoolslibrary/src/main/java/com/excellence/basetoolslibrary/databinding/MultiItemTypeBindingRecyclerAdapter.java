@@ -4,11 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter.RecyclerViewHolder;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
+import com.excellence.basetoolslibrary.helper.DataHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,10 +24,11 @@ import java.util.List;
  * </pre>
  */
 
-public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder>
+public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements DataHelper<T>
 {
 	protected List<T> mDatas = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
+	private OnItemClickListener mOnItemClickListener = null;
 
 	public MultiItemTypeBindingRecyclerAdapter(T[] datas)
 	{
@@ -126,6 +129,187 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 		ViewDataBinding binding = holder.getBinding();
 		binding.setVariable(delegate.getItemVariable(), mDatas.get(position));
 		binding.executePendingBindings();
+		setViewListener(binding, position);
+	}
+
+	protected void setViewListener(final ViewDataBinding binding, final int position)
+	{
+		binding.getRoot().setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if (mOnItemClickListener != null)
+					mOnItemClickListener.onItemClick(binding, v, position);
+			}
+		});
+
+		binding.getRoot().setOnLongClickListener(new View.OnLongClickListener()
+		{
+			@Override
+			public boolean onLongClick(View v)
+			{
+				return mOnItemClickListener != null && mOnItemClickListener.onItemLongClick(binding, v, position);
+			}
+		});
+	}
+
+	public interface OnItemClickListener
+	{
+		void onItemClick(ViewDataBinding binding, View v, int position);
+
+		boolean onItemLongClick(ViewDataBinding binding, View v, int position);
+	}
+
+	public void setOnItemClickListener(OnItemClickListener onItemClickListener)
+	{
+		mOnItemClickListener = onItemClickListener;
+	}
+
+	/**
+	 * 新数据集替代旧数据集，刷新视图
+	 *
+	 * @param datas 新数据集
+	 */
+	@Override
+	public void notifyNewData(List<T> datas)
+	{
+		mDatas = datas;
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 新增数据集
+	 *
+	 * @param list 新数据集
+	 * @return {@code true}:添加成功<br>{@code false}:添加失败
+	 */
+	@Override
+	public boolean addAll(List<T> list)
+	{
+		boolean result = mDatas != null && mDatas.addAll(list);
+		notifyDataSetChanged();
+		return result;
+	}
+
+	/**
+	 * 插入新数据集
+	 *
+	 * @param position 插入位置
+	 * @param list 新数据集
+	 * @return {@code true}:添加成功<br>{@code false}:添加失败
+	 */
+	@Override
+	public boolean addAll(int position, List<T> list)
+	{
+		boolean result = mDatas != null && mDatas.addAll(position, list);
+		notifyDataSetChanged();
+		return result;
+	}
+
+	/**
+	 * 新增数据
+	 *
+	 * @param data 数据
+	 * @return {@code true}:添加成功<br>{@code false}:添加失败
+	 */
+	@Override
+	public boolean add(T data)
+	{
+		boolean result = mDatas != null && mDatas.add(data);
+		notifyDataSetChanged();
+		return result;
+	}
+
+	/**
+	 * 插入新数据
+	 *
+	 * @param position 插入位置
+	 * @param data 数据
+	 */
+	@Override
+	public void add(int position, T data)
+	{
+		if (mDatas != null)
+			mDatas.add(position, data);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 替换数据
+	 *
+	 * @param index 替换位置
+	 * @param newData 替换数据
+	 */
+	@Override
+	public void modify(int index, T newData)
+	{
+		if (mDatas != null)
+			mDatas.set(index, newData);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 替换数据
+	 *
+	 * @param oldData 被替换数据
+	 * @param newData 替换数据
+	 */
+	@Override
+	public void modify(T oldData, T newData)
+	{
+		if (mDatas != null)
+			modify(mDatas.indexOf(oldData), newData);
+	}
+
+	/**
+	 * 删除数据
+	 *
+	 * @param data 被删除数据
+	 * @return {@code true}:删除成功<br>{@code false}:删除失败
+	 */
+	@Override
+	public boolean remove(T data)
+	{
+		boolean result = mDatas != null && mDatas.remove(data);
+		notifyDataSetChanged();
+		return result;
+	}
+
+	/**
+	 * 删除数据
+	 *
+	 * @param index 删除位置
+	 */
+	@Override
+	public void remove(int index)
+	{
+		if (mDatas != null)
+			mDatas.remove(index);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 清空数据集
+	 */
+	@Override
+	public void clear()
+	{
+		if (mDatas != null)
+			mDatas.clear();
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 判断数据集是否包含数据
+	 *
+	 * @param data 待检测数据
+	 * @return {@code true}:包含<br>{@code false}: 不包含
+	 */
+	@Override
+	public boolean contains(T data)
+	{
+		return mDatas != null && mDatas.contains(data);
 	}
 
 	/**

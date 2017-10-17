@@ -25,8 +25,8 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 {
 	protected Context mContext = null;
 	protected List<T> mDatas = null;
-	private OnItemClickListener mOnItemClickListener = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
+	private OnItemClickListener mOnItemClickListener = null;
 
 	public MultiItemTypeRecyclerAdapter(Context context, T[] datas)
 	{
