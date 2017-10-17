@@ -33,6 +33,10 @@
         </activity>
         <activity android:name=".ViewPagerAdapterActivity">
         </activity>
+        <activity android:name=".databinding.CommonBindingAdapterActivity">
+        </activity>
+        <activity android:name=".databinding.MultiItemTypeBindingAdapterActivity">
+        </activity>
     </application>
 
 </manifest>

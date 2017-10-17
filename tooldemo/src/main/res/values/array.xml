@@ -7,6 +7,8 @@
         <item>@string/multi_item_adapter</item>
         <item>@string/multi_item_recycler_adapter</item>
         <item>@string/viewpager_adapter</item>
+        <item>@string/data_binding_base_adapter</item>
+        <item>@string/data_binding_multi_item_adapter</item>
     </string-array>
 
     <string-array name="function_activity_list">
@@ -15,6 +17,8 @@
         <item>com.excellence.tooldemo.MultiItemAdapterActivity</item>
         <item>com.excellence.tooldemo.MultiItemRecyclerAdapterActivity</item>
         <item>com.excellence.tooldemo.ViewPagerAdapterActivity</item>
+        <item>com.excellence.tooldemo.databinding.CommonBindingAdapterActivity</item>
+        <item>com.excellence.tooldemo.databinding.MultiItemTypeBindingAdapterActivity</item>
     </string-array>
 
 </resources>

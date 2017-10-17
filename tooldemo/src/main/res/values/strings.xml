@@ -5,6 +5,11 @@
     <string name="multi_item_adapter">GridView ListView多布局通用适配器</string>
     <string name="multi_item_recycler_adapter">RecyclerView多布局通用适配器</string>
     <string name="viewpager_adapter">ViewPager通用适配器</string>
+    <string name="data_binding_base_adapter">DataBinding-GridView ListView通用适配器</string>
+    <string name="data_binding_multi_item_adapter">DataBinding-GridView ListView多布局通用适配器</string>
+    <string name="data_binding_recycler_adapter">DataBinding-RecyclerView通用适配器</string>
+    <string name="data_binding_multi_item_recycler_adapter">DataBinding-RecyclerView多布局通用适配器
+    </string>
     <string name="refresh">刷新</string>
 
     <string name="all_apps">所有应用</string>
