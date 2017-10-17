@@ -1,11 +1,15 @@
 package com.excellence.tooldemo.databinding;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.Toast;
 
 import com.excellence.basetoolslibrary.databinding.BaseRecyclerBindingAdapter;
+import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter;
 import com.excellence.tooldemo.BR;
 import com.excellence.tooldemo.R;
 import com.excellence.tooldemo.bean.databinding.Flower;
@@ -35,5 +39,20 @@ public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity
 		BaseRecyclerBindingAdapter<Flower> adapter = new BaseRecyclerBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
 		mBinding.setAdapter(adapter);
 		mBinding.setLayoutManager(new LinearLayoutManager(this));
+		adapter.setOnItemClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(ViewDataBinding binding, View v, int position)
+			{
+				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "点击事件" + position, Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public boolean onItemLongClick(ViewDataBinding binding, View v, int position)
+			{
+				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "长按事件" + position, Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
 	}
 }
