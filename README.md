@@ -3,10 +3,8 @@ Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种Item
 
 <br>
 
-[![Bintray][icon_Bintray]][Bintray]
-[![GitHub issues][icon_issues]][issues]
-[![GitHub forks][icon_forks]][forks]
-[![GitHub stars][icon_stars]][stars]
+[![Download][icon_download]][download]
+
 
 ## 目录<a name="目录">
 * [使用](#使用)
@@ -48,7 +46,7 @@ compile project(':basetoolslibrary')
 
 ### gridview，listview的通用适配器<a name="通用适配器">
 
-示例：[GridAdapterActivity][GridAdapterActivity]
+示例：[CommonAdapterActivity][CommonAdapterActivity]
 
 
 ```java
@@ -529,18 +527,21 @@ HanziToPinyin : Android汉字转拼音类
 
 
 <!-- 引用网站链接 -->
-[Bintray]:https://bintray.com/veizhang/maven/basetools "Bintray"
+
+[download]:https://bintray.com/veizhang/maven/basetools/_latestVersion "Latest version"
 [issues]:https://github.com/VeiZhang/BaseToolsLibrary/issues
 [forks]:https://github.com/VeiZhang/BaseToolsLibrary/network/members
 [stars]:https://github.com/VeiZhang/BaseToolsLibrary/stargazers
 
 <!-- 图片链接 -->
-[icon_Bintray]:https://img.shields.io/badge/Bintray-v1.2.3-brightgreen.svg
+
+[icon_download]:https://api.bintray.com/packages/veizhang/maven/basetools/images/download.svg
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_stars]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
 
 <!-- 版本 -->
+
 [BaseToolsV1.2.3]:https://bintray.com/veizhang/maven/basetools/1.2.3
 [BaseToolsV1.2.2]:https://bintray.com/veizhang/maven/basetools/1.2.2
 [BaseToolsV1.2.1]:https://bintray.com/veizhang/maven/basetools/1.2.1
@@ -549,19 +550,22 @@ HanziToPinyin : Android汉字转拼音类
 [BaseToolsV1.0.0]:https://bintray.com/veizhang/maven/basetools/1.0.0
 
 <!-- 大神引用 -->
+
 [ZhangHongYang]:https://github.com/hongyangAndroid/baseAdapter "通用适配器"
 [Blankj]:https://github.com/Blankj/AndroidUtilCode "常用工具类"
 [litesuits]:https://github.com/litesuits/android-common "通用类、辅助类、工具类"
 [smuyyh]:https://github.com/smuyyh/EasyAdapter "通用适配器"
 
 <!-- 代码引用 -->
-[GridAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/GridAdapterActivity.java
+
+[CommonAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/CommonAdapterActivity.java
 [RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
 [MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.java
 [MultiItemRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemRecyclerAdapterActivity.java
 [ViewPagerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/ViewPagerAdapterActivity.java
 
 <!-- 常用方法 -->
+
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.java
 [CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.java
@@ -584,5 +588,6 @@ HanziToPinyin : Android汉字转拼音类
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 
 <!-- 转载方法 -->
+
 [WeakHandler]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/assist/WeakHandler.java
 [HanziToPinyin]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/assist/HanziToPinyin.java
