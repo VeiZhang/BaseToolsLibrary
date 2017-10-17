@@ -8,6 +8,7 @@ import android.support.annotation.LayoutRes;
  *     blog   : http://tiimor.cn
  *     date   : 2017/10/16
  *     desc   : {@link com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingAdapter}
+ *     			{@link com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter}
  *              多布局视图接口
  *     			多布局使用时，多组数据集成基类，方便于判断是否使用特定视图接口
  * </pre>

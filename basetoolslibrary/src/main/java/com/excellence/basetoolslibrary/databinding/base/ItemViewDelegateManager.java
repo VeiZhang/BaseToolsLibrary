@@ -8,6 +8,7 @@ import android.support.v4.util.SparseArrayCompat;
  *     blog   : http://tiimor.cn
  *     date   : 2017/10/16
  *     desc   : {@link com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingAdapter}
+ *     			{@link com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter}
  *              多布局视图管理器
  *              默认0，1，2，3...为视图类型，且每个类型唯一；非位置标志
  * </pre>
