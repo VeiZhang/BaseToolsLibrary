@@ -3,6 +3,9 @@ package com.excellence.tooldemo.databinding;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingAdapter;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
@@ -41,6 +44,14 @@ public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity
 		adapter.addItemViewDelegate(new RoseViewDelegate());
 		adapter.addItemViewDelegate(new TulipViewDelegate());
 		mBinding.setAdapter(adapter);
+		mBinding.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				Toast.makeText(MultiItemTypeBindingAdapterActivity.this, "点击了" + position, Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	private class RoseViewDelegate implements ItemViewDelegate<Flower>

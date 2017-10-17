@@ -2,7 +2,9 @@ package com.excellence.tooldemo.bean.databinding;
 
 import android.databinding.BindingAdapter;
 import android.support.annotation.DrawableRes;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * <pre>
@@ -48,5 +50,10 @@ public class Flower
 	public static void loadImg(ImageView imageView, @DrawableRes int resId)
 	{
 		imageView.setImageResource(resId);
+	}
+
+	public void onImageClick(View view)
+	{
+		Toast.makeText(view.getContext(), "点击了图片", Toast.LENGTH_SHORT).show();
 	}
 }
