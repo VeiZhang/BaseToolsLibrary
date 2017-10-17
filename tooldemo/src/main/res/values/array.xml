@@ -9,6 +9,8 @@
         <item>@string/viewpager_adapter</item>
         <item>@string/data_binding_base_adapter</item>
         <item>@string/data_binding_multi_item_adapter</item>
+        <item>@string/data_binding_recycler_adapter</item>
+        <item>@string/data_binding_multi_item_recycler_adapter</item>
     </string-array>
 
     <string-array name="function_activity_list">
@@ -19,6 +21,8 @@
         <item>com.excellence.tooldemo.ViewPagerAdapterActivity</item>
         <item>com.excellence.tooldemo.databinding.CommonBindingAdapterActivity</item>
         <item>com.excellence.tooldemo.databinding.MultiItemTypeBindingAdapterActivity</item>
+        <item>com.excellence.tooldemo.databinding.BaseRecyclerBindingAdapterActivity</item>
+        <item>com.excellence.tooldemo.databinding.MultiItemTypeBindingRecyclerAdapterActivity</item>
     </string-array>
 
 </resources>

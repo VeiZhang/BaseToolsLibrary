@@ -37,6 +37,10 @@
         </activity>
         <activity android:name=".databinding.MultiItemTypeBindingAdapterActivity">
         </activity>
+        <activity android:name=".databinding.BaseRecyclerBindingAdapterActivity">
+        </activity>
+        <activity android:name=".databinding.MultiItemTypeBindingRecyclerAdapterActivity">
+        </activity>
     </application>
 
 </manifest>

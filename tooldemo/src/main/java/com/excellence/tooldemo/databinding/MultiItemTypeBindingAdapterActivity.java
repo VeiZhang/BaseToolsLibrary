@@ -54,7 +54,7 @@ public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity
 		});
 	}
 
-	private class RoseViewDelegate implements ItemViewDelegate<Flower>
+	public static class RoseViewDelegate implements ItemViewDelegate<Flower>
 	{
 		@Override
 		public int getItemViewLayoutId()
@@ -75,7 +75,7 @@ public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity
 		}
 	}
 
-	private class TulipViewDelegate implements ItemViewDelegate<Flower>
+	public static class TulipViewDelegate implements ItemViewDelegate<Flower>
 	{
 		@Override
 		public int getItemViewLayoutId()
