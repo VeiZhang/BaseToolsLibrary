@@ -11,9 +11,15 @@ Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种Item
 * [CommonAdapter](#CommonAdapter)
     * [通用适配器](#通用适配器)
     * [多布局通用适配器](#多布局通用适配器)
+* [CommonBindingAdapter](#CommonBindingAdapter)
+    * [DataBinding通用适配器](#DataBinding通用适配器)
+    * [DataBinding多布局通用适配器](#DataBinding多布局通用适配器)
 * [BaseRecyclerAdapter](#BaseRecyclerAdapter)
     * [RecyclerView通用适配器](#RecyclerView通用适配器)
     * [RecyclerView多布局通用适配器](#RecyclerView多布局通用适配器)
+* [BaseRecyclerBindingAdapter](#BaseRecyclerBindingAdapter)
+    * [DataBinding RecyclerView通用适配器](#DataBindingRecyclerView通用适配器)
+    * [DataBinding RecyclerView多布局通用适配器](#DataBindingRecyclerView多布局通用适配器)
 * [BasePagerAdapter](#BasePagerAdapter)
     * [ViewPager通用适配器](#ViewPager通用适配器)
 * [Utils](#Utils)
@@ -40,11 +46,30 @@ dependencies {
 compile project(':basetoolslibrary')
 ```
 
+**注意**
+
+在使用DataBinding通用适配器时，记得开启配置
+```
+android {
+    dataBinding {
+        enabled true
+    }
+}
+```
+
 <br>
+
+**大家来找茬**
+
+![icon_adapter][icon_adapter]
+
+![icon_common_adapter][icon_common_adapter]
+
+![icon_multi_adapter][icon_multi_adapter]
 
 ## CommonAdapter<a name="CommonAdapter">
 
-### gridview，listview的通用适配器<a name="通用适配器">
+### ListView，GridView的通用适配器<a name="通用适配器">
 
 示例：[CommonAdapterActivity][CommonAdapterActivity]
 
@@ -88,7 +113,7 @@ public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener);
 adapter.notifyNewData(data);
 ```
 
-### gridview，listview的多布局通用适配器<a name="多布局通用适配器">
+### ListView，GridView的多布局通用适配器<a name="多布局通用适配器">
 
 示例：[MultiItemAdapterActivity][MultiItemAdapterActivity]
 
@@ -126,6 +151,33 @@ private class ComputerDelegate implements ItemViewDelegate<People>
         viewHolder.setText(R.id.computer_text, item.getMsg());
     }
 }
+```
+
+<br>
+
+## CommonBindingAdapter<a name="CommonBindingAdapter">
+
+### 开启DataBinding，ListView、GridView通用适配器<a name="DataBinding通用适配器">
+
+示例：[CommonBindingAdapterActivity][CommonBindingAdapterActivity]
+
+```java
+// 直接创建CommonBindingAdapter
+CommonBindingAdapter<Flower> adapter = new CommonBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
+// 设置适配器，等同于ListView.setAdapter()、GridView.setAdapter()
+mBinding.setAdapter(adapter);
+```
+
+### 开启DataBinding，ListView，GridView的多布局通用适配器<a name="DataBinding多布局通用适配器">
+
+示例：[MultiItemTypeBindingAdapterActivity][MultiItemTypeBindingAdapterActivity]
+
+```java
+// 使用方式同上，主要实现ViewDelegate布局视图接口
+MultiItemTypeBindingAdapter<Flower> adapter = new MultiItemTypeBindingAdapter<>(mFlowers);
+adapter.addItemViewDelegate(new RoseViewDelegate());
+adapter.addItemViewDelegate(new TulipViewDelegate());
+mBinding.setAdapter(adapter);
 ```
 
 <br>
@@ -204,6 +256,36 @@ private class ComputerRecyclerDelegate implements ItemViewDelegate<People>
         viewHolder.setText(R.id.computer_text, item.getMsg());
     }
 }
+```
+
+<br>
+
+##  BaseRecyclerBindingAdapter<a name="BaseRecyclerBindingAdapter">
+
+### 开启DataBinding，RecyclerView的通用适配器<a name="DataBindingRecyclerView通用适配器">
+
+示例：[BaseRecyclerBindingAdapterActivity][BaseRecyclerBindingAdapterActivity]
+
+```java
+// 直接创建BaseRecyclerBindingAdapter
+BaseRecyclerBindingAdapter<Flower> adapter = new BaseRecyclerBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
+// 设置适配器，等同于RecyclerView.setAdapter()
+mBinding.setAdapter(adapter);
+// 注意设置LayoutManager，等同于RecyclerView.setLayoutManager()
+mBinding.setLayoutManager(new LinearLayoutManager(this));
+```
+
+### 开启DataBinding，RecyclerView的多布局通用适配器<a name="DataBindingRecyclerView多布局通用适配器">
+
+示例：[MultiItemTypeBindingRecyclerAdapterActivity][MultiItemTypeBindingRecyclerAdapterActivity]
+
+```java
+// 使用方式同上，主要实现ViewDelegate布局视图接口
+MultiItemTypeBindingRecyclerAdapter<Flower> adapter = new MultiItemTypeBindingRecyclerAdapter<>(mFlowers);
+adapter.addItemViewDelegate(new RoseViewDelegate());
+adapter.addItemViewDelegate(new TulipViewDelegate());
+mBinding.setAdapter(adapter);
+mBinding.setLayoutManager(new LinearLayoutManager(this));
 ```
 
 <br>
@@ -540,6 +622,9 @@ HanziToPinyin : Android汉字转拼音类
 [icon_issues]:https://img.shields.io/github/issues/VeiZhang/BaseToolsLibrary.svg
 [icon_forks]:https://img.shields.io/github/forks/VeiZhang/BaseToolsLibrary.svg?style=social
 [icon_stars]:https://img.shields.io/github/stars/VeiZhang/BaseToolsLibrary.svg?style=social
+[icon_adapter]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/images/adapter.png "适配器列表"
+[icon_common_adapter]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/images/common_adapter.png "通用适配器"
+[icon_multi_adapter]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/images/multi_adapter.png "多布局适配器"
 
 <!-- 版本 -->
 
@@ -565,6 +650,10 @@ HanziToPinyin : Android汉字转拼音类
 [MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.java
 [MultiItemRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemRecyclerAdapterActivity.java
 [ViewPagerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/ViewPagerAdapterActivity.java
+[CommonBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/databinding/CommonBindingAdapterActivity.java
+[MultiItemTypeBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/MultiItemTypeBindingAdapter.java
+[BaseRecyclerBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/BaseRecyclerBindingAdapter.java
+[MultiItemTypeBindingRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/MultiItemTypeBindingRecyclerAdapter.java
 
 <!-- 常用方法 -->
 
