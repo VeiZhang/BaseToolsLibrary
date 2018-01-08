@@ -1,32 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.novoda:bintray-release:0.3.4'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-
-    /**避免中文注释:编码GBK的不可映射字符**/
-    tasks.withType(Javadoc) {
-        options {
-            encoding "UTF-8"
-            charSet 'UTF-8'
-            links "http://docs.oracle.com/javase/7/docs/api"
-        }
-    }
-}
 
 android {
     compileSdkVersion 25
@@ -66,6 +38,36 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.0'
 }
 
+/*********************上传jCenter依赖*********************/
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.novoda:bintray-release:0.8.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+
+    /**避免中文注释:编码GBK的不可映射字符**/
+    tasks.withType(Javadoc) {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+
 /**避免Javadocs错误:找不到引用**/
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
@@ -73,13 +75,15 @@ tasks.withType(Javadoc) {
 }
 
 /**发布到我的Bintray仓库**/
-def key = getBintrayKey()
+def user = getPropertyValue('bintrayUser')
+def key = getPropertyValue('bintrayKey')
+def org = getPropertyValue('userOrg')
 
 publish {
-    bintrayUser = 'veizhang'
+    bintrayUser = user
     bintrayKey = key
     dryRun = false
-    userOrg = 'veizhang'
+    userOrg = org
     groupId = 'com.excellence'
     artifactId = 'basetools'
     publishVersion = '1.2.4'
@@ -89,15 +93,19 @@ publish {
 }
 
 /**读取bintray.key文件的key**/
-def getBintrayKey() {
+
+def getPropertyValue(String key) {
+    if (key == null || key.length() == 0)
+        return null
+
     File file = project.rootProject.file('../../bintray.key')
     if (!file.exists())
         return null
 
-    InputStream inputStream = file.newDataInputStream();
+    InputStream inputStream = file.newDataInputStream()
     Properties properties = new Properties()
     properties.load(inputStream)
 
     //读取Key
-    return properties.getProperty('bintrayKey')
+    return properties.getProperty(key)
 }
