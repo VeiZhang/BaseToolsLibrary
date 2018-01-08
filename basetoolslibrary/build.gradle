@@ -53,18 +53,12 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        jcenter()
-    }
-
-    /**避免中文注释:编码GBK的不可映射字符**/
-    tasks.withType(Javadoc) {
-        options {
-            encoding "UTF-8"
-            charSet 'UTF-8'
-            links "http://docs.oracle.com/javase/7/docs/api"
-        }
+/**避免中文注释:编码GBK的不可映射字符**/
+tasks.withType(Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        links "http://docs.oracle.com/javase/7/docs/api"
     }
 }
 
@@ -93,7 +87,6 @@ publish {
 }
 
 /**读取bintray.key文件的key**/
-
 def getPropertyValue(String key) {
     if (key == null || key.length() == 0)
         return null
