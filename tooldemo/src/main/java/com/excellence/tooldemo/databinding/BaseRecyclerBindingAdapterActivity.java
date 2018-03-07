@@ -46,12 +46,24 @@ public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity
 			{
 				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "点击事件" + position, Toast.LENGTH_SHORT).show();
 			}
+		});
 
+		adapter.setOnItemLongClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemLongClickListener()
+		{
 			@Override
 			public boolean onItemLongClick(ViewDataBinding binding, View v, int position)
 			{
 				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "长按事件" + position, Toast.LENGTH_SHORT).show();
 				return false;
+			}
+		});
+
+		adapter.setOnItemFocusChangeListener(new MultiItemTypeBindingRecyclerAdapter.OnItemFocusChangeListener()
+		{
+			@Override
+			public void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position)
+			{
+				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "焦点事件", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}

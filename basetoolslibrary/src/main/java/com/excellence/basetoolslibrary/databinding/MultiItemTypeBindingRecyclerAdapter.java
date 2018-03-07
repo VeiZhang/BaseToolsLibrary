@@ -29,6 +29,8 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	protected List<T> mDatas = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
 	private OnItemClickListener mOnItemClickListener = null;
+	private OnItemLongClickListener mOnItemLongClickListener = null;
+	private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
 
 	public MultiItemTypeBindingRecyclerAdapter(T[] datas)
 	{
@@ -149,7 +151,17 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			@Override
 			public boolean onLongClick(View v)
 			{
-				return mOnItemClickListener != null && mOnItemClickListener.onItemLongClick(binding, v, position);
+				return mOnItemLongClickListener != null && mOnItemLongClickListener.onItemLongClick(binding, v, position);
+			}
+		});
+
+		binding.getRoot().setOnFocusChangeListener(new View.OnFocusChangeListener()
+		{
+			@Override
+			public void onFocusChange(View v, boolean hasFocus)
+			{
+				if (mOnItemFocusChangeListener != null)
+					mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
 			}
 		});
 	}
@@ -157,13 +169,31 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public interface OnItemClickListener
 	{
 		void onItemClick(ViewDataBinding binding, View v, int position);
+	}
 
+	public interface OnItemLongClickListener
+	{
 		boolean onItemLongClick(ViewDataBinding binding, View v, int position);
 	}
 
-	public void setOnItemClickListener(OnItemClickListener onItemClickListener)
+	public interface OnItemFocusChangeListener
 	{
-		mOnItemClickListener = onItemClickListener;
+		void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position);
+	}
+
+	public void setOnItemClickListener(OnItemClickListener listener)
+	{
+		mOnItemClickListener = listener;
+	}
+
+	public void setOnItemLongClickListener(OnItemLongClickListener listener)
+	{
+		mOnItemLongClickListener = listener;
+	}
+
+	public void setOnItemFocusChangeListener(OnItemFocusChangeListener listener)
+	{
+		mOnItemFocusChangeListener = listener;
 	}
 
 	/**
@@ -315,7 +345,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	/**
 	 * 注意添加 static ，否则没有Javadoc红色错误，但是在编译时会报“方法不会覆盖或实现超类型的方法”的异常
 	 */
-	static class RecyclerViewHolder extends RecyclerView.ViewHolder
+	public static class RecyclerViewHolder extends RecyclerView.ViewHolder
 	{
 		private ViewDataBinding mBinding = null;
 
