@@ -36,9 +36,9 @@ Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种Item
 添加jCenter远程依赖到module里的build.gradle：
 ```
 dependencies {
-    compile 'com.excellence:basetools:1.2.4'
+    compile 'com.excellence:basetools:1.2.5'
     // 或者直接使用最新版本
-    // compile 'com.excellence:basetools:+'
+    // compile 'com.excellence:basetools:_latestVersion'
 }
 ```
 或者直接添加本地Library依赖
@@ -588,6 +588,7 @@ HanziToPinyin : Android汉字转拼音类
 ## 版本更新<a name="版本更新">
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
+| [1.2.5][BaseToolsV1.2.5] | 优化RecyclerView的监听事件 **2018-3-7** |
 | [1.2.4][BaseToolsV1.2.4] | 新增：开启DataBinding，ListView、GridView、RecyclerView通用适配器，一些辅助方法  **2017-10-18** |
 | [1.2.3][BaseToolsV1.2.3] | 新增ViewPager通用适配器；拓展工具类：文件、资源、反射、键盘等  **2017-7-21** |
 | [1.2.2][BaseToolsV1.2.2] | 拓展配置文件存储  **2017-5-12** |
@@ -628,6 +629,7 @@ HanziToPinyin : Android汉字转拼音类
 
 <!-- 版本 -->
 
+[BaseToolsV1.2.5]:https://bintray.com/veizhang/maven/basetools/1.2.5
 [BaseToolsV1.2.4]:https://bintray.com/veizhang/maven/basetools/1.2.4
 [BaseToolsV1.2.3]:https://bintray.com/veizhang/maven/basetools/1.2.3
 [BaseToolsV1.2.2]:https://bintray.com/veizhang/maven/basetools/1.2.2

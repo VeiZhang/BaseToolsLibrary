@@ -80,7 +80,7 @@ publish {
     userOrg = org
     groupId = 'com.excellence'
     artifactId = 'basetools'
-    publishVersion = '1.2.4'
+    publishVersion = '1.2.5'
     desc = 'Android通用适配器和常用的工具类'
     website = 'https://github.com/VeiZhang/BaseToolsLibrary'
     licences = ['Apache-2.0']
