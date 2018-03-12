@@ -54,7 +54,7 @@ public class ItemViewDelegateManager<T>
 	 */
 	public ItemViewDelegateManager<T> addDelegate(int viewType, ItemViewDelegate<T> delegate)
 	{
-		if (mDelegates.get(viewType) == null)
+		if (mDelegates.get(viewType) != null)
 			throw new IllegalArgumentException("An ItemViewDelegate is already registered for the viewType = " + viewType + ". Already registered ItemViewDelegate is " + mDelegates.get(viewType));
 		mDelegates.put(viewType, delegate);
 		return this;
