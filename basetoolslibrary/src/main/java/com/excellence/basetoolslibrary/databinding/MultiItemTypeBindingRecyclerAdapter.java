@@ -210,6 +210,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	@Override
 	public void notifyNewData(List<T> datas)
 	{
+		mDatas.clear();
 		mDatas.addAll(datas);
 		notifyDataSetChanged();
 	}
