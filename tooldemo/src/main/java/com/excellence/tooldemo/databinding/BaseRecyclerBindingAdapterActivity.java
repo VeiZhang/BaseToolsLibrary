@@ -35,7 +35,7 @@ public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity
 	{
 		mFlowers = new ArrayList<>();
 		for (int i = 0; i < 10; i++)
-			mFlowers.add(new Flower("Flower" + i, R.drawable.logo));
+			mFlowers.add(new Flower("Flower x Flower = Flowers " + i, R.drawable.logo));
 		BaseRecyclerBindingAdapter<Flower> adapter = new BaseRecyclerBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
 		mBinding.setAdapter(adapter);
 		mBinding.setLayoutManager(new LinearLayoutManager(this));
@@ -63,7 +63,10 @@ public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity
 			@Override
 			public void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position)
 			{
-				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "焦点事件", Toast.LENGTH_SHORT).show();
+				ItemFlowerBinding itemFlowerBinding = (ItemFlowerBinding) binding;
+				itemFlowerBinding.text.setSelected(hasFocus);
+				if (hasFocus)
+					Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "焦点事件 " + position, Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
