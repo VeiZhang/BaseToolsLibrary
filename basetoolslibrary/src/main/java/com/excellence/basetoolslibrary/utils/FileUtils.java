@@ -334,6 +334,9 @@ public class FileUtils
 	}
 
 	/**
+	 * @see File#getFreeSpace() 获取系统root用户可用空间
+	 * @see File#getUsableSpace() 取非root用户可用空间
+	 *
 	 * 获取目录剩余空间
 	 * 剩余空间 = 总空间 - 已使用空间
 	 * 剩余空间 ！= 可用空间
