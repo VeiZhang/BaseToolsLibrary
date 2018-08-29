@@ -103,7 +103,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public int getItemViewType(int position)
 	{
 		if (userItemViewDelegateManager())
+		{
 			return mItemViewDelegateManager.getItemViewType(mDatas.get(position), position);
+		}
 		return super.getItemViewType(position);
 	}
 
@@ -136,7 +138,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 			public void onClick(View v)
 			{
 				if (mOnItemClickListener != null)
+				{
 					mOnItemClickListener.onItemClick(viewHolder, v, position);
+				}
 			}
 		});
 
@@ -160,6 +164,12 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void setOnItemClickListener(OnItemClickListener onItemClickListener)
 	{
 		mOnItemClickListener = onItemClickListener;
+	}
+
+	@Override
+	public T getItem(int position)
+	{
+		return mDatas == null ? null : mDatas.get(position);
 	}
 
 	/**
@@ -227,8 +237,10 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void add(int position, T data)
 	{
 		if (mDatas != null)
+		{
 			mDatas.add(position, data);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -241,8 +253,10 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void modify(int index, T newData)
 	{
 		if (mDatas != null)
+		{
 			mDatas.set(index, newData);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -255,7 +269,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void modify(T oldData, T newData)
 	{
 		if (mDatas != null)
+		{
 			modify(mDatas.indexOf(oldData), newData);
+		}
 	}
 
 	/**
@@ -281,8 +297,10 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void remove(int index)
 	{
 		if (mDatas != null)
+		{
 			mDatas.remove(index);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -292,8 +310,10 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void clear()
 	{
 		if (mDatas != null)
+		{
 			mDatas.clear();
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**

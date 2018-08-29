@@ -13,6 +13,8 @@ import java.util.List;
 
 public interface DataHelper<T>
 {
+	T getItem(int position);
+
 	/**
 	 * 新数据集替代旧数据集，刷新视图
 	 *

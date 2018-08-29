@@ -107,7 +107,9 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public int getItemViewType(int position)
 	{
 		if (userItemViewDelegateManager())
+		{
 			return mItemViewDelegateManager.getItemViewType(mDatas.get(position), position);
+		}
 		return super.getItemViewType(position);
 	}
 
@@ -115,11 +117,6 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public int getItemCount()
 	{
 		return mDatas == null ? 0 : mDatas.size();
-	}
-
-	public T getItem(int position)
-	{
-		return mDatas == null ? null : mDatas.get(position);
 	}
 
 	@Override
@@ -148,7 +145,9 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			public void onClick(View v)
 			{
 				if (mOnItemClickListener != null)
+				{
 					mOnItemClickListener.onItemClick(binding, v, position);
+				}
 			}
 		});
 
@@ -167,7 +166,9 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			public void onFocusChange(View v, boolean hasFocus)
 			{
 				if (mOnItemFocusChangeListener != null)
+				{
 					mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
+				}
 			}
 		});
 	}
@@ -200,6 +201,12 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void setOnItemFocusChangeListener(OnItemFocusChangeListener listener)
 	{
 		mOnItemFocusChangeListener = listener;
+	}
+
+	@Override
+	public T getItem(int position)
+	{
+		return mDatas == null ? null : mDatas.get(position);
 	}
 
 	/**
@@ -268,8 +275,10 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void add(int position, T data)
 	{
 		if (mDatas != null)
+		{
 			mDatas.add(position, data);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -282,8 +291,10 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void modify(int index, T newData)
 	{
 		if (mDatas != null)
+		{
 			mDatas.set(index, newData);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -296,7 +307,9 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void modify(T oldData, T newData)
 	{
 		if (mDatas != null)
+		{
 			modify(mDatas.indexOf(oldData), newData);
+		}
 	}
 
 	/**
@@ -322,8 +335,10 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void remove(int index)
 	{
 		if (mDatas != null)
+		{
 			mDatas.remove(index);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -333,8 +348,10 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void clear()
 	{
 		if (mDatas != null)
+		{
 			mDatas.clear();
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**

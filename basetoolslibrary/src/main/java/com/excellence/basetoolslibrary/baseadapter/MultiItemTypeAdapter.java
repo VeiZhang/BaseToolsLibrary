@@ -107,7 +107,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	public int getViewTypeCount()
 	{
 		if (userItemViewDelegateManager())
+		{
 			return mItemViewDelegateManager.getItemViewDelegateCount();
+		}
 		return super.getViewTypeCount();
 	}
 
@@ -220,8 +222,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	public void add(int position, T data)
 	{
 		if (mDatas != null)
+		{
 			mDatas.add(position, data);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -234,8 +238,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	public void modify(int index, T newData)
 	{
 		if (mDatas != null)
+		{
 			mDatas.set(index, newData);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -248,7 +254,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	public void modify(T oldData, T newData)
 	{
 		if (mDatas != null)
+		{
 			modify(mDatas.indexOf(oldData), newData);
+		}
 	}
 
 	/**
@@ -274,8 +282,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	public void remove(int index)
 	{
 		if (mDatas != null)
+		{
 			mDatas.remove(index);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -285,8 +295,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	public void clear()
 	{
 		if (mDatas != null)
+		{
 			mDatas.clear();
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**

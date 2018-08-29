@@ -107,7 +107,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	public int getViewTypeCount()
 	{
 		if (userItemViewDelegateManager())
+		{
 			return mItemViewDelegateManager.getItemViewDelegateCount();
+		}
 		return super.getViewTypeCount();
 	}
 
@@ -151,9 +153,13 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 		ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItem(position), position);
 		ViewDataBinding binding;
 		if (convertView == null)
+		{
 			binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), delegate.getItemViewLayoutId(), parent, false);
+		}
 		else
+		{
 			binding = DataBindingUtil.getBinding(convertView);
+		}
 		binding.setVariable(delegate.getItemVariable(), getItem(position));
 		return binding.getRoot();
 	}
@@ -223,8 +229,10 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	public void add(int position, T data)
 	{
 		if (mDatas != null)
+		{
 			mDatas.add(position, data);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -237,8 +245,10 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	public void modify(int index, T newData)
 	{
 		if (mDatas != null)
+		{
 			mDatas.set(index, newData);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -251,7 +261,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	public void modify(T oldData, T newData)
 	{
 		if (mDatas != null)
+		{
 			modify(mDatas.indexOf(oldData), newData);
+		}
 	}
 
 	/**
@@ -277,8 +289,10 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	public void remove(int index)
 	{
 		if (mDatas != null)
+		{
 			mDatas.remove(index);
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -288,8 +302,10 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	public void clear()
 	{
 		if (mDatas != null)
+		{
 			mDatas.clear();
-		notifyDataSetChanged();
+			notifyDataSetChanged();
+		}
 	}
 
 	/**
