@@ -107,18 +107,24 @@ public class FileUtils
 	public static boolean deleteDir(File dir)
 	{
 		if (!isFileExists(dir))
+		{
 			return false;
+		}
 
 		if (dir.isDirectory())
 		{
 			File[] fileList = dir.listFiles();
 			if (fileList == null)
+			{
 				return false;
+			}
 			for (File file : fileList)
 			{
 				boolean success = deleteDir(file);
 				if (!success)
+				{
 					return false;
+				}
 			}
 		}
 		return dir.delete();
@@ -144,20 +150,28 @@ public class FileUtils
 	public static boolean deletePostfixFiles(File dir, String postfix)
 	{
 		if (!isFileExists(dir) || StringUtils.isEmpty(postfix))
+		{
 			return false;
+		}
 
 		if (dir.isFile() && dir.getName().endsWith(postfix))
+		{
 			return dir.delete();
+		}
 		else if (dir.isDirectory())
 		{
 			File[] fileList = dir.listFiles();
 			if (fileList == null)
+			{
 				return false;
+			}
 			for (File file : fileList)
 			{
 				boolean success = deletePostfixFiles(file, postfix);
 				if (!success)
+				{
 					return false;
+				}
 			}
 		}
 		return true;
@@ -234,9 +248,13 @@ public class FileUtils
 		if (isFileExists(file))
 		{
 			if (file.isDirectory())
+			{
 				fileSize = getDirSize(file);
+			}
 			else
+			{
 				fileSize = getFileSize(file);
+			}
 		}
 		return fileSize;
 	}
@@ -250,7 +268,9 @@ public class FileUtils
 	public static long getFilesSize(String filePath)
 	{
 		if (isFileExists(filePath))
+		{
 			return getFilesSize(new File(filePath));
+		}
 		return 0;
 	}
 
@@ -272,7 +292,9 @@ public class FileUtils
 					return inStream.available();
 				}
 				else if (file.isDirectory())
+				{
 					return getDirSize(file);
+				}
 			}
 		}
 		catch (Exception e)
@@ -291,7 +313,9 @@ public class FileUtils
 	public static long getFileSize(String filePath)
 	{
 		if (isFileExists(filePath))
+		{
 			return getFileSize(new File(filePath));
+		}
 		return 0;
 	}
 
@@ -308,13 +332,19 @@ public class FileUtils
 		{
 			File[] fileList = dir.listFiles();
 			if (fileList == null)
+			{
 				return size;
+			}
 			for (File file : fileList)
 			{
 				if (file.isDirectory())
+				{
 					size += getDirSize(file);
+				}
 				else
+				{
 					size += getFileSize(file);
+				}
 			}
 		}
 		return size;
@@ -329,7 +359,9 @@ public class FileUtils
 	public static long getDirSize(String filePath)
 	{
 		if (isFileExists(filePath))
+		{
 			return getDirSize(new File(filePath));
+		}
 		return 0;
 	}
 
@@ -350,9 +382,13 @@ public class FileUtils
 		if (isFileExists(dir))
 		{
 			if (dir.isDirectory())
+			{
 				freeSpace = dir.getFreeSpace();
+			}
 			else if (dir.isFile())
+			{
 				freeSpace = dir.getParentFile().getFreeSpace();
+			}
 		}
 		return freeSpace;
 	}
@@ -368,7 +404,9 @@ public class FileUtils
 	public static long getDirFreeSpace(String filePath)
 	{
 		if (isFileExists(filePath))
+		{
 			return getDirFreeSpace(new File(filePath));
+		}
 		return 0;
 	}
 
@@ -384,9 +422,13 @@ public class FileUtils
 		if (isFileExists(dir))
 		{
 			if (dir.isDirectory())
+			{
 				totalSpace = dir.getTotalSpace();
+			}
 			else if (dir.isFile())
+			{
 				totalSpace = dir.getParentFile().getTotalSpace();
+			}
 		}
 		return totalSpace;
 	}
@@ -400,7 +442,9 @@ public class FileUtils
 	public static long getDirTotalSpace(String filePath)
 	{
 		if (isFileExists(filePath))
+		{
 			return getDirTotalSpace(new File(filePath));
+		}
 		return 0;
 	}
 
@@ -416,9 +460,13 @@ public class FileUtils
 		if (isFileExists(dir))
 		{
 			if (dir.isDirectory())
+			{
 				usableSpace = dir.getUsableSpace();
+			}
 			else if (dir.isFile())
+			{
 				usableSpace = dir.getParentFile().getUsableSpace();
+			}
 		}
 		return usableSpace;
 	}
@@ -432,7 +480,9 @@ public class FileUtils
 	public static long getDirUsableSpace(String filePath)
 	{
 		if (isFileExists(filePath))
+		{
 			return getDirUsableSpace(new File(filePath));
+		}
 		return 0;
 	}
 
