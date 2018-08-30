@@ -432,9 +432,9 @@ mkDir              : 创建目录
 deleteDir          : 删除目录
 deletePostfixFiles : 删除目录下的某后缀文件
 formatFileSize     : 格式化文件大小
-getFilesSize       : 获取目录、文件大小
+getFilesSize       : 遍历目录、获取文件大小
 getFileSize        : 获取文件大小
-getDirSize         : 获取目录大小
+getDirSize         : 遍历目录大小
 getDirFreeSpace    : 获取目录剩余空间
 getDirTotalSpace   : 获取目录总空间
 getDirUsableSpace  : 获取目录可用空间

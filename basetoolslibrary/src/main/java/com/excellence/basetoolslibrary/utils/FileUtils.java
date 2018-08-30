@@ -1,5 +1,7 @@
 package com.excellence.basetoolslibrary.utils;
 
+import android.os.StatFs;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -237,7 +239,7 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取文件或者目录大小
+	 * 获取文件或者遍历目录大小
 	 *
 	 * @param file File类型
 	 * @return
@@ -260,7 +262,7 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取文件或者目录大小
+	 * 获取文件或者遍历目录大小
 	 *
 	 * @param filePath 文件路径字符串
 	 * @return
@@ -320,7 +322,7 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录大小
+	 * 遍历目录大小
 	 *
 	 * @param dir File类型
 	 * @return
@@ -351,7 +353,7 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录大小
+	 * 遍历目录大小
 	 *
 	 * @param filePath 文件路径字符串
 	 * @return
@@ -369,7 +371,7 @@ public class FileUtils
 	 * @see File#getFreeSpace() 获取系统root用户可用空间
 	 * @see File#getUsableSpace() 取非root用户可用空间
 	 *
-	 * 获取目录剩余空间
+	 * 获取目录剩余空间，同{@link StatFs#getFreeBytes()}
 	 * 剩余空间 = 总空间 - 已使用空间
 	 * 剩余空间 ！= 可用空间
 	 *
@@ -394,10 +396,13 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录剩余空间
+	 * @see File#getFreeSpace() 获取系统root用户可用空间
+	 * @see File#getUsableSpace() 取非root用户可用空间
+	 *
+	 * 获取目录剩余空间，同{@link StatFs#getFreeBytes()}
 	 * 剩余空间 = 总空间 - 已使用空间
 	 * 剩余空间 ！= 可用空间
-	 * 
+	 *
 	 * @param filePath 文件路径字符串
 	 * @return
 	 */
@@ -411,7 +416,7 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录总空间
+	 * 获取目录总空间，同{@link StatFs#getTotalBytes()}
 	 *
 	 * @param dir File类型
 	 * @return
@@ -434,7 +439,7 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录总空间
+	 * 获取目录总空间，同{@link StatFs#getTotalBytes()}
 	 * 
 	 * @param filePath 文件路径字符串
 	 * @return
@@ -449,7 +454,10 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录可用空间
+	 * @see File#getFreeSpace() 获取系统root用户可用空间
+	 * @see File#getUsableSpace() 取非root用户可用空间
+	 *
+	 * 获取目录可用空间，同{@link StatFs#getAvailableBytes()}
 	 *
 	 * @param dir File类型
 	 * @return
@@ -472,7 +480,10 @@ public class FileUtils
 	}
 
 	/**
-	 * 获取目录可用空间
+	 * @see File#getFreeSpace() 获取系统root用户可用空间
+	 * @see File#getUsableSpace() 取非root用户可用空间
+	 *
+	 * 获取目录可用空间，同{@link StatFs#getAvailableBytes()}
 	 *
 	 * @param filePath 文件路径字符串
 	 * @return
