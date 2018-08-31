@@ -385,7 +385,7 @@ inputStream2String        : inputStream转字符串
 inputStream2StringBuilder : inputStream转StringBuilder
 ```
 
-> - **存储相关→[DBUtils.java][DBUtils]**
+> - **配置存储相关→[DBUtils.java][DBUtils]**
 ```
 init         : 初始化，设置存储文件名
 contains     : 判断键值是否存在
@@ -541,6 +541,11 @@ execProcessBuilderCommand : 执行命令
 execRuntimeCommand        : 执行命令
 ```
 
+> - **SD、TF等存储相关→[StorageUtils.java][StorageUtils]**
+```
+getStorageList : 获取所有的内置、外置存储设备
+```
+
 > - **字符串相关→[StringUtils.java][StringUtils]**
 ```
 isEmpty          : 判断字符串是否为空
@@ -677,6 +682,7 @@ HanziToPinyin : Android汉字转拼音类
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
 [ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.java
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
+[StorageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StorageUtils.java
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 
