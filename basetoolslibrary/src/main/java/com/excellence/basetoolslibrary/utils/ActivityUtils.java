@@ -51,8 +51,11 @@ public class ActivityUtils
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(intent);
 			return true;
-		}else
+		}
+		else
+		{
 			return false;
+		}
 	}
 
 	/**
@@ -84,8 +87,7 @@ public class ActivityUtils
 		if (EmptyUtils.isNotEmpty(runningTaskInfos))
 		{
 			ComponentName componentName = runningTaskInfos.get(0).topActivity;
-			if (activityCls.getName().equals(componentName.getClassName()))
-				return true;
+			return activityCls.getName().equals(componentName.getClassName());
 		}
 		return false;
 	}
@@ -103,7 +105,9 @@ public class ActivityUtils
 		for (ResolveInfo info : infos)
 		{
 			if (info.activityInfo.packageName.equals(packageName))
+			{
 				return info.activityInfo.name;
+			}
 		}
 		return null;
 	}

@@ -105,7 +105,9 @@ public class AppUtils
 		{
 			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
 			if (packageInfo != null && packageInfo.requestedPermissions != null)
+			{
 				permissionList.addAll(Arrays.asList(packageInfo.requestedPermissions));
+			}
 		}
 		catch (PackageManager.NameNotFoundException e)
 		{
@@ -309,7 +311,9 @@ public class AppUtils
 			Field packageInfoFld = pkgParserPkg.getClass().getDeclaredField("mSignatures");
 			Signature[] signatures = (Signature[]) packageInfoFld.get(pkgParserPkg);
 			if (signatures.length > 0)
+			{
 				signatureMD5 = getSignatureMD5(signatures[0]);
+			}
 		}
 		catch (Exception e)
 		{

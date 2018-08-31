@@ -31,10 +31,14 @@ public class KeyboardUtils
 	public static void showSoftInput(Activity activity)
 	{
 		if (activity == null)
+		{
 			return;
+		}
 		View view = activity.getCurrentFocus();
 		if (view == null)
+		{
 			view = new View(activity);
+		}
 		showSoftInput(view);
 	}
 
@@ -46,10 +50,14 @@ public class KeyboardUtils
 	public static void showSoftInput(View view)
 	{
 		if (view == null)
+		{
 			return;
+		}
 		InputMethodManager imm = getInputMethodManager(view.getContext());
 		if (imm == null)
+		{
 			return;
+		}
 		imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
 	}
 
@@ -61,10 +69,14 @@ public class KeyboardUtils
 	public static void hideSoftInput(final Activity activity)
 	{
 		if (activity == null)
+		{
 			return;
+		}
 		View view = activity.getCurrentFocus();
 		if (view == null)
+		{
 			view = new View(activity);
+		}
 		hideSoftInput(view);
 	}
 
@@ -76,10 +88,14 @@ public class KeyboardUtils
 	public static void hideSoftInput(View view)
 	{
 		if (view == null)
+		{
 			return;
+		}
 		InputMethodManager imm = getInputMethodManager(view.getContext());
 		if (imm == null)
+		{
 			return;
+		}
 		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 	}
 
@@ -92,7 +108,9 @@ public class KeyboardUtils
 	{
 		InputMethodManager imm = getInputMethodManager(context);
 		if (imm == null || imm.isActive())
+		{
 			return;
+		}
 		imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
@@ -105,7 +123,9 @@ public class KeyboardUtils
 	{
 		InputMethodManager imm = getInputMethodManager(context);
 		if (imm == null || !imm.isActive())
+		{
 			return;
+		}
 		imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 
@@ -118,7 +138,9 @@ public class KeyboardUtils
 	{
 		InputMethodManager imm = getInputMethodManager(context);
 		if (imm == null)
+		{
 			return;
+		}
 		imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 	}
 

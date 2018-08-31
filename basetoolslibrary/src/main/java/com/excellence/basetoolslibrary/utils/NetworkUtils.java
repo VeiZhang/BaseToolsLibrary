@@ -96,7 +96,9 @@ public class NetworkUtils
 			TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 			Method getMobileDataEnabledMethod = manager.getClass().getDeclaredMethod("getDataEnabled");
 			if (getMobileDataEnabledMethod != null)
+			{
 				return (boolean) getMobileDataEnabledMethod.invoke(manager);
+			}
 		}
 		catch (Exception e)
 		{
@@ -119,7 +121,9 @@ public class NetworkUtils
 			TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 			Method setMobileDataEnabledMethod = manager.getClass().getDeclaredMethod("setDataEnabled", boolean.class);
 			if (setMobileDataEnabledMethod != null)
+			{
 				setMobileDataEnabledMethod.invoke(manager, enabled);
+			}
 		}
 		catch (Exception e)
 		{
@@ -163,12 +167,16 @@ public class NetworkUtils
 		if (enabled)
 		{
 			if (!wifiManager.isWifiEnabled())
+			{
 				wifiManager.setWifiEnabled(true);
+			}
 		}
 		else
 		{
 			if (wifiManager.isWifiEnabled())
+			{
 				wifiManager.setWifiEnabled(false);
+			}
 		}
 	}
 
@@ -303,7 +311,9 @@ public class NetworkUtils
 				NetworkInterface networkInterface = enumeration.nextElement();
 				// 防止小米手机返回10.0.2.15
 				if (!networkInterface.isUp())
+				{
 					continue;
+				}
 				for (Enumeration<InetAddress> addresses = networkInterface.getInetAddresses(); addresses.hasMoreElements();)
 				{
 					InetAddress inetAddress = addresses.nextElement();
@@ -314,7 +324,9 @@ public class NetworkUtils
 						if (useIPv4)
 						{
 							if (isIPv4)
+							{
 								return hostAddress;
+							}
 						}
 						else
 						{

@@ -30,7 +30,9 @@ public class ReflectUtils
 	public static Field[] getDeclaredFields(Class cls)
 	{
 		if (cls == null)
+		{
 			return null;
+		}
 		return cls.getDeclaredFields();
 	}
 
@@ -43,7 +45,9 @@ public class ReflectUtils
 	public static Field[] getDeclaredFields(Object owner)
 	{
 		if (owner == null)
+		{
 			return null;
+		}
 		return getDeclaredFields(owner.getClass());
 	}
 
@@ -58,7 +62,9 @@ public class ReflectUtils
 		try
 		{
 			if (EmptyUtils.isEmpty(clsName))
+			{
 				return null;
+			}
 			return getDeclaredFields(Class.forName(clsName));
 		}
 		catch (Exception e)
@@ -77,7 +83,9 @@ public class ReflectUtils
 	public static Field[] getFields(Class cls)
 	{
 		if (cls == null)
+		{
 			return null;
+		}
 		return cls.getFields();
 	}
 
@@ -90,7 +98,9 @@ public class ReflectUtils
 	public static Field[] getFields(Object owner)
 	{
 		if (owner == null)
+		{
 			return null;
+		}
 		return getFields(owner.getClass());
 	}
 
@@ -105,7 +115,9 @@ public class ReflectUtils
 		try
 		{
 			if (EmptyUtils.isEmpty(clsName))
+			{
 				return null;
+			}
 			return getFields(Class.forName(clsName));
 		}
 		catch (Exception e)
@@ -169,7 +181,9 @@ public class ReflectUtils
 	public static Method[] getDeclaredMethods(Class cls)
 	{
 		if (cls == null)
+		{
 			return null;
+		}
 		return cls.getDeclaredMethods();
 	}
 
@@ -182,7 +196,9 @@ public class ReflectUtils
 	public static Method[] getDeclaredMethods(Object owner)
 	{
 		if (owner == null)
+		{
 			return null;
+		}
 		return owner.getClass().getDeclaredMethods();
 	}
 
@@ -199,7 +215,9 @@ public class ReflectUtils
 		try
 		{
 			if (owner == null)
+			{
 				return null;
+			}
 			return owner.getClass().getDeclaredMethod(methodName, argsCls);
 		}
 		catch (Exception e)
@@ -218,7 +236,9 @@ public class ReflectUtils
 	public static Method[] getMetods(Class cls)
 	{
 		if (cls == null)
+		{
 			return null;
+		}
 		return cls.getMethods();
 	}
 
@@ -231,7 +251,9 @@ public class ReflectUtils
 	public static Method[] getMethods(Object owner)
 	{
 		if (owner == null)
+		{
 			return null;
+		}
 		return owner.getClass().getMethods();
 	}
 
@@ -248,7 +270,9 @@ public class ReflectUtils
 		try
 		{
 			if (owner == null)
+			{
 				return null;
+			}
 			return owner.getClass().getMethod(methodName, argsCls);
 		}
 		catch (NoSuchMethodException e)
@@ -288,7 +312,9 @@ public class ReflectUtils
 					argsCls[i] = android.view.SurfaceHolder.class;
 				}
 				else
+				{
 					argsCls[i] = args[i].getClass();
+				}
 			}
 			ret = invokeDeclaredMethod(owner, methodName, args, argsCls);
 		}
@@ -354,7 +380,9 @@ public class ReflectUtils
 					argsCls[i] = android.view.SurfaceHolder.class;
 				}
 				else
+				{
 					argsCls[i] = args[i].getClass();
+				}
 			}
 			ret = invokeMethod(owner, methodName, args, argsCls);
 		}

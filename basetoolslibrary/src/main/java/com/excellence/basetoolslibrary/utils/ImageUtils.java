@@ -69,7 +69,9 @@ public class ImageUtils
 	public static Bitmap view2Bitmap(View view)
 	{
 		if (view == null)
+		{
 			return null;
+		}
 		Bitmap ret = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
 		Canvas canvas = new Canvas(ret);
 		Drawable bgDrawable = view.getBackground();
@@ -94,7 +96,9 @@ public class ImageUtils
 	public static Bitmap viewCache2Bitmap(View view)
 	{
 		if (view == null)
+		{
 			return null;
+		}
 		view.buildDrawingCache();
 		Bitmap bitmap = view.getDrawingCache();
 		view.setDrawingCacheEnabled(false);

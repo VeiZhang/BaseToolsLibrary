@@ -30,7 +30,9 @@ public class PinyinUtils
 	public static String ccs2Pinyin(String ccs)
 	{
 		if (StringUtils.isEmpty(ccs))
+		{
 			return null;
+		}
 		StringBuilder stringBuilder = new StringBuilder();
 		List<HanziToPinyin.Token> tokens = HanziToPinyin.getInstance().get(ccs);
 		if (EmptyUtils.isNotEmpty(tokens))
@@ -38,9 +40,13 @@ public class PinyinUtils
 			for (HanziToPinyin.Token token : tokens)
 			{
 				if (token.type == HanziToPinyin.Token.PINYIN)
+				{
 					stringBuilder.append(token.target);
+				}
 				else
+				{
 					stringBuilder.append(token.source);
+				}
 			}
 		}
 		return stringBuilder.toString().toLowerCase();
@@ -89,7 +95,9 @@ public class PinyinUtils
 	public static String getPinyinHeadChars(String ccs)
 	{
 		if (StringUtils.isEmpty(ccs))
+		{
 			return null;
+		}
 
 		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < ccs.length(); i++)
@@ -119,11 +127,15 @@ public class PinyinUtils
 	public static boolean isAllHanzi(String ccs)
 	{
 		if (StringUtils.isEmpty(ccs))
+		{
 			return false;
+		}
 		for (int i = 0; i < ccs.length(); i++)
 		{
 			if (!Character.toString(ccs.charAt(i)).matches(REGEX_ZH))
+			{
 				return false;
+			}
 		}
 		return true;
 	}
