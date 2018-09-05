@@ -20,7 +20,7 @@ import java.util.List;
 public class StorageUtils
 {
 	/**
-	 * 获取所有的内置、外置存储设备：sdcard {@link Environment#getExternalStorageDirectory()}、SD、TF
+	 * 获取所有存储路径，包括内置、外置存储设备：sdcard {@link Environment#getExternalStorageDirectory()}、SD、TF
 	 *
 	 * @param context
 	 * @return
@@ -31,9 +31,9 @@ public class StorageUtils
 		try
 		{
 			StorageManager storageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
-			Method doMethod = storageManager.getClass().getDeclaredMethod("getVolumePaths", new Class[] {});
-			doMethod.setAccessible(true);
-			String[] paths = (String[]) doMethod.invoke(storageManager);
+			Method getVolumePaths = storageManager.getClass().getDeclaredMethod("getVolumePaths", new Class[] {});
+			getVolumePaths.setAccessible(true);
+			String[] paths = (String[]) getVolumePaths.invoke(storageManager);
 			if (paths != null)
 			{
 				storageList = Arrays.asList(paths);
