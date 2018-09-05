@@ -543,7 +543,8 @@ execRuntimeCommand        : 执行命令
 
 > - **SD、TF等存储相关→[StorageUtils.java][StorageUtils]**
 ```
-getStorageList : 获取所有的内置、外置存储设备
+getStorageList       : 获取所有的内置、外置存储设备
+getStorageVolumeList : 获取存储卷的相关信息
 ```
 
 > - **字符串相关→[StringUtils.java][StringUtils]**
