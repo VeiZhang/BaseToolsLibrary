@@ -472,8 +472,11 @@ setMobileDataEnabled    : 打开或关闭移动数据（舍弃不可用）
 is4G                    : 判断是否是4G网络
 isWiFiEnabled           : 判断是否打开WiFi
 setWiFiEnabled          : 打开或关闭WiFi
+isEthConnected          : 判断以太网是否连接
+isEthAvailable          : 判断以太网是否可用
 isWiFiConnected         : 判断WiFi是否连接
 isWiFiAvailable         : 判断WiFi是否可用
+isWiFiAvailableByPing   : 通过ping的方式判断WiFi是否可用
 getNetworkOperatorName  : 获取网络运营商名称
 getNetworkType          : 获取当前网络类型
 getIPAddress            : 获取网络IP地址

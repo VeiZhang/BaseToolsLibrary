@@ -27,9 +27,9 @@ import java.util.concurrent.Future;
  *     				 {@link android.Manifest.permission#CHANGE_WIFI_STATE	}
  *
  *     			isAvailable、isConnected：1，显示连接已保存，但标题栏没有，即没有实质连接上   not connect， available
- *										 2，显示连接已保存，标题栏也有已连接上的图标，          connect， available
- * 										 3，选择不保存后 								not connect， available
- *										 4，选择连接，在正在获取IP地址时					not connect， not available
+ *										 2，显示连接已保存，标题栏也有已连接上的图标，           connect， available
+ * 										 3，选择不保存后 								     not connect， available
+ *										 4，选择连接，在正在获取IP地址时					 not connect， not available
  * </pre>
  */
 
@@ -182,6 +182,30 @@ public class NetworkUtils
 	}
 
 	/**
+	 * 判断以太网是否连接
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static boolean isEthConnected(Context context)
+	{
+		NetworkInfo info = getActiveNetworkInfo(context);
+		return info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_ETHERNET;
+	}
+
+	/**
+	 * 判断以太网是否可用
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static boolean isEthAvailable(Context context)
+	{
+		NetworkInfo info = getActiveNetworkInfo(context);
+		return info != null && info.isAvailable() && info.getType() == ConnectivityManager.TYPE_ETHERNET;
+	}
+
+	/**
 	 * 判断WiFi是否连接
 	 *
 	 * @param context 上下文
@@ -190,7 +214,7 @@ public class NetworkUtils
 	public static boolean isWiFiConnected(Context context)
 	{
 		NetworkInfo info = getActiveNetworkInfo(context);
-		return info != null && info.isAvailable() && info.getType() == ConnectivityManager.TYPE_WIFI;
+		return info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_WIFI;
 	}
 
 	/**
@@ -201,12 +225,20 @@ public class NetworkUtils
 	 */
 	public static boolean isWiFiAvailable(Context context)
 	{
-		return isWiFiEnabled(context) && isAvailableByPing();
+		NetworkInfo info = getActiveNetworkInfo(context);
+		return info != null && info.isAvailable() && info.getType() == ConnectivityManager.TYPE_WIFI;
 	}
 
-	private static final int NETWORK_TYPE_GSM = 16;
-	private static final int NETWORK_TYPE_TD_SCDMA = 17;
-	private static final int NETWORK_TYPE_IWLAN = 18;
+	/**
+	 * 通过ping的方式判断WiFi是否可用
+	 *
+	 * @param context 上下文
+	 * @return {@code true}：是<br>{@code false}：否
+	 */
+	public static boolean isWiFiAvailableByPing(Context context)
+	{
+		return isWiFiEnabled(context) && isAvailableByPing();
+	}
 
 	/**
 	 * 获取网络运营商名称
@@ -220,6 +252,10 @@ public class NetworkUtils
 		TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 		return manager == null ? null : manager.getNetworkOperatorName();
 	}
+
+    private static final int NETWORK_TYPE_GSM = 16;
+    private static final int NETWORK_TYPE_TD_SCDMA = 17;
+    private static final int NETWORK_TYPE_IWLAN = 18;
 
 	/**
 	 * 获取当前网络类型
@@ -304,7 +340,7 @@ public class NetworkUtils
 	}
 
 	/**
-	 * 获取网络IP地址
+	 * 获取内网网络IP地址
 	 *
 	 * @return IP地址
 	 */
