@@ -30,7 +30,7 @@ public class ConvertUtils
 	 * @param rawByteArray bytes
 	 * @return 16进制字符串
 	 */
-	public static String bytes2HexString(@NonNull byte[] rawByteArray)
+	public static String bytes2HexString(@NonNull byte... rawByteArray)
 	{
 		char[] chars = new char[rawByteArray.length * 2];
 		for (int i = 0; i < rawByteArray.length; i++)
