@@ -38,6 +38,7 @@ public class NetworkUtils
 
 	public enum NetworkType
 	{
+		NETWORK_ETH,
 		NETWORK_WIFI,
 		NETWORK_4G,
 		NETWORK_3G,
@@ -226,6 +227,7 @@ public class NetworkUtils
 	 * @param context 上下文
 	 * @return NetworkType网络类型
 	 *         <ul>
+     *           <li>{@link NetworkType#NETWORK_ETH    }</li>
 	 *           <li>{@link NetworkType#NETWORK_WIFI   } </li>
 	 *           <li>{@link NetworkType#NETWORK_4G     } </li>
 	 *           <li>{@link NetworkType#NETWORK_3G     } </li>
@@ -242,6 +244,10 @@ public class NetworkUtils
 		{
 			switch (info.getType())
 			{
+			case ConnectivityManager.TYPE_ETHERNET:
+				networkType = NetworkType.NETWORK_ETH;
+				break;
+
 			case ConnectivityManager.TYPE_WIFI:
 				networkType = NetworkType.NETWORK_WIFI;
 				break;
