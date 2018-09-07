@@ -3,17 +3,22 @@ package com.excellence.basetoolslibrary.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.Enumeration;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import static com.excellence.basetoolslibrary.utils.ConvertUtils.bytes2HexString;
+import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
 /**
  * <pre>
@@ -417,5 +422,101 @@ public class NetworkUtils
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	/**
+	 * 获取有线Mac地址
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static String getWiredMac(Context context)
+	{
+		String macAddress = "";
+		try
+		{
+			ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+			if (connectivityManager != null)
+			{
+				NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+				if (activeNetwork != null)
+				{
+					if (activeNetwork.getType() == ConnectivityManager.TYPE_ETHERNET)
+					{
+						macAddress = activeNetwork.getExtraInfo();
+					}
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return macAddress;
+	}
+
+	/**
+	 * 读取eth里面的Mac地址：如eth0、eth1
+	 *
+	 * @param ethName eth0
+	 * @return
+	 */
+	public static String getWiredMac(String ethName)
+	{
+		String macAddress = "";
+		if (isEmpty(ethName))
+		{
+			ethName = "eth0";
+		}
+		NetworkInterface nicInterface;
+		try
+		{
+			nicInterface = NetworkInterface.getByName(ethName);
+			if (nicInterface != null)
+			{
+				byte[] buf = nicInterface.getHardwareAddress();
+				StringBuilder sbBuffer = new StringBuilder();
+				if (buf != null && buf.length > 1)
+				{
+					sbBuffer.append(bytes2HexString(buf[0])).append(":")
+							.append(bytes2HexString(buf[1])).append(":")
+							.append(bytes2HexString(buf[2])).append(":")
+							.append(bytes2HexString(buf[3])).append(":")
+							.append(bytes2HexString(buf[4])).append(":")
+							.append(bytes2HexString(buf[5]));
+					macAddress = sbBuffer.toString();
+				}
+			}
+		}
+		catch (SocketException e)
+		{
+			e.printStackTrace();
+		}
+		return macAddress;
+	}
+
+	/**
+	 * 获取无线Mac地址
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static String getWirelessMac(Context context)
+	{
+		String macAddress = "";
+		try
+		{
+			WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+			WifiInfo wifiInfo = (null == wifiManager ? null : wifiManager.getConnectionInfo());
+			if (wifiInfo != null)
+			{
+				macAddress = wifiInfo.getMacAddress();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return macAddress;
 	}
 }

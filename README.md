@@ -481,6 +481,8 @@ getNetworkOperatorName  : 获取网络运营商名称
 getNetworkType          : 获取当前网络类型
 getIPAddress            : 获取网络IP地址
 getDomainAddress        : 根据域名获取ip
+getWiredMac             : 获取有线Mac地址
+getWirelessMac          : 获取无线Mac地址
 ```
 
 > - **拼音相关→[PinyinUtils.java][PinyinUtils]**
