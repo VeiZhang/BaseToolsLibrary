@@ -1,6 +1,7 @@
 package com.excellence.basetoolslibrary.utils;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Size;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -14,6 +15,8 @@ import java.io.InputStreamReader;
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/24
  *     desc   : 转换相关工具类
+ *              byte是基本数据类型
+ *              Byte是byte的包装类
  * </pre>
  */
 
@@ -23,23 +26,262 @@ public class ConvertUtils
 	private static final char[] HEX_CHAR = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
 	/**
-	 * bytes转换16进制
-	 * byte是基本数据类型
-	 * Byte是byte的包装类
+	 * byte转short
 	 *
-	 * @param rawByteArray bytes
+	 * @param buffer
+	 * @param offset
+	 * @return
+	 */
+	public static short bytes2Short(@Size(min = 2) byte[] buffer, int offset)
+	{
+		short value;
+		value = (short) (((buffer[offset] & 0xFF) << 8) | (buffer[offset + 1] & 0xFF));
+		return value;
+	}
+
+	/**
+	 * short转byte
+	 *
+	 * @param value
+	 * @return
+	 */
+	public static byte[] shortToByte(short value)
+	{
+		byte[] bytes = new byte[2];
+		for (int i = 0; i < bytes.length; i++)
+		{
+			int offset = (bytes.length - 1 - i) * 8;
+			bytes[i] = (byte) ((value >>> offset) & 0xFF);
+		}
+		return bytes;
+	}
+
+	/**
+	 * byte转二进制
+	 *
+	 * @param b
+	 * @return
+	 */
+	public static String byte2BinStr(byte b)
+	{
+		String result = "";
+		byte a = b;
+		for (int i = 0; i < 8; i++)
+		{
+			byte c = a;
+			// 每移一位如同将10进制数除以2并去掉余数。
+			a = (byte) (a >> 1);
+			a = (byte) (a << 1);
+			if (a == c)
+			{
+				result = "0" + result;
+			}
+			else
+			{
+				result = "1" + result;
+			}
+			a = (byte) (a >> 1);
+		}
+		return result;
+	}
+
+	/**
+	 * byte数组转二进制
+	 *
+	 * @param bytes
+	 * @return
+	 */
+	public static String byte2BinStr(@NonNull byte... bytes)
+	{
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < bytes.length; i++)
+		{
+			sb.append(byte2BinStr(bytes[i]));
+			sb.append(" ");
+		}
+		return sb.toString();
+	}
+
+	/**
+	 * 字符串转二进制字符串
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String str2BinStr(@NonNull String str)
+	{
+		char[] strChar = str.toCharArray();
+		String result = "";
+		for (int i = 0; i < strChar.length; i++)
+		{
+			String binStr = Integer.toBinaryString(strChar[i]);
+			result += String.format("%08d", Integer.valueOf(binStr)) + " ";
+		}
+		return result;
+	}
+
+	/**
+	 * byte数组转16进制字符串
+	 *
+	 * @param bytes bytes
 	 * @return 16进制字符串
 	 */
-	public static String bytes2HexString(@NonNull byte... rawByteArray)
+	public static String bytes2HexString(@NonNull byte... bytes)
 	{
-		char[] chars = new char[rawByteArray.length * 2];
-		for (int i = 0; i < rawByteArray.length; i++)
+		char[] chars = new char[bytes.length * 2];
+		for (int i = 0; i < bytes.length; i++)
 		{
-			byte b = rawByteArray[i];
+			byte b = bytes[i];
 			chars[i * 2] = HEX_CHAR[(b >>> 4 & 0x0F)];
 			chars[i * 2 + 1] = HEX_CHAR[(b & 0x0F)];
 		}
 		return new String(chars);
+	}
+
+	/**
+	 * byte数组转16进制字符串
+	 *
+	 * @param bytes
+	 * @param size
+	 * @return
+	 */
+	public static String bytes2HexString(@NonNull byte[] bytes, int size)
+	{
+		StringBuilder result = new StringBuilder();
+		String hex;
+		for (int i = 0; i < size; i++)
+		{
+			hex = Integer.toHexString(bytes[i] & 0xFF);
+			if (hex.length() == 1)
+			{
+				hex = '0' + hex;
+			}
+			result.append(hex.toUpperCase());
+		}
+		return result.toString();
+	}
+
+	/**
+	 * 16进制字符串转byte数组
+	 *
+	 * @param src
+	 * @return
+	 */
+	public static byte[] hexString2Bytes(String src)
+	{
+		int l = src.length() / 2;
+		byte[] ret = new byte[l];
+		for (int i = 0; i < l; i++)
+		{
+			ret[i] = Integer.valueOf(src.substring(i * 2, i * 2 + 2), 16).byteValue();
+		}
+		return ret;
+	}
+
+	/**
+	 * 字符串转16进制字符串
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String string2HexString(String str)
+	{
+		StringBuilder hexString = new StringBuilder();
+		for (int i = 0; i < str.length(); i++)
+		{
+			int ch = (int) str.charAt(i);
+			String strHex = Integer.toHexString(ch);
+			hexString.append(strHex);
+		}
+		return hexString.toString();
+	}
+
+	/**
+	 * 16进制字符串转字符串
+	 *
+	 * @param src
+	 * @return
+	 */
+	public static String hexString2String(String src)
+	{
+		String temp = "";
+		for (int i = 0; i < src.length() / 2; i++)
+		{
+			temp = temp + (char) Integer.valueOf(src.substring(i * 2, i * 2 + 2), 16).byteValue();
+		}
+		return temp;
+	}
+
+	/**
+	 * 字符串转byte数组
+	 *
+	 * @param src
+	 * @return
+	 */
+	public static byte[] string2Bytes(String src)
+	{
+		String hexStr = string2HexString(src);
+		return hexString2Bytes(hexStr);
+	}
+
+	/**
+	 * byte数组转字符串
+	 *
+	 * @param bytes
+	 * @param length
+	 * @return
+	 */
+	public static String bytes2String(@NonNull byte[] bytes, int length)
+	{
+		String hexStr = bytes2HexString(bytes, length);
+		return hexString2String(hexStr);
+	}
+
+	/**
+	 * byte数组转有符号int
+	 *
+	 * @param b
+	 * @return
+	 */
+	public static long byte2Int(@NonNull byte[] b)
+	{
+		return ((b[0] & 0xff) << 24) | ((b[1] & 0xff) << 16) | ((b[2] & 0xff) << 8) | (b[3] & 0xff);
+	}
+
+	/**
+	 * int转4位byte数组
+	 *
+	 * @param n
+	 * @return
+	 */
+	public static byte[] int2Byte(int n)
+	{
+		byte[] b = new byte[4];
+		b[0] = (byte) (n & 0xff);
+		b[1] = (byte) (n >> 8 & 0xff);
+		b[2] = (byte) (n >> 16 & 0xff);
+		b[3] = (byte) (n >> 24 & 0xff);
+		return b;
+	}
+
+	/**
+	 * 四字节byte数组转无符号long
+	 *
+	 * @param bytes
+	 * @return
+	 */
+	public static long unintbyte2long(@NonNull byte[] bytes)
+	{
+		int firstByte = 0;
+		int secondByte = 0;
+		int thirdByte = 0;
+		int fourthByte = 0;
+		int index = 0;
+		firstByte = (0x000000FF & ((int) bytes[index]));
+		secondByte = (0x000000FF & ((int) bytes[index + 1]));
+		thirdByte = (0x000000FF & ((int) bytes[index + 2]));
+		fourthByte = (0x000000FF & ((int) bytes[index + 3]));
+		return ((long) (firstByte << 24 | secondByte << 16 | thirdByte << 8 | fourthByte)) & 0xFFFFFFFFL;
 	}
 
 	/**

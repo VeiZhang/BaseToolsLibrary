@@ -378,7 +378,20 @@ closeIOQuietly : 安静关闭IO
 
 > - **转换相关→[ConvertUtils.java][ConvertUtils]**
 ```
-bytesToHexString          : bytes转16进制
+bytes2Short               : byte转short
+shortToByte               : short转byte
+byte2BinStr               : byte转二进制
+byte2BinStr               : byte数组转二进制
+str2BinStr                : 字符串转二进制字符串
+bytes2HexString           : byte数组转16进制字符串
+hexString2Bytes           : 16进制字符串转byte数组
+string2HexString          : 字符串转16进制字符串
+hexString2String          : 16进制字符串转字符串
+string2Bytes              : 字符串转byte数组
+bytes2String              : byte数组转字符串
+byte2Int                  : byte数组转有符号int
+int2Byte                  : int转4位byte数组
+unintbyte2long            : 四字节byte数组转无符号long
 inputStream2OutputStream  : inputStream转outPutStream
 inputStream2Bytes         : inputStream转bytes
 inputStream2String        : inputStream转字符串
