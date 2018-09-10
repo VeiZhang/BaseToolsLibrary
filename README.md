@@ -450,6 +450,13 @@ isNotEmpty : 判断对象是否非空
 printException : 打印异常信息字符串
 ```
 
+> - **文件流相关→[FileIOUtils.java][FileIOUtils]**
+```
+writeFile       : 将字符串、字节数组、输入流写入文件
+readFile2Bytes  : 读取文件为字节数组
+readFile2String : 读取文件为字符串
+```
+
 > - **文件相关→[FileUtils.java][FileUtils]**
 ```
 createNewFile      : 创建文件
@@ -714,6 +721,7 @@ HanziToPinyin : Android汉字转拼音类
 [DeviceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DeviceUtils.java
 [EmptyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EmptyUtils.java
 [ExceptionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ExceptionUtils.java
+[FileIOUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileIOUtils.java
 [FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.java
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
