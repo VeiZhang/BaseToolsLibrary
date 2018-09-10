@@ -339,6 +339,7 @@ private class NumAdapter extends BasePagerAdapter
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 ```
 
 
@@ -424,6 +425,18 @@ dp2px           : dp转px
 px2dp           : px转dp
 sp2px           : sp转px
 px2sp           : px转sp
+```
+
+> - **设备相关→[DeviceUtils.java][DeviceUtils]**
+```
+getIMEI            : 获取IMEI
+getIMSI            : 获取IMSI
+getPhone           : 获取手机号
+getSIM             : 获取SIM卡序列号
+getSimCountry      : 获取SIM卡国家
+getSimOperator     : 获取SIM卡运营商
+getSimOperatorName : 获取SIM卡运营商名字
+getSimState        : 获取SIM卡状态
 ```
 
 > - **判断空相关→[EmptyUtils.java][EmptyUtils]**
@@ -689,6 +702,7 @@ HanziToPinyin : Android汉字转拼音类
 [ConvertUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ConvertUtils.java
 [DBUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DBUtils.java
 [DensityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DensityUtils.java
+[DeviceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DeviceUtils.java
 [EmptyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EmptyUtils.java
 [ExceptionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ExceptionUtils.java
 [FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.java

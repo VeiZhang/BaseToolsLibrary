@@ -26,7 +26,7 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
  *     blog   : https://veizhang.github.io/
  *     time   : 2017/1/24
  *     desc   : 网络相关工具类
- *     			权限：{@link android.Manifest.permission#INTERNET				}
+ *     			权限：{@link android.Manifest.permission#INTERNET			}
  *     			 	 {@link android.Manifest.permission#ACCESS_NETWORK_STATE}
  *     			 	 {@link android.Manifest.permission#ACCESS_WIFI_STATE	}
  *     				 {@link android.Manifest.permission#CHANGE_WIFI_STATE	}
