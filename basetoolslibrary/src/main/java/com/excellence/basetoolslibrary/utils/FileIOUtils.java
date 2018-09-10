@@ -164,6 +164,34 @@ public class FileIOUtils
 	}
 
 	/**
+	 * 读取输入流为字节数组
+	 *
+	 * @param is
+	 * @return
+	 */
+	public static byte[] readStream2Bytes(InputStream is)
+	{
+		try
+		{
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			byte[] buf = new byte[BUF_SIZE];
+			int len;
+			while ((len = is.read(buf, 0, buf.length)) != -1)
+			{
+				os.write(buf, 0, len);
+			}
+			is.close();
+			os.close();
+			return os.toByteArray();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
 	 * 读取文件为字节数组
 	 *
 	 * @param file
@@ -178,16 +206,7 @@ public class FileIOUtils
 				return null;
 			}
 			InputStream is = new FileInputStream(file);
-			ByteArrayOutputStream os = new ByteArrayOutputStream();
-			byte[] buf = new byte[BUF_SIZE];
-			int len;
-			while ((len = is.read(buf, 0, buf.length)) != -1)
-			{
-				os.write(buf, 0, len);
-			}
-			is.close();
-			os.close();
-			return os.toByteArray();
+			return readStream2Bytes(is);
 		}
 		catch (Exception e)
 		{
@@ -282,7 +301,7 @@ public class FileIOUtils
 	 * @param targetFile
 	 * @return
 	 */
-	public boolean copyFile(File sourceFile, File targetFile)
+	public static boolean copyFile(File sourceFile, File targetFile)
 	{
 		if (!isFileExists(sourceFile))
 		{
