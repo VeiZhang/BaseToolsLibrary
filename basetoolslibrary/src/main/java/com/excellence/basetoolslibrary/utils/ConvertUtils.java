@@ -121,7 +121,7 @@ public class ConvertUtils
 	}
 
 	/**
-	 * byte数组转16进制字符串
+	 * byte数组转16进制字符串，{@link #bytes2HexString(byte[], int)}
 	 *
 	 * @param bytes bytes
 	 * @return 16进制字符串
@@ -139,7 +139,7 @@ public class ConvertUtils
 	}
 
 	/**
-	 * byte数组转16进制字符串
+	 * byte数组转16进制字符串，{@link #bytes2HexString(byte...)}
 	 *
 	 * @param bytes
 	 * @param size
