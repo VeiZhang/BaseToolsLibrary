@@ -608,11 +608,14 @@ getReplaceAll   : 替换所有正则匹配的部分
 
 > - **资源相关→[ResourceUtils.java][ResourceUtils]**
 ```
-getName        : 解析资源的全名
-getEntryName   : 解析资源名
-getTypeName    : 解析资源类型名
-getPackageName : 解析资源的包名
-getIdentifier  : 获取资源Id
+getName            : 解析资源的全名
+getEntryName       : 解析资源名
+getTypeName        : 解析资源类型名
+getPackageName     : 解析资源的包名
+getIdentifier      : 获取资源Id
+copyFileFromAssets : 拷贝assets文件到指定目录
+copyFileFromRaw    : 拷贝raw资源到指定目录文件
+readAsset          : 读取asset文件转字符串
 ```
 
 > - **命令相关→[ShellUtils.java][ShellUtils]**

@@ -240,7 +240,14 @@ public class FileIOUtils
 			byte[] bytes = readFile2Bytes(file);
 			if (bytes != null)
 			{
-				return new String(bytes, charset);
+				if (isEmpty(charset))
+				{
+					return new String(bytes);
+				}
+				else
+				{
+					return new String(bytes, charset);
+				}
 			}
 		}
 		catch (Exception e)
