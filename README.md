@@ -586,6 +586,15 @@ equals           : 比较字符串是否相等
 equalsIgnoreCase : 比较字符串是否相等，忽略大小写
 ```
 
+> - **系统属性相关→[SystemPropertyUtils.java][SystemPropertyUtils]**
+```
+get        : 获取String类型系统属性
+getBoolean : 获取Boolean类型系统属性
+getInt     : 获取int类型系统属性
+getLong    : 获取long类型系统属性
+set        : 设置系统属性
+```
+
 > - **时间相关→[TimeUtils.java][TimeUtils]**
 ```
 millisec2String  : 时间戳转时间字符串
@@ -717,6 +726,7 @@ HanziToPinyin : Android汉字转拼音类
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
 [StorageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StorageUtils.java
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
+[SystemPropertyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SystemPropertyUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 
 <!-- 转载方法 -->

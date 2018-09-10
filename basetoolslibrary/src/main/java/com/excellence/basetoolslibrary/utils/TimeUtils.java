@@ -397,9 +397,7 @@ public class TimeUtils
      */
     public static boolean isSameDay(long millisec0, long millisec1)
     {
-        if (millisec2String(millisec0, DAY_PATTERN).equals(millisec2String(millisec1, DAY_PATTERN)))
-            return true;
-        return false;
+        return millisec2String(millisec0, DAY_PATTERN).equals(millisec2String(millisec1, DAY_PATTERN));
     }
 
     /**
