@@ -455,6 +455,7 @@ printException : 打印异常信息字符串
 writeFile       : 将字符串、字节数组、输入流写入文件
 readFile2Bytes  : 读取文件为字节数组
 readFile2String : 读取文件为字符串
+copyFile        : 拷贝文件
 ```
 
 > - **文件相关→[FileUtils.java][FileUtils]**

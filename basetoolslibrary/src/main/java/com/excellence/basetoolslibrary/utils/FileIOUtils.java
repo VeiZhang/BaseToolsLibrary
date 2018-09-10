@@ -242,4 +242,60 @@ public class FileIOUtils
 	{
 		return readFile2String(new File(path), charset);
 	}
+
+	/**
+	 * 拷贝文件
+	 *
+	 * @param is
+	 * @param os
+	 * @return
+	 */
+	public static boolean copyFile(InputStream is, OutputStream os)
+	{
+		try
+		{
+			if (is == null || os == null)
+			{
+				return false;
+			}
+			byte[] buf = new byte[BUF_SIZE];
+			int len;
+			while ((len = is.read(buf, 0, buf.length)) != -1)
+			{
+				os.write(buf, 0, len);
+			}
+			is.close();
+			os.close();
+			return true;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * 拷贝文件
+	 *
+	 * @param sourceFile
+	 * @param targetFile
+	 * @return
+	 */
+	public boolean copyFile(File sourceFile, File targetFile)
+	{
+		if (!isFileExists(sourceFile))
+		{
+			return false;
+		}
+		try
+		{
+			return copyFile(new FileInputStream(sourceFile), new FileOutputStream(targetFile));
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
