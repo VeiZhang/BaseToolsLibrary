@@ -616,6 +616,9 @@ getIdentifier      : 获取资源Id
 copyFileFromAssets : 拷贝assets文件到指定目录
 copyFileFromRaw    : 拷贝raw资源到指定目录文件
 readAsset          : 读取asset文件转字符串
+getLocal           : 获取当前系统语言
+getLanguage        : 获取当前系统语言
+getCountry         : 获取当前系统语言国家
 ```
 
 > - **命令相关→[ShellUtils.java][ShellUtils]**

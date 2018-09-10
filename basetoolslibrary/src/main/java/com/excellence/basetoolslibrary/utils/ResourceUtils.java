@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Locale;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 import static com.excellence.basetoolslibrary.utils.FileIOUtils.copyFile;
@@ -193,4 +194,35 @@ public class ResourceUtils
 		}
 		return null;
 	}
+
+	/**
+	 * 获取当前系统语言：zh_CN
+	 *
+	 * @return
+	 */
+	public static String getLocal()
+	{
+		return Locale.getDefault().toString();
+	}
+
+	/**
+	 * 获取当前系统语言：zh
+	 * 
+	 * @return
+	 */
+	public static String getLanguage()
+	{
+		return Locale.getDefault().getLanguage();
+	}
+
+	/**
+	 * 获取当前系统语言国家：cn
+	 *
+	 * @return
+	 */
+	public static String getCountry()
+	{
+		return Locale.getDefault().getCountry();
+	}
+
 }
