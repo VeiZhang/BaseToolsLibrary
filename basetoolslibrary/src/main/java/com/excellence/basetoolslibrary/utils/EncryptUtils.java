@@ -100,7 +100,25 @@ public class EncryptUtils
 	/**
 	 * 对称加密、解密
 	 *
+	 * 注意：1.NoPadding必须保证原文字节是 8 的倍数
+	 *      2.DES密钥字节长度必须是 8 的倍数，3DES密钥字节必须是 24 的倍数
+	 *
 	 * transformation方式如下
+	 *      形式：算法名称/加密模式/填充方式
+	 *          算法名称
+	 *              AES
+	 *              DES
+	 *              DESede
+	 *          四种加密模式
+	 *              ECB：电子密码本模式
+	 *              CBC：加密分组链接模式（必须填写初始向量iv）
+	 *              CFB：加密反馈模式
+	 *              OFB：输出反馈模式
+	 *              CTR：计算器模式
+	 *          填充方式
+	 *              NoPadding：不自动填充密钥
+	 *              PKCS5Padding：自动填充密钥到必须的位数
+	 *
 	 * AES/CBC/NoPadding (128)
 	 * AES/CBC/PKCS5Padding (128)
 	 * AES/ECB/NoPadding (128)
@@ -125,6 +143,7 @@ public class EncryptUtils
 	 * @param key            The key.
 	 * @param algorithm      The name of algorithm: DES, 3DES, AES
 	 * @param transformation The name of the transformation, e.g., <i>DES/CBC/PKCS5Padding</i>.
+	 * @param iv             The buffer with the IV. The contents of the buffer are copied to protect against subsequent modification.
 	 * @param isEncrypt      True to encrypt, false otherwise.
 	 * @return the bytes of symmetric encryption or decryption
 	 */
@@ -372,7 +391,7 @@ public class EncryptUtils
 	 * @param data           The data.
 	 * @param key            The key.
 	 * @param isPublicKey    True to use public key, false to use private key.
-	 * @param transformation The name of the transformation, e.g., <i>DES/CBC/PKCS1Padding</i>.
+	 * @param transformation The name of the transformation, e.g., <i>DES/CBC/PKCS5Padding</i>.
 	 * @param isEncrypt      True to encrypt, false otherwise.
 	 * @return the bytes of RSA encryption or decryption
 	 */
