@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
+
 /**
  * <pre>
  *     author : VeiZhang
@@ -93,6 +95,10 @@ public class ConvertUtils
 	 */
 	public static String byte2BinStr(@NonNull byte... bytes)
 	{
+		if (isEmpty(bytes))
+		{
+			return null;
+		}
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < bytes.length; i++)
 		{
@@ -105,12 +111,16 @@ public class ConvertUtils
 	/**
 	 * 字符串转二进制字符串
 	 *
-	 * @param str
+	 * @param src
 	 * @return
 	 */
-	public static String str2BinStr(@NonNull String str)
+	public static String str2BinStr(@NonNull String src)
 	{
-		char[] strChar = str.toCharArray();
+		if (isEmpty(src))
+		{
+			return null;
+		}
+		char[] strChar = src.toCharArray();
 		String result = "";
 		for (int i = 0; i < strChar.length; i++)
 		{
@@ -128,6 +138,10 @@ public class ConvertUtils
 	 */
 	public static String bytes2HexString(@NonNull byte... bytes)
 	{
+		if (isEmpty(bytes))
+		{
+			return null;
+		}
 		char[] chars = new char[bytes.length * 2];
 		for (int i = 0; i < bytes.length; i++)
 		{
@@ -147,6 +161,10 @@ public class ConvertUtils
 	 */
 	public static String bytes2HexString(@NonNull byte[] bytes, int size)
 	{
+		if (isEmpty(bytes))
+		{
+			return null;
+		}
 		StringBuilder result = new StringBuilder();
 		String hex;
 		for (int i = 0; i < size; i++)
@@ -169,6 +187,10 @@ public class ConvertUtils
 	 */
 	public static byte[] hexString2Bytes(String src)
 	{
+		if (isEmpty(src))
+		{
+			return null;
+		}
 		int l = src.length() / 2;
 		byte[] ret = new byte[l];
 		for (int i = 0; i < l; i++)
@@ -181,15 +203,19 @@ public class ConvertUtils
 	/**
 	 * 字符串转16进制字符串
 	 *
-	 * @param str
+	 * @param src
 	 * @return
 	 */
-	public static String string2HexString(String str)
+	public static String string2HexString(String src)
 	{
-		StringBuilder hexString = new StringBuilder();
-		for (int i = 0; i < str.length(); i++)
+		if (isEmpty(src))
 		{
-			int ch = (int) str.charAt(i);
+			return null;
+		}
+		StringBuilder hexString = new StringBuilder();
+		for (int i = 0; i < src.length(); i++)
+		{
+			int ch = (int) src.charAt(i);
 			String strHex = Integer.toHexString(ch);
 			hexString.append(strHex);
 		}
@@ -204,6 +230,10 @@ public class ConvertUtils
 	 */
 	public static String hexString2String(String src)
 	{
+		if (isEmpty(src))
+		{
+			return null;
+		}
 		String temp = "";
 		for (int i = 0; i < src.length() / 2; i++)
 		{
@@ -233,6 +263,10 @@ public class ConvertUtils
 	 */
 	public static String bytes2String(@NonNull byte[] bytes, int length)
 	{
+		if (isEmpty(bytes))
+		{
+			return null;
+		}
 		String hexStr = bytes2HexString(bytes, length);
 		return hexString2String(hexStr);
 	}
@@ -240,12 +274,16 @@ public class ConvertUtils
 	/**
 	 * byte数组转有符号int
 	 *
-	 * @param b
+	 * @param bytes
 	 * @return
 	 */
-	public static long byte2Int(@NonNull byte[] b)
+	public static long byte2Int(@NonNull byte[] bytes)
 	{
-		return ((b[0] & 0xff) << 24) | ((b[1] & 0xff) << 16) | ((b[2] & 0xff) << 8) | (b[3] & 0xff);
+		if (isEmpty(bytes))
+		{
+			return 0;
+		}
+		return ((bytes[0] & 0xff) << 24) | ((bytes[1] & 0xff) << 16) | ((bytes[2] & 0xff) << 8) | (bytes[3] & 0xff);
 	}
 
 	/**
@@ -272,6 +310,10 @@ public class ConvertUtils
 	 */
 	public static long unintbyte2long(@NonNull byte[] bytes)
 	{
+		if (isEmpty(bytes))
+		{
+			return 0;
+		}
 		int firstByte = 0;
 		int secondByte = 0;
 		int thirdByte = 0;
@@ -294,6 +336,10 @@ public class ConvertUtils
 	{
 		try
 		{
+			if (isEmpty(is))
+			{
+				return null;
+			}
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			byte[] buffer = new byte[(int) FileUtils.KB];
 			int offset;
@@ -322,6 +368,10 @@ public class ConvertUtils
 	 */
 	public static byte[] inputStream2Bytes(@NonNull InputStream is)
 	{
+		if (isEmpty(is))
+		{
+			return null;
+		}
 		ByteArrayOutputStream os = inputStream2OutputStream(is);
 		return os == null ? null : os.toByteArray();
 	}
@@ -334,6 +384,10 @@ public class ConvertUtils
 	 */
 	public static String inputStream2String(@NonNull InputStream is)
 	{
+		if (isEmpty(is))
+		{
+			return null;
+		}
 		byte[] bytes = inputStream2Bytes(is);
 		return bytes == null ? null : new String(bytes);
 	}
@@ -347,6 +401,10 @@ public class ConvertUtils
 	 */
 	public static StringBuilder inputStream2StringBuilder(@NonNull InputStream is) throws IOException
 	{
+		if (isEmpty(is))
+		{
+			return null;
+		}
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		StringBuilder result = new StringBuilder();
 		String line = null;
