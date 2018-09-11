@@ -4,10 +4,15 @@ import java.security.Key;
 import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.spec.AlgorithmParameterSpec;
+import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -101,7 +106,8 @@ public class EncryptUtils
 	 * 对称加密、解密
 	 *
 	 * 注意：1.NoPadding必须保证原文字节是 8 的倍数
-	 *      2.DES密钥字节长度必须是 8 的倍数，3DES密钥字节必须是 24 的倍数
+	 *      2.DES密钥字节长度必须是 >=8 {@link DESKeySpec}
+	 *      3.3DES密钥字节必须是 >=24  {@link DESedeKeySpec}
 	 *
 	 * transformation方式如下
 	 *      形式：算法名称/加密模式/填充方式
@@ -155,16 +161,40 @@ public class EncryptUtils
 			{
 				return null;
 			}
-			SecretKeySpec keySpec = new SecretKeySpec(key, algorithm);
+			SecretKey secretKey;
+			KeySpec keySpec = null;
+			switch (algorithm)
+			{
+			case "DES":
+				keySpec = new DESKeySpec(key);
+				break;
+
+			case "DESede":
+				keySpec = new DESedeKeySpec(key);
+				break;
+
+			default:
+				break;
+			}
+
+			if (keySpec != null)
+			{
+				secretKey = SecretKeyFactory.getInstance(algorithm).generateSecret(keySpec);
+			}
+			else
+			{
+				secretKey = new SecretKeySpec(key, algorithm);
+			}
+
 			Cipher cipher = Cipher.getInstance(transformation);
 			if (iv == null || iv.length == 0)
 			{
-				cipher.init(isEncrypt ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE, keySpec);
+				cipher.init(isEncrypt ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE, secretKey);
 			}
 			else
 			{
 				AlgorithmParameterSpec params = new IvParameterSpec(iv);
-				cipher.init(isEncrypt ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE, keySpec, params);
+				cipher.init(isEncrypt ? Cipher.ENCRYPT_MODE : Cipher.DECRYPT_MODE, secretKey, params);
 			}
 			return cipher.doFinal(data);
 		}
