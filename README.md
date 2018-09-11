@@ -445,6 +445,31 @@ isEmpty    : 判断对象是否为空
 isNotEmpty : 判断对象是否非空
 ```
 
+> - **加密解密相关→[EncryptUtils.java][EncryptUtils]**
+```
+hashTemplate          : 散列加密算法
+encryptMD5            : MD5加密
+encryptMD5HexString   : MD5加密转16进制字符串
+symmetricTemplate     : 对称加密算法
+encryptDES            : DES加密
+encryptDES2HexString  : DES加密转16进制字符串
+decryptDES            : DES解密
+decryptHexStringDES   : 16进制字符串DES解密
+encrypt3DES           : 3DES加密
+encrypt3DES2HexString : 3DES加密转16进制字符串
+decrypt3DES           : 3DES解密
+decryptHexString3DES  : 16进制字符串3DES解密
+encryptAES            : AES加密
+encryptAES2HexString  : AES加密转16进制字符串
+decryptAES            : AES解密
+decryptHexStringAES   : 16进制字符串AES解密
+rsaTemplate           : 非对称加密算法
+encryptRSA            : RSA加密
+encryptRSA2HexString  : RSA加密转16进制
+decryptRSA            : RSA解密
+decryptHexStringRSA   : 16进制字符串RSA解密
+```
+
 > - **异常相关→[ExceptionUtils.java][ExceptionUtils]**
 ```
 printException : 打印异常信息字符串
@@ -804,6 +829,7 @@ HanziToPinyin : Android汉字转拼音类
 [DensityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DensityUtils.java
 [DeviceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DeviceUtils.java
 [EmptyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EmptyUtils.java
+[EncryptUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EncryptUtils.java
 [ExceptionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ExceptionUtils.java
 [FileIOUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileIOUtils.java
 [FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.java
