@@ -461,20 +461,22 @@ copyFile         : 拷贝文件
 
 > - **文件相关→[FileUtils.java][FileUtils]**
 ```
-createNewFile      : 创建文件
-deleteFile         : 删除文件
-mkDir              : 创建目录
-deleteDir          : 删除目录
-deletePostfixFiles : 删除目录下的某后缀文件
-formatFileSize     : 格式化文件大小
-getFilesSize       : 遍历目录、获取文件大小
-getFileSize        : 获取文件大小
-getDirSize         : 遍历目录大小
-getDirFreeSpace    : 获取目录剩余空间
-getDirTotalSpace   : 获取目录总空间
-getDirUsableSpace  : 获取目录可用空间
-chmod              : 修改目录、文件权限
-isFileExists       : 判断文件或目录是否存在
+createNewFile       : 创建文件
+deleteFile          : 删除文件
+mkDir               : 创建目录
+deleteDir           : 删除目录
+deletePostfixFiles  : 删除目录下的某后缀文件
+formatFileSize      : 格式化文件大小
+getFilesSize        : 遍历目录、获取文件大小
+getFileSize         : 获取文件大小
+getDirSize          : 遍历目录大小
+getDirFreeSpace     : 获取目录剩余空间
+getDirTotalSpace    : 获取目录总空间
+getDirUsableSpace   : 获取目录可用空间
+chmod               : 修改目录、文件权限
+isFileExists        : 判断文件或目录是否存在
+getFileLastModified : 读取文件最后的修改时间
+getFileMd5          : 读取文件MD5值
 ```
 
 > - **Handler相关→[HandlerUtils.java][HandlerUtils]**

@@ -5,7 +5,11 @@ import android.os.StatFs;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
 import java.text.DecimalFormat;
+
+import static com.excellence.basetoolslibrary.utils.ConvertUtils.bytes2HexString;
 
 /**
  * <pre>
@@ -559,5 +563,88 @@ public class FileUtils
 	public static boolean isFileExists(String filePath)
 	{
 		return !StringUtils.isEmpty(filePath) && isFileExists(new File(filePath));
+	}
+
+	/**
+	 * 读取文件最后的修改时间：milliseconds
+	 *
+	 * @param file
+	 * @return
+	 */
+	public static long getFileLastModified(File file)
+	{
+		if (isFileExists(file))
+		{
+			return -1;
+		}
+		return file.lastModified();
+	}
+
+	/**
+	 * 读取文件最后的修改时间：milliseconds
+	 *
+	 * @param filePath
+	 * @return
+	 */
+	public static long getFileLastModified(String filePath)
+	{
+		if (isFileExists(filePath))
+		{
+			return getFileLastModified(new File(filePath));
+		}
+		return -1;
+	}
+
+	/**
+	 * 读取文件MD5值
+	 *
+	 * @param file
+	 * @return
+	 */
+	public static String getFileMd5(File file)
+	{
+		try
+		{
+			if (!isFileExists(file))
+			{
+				return null;
+			}
+
+			FileInputStream fis = new FileInputStream(file);
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			DigestInputStream dis = new DigestInputStream(fis, md);
+			byte[] buffer = new byte[1024 * 256];
+			while (true)
+			{
+				if (dis.read(buffer) <= 0)
+				{
+					break;
+				}
+			}
+			md = dis.getMessageDigest();
+			fis.close();
+			dis.close();
+			return bytes2HexString(md.digest());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 读取文件MD5值
+	 *
+	 * @param filePath
+	 * @return
+	 */
+	public static String getFileMd5(String filePath)
+	{
+		if (isFileExists(filePath))
+		{
+			return getFileMd5(new File(filePath));
+		}
+		return null;
 	}
 }
