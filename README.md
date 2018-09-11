@@ -491,19 +491,19 @@ view2Bitmap     : view转Bitmap
 
 > - **常见的Intent相关→[IntentUtils.java][IntentUtils]**
 ```
-isIntentAvailable       : 判断Intent是否存在
-startIntent             : Intent跳转
-startSettingIntent      : 跳转Settings
-startWiFiIntent         : 隐式开启WiFi
-startWiFiIntentDirectly : 直接开启WiFi
-startInstallIntent      : 安装应用
-startUninstallIntent    : 卸载应用
-startShareTextIntent    : 分享文本
-startShareImageIntent   : 分享图片
-startDialIntent         : 跳转拨号界面
-startCallIntent         : 拨打电话
-startSendSmsIntent      : 发送短信
-startCaptureIntent      : 打开相机
+isIntentAvailable   : 判断Intent是否存在
+startIntent         : Intent跳转
+getSettingIntent    : 跳转Settings
+getWiFiIntent       : 隐式开启WiFi
+getDirectWiFiIntent : 直接开启WiFi
+getInstallIntent    : 安装应用
+getUninstallIntent  : 卸载应用
+getShareTextIntent  : 分享文本
+getShareImageIntent : 分享图片
+getDialIntent       : 跳转拨号界面
+getCallIntent       : 拨打电话
+getSendSmsIntent    : 发送短信
+getCaptureIntent    : 打开相机
 ```
 
 > - **键盘相关→[KeyboardUtils.java][KeyboardUtils]**
