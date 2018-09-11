@@ -489,6 +489,23 @@ bitmap2Drawable : bitmap转drawable
 view2Bitmap     : view转Bitmap
 ```
 
+> - **常见的Intent相关→[IntentUtils.java][IntentUtils]**
+```
+isIntentAvailable       : 判断Intent是否存在
+startIntent             : Intent跳转
+startSettingIntent      : 跳转Settings
+startWiFiIntent         : 隐式开启WiFi
+startWiFiIntentDirectly : 直接开启WiFi
+startInstallIntent      : 安装应用
+startUninstallIntent    : 卸载应用
+startShareTextIntent    : 分享文本
+startShareImageIntent   : 分享图片
+startDialIntent         : 跳转拨号界面
+startCallIntent         : 拨打电话
+startSendSmsIntent      : 发送短信
+startCaptureIntent      : 打开相机
+```
+
 > - **键盘相关→[KeyboardUtils.java][KeyboardUtils]**
 ```
 hideSoftInput                : 隐藏软键盘
@@ -773,6 +790,7 @@ HanziToPinyin : Android汉字转拼音类
 [FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.java
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
+[IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.java
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.java
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.java
