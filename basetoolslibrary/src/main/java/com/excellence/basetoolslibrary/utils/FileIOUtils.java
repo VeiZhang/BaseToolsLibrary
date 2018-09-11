@@ -65,6 +65,10 @@ public class FileIOUtils
 	 */
 	public static boolean writeFile(String path, String content, boolean append)
 	{
+		if (isEmpty(path))
+		{
+			return false;
+		}
 		return writeFile(new File(path), content, append);
 	}
 
@@ -107,6 +111,10 @@ public class FileIOUtils
 	 */
 	public static boolean writeFile(String path, byte[] bytes, boolean append)
 	{
+		if (isEmpty(path))
+		{
+			return false;
+		}
 		return writeFile(new File(path), bytes, append);
 	}
 
@@ -160,6 +168,10 @@ public class FileIOUtils
 	 */
 	public static boolean writeFile(String path, InputStream is, boolean append, boolean isCloseable)
 	{
+		if (isEmpty(path))
+		{
+			return false;
+		}
 		return writeFile(new File(path), is, append, isCloseable);
 	}
 
@@ -223,6 +235,10 @@ public class FileIOUtils
 	 */
 	public static byte[] readFile2Bytes(String path)
 	{
+		if (isEmpty(path))
+		{
+			return null;
+		}
 		return readFile2Bytes(new File(path));
 	}
 
@@ -266,6 +282,10 @@ public class FileIOUtils
 	 */
 	public static String readFile2String(String path, String charset)
 	{
+		if (isEmpty(path))
+		{
+			return null;
+		}
 		return readFile2String(new File(path), charset);
 	}
 
