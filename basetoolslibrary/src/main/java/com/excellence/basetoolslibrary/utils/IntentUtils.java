@@ -8,6 +8,7 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v4.content.FileProvider;
+import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -210,6 +211,20 @@ public class IntentUtils
 	}
 
 	/**
+	 * 跳转短信界面
+	 *
+	 * @param content
+	 * @return
+	 */
+	public static Intent getSmsIntent(String content)
+	{
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.putExtra("sms_body", content);
+		intent.setType("vnd.android-dir/mms-sms");
+		return intent;
+	}
+
+	/**
 	 * 发送短信
 	 *
 	 * @param phoneNumber
@@ -225,6 +240,22 @@ public class IntentUtils
 	}
 
 	/**
+	 * 发送邮件
+	 *
+	 * @param email
+	 * @param content
+	 * @return
+	 */
+	public static Intent getEmailIntent(String email, String content)
+	{
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.putExtra(Intent.EXTRA_EMAIL, email);
+		intent.putExtra(Intent.EXTRA_TEXT, content);
+		intent.setType("text/plain");
+		return intent;
+	}
+
+	/**
 	 * 打开相机
 	 *
 	 * @param uri
@@ -235,6 +266,52 @@ public class IntentUtils
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 		intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+		return intent;
+	}
+
+	/**
+	 * 播放本地视频
+	 *
+	 * @param filePath
+	 * @return
+	 */
+	public static Intent getVideoIntent(String filePath)
+	{
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		File file = new File(filePath);
+		Uri uri = Uri.fromFile(file);
+		intent.setDataAndType(uri, "video/*");
+		return intent;
+	}
+
+	/**
+	 * 播放网络视频
+	 *
+	 * @param url
+	 * @return
+	 */
+	public static Intent getNetVideoIntent(String url)
+	{
+		String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+		String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.parse(url), mimeType);
+		return intent;
+	}
+
+	/**
+	 * 播放本地音乐
+	 *
+	 * @param filePath
+	 * @return
+	 */
+	public static Intent getAudioIntent(String filePath)
+	{
+		Intent intent = new Intent();
+		intent.setAction(android.content.Intent.ACTION_VIEW);
+		File file = new File(filePath);
+		Uri uri = Uri.fromFile(file);
+		intent.setDataAndType(uri, "audio/*");
 		return intent;
 	}
 

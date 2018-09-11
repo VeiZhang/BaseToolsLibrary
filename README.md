@@ -502,8 +502,13 @@ getShareTextIntent  : 分享文本
 getShareImageIntent : 分享图片
 getDialIntent       : 跳转拨号界面
 getCallIntent       : 拨打电话
+getSmsIntent        : 跳转短信界面
 getSendSmsIntent    : 发送短信
+getEmailIntent      : 发送邮件
 getCaptureIntent    : 打开相机
+getVideoIntent      : 播放本地视频
+getNetVideoIntent   : 播放网络视频
+getAudioIntent      : 播放本地音乐
 ```
 
 > - **键盘相关→[KeyboardUtils.java][KeyboardUtils]**
