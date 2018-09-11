@@ -491,24 +491,36 @@ view2Bitmap     : view转Bitmap
 
 > - **常见的Intent相关→[IntentUtils.java][IntentUtils]**
 ```
-isIntentAvailable   : 判断Intent是否存在
-startIntent         : Intent跳转
-getSettingIntent    : 跳转Settings
-getWiFiIntent       : 隐式开启WiFi
-getDirectWiFiIntent : 直接开启WiFi
-getInstallIntent    : 安装应用
-getUninstallIntent  : 卸载应用
-getShareTextIntent  : 分享文本
-getShareImageIntent : 分享图片
-getDialIntent       : 跳转拨号界面
-getCallIntent       : 拨打电话
-getSmsIntent        : 跳转短信界面
-getSendSmsIntent    : 发送短信
-getEmailIntent      : 发送邮件
-getCaptureIntent    : 打开相机
-getVideoIntent      : 播放本地视频
-getNetVideoIntent   : 播放网络视频
-getAudioIntent      : 播放本地音乐
+isIntentAvailable      : 判断Intent是否存在
+startIntent            : Intent跳转
+getSettingIntent       : 跳转Settings
+getWiFiIntent          : 隐式开启WiFi
+getDirectWiFiIntent    : 直接开启WiFi
+getRoamingIntent       : 跳转到移动网络设置
+getPermissionIntent    : 开启权限设置
+getLocationIntent      : 开启定位设置
+getBluetoothIntent     : 开启蓝牙设置
+getLocaleIntent        : 开启语言设置
+getAppIntent           : 跳转应用程序列表界面
+getAllAppIntent        : 跳转到应用程序界面（所有的）
+getInstalledAppIntent  : 跳转到应用程序界面（已安装的）
+getStorageIntent       : 开启存储设置
+getAccessibilityIntent : 开启辅助设置
+getSearchIntent        : 跳转到搜索设置
+getInputMethodIntent   : 跳转输入法设置
+getInstallIntent       : 安装应用
+getUninstallIntent     : 卸载应用
+getShareTextIntent     : 分享文本
+getShareImageIntent    : 分享图片
+getDialIntent          : 跳转拨号界面
+getCallIntent          : 拨打电话
+getSmsIntent           : 跳转短信界面
+getSendSmsIntent       : 发送短信
+getEmailIntent         : 发送邮件
+getCaptureIntent       : 打开相机
+getVideoIntent         : 播放本地视频
+getNetVideoIntent      : 播放网络视频
+getAudioIntent         : 播放本地音乐
 ```
 
 > - **键盘相关→[KeyboardUtils.java][KeyboardUtils]**

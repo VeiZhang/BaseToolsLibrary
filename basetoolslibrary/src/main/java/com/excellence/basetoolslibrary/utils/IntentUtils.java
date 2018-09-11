@@ -99,6 +99,130 @@ public class IntentUtils
 	}
 
 	/**
+	 * 跳转到移动网络设置
+	 *
+	 * @return
+	 */
+	public static Intent getRoamingIntent()
+	{
+		return new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
+	}
+
+	/**
+	 * 开启权限设置
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static Intent getPermissionIntent(Context context)
+	{
+		Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+		Uri uri = Uri.fromParts("package", context.getPackageName(), null);
+		intent.setData(uri);
+		return intent;
+	}
+
+	/**
+	 * 开启定位设置
+	 *
+	 * @return
+	 */
+	public static Intent getLocationIntent()
+	{
+		return new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+	}
+
+	/**
+	 * 开启蓝牙设置
+	 *
+	 * @return
+	 */
+	public static Intent getBluetoothIntent()
+	{
+		return new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
+	}
+
+	/**
+	 * 开启语言设置
+	 *
+	 * @return
+	 */
+	public static Intent getLocaleIntent()
+	{
+		return new Intent(Settings.ACTION_LOCALE_SETTINGS);
+	}
+
+	/**
+	 * 跳转应用程序列表界面
+	 *
+	 * @return
+	 */
+	public static Intent getAppIntent()
+	{
+		return new Intent(Settings.ACTION_APPLICATION_SETTINGS);
+	}
+
+	/**
+	 * 跳转到应用程序界面（所有的）
+	 *
+	 * @return
+	 */
+	public static Intent getAllAppIntent()
+	{
+		return new Intent(Settings.ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS);
+	}
+
+	/**
+	 * 跳转到应用程序界面（已安装的）
+	 *
+	 * @return
+	 */
+	public static Intent getInstalledAppIntent()
+	{
+		return new Intent(Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
+	}
+
+	/**
+	 * 开启存储设置
+	 *
+	 * @return
+	 */
+	public static Intent getStorageIntent()
+	{
+		return new Intent(Settings.ACTION_INTERNAL_STORAGE_SETTINGS);
+	}
+
+	/**
+	 * 开启辅助设置
+	 *
+	 * @return
+	 */
+	public static Intent getAccessibilityIntent()
+	{
+		return new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+	}
+
+	/**
+	 * 跳转到搜索设置
+	 *
+	 * @return
+	 */
+	public static Intent getSearchIntent()
+	{
+		return new Intent(Settings.ACTION_SEARCH_SETTINGS);
+	}
+
+	/**
+	 * 跳转输入法设置
+	 *
+	 * @return
+	 */
+	public static Intent getInputMethodIntent()
+	{
+		return new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
+	}
+
+	/**
 	 * 安装应用
 	 *
 	 * @param context
