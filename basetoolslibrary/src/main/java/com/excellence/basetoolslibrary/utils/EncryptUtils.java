@@ -181,6 +181,11 @@ public class EncryptUtils
 			{
 				return null;
 			}
+			if (!transformation.startsWith(algorithm))
+			{
+				transformation = transformation.replaceAll("^.*?(?=/)", algorithm);
+			}
+
 			SecretKey secretKey;
 			KeySpec keySpec = null;
 
