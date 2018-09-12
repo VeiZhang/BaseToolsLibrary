@@ -7,6 +7,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Arrays;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -19,6 +20,8 @@ import javax.crypto.spec.SecretKeySpec;
 import static com.excellence.basetoolslibrary.utils.ConvertUtils.bytes2HexString;
 import static com.excellence.basetoolslibrary.utils.ConvertUtils.hexString2Bytes;
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
+import static javax.crypto.spec.DESKeySpec.DES_KEY_LEN;
+import static javax.crypto.spec.DESedeKeySpec.DES_EDE_KEY_LEN;
 
 /**
  * <pre>
@@ -105,7 +108,7 @@ public class EncryptUtils
 	/**
 	 * 对称加密、解密
 	 *
-	 * 注意：1.NoPadding必须保证原文字节是 8 的倍数
+	 * 注意：1.NoPadding必须保证 原文 字节是 8 的倍数
 	 *      2.DES密钥字节长度必须是 >=8 {@link DESKeySpec}
 	 *      3.3DES密钥字节必须是 >=24  {@link DESedeKeySpec}
 	 *
@@ -122,8 +125,8 @@ public class EncryptUtils
 	 *              OFB：输出反馈模式
 	 *              CTR：计算器模式
 	 *          填充方式
-	 *              NoPadding：不自动填充密钥
-	 *              PKCS5Padding：自动填充密钥到必须的位数
+	 *              NoPadding：不自动填充原文
+	 *              PKCS5Padding：自动填充原文到必须的位数
 	 *
 	 * AES/CBC/NoPadding (128)
 	 * AES/CBC/PKCS5Padding (128)
@@ -133,8 +136,8 @@ public class EncryptUtils
 	 * DES/CBC/PKCS5Padding (56)
 	 * DES/ECB/NoPadding (56)
 	 * DES/ECB/PKCS5Padding (56)
-	
-	 (DESede实际上是3-DES）
+	 *
+	 * (DESede实际上是3-DES）
 	 * DESede/CBC/NoPadding (168)
 	 * DESede/CBC/PKCS5Padding (168)
 	 * DESede/ECB/NoPadding (168)
@@ -163,13 +166,25 @@ public class EncryptUtils
 			}
 			SecretKey secretKey;
 			KeySpec keySpec = null;
+
+			/**
+			 * 保证KEY的字节长度：DES 8 位；3DES：24 位
+			 */
 			switch (algorithm)
 			{
 			case "DES":
+				if (key.length < DES_KEY_LEN)
+				{
+					key = Arrays.copyOf(key, DES_KEY_LEN);
+				}
 				keySpec = new DESKeySpec(key);
 				break;
 
 			case "DESede":
+				if (key.length < DES_EDE_KEY_LEN)
+				{
+					key = Arrays.copyOf(key, DES_EDE_KEY_LEN);
+				}
 				keySpec = new DESedeKeySpec(key);
 				break;
 
