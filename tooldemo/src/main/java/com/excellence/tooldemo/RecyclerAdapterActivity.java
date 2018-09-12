@@ -55,24 +55,26 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 	{
 		// 模拟刷新
 		if (mAppList != null)
+		{
 			mAppList.clear();
+		}
 
 		switch (mAppType % 3)
 		{
-			case APP_TYPE_ALL:
-				mAppList = AppUtils.getAllInstalledApps(this);
-				mRefreshBtn.setText(R.string.all_apps);
-				break;
+		case APP_TYPE_ALL:
+			mAppList = AppUtils.getAllInstalledApps(this);
+			mRefreshBtn.setText(R.string.all_apps);
+			break;
 
-			case APP_TYPE_SYSTEM:
-				mAppList = AppUtils.getSystemInstalledApps(this);
-				mRefreshBtn.setText(R.string.system_apps);
-				break;
+		case APP_TYPE_SYSTEM:
+			mAppList = AppUtils.getSystemInstalledApps(this);
+			mRefreshBtn.setText(R.string.system_apps);
+			break;
 
-			case APP_TYPE_USER:
-				mAppList = AppUtils.getUserInstalledApps(this);
-				mRefreshBtn.setText(R.string.user_apps);
-				break;
+		case APP_TYPE_USER:
+			mAppList = AppUtils.getUserInstalledApps(this);
+			mRefreshBtn.setText(R.string.user_apps);
+			break;
 		}
 		mAppType++;
 
@@ -82,7 +84,9 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 			mRecyclerView.setAdapter(mAdapter);
 		}
 		else
+		{
 			mAdapter.notifyNewData(mAppList);
+		}
 	}
 
 	private void setListener()
@@ -101,12 +105,6 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 	public void onItemClick(RecyclerViewHolder viewHolder, View v, int position)
 	{
 		Toast.makeText(this, "position " + position + " : " + ((TextView) viewHolder.getView(android.R.id.text1)).getText(), Toast.LENGTH_SHORT).show();
-	}
-
-	@Override
-	public boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position)
-	{
-		return false;
 	}
 
 	private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>

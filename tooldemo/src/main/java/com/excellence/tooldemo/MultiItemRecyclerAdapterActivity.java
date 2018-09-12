@@ -58,12 +58,6 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implemen
 		mWarAdapter.notifyNewData(mMessages);
 	}
 
-	@Override
-	public boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position)
-	{
-		return false;
-	}
-
 	private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
 	{
 		public WarAdapter(Context context, List<People> datas)

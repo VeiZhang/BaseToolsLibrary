@@ -203,6 +203,8 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 		mOnItemFocusChangeListener = listener;
 	}
 
+	/**** 以下为辅助方法 ****/
+
 	@Override
 	public T getItem(int position)
 	{

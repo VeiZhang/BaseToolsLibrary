@@ -27,6 +27,8 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	protected List<T> mDatas = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
 	private OnItemClickListener mOnItemClickListener = null;
+	private OnItemLongClickListener mOnItemLongClickListener = null;
+	private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
 
 	public MultiItemTypeRecyclerAdapter(Context context, T[] datas)
 	{
@@ -149,7 +151,19 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 			@Override
 			public boolean onLongClick(View v)
 			{
-				return mOnItemClickListener != null && mOnItemClickListener.onItemLongClick(viewHolder, v, position);
+				return mOnItemLongClickListener != null && mOnItemLongClickListener.onItemLongClick(viewHolder, v, position);
+			}
+		});
+
+		viewHolder.getConvertView().setOnFocusChangeListener(new View.OnFocusChangeListener()
+		{
+			@Override
+			public void onFocusChange(View v, boolean hasFocus)
+			{
+				if (mOnItemFocusChangeListener != null)
+				{
+					mOnItemFocusChangeListener.onItemFocusChange(viewHolder, v, hasFocus, position);
+				}
 			}
 		});
 	}
@@ -157,14 +171,34 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public interface OnItemClickListener
 	{
 		void onItemClick(RecyclerViewHolder viewHolder, View v, int position);
+	}
 
+	public interface OnItemLongClickListener
+	{
 		boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position);
 	}
 
-	public void setOnItemClickListener(OnItemClickListener onItemClickListener)
+	public interface OnItemFocusChangeListener
 	{
-		mOnItemClickListener = onItemClickListener;
+		void onItemFocusChange(RecyclerViewHolder viewHolder, View v, boolean hasFocus, int position);
 	}
+
+	public void setOnItemClickListener(OnItemClickListener listener)
+	{
+		mOnItemClickListener = listener;
+	}
+
+	public void setOnItemLongClickListener(OnItemLongClickListener listener)
+	{
+		mOnItemLongClickListener = listener;
+	}
+
+	public void setOnItemFocusChangeListener(OnItemFocusChangeListener listener)
+	{
+		mOnItemFocusChangeListener = listener;
+	}
+
+	/**** 以下为辅助方法 ****/
 
 	@Override
 	public T getItem(int position)
