@@ -80,7 +80,7 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 
 		if (mAdapter == null)
 		{
-			mAdapter = new AppRecyclerAdapter(this, mAppList, android.R.layout.activity_list_item);
+			mAdapter = new AppRecyclerAdapter(mAppList, android.R.layout.activity_list_item);
 			mRecyclerView.setAdapter(mAdapter);
 		}
 		else
@@ -111,10 +111,10 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 	{
 		private PackageManager mPackageManager = null;
 
-		public AppRecyclerAdapter(Context context, List<ResolveInfo> datas, int layoutId)
+		public AppRecyclerAdapter(List<ResolveInfo> datas, int layoutId)
 		{
-			super(context, datas, layoutId);
-			mPackageManager = context.getPackageManager();
+			super(datas, layoutId);
+			mPackageManager = getPackageManager();
 		}
 
 		@Override

@@ -24,7 +24,6 @@ import java.util.List;
 
 public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements DataHelper<T>
 {
-	protected Context mContext = null;
 	protected List<T> mData = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
 	private OnItemClickListener mOnItemClickListener = null;
@@ -32,14 +31,13 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
 	private OnItemKeyListener mOnItemKeyListener = null;
 
-	public MultiItemTypeRecyclerAdapter(Context context, T[] data)
+	public MultiItemTypeRecyclerAdapter(T[] data)
 	{
-		this(context, data == null ? null : Arrays.asList(data));
+		this(data == null ? null : Arrays.asList(data));
 	}
 
-	public MultiItemTypeRecyclerAdapter(Context context, List<T> data)
+	public MultiItemTypeRecyclerAdapter(List<T> data)
 	{
-		mContext = context;
 		mData = data;
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
@@ -123,7 +121,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
 		int layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType);
-		return RecyclerViewHolder.getViewHolder(mContext, parent, layoutId);
+		return RecyclerViewHolder.getViewHolder(parent.getContext(), parent, layoutId);
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implemen
 		initMsg();
 		mRecyclerView = (RecyclerView) findViewById(R.id.multi_item_recyclerview);
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-		mWarAdapter = new WarAdapter(this, mMessages);
+		mWarAdapter = new WarAdapter(mMessages);
 		mWarAdapter.setOnItemClickListener(this);
 		mRecyclerView.setAdapter(mWarAdapter);
 	}
@@ -60,9 +60,9 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implemen
 
 	private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
 	{
-		public WarAdapter(Context context, List<People> datas)
+		public WarAdapter(List<People> datas)
 		{
-			super(context, datas);
+			super(datas);
 			addItemViewDelegate(new ComputerRecyclerDelegate());
 			addItemViewDelegate(new BlueRecyclerDelegate());
 			addItemViewDelegate(new PurpleRecyclerDelegate());

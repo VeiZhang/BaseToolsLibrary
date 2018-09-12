@@ -22,31 +22,29 @@ public abstract class BaseRecyclerAdapter<T> extends MultiItemTypeRecyclerAdapte
 
 	/**
 	 *
-	 * @param context 上下文
 	 * @param data 数组数据源
 	 * @param layoutId 布局资源Id
 	 */
-	public BaseRecyclerAdapter(Context context, T[] data, @LayoutRes int layoutId)
+	public BaseRecyclerAdapter(T[] data, @LayoutRes int layoutId)
 	{
-		this(context, data == null ? null : Arrays.asList(data), layoutId);
+		this(data == null ? null : Arrays.asList(data), layoutId);
 	}
 
 	/**
 	 *
-	 * @param context 上下文
 	 * @param data 列表数据源
 	 * @param layoutId 布局资源Id
 	 */
-	public BaseRecyclerAdapter(Context context, List<T> data, @LayoutRes int layoutId)
+	public BaseRecyclerAdapter(List<T> data, @LayoutRes int layoutId)
 	{
-		super(context, data);
+		super(data);
 		mLayoutId = layoutId;
 	}
 
 	@Override
 	public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
-		return RecyclerViewHolder.getViewHolder(mContext, parent, mLayoutId);
+		return RecyclerViewHolder.getViewHolder(parent.getContext(), parent, mLayoutId);
 	}
 
 	@Override
