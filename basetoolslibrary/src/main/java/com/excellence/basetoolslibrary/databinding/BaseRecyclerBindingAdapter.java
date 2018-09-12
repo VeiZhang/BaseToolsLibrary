@@ -23,14 +23,14 @@ public class BaseRecyclerBindingAdapter<T> extends MultiItemTypeBindingRecyclerA
 	private int mLayoutId;
 	private int mVariableId;
 
-	public BaseRecyclerBindingAdapter(T[] datas, @LayoutRes int layoutId, int variableId)
+	public BaseRecyclerBindingAdapter(T[] data, @LayoutRes int layoutId, int variableId)
 	{
-		this(Arrays.asList(datas), layoutId, variableId);
+		this(Arrays.asList(data), layoutId, variableId);
 	}
 
-	public BaseRecyclerBindingAdapter(List<T> datas, @LayoutRes int layoutId, int variableId)
+	public BaseRecyclerBindingAdapter(List<T> data, @LayoutRes int layoutId, int variableId)
 	{
-		super(datas);
+		super(data);
 		mLayoutId = layoutId;
 		mVariableId = variableId;
 	}
@@ -46,7 +46,7 @@ public class BaseRecyclerBindingAdapter<T> extends MultiItemTypeBindingRecyclerA
 	public void onBindViewHolder(RecyclerViewHolder holder, int position)
 	{
 		ViewDataBinding binding = holder.getBinding();
-		binding.setVariable(mVariableId, mDatas.get(position));
+		binding.setVariable(mVariableId, mData.get(position));
 		binding.executePendingBindings();
 		setViewListener(binding, position);
 	}

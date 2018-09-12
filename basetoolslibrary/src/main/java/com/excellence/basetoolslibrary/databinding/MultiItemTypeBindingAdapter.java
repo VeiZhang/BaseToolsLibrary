@@ -25,17 +25,17 @@ import java.util.List;
 
 public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataHelper<T>
 {
-	protected List<T> mDatas;
+	protected List<T> mData;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager;
 
-	public MultiItemTypeBindingAdapter(T[] datas)
+	public MultiItemTypeBindingAdapter(T[] data)
 	{
-		this(datas == null ? null : Arrays.asList(datas));
+		this(data == null ? null : Arrays.asList(data));
 	}
 
-	public MultiItemTypeBindingAdapter(List<T> datas)
+	public MultiItemTypeBindingAdapter(List<T> data)
 	{
-		mDatas = datas;
+		mData = data;
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -124,7 +124,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	{
 		if (userItemViewDelegateManager())
 		{
-			return mItemViewDelegateManager.getItemViewType(mDatas.get(position), position);
+			return mItemViewDelegateManager.getItemViewType(mData.get(position), position);
 		}
 		return super.getItemViewType(position);
 	}
@@ -132,13 +132,13 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public int getCount()
 	{
-		return mDatas == null ? 0 : mDatas.size();
+		return mData == null ? 0 : mData.size();
 	}
 
 	@Override
 	public T getItem(int position)
 	{
-		return mDatas == null ? null : mDatas.get(position);
+		return mData == null ? null : mData.get(position);
 	}
 
 	@Override
@@ -167,12 +167,12 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	/**
 	 * 新数据集替代旧数据集，刷新视图
 	 *
-	 * @param datas 新数据集
+	 * @param data 新数据集
 	 */
 	@Override
-	public void notifyNewData(List<T> datas)
+	public void notifyNewData(List<T> data)
 	{
-		mDatas = datas;
+		mData = data;
 		notifyDataSetChanged();
 	}
 
@@ -185,7 +185,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public boolean addAll(List<T> list)
 	{
-		boolean result = mDatas != null && mDatas.addAll(list);
+		boolean result = mData != null && mData.addAll(list);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -200,7 +200,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public boolean addAll(int position, List<T> list)
 	{
-		boolean result = mDatas != null && mDatas.addAll(position, list);
+		boolean result = mData != null && mData.addAll(position, list);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -214,7 +214,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public boolean add(T data)
 	{
-		boolean result = mDatas != null && mDatas.add(data);
+		boolean result = mData != null && mData.add(data);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -228,9 +228,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void add(int position, T data)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.add(position, data);
+			mData.add(position, data);
 			notifyDataSetChanged();
 		}
 	}
@@ -244,9 +244,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void modify(int index, T newData)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.set(index, newData);
+			mData.set(index, newData);
 			notifyDataSetChanged();
 		}
 	}
@@ -260,9 +260,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void modify(T oldData, T newData)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			modify(mDatas.indexOf(oldData), newData);
+			modify(mData.indexOf(oldData), newData);
 		}
 	}
 
@@ -275,7 +275,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public boolean remove(T data)
 	{
-		boolean result = mDatas != null && mDatas.remove(data);
+		boolean result = mData != null && mData.remove(data);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -288,9 +288,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void remove(int index)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.remove(index);
+			mData.remove(index);
 			notifyDataSetChanged();
 		}
 	}
@@ -301,9 +301,9 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void clear()
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.clear();
+			mData.clear();
 			notifyDataSetChanged();
 		}
 	}
@@ -317,6 +317,6 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public boolean contains(T data)
 	{
-		return mDatas != null && mDatas.contains(data);
+		return mData != null && mData.contains(data);
 	}
 }

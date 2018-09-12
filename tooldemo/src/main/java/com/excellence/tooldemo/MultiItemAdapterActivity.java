@@ -31,7 +31,7 @@ public class MultiItemAdapterActivity extends AppCompatActivity implements Adapt
 
 		initMsg();
 		mListView = (ListView) findViewById(R.id.multi_item_listview);
-		mListView.setAdapter(new ChatAdapter(this, mMessages));
+		mListView.setAdapter(new ChatAdapter(mMessages));
 		mListView.setOnItemClickListener(this);
 	}
 
@@ -61,9 +61,9 @@ public class MultiItemAdapterActivity extends AppCompatActivity implements Adapt
 
 	private class ChatAdapter extends MultiItemTypeAdapter<People>
 	{
-		public ChatAdapter(Context context, List<People> messages)
+		public ChatAdapter(List<People> messages)
 		{
-			super(context, messages);
+			super(messages);
 			addItemViewDelegate(new ComputerDelegate());
 			addItemViewDelegate(new BlueDelegate());
 			addItemViewDelegate(new PurpleDelegate());

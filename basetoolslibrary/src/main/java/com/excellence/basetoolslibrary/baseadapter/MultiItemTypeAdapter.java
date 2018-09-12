@@ -23,19 +23,17 @@ import java.util.List;
 
 public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T>
 {
-	protected Context mContext;
-	protected List<T> mDatas;
+	protected List<T> mData;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager;
 
-	public MultiItemTypeAdapter(Context context, T[] datas)
+	public MultiItemTypeAdapter(T[] data)
 	{
-		this(context, datas == null ? null : Arrays.asList(datas));
+		this(data == null ? null : Arrays.asList(data));
 	}
 
-	public MultiItemTypeAdapter(Context context, List<T> datas)
+	public MultiItemTypeAdapter(List<T> data)
 	{
-		mContext = context;
-		mDatas = datas;
+		mData = data;
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -124,7 +122,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	{
 		if (userItemViewDelegateManager())
 		{
-			return mItemViewDelegateManager.getItemViewType(mDatas.get(position), position);
+			return mItemViewDelegateManager.getItemViewType(mData.get(position), position);
 		}
 		return super.getItemViewType(position);
 	}
@@ -132,13 +130,13 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public int getCount()
 	{
-		return mDatas == null ? 0 : mDatas.size();
+		return mData == null ? 0 : mData.size();
 	}
 
 	@Override
 	public T getItem(int position)
 	{
-		return mDatas == null ? null : mDatas.get(position);
+		return mData == null ? null : mData.get(position);
 	}
 
 	@Override
@@ -152,7 +150,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	{
 		ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItem(position), position);
 		int layoutId = delegate.getItemViewLayoutId();
-		ViewHolder viewHolder = ViewHolder.getViewHolder(mContext, convertView, parent, layoutId);
+		ViewHolder viewHolder = ViewHolder.getViewHolder(parent.getContext(), convertView, parent, layoutId);
 		delegate.convert(viewHolder, getItem(position), position);
 		return viewHolder.getConvertView();
 	}
@@ -160,12 +158,12 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	/**
 	 * 新数据集替代旧数据集，刷新视图
 	 *
-	 * @param datas 新数据集
+	 * @param data 新数据集
 	 */
 	@Override
-	public void notifyNewData(List<T> datas)
+	public void notifyNewData(List<T> data)
 	{
-		mDatas = datas;
+		mData = data;
 		notifyDataSetChanged();
 	}
 
@@ -178,7 +176,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public boolean addAll(List<T> list)
 	{
-		boolean result = mDatas != null && mDatas.addAll(list);
+		boolean result = mData != null && mData.addAll(list);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -193,7 +191,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public boolean addAll(int position, List<T> list)
 	{
-		boolean result = mDatas != null && mDatas.addAll(position, list);
+		boolean result = mData != null && mData.addAll(position, list);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -207,7 +205,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public boolean add(T data)
 	{
-		boolean result = mDatas != null && mDatas.add(data);
+		boolean result = mData != null && mData.add(data);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -221,9 +219,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void add(int position, T data)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.add(position, data);
+			mData.add(position, data);
 			notifyDataSetChanged();
 		}
 	}
@@ -237,9 +235,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void modify(int index, T newData)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.set(index, newData);
+			mData.set(index, newData);
 			notifyDataSetChanged();
 		}
 	}
@@ -253,9 +251,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void modify(T oldData, T newData)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			modify(mDatas.indexOf(oldData), newData);
+			modify(mData.indexOf(oldData), newData);
 		}
 	}
 
@@ -268,7 +266,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public boolean remove(T data)
 	{
-		boolean result = mDatas != null && mDatas.remove(data);
+		boolean result = mData != null && mData.remove(data);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -281,9 +279,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void remove(int index)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.remove(index);
+			mData.remove(index);
 			notifyDataSetChanged();
 		}
 	}
@@ -294,9 +292,9 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void clear()
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.clear();
+			mData.clear();
 			notifyDataSetChanged();
 		}
 	}
@@ -310,6 +308,6 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public boolean contains(T data)
 	{
-		return mDatas != null && mDatas.contains(data);
+		return mData != null && mData.contains(data);
 	}
 }

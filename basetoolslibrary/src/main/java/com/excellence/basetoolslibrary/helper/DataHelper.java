@@ -18,9 +18,9 @@ public interface DataHelper<T>
 	/**
 	 * 新数据集替代旧数据集，刷新视图
 	 *
-	 * @param datas 新数据集
+	 * @param data 新数据集
 	 */
-	void notifyNewData(List<T> datas);
+	void notifyNewData(List<T> data);
 
 	/**
 	 * 新增数据集

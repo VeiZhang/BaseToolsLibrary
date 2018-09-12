@@ -24,14 +24,14 @@ public class CommonBindingAdapter<T> extends MultiItemTypeBindingAdapter<T>
 	private int mLayoutId;
 	private int mVariableId;
 
-	public CommonBindingAdapter(T[] datas, @LayoutRes int layoutId, int variableId)
+	public CommonBindingAdapter(T[] data, @LayoutRes int layoutId, int variableId)
 	{
-		this(Arrays.asList(datas), layoutId, variableId);
+		this(Arrays.asList(data), layoutId, variableId);
 	}
 
-	public CommonBindingAdapter(List<T> datas, @LayoutRes int layoutId, int variableId)
+	public CommonBindingAdapter(List<T> data, @LayoutRes int layoutId, int variableId)
 	{
-		super(datas);
+		super(data);
 		mLayoutId = layoutId;
 		mVariableId = variableId;
 	}
@@ -41,9 +41,13 @@ public class CommonBindingAdapter<T> extends MultiItemTypeBindingAdapter<T>
 	{
 		ViewDataBinding binding;
 		if (convertView == null)
+		{
 			binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mLayoutId, parent, false);
+		}
 		else
+		{
 			binding = DataBindingUtil.getBinding(convertView);
+		}
 		binding.setVariable(mVariableId, getItem(position));
 		return binding.getRoot();
 	}

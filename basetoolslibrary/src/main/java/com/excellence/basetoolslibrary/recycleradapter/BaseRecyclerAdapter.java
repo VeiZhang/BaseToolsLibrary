@@ -5,8 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.ViewGroup;
 
 /**
@@ -25,23 +23,23 @@ public abstract class BaseRecyclerAdapter<T> extends MultiItemTypeRecyclerAdapte
 	/**
 	 *
 	 * @param context 上下文
-	 * @param datas 数组数据源
+	 * @param data 数组数据源
 	 * @param layoutId 布局资源Id
 	 */
-	public BaseRecyclerAdapter(Context context, T[] datas, @LayoutRes int layoutId)
+	public BaseRecyclerAdapter(Context context, T[] data, @LayoutRes int layoutId)
 	{
-		this(context, datas == null ? null : Arrays.asList(datas), layoutId);
+		this(context, data == null ? null : Arrays.asList(data), layoutId);
 	}
 
 	/**
 	 *
 	 * @param context 上下文
-	 * @param datas 列表数据源
+	 * @param data 列表数据源
 	 * @param layoutId 布局资源Id
 	 */
-	public BaseRecyclerAdapter(Context context, List<T> datas, @LayoutRes int layoutId)
+	public BaseRecyclerAdapter(Context context, List<T> data, @LayoutRes int layoutId)
 	{
-		super(context, datas);
+		super(context, data);
 		mLayoutId = layoutId;
 	}
 
@@ -54,7 +52,7 @@ public abstract class BaseRecyclerAdapter<T> extends MultiItemTypeRecyclerAdapte
 	@Override
 	public void onBindViewHolder(RecyclerViewHolder holder, int position)
 	{
-		convert(holder, mDatas.get(position), position);
+		convert(holder, mData.get(position), position);
 		setViewListener(holder, position);
 	}
 

@@ -57,7 +57,9 @@ public class CommonAdapterActivity extends AppCompatActivity implements View.OnC
 	{
 		// 模拟刷新
 		if (mAppList != null)
+		{
 			mAppList.clear();
+		}
 
 		switch (mAppType % 3)
 		{
@@ -80,11 +82,13 @@ public class CommonAdapterActivity extends AppCompatActivity implements View.OnC
 
 		if (mAppGridAdapter == null)
 		{
-			mAppGridAdapter = new AppGridAdapter(this, mAppList, android.R.layout.activity_list_item);
+			mAppGridAdapter = new AppGridAdapter(mAppList, android.R.layout.activity_list_item);
 			mGridView.setAdapter(mAppGridAdapter);
 		}
 		else
+		{
 			mAppGridAdapter.notifyNewData(mAppList);
+		}
 	}
 
 	@Override
@@ -98,14 +102,16 @@ public class CommonAdapterActivity extends AppCompatActivity implements View.OnC
 	{
 		boolean result = ActivityUtils.startAnotherActivity(this, mAppList.get(position).activityInfo.packageName);
 		if (!result)
+		{
 			Toast.makeText(this, mAppList.get(position).loadLabel(getPackageManager()) + "打开失败", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	private class AppGridAdapter extends CommonAdapter<ResolveInfo>
 	{
-		public AppGridAdapter(Context context, List<ResolveInfo> datas, int layoutId)
+		public AppGridAdapter(List<ResolveInfo> datas, int layoutId)
 		{
-			super(context, datas, layoutId);
+			super(datas, layoutId);
 		}
 
 		@Override

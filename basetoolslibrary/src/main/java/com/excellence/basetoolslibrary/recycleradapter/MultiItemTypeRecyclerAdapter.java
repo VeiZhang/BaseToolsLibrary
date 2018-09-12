@@ -25,22 +25,22 @@ import java.util.List;
 public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements DataHelper<T>
 {
 	protected Context mContext = null;
-	protected List<T> mDatas = null;
+	protected List<T> mData = null;
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
 	private OnItemClickListener mOnItemClickListener = null;
 	private OnItemLongClickListener mOnItemLongClickListener = null;
 	private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
 	private OnItemKeyListener mOnItemKeyListener = null;
 
-	public MultiItemTypeRecyclerAdapter(Context context, T[] datas)
+	public MultiItemTypeRecyclerAdapter(Context context, T[] data)
 	{
-		this(context, datas == null ? null : Arrays.asList(datas));
+		this(context, data == null ? null : Arrays.asList(data));
 	}
 
-	public MultiItemTypeRecyclerAdapter(Context context, List<T> datas)
+	public MultiItemTypeRecyclerAdapter(Context context, List<T> data)
 	{
 		mContext = context;
-		mDatas = datas;
+		mData = data;
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -108,7 +108,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	{
 		if (userItemViewDelegateManager())
 		{
-			return mItemViewDelegateManager.getItemViewType(mDatas.get(position), position);
+			return mItemViewDelegateManager.getItemViewType(mData.get(position), position);
 		}
 		return super.getItemViewType(position);
 	}
@@ -116,7 +116,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public int getItemCount()
 	{
-		return mDatas == null ? 0 : mDatas.size();
+		return mData == null ? 0 : mData.size();
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	public void onBindViewHolder(RecyclerViewHolder holder, int position)
 	{
 		ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItemViewType(position));
-		delegate.convert(holder, mDatas.get(position), position);
+		delegate.convert(holder, mData.get(position), position);
 		setViewListener(holder, position);
 	}
 
@@ -225,18 +225,18 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public T getItem(int position)
 	{
-		return mDatas == null ? null : mDatas.get(position);
+		return mData == null ? null : mData.get(position);
 	}
 
 	/**
 	 * 新数据集替代旧数据集，刷新视图
 	 *
-	 * @param datas 新数据集
+	 * @param data 新数据集
 	 */
 	@Override
-	public void notifyNewData(List<T> datas)
+	public void notifyNewData(List<T> data)
 	{
-		mDatas = datas;
+		mData = data;
 		notifyDataSetChanged();
 	}
 
@@ -249,7 +249,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public boolean addAll(List<T> list)
 	{
-		boolean result = mDatas != null && mDatas.addAll(list);
+		boolean result = mData != null && mData.addAll(list);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -264,7 +264,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public boolean addAll(int position, List<T> list)
 	{
-		boolean result = mDatas != null && mDatas.addAll(position, list);
+		boolean result = mData != null && mData.addAll(position, list);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -278,7 +278,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public boolean add(T data)
 	{
-		boolean result = mDatas != null && mDatas.add(data);
+		boolean result = mData != null && mData.add(data);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -292,9 +292,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void add(int position, T data)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.add(position, data);
+			mData.add(position, data);
 			notifyDataSetChanged();
 		}
 	}
@@ -308,9 +308,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void modify(int index, T newData)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.set(index, newData);
+			mData.set(index, newData);
 			notifyDataSetChanged();
 		}
 	}
@@ -324,9 +324,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void modify(T oldData, T newData)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			modify(mDatas.indexOf(oldData), newData);
+			modify(mData.indexOf(oldData), newData);
 		}
 	}
 
@@ -339,7 +339,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public boolean remove(T data)
 	{
-		boolean result = mDatas != null && mDatas.remove(data);
+		boolean result = mData != null && mData.remove(data);
 		notifyDataSetChanged();
 		return result;
 	}
@@ -352,9 +352,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void remove(int index)
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.remove(index);
+			mData.remove(index);
 			notifyDataSetChanged();
 		}
 	}
@@ -365,9 +365,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void clear()
 	{
-		if (mDatas != null)
+		if (mData != null)
 		{
-			mDatas.clear();
+			mData.clear();
 			notifyDataSetChanged();
 		}
 	}
@@ -381,6 +381,6 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public boolean contains(T data)
 	{
-		return mDatas != null && mDatas.contains(data);
+		return mData != null && mData.contains(data);
 	}
 }
