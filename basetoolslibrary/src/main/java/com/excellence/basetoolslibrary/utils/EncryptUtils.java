@@ -111,6 +111,7 @@ public class EncryptUtils
 	 * 注意：1.NoPadding必须保证 原文 字节是 8 的倍数
 	 *      2.DES密钥字节长度必须是 >=8 {@link DESKeySpec}
 	 *      3.3DES密钥字节必须是 >=24  {@link DESedeKeySpec}
+	 *      4.PKCS5Padding/PKCS7Padding 无区别
 	 *
 	 * transformation方式如下
 	 *      形式：算法名称/加密模式/填充方式
@@ -119,11 +120,27 @@ public class EncryptUtils
 	 *              DES
 	 *              DESede
 	 *          四种加密模式
-	 *              ECB：电子密码本模式
-	 *              CBC：加密分组链接模式（必须填写初始向量iv）
+	 *              ECB：电子密码本模式（不需要填写初始向量iv，其他模式需要）
+	 *              CBC：加密分组链接模式
 	 *              CFB：加密反馈模式
 	 *              OFB：输出反馈模式
 	 *              CTR：计算器模式
+	 *              http://www.seacha.com/tools/aes.html
+	 *                  ECB(Electronic Code Book电子密码本)模式
+	 *                      ECB模式是最早采用和最简单的模式，它将加密的数据分成若干组，每组的大小跟加密密钥长度相同，然后每组都用相同的密钥进行加密。
+	 *                      优点:   1.简单；   2.有利于并行计算；  3.误差不会被扩散；
+	 *                      缺点:   1.不能隐藏明文的模式；  2.可能对明文进行主动攻击；
+	 *                      因此，此模式适于加密小消息。
+	 *                  CBC(Cipher Block Chaining，加密块链)模式
+	 *                      优点：  不容易主动攻击,安全性好于ECB,适合传输长度长的报文,是SSL、IPSec的标准。
+	 *                      缺点：  1.不利于并行计算；  2.误差传递；  3.需要初始化向量IV
+	 *                  CFB(Cipher FeedBack Mode，加密反馈)模式
+	 *                      优点：1.隐藏了明文模式;  2.分组密码转化为流模式;  3.可以及时加密传送小于分组的数据;
+	 *                      缺点:  1.不利于并行计算;  2.误差传送：一个明文单元损坏影响多个单元;  3.唯一的IV;
+	 *                  OFB(Output FeedBack，输出反馈)模式
+	 *                      优点:  1.隐藏了明文模式;  2.分组密码转化为流模式;  3.可以及时加密传送小于分组的数据;
+	 *                      缺点:  1.不利于并行计算;  2.对明文的主动攻击是可能的;  3.误差传送：一个明文单元损坏影响多个单元;
+	 *
 	 *          填充方式
 	 *              NoPadding：不自动填充原文
 	 *              PKCS5Padding：自动填充原文到必须的位数
@@ -186,6 +203,18 @@ public class EncryptUtils
 					key = Arrays.copyOf(key, DES_EDE_KEY_LEN);
 				}
 				keySpec = new DESedeKeySpec(key);
+				break;
+
+			case "AES":
+				/**
+				 * 128\192\256 位加密密钥
+				 * 16\24\32 字节长度的密钥
+				 * 不符合的密钥，以最小长度16字节处理，如果以32字节处理，可能会出现“Illegal key size or default parameters”
+				 */
+				if (key.length % 8 != 0)
+				{
+					key = Arrays.copyOf(key, 16);
+				}
 				break;
 
 			default:
