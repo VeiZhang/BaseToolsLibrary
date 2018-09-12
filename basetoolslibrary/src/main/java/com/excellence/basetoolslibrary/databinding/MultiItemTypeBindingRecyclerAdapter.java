@@ -3,6 +3,7 @@ package com.excellence.basetoolslibrary.databinding;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	private OnItemClickListener mOnItemClickListener = null;
 	private OnItemLongClickListener mOnItemLongClickListener = null;
 	private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
+	private OnItemKeyListener mOnItemKeyListener = null;
 
 	public MultiItemTypeBindingRecyclerAdapter(T[] datas)
 	{
@@ -139,7 +141,8 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 
 	protected void setViewListener(final ViewDataBinding binding, final int position)
 	{
-		binding.getRoot().setOnClickListener(new View.OnClickListener()
+		View itemView = binding.getRoot();
+		itemView.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -151,7 +154,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			}
 		});
 
-		binding.getRoot().setOnLongClickListener(new View.OnLongClickListener()
+		itemView.setOnLongClickListener(new View.OnLongClickListener()
 		{
 			@Override
 			public boolean onLongClick(View v)
@@ -160,7 +163,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			}
 		});
 
-		binding.getRoot().setOnFocusChangeListener(new View.OnFocusChangeListener()
+		itemView.setOnFocusChangeListener(new View.OnFocusChangeListener()
 		{
 			@Override
 			public void onFocusChange(View v, boolean hasFocus)
@@ -169,6 +172,15 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 				{
 					mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
 				}
+			}
+		});
+
+		itemView.setOnKeyListener(new View.OnKeyListener()
+		{
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event)
+			{
+				return mOnItemKeyListener != null && mOnItemKeyListener.onKey(binding, v, keyCode, event, position);
 			}
 		});
 	}
@@ -188,6 +200,11 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 		void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position);
 	}
 
+	public interface OnItemKeyListener
+	{
+		boolean onKey(ViewDataBinding binding, View v, int keyCode, KeyEvent event, int position);
+	}
+
 	public void setOnItemClickListener(OnItemClickListener listener)
 	{
 		mOnItemClickListener = listener;
@@ -201,6 +218,11 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void setOnItemFocusChangeListener(OnItemFocusChangeListener listener)
 	{
 		mOnItemFocusChangeListener = listener;
+	}
+
+	public void setOnItemKeyListener(OnItemKeyListener onItemKeyListener)
+	{
+		mOnItemKeyListener = onItemKeyListener;
 	}
 
 	/**** 以下为辅助方法 ****/
