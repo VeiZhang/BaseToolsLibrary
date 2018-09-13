@@ -10,6 +10,7 @@ import com.excellence.basetoolslibrary.helper.DataHelper;
 import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegateManager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements DataHelper<T>
 {
-	protected List<T> mData = null;
+	protected List<T> mData = new ArrayList<>();
 	private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
 	private OnItemClickListener mOnItemClickListener = null;
 	private OnItemLongClickListener mOnItemLongClickListener = null;
@@ -38,7 +39,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
 	public MultiItemTypeRecyclerAdapter(List<T> data)
 	{
-		mData = data;
+		mData.addAll(data);
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -234,7 +235,8 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void notifyNewData(List<T> data)
 	{
-		mData = data;
+		mData.clear();
+		mData.addAll(data);
 		notifyDataSetChanged();
 	}
 

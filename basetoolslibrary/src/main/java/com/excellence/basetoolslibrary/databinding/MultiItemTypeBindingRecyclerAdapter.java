@@ -12,6 +12,7 @@ import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerA
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
 import com.excellence.basetoolslibrary.helper.DataHelper;
+import com.excellence.basetoolslibrary.helper.ViewHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -392,6 +393,8 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 
 	/**
 	 * 注意添加 static ，否则没有Javadoc红色错误，但是在编译时会报“方法不会覆盖或实现超类型的方法”的异常
+	 *
+	 * DataBinding可以直接设置控件属性，无需 {@link ViewHelper}
 	 */
 	public static class RecyclerViewHolder extends RecyclerView.ViewHolder
 	{
