@@ -11,36 +11,30 @@ import android.view.ViewGroup;
  *     author : VeiZhang
  *     blog   : http://tiimor.cn
  *     time   : 2017/7/21
- *     desc   : viewpager通用适配器
+ *     desc   : viewpager通用适配器：分页加载
  * </pre>
  */
 
 public abstract class BasePagerAdapter extends PagerAdapter
 {
-
-	private Context mContext = null;
 	private SparseArray<View> mViews = null;
 	private int mPageCount = 0;
 
 	/**
 	 * paging load
-	 *
-	 * @param context
 	 */
-	public BasePagerAdapter(Context context)
+	public BasePagerAdapter()
 	{
-		this(context, 0);
+		this(0);
 	}
 
 	/**
 	 * paging load
 	 *
-	 * @param context
 	 * @param pageCount total page count
 	 */
-	public BasePagerAdapter(Context context, int pageCount)
+	public BasePagerAdapter(int pageCount)
 	{
-		mContext = context;
 		mViews = new SparseArray<>();
 		setData(pageCount);
 	}
@@ -81,7 +75,7 @@ public abstract class BasePagerAdapter extends PagerAdapter
 		View view = mViews.get(position);
 		if (view == null)
 		{
-			view = loadView(mContext, position);
+			view = loadView(container.getContext(), position);
 			mViews.put(position, view);
 		}
 		container.addView(view);

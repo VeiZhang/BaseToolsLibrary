@@ -3,7 +3,6 @@ package com.excellence.basetoolslibrary.recycleradapter;
 import java.util.Arrays;
 import java.util.List;
 
-import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.view.ViewGroup;
 

@@ -23,16 +23,16 @@ public class ViewPagerAdapterActivity extends AppCompatActivity
 		setContentView(R.layout.activity_view_pager_adapter);
 
 		mViewPager = (ViewPager) findViewById(R.id.view_pager);
-		mAdapter = new NumAdapter(this, mPageCount);
+		mAdapter = new NumAdapter(mPageCount);
 		mViewPager.setAdapter(mAdapter);
 	}
 
 	private class NumAdapter extends BasePagerAdapter
 	{
 
-		public NumAdapter(Context context, int pageCount)
+		public NumAdapter(int pageCount)
 		{
-			super(context, pageCount);
+			super(pageCount);
 		}
 
 		@Override

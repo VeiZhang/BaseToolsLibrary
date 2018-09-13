@@ -1,6 +1,5 @@
 package com.excellence.basetoolslibrary.recycleradapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;

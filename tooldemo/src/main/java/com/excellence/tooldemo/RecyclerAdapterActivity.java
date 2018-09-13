@@ -6,7 +6,6 @@ import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter;
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
 import com.excellence.basetoolslibrary.utils.AppUtils;
 
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
