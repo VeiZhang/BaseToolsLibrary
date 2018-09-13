@@ -294,13 +294,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void addAll(List<T> data)
 	{
-		if (isEmpty(data))
-		{
-			return;
-		}
-		int positionStart = mData.size();
-		mData.addAll(data);
-		notifyItemRangeInserted(positionStart, data.size());
+		addAll(mData.size(), data);
 	}
 
 	/**
@@ -325,7 +319,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 			position = mData.size();
 		}
 		mData.addAll(position, data);
-		notifyItemRangeInserted(position, data.size());
+		notifyItemRangeChanged(position, mData.size() - position);
 	}
 
 	/**
