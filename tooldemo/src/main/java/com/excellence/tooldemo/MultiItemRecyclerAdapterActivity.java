@@ -59,9 +59,9 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implemen
 
 	private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
 	{
-		public WarAdapter(List<People> datas)
+		public WarAdapter(List<People> data)
 		{
-			super(datas);
+			super(data);
 			addItemViewDelegate(new ComputerRecyclerDelegate());
 			addItemViewDelegate(new BlueRecyclerDelegate());
 			addItemViewDelegate(new PurpleRecyclerDelegate());

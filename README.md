@@ -78,9 +78,9 @@ android {
 // 创建adapter类继承CommonAdapter
 private class AppGridAdapter extends CommonAdapter<ResolveInfo>
 {
-    public AppGridAdapter(Context context, List<ResolveInfo> datas, int layoutId)
+    public AppGridAdapter(List<ResolveInfo> data, int layoutId)
     {
-        super(context, datas, layoutId);
+        super(data, layoutId);
     }
 
     @Override
@@ -121,9 +121,9 @@ adapter.notifyNewData(data);
 // 多布局适配器
 private class ChatAdapter extends MultiItemTypeAdapter<People>
 {
-    public ChatAdapter(Context context, List<People> messages)
+    public ChatAdapter(List<People> messages)
     {
-        super(context, messages);
+        super(messages);
         addItemViewDelegate(new ComputerDelegate());
         addItemViewDelegate(new BlueDelegate());
         addItemViewDelegate(new PurpleDelegate());
@@ -194,10 +194,10 @@ private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
 {
     private PackageManager mPackageManager = null;
 
-    public AppRecyclerAdapter(Context context, List<ResolveInfo> datas, int layoutId)
+    public AppRecyclerAdapter(List<ResolveInfo> data, int layoutId)
     {
-        super(context, datas, layoutId);
-        mPackageManager = context.getPackageManager();
+        super(data, layoutId);
+        mPackageManager = getPackageManager();
     }
 
     @Override
@@ -226,9 +226,9 @@ private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
 // 多布局适配器
 private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
 {
-    public WarAdapter(Context context, List<People> datas)
+    public WarAdapter(List<People> data)
     {
-        super(context, datas);
+        super(data);
         addItemViewDelegate(new ComputerRecyclerDelegate());
         addItemViewDelegate(new BlueRecyclerDelegate());
         addItemViewDelegate(new PurpleRecyclerDelegate());
@@ -299,9 +299,9 @@ mBinding.setLayoutManager(new LinearLayoutManager(this));
 private class NumAdapter extends BasePagerAdapter
 {
 
-    public NumAdapter(Context context, int pageCount)
+    public NumAdapter(int pageCount)
     {
-        super(context, pageCount);
+        super(pageCount);
     }
 
     @Override

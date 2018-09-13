@@ -108,9 +108,9 @@ public class CommonAdapterActivity extends AppCompatActivity implements View.OnC
 
 	private class AppGridAdapter extends CommonAdapter<ResolveInfo>
 	{
-		public AppGridAdapter(List<ResolveInfo> datas, int layoutId)
+		public AppGridAdapter(List<ResolveInfo> data, int layoutId)
 		{
-			super(datas, layoutId);
+			super(data, layoutId);
 		}
 
 		@Override

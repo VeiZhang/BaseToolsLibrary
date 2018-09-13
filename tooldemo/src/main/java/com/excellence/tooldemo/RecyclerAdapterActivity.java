@@ -110,9 +110,9 @@ public class RecyclerAdapterActivity extends AppCompatActivity implements View.O
 	{
 		private PackageManager mPackageManager = null;
 
-		public AppRecyclerAdapter(List<ResolveInfo> datas, int layoutId)
+		public AppRecyclerAdapter(List<ResolveInfo> data, int layoutId)
 		{
-			super(datas, layoutId);
+			super(data, layoutId);
 			mPackageManager = getPackageManager();
 		}
 
