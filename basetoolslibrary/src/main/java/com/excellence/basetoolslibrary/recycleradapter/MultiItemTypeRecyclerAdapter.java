@@ -355,6 +355,17 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	}
 
 	/**
+	 * 修改源数据
+	 * 
+	 * @param item 数据集中的对象，修改复杂类型（非基本类型）里面的变量值
+	 */
+	@Override
+	public void modify(T item)
+	{
+		modify(mData.indexOf(item), item);
+	}
+
+	/**
 	 * 替换数据
 	 *
 	 * @param position 替换位置

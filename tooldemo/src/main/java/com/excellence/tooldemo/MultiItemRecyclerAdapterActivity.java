@@ -53,8 +53,9 @@ public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implemen
 	@Override
 	public void onItemClick(RecyclerViewHolder viewHolder, View v, int position)
 	{
-		mMessages.get(position).setMsg("defeat");
-		mWarAdapter.notifyNewData(mMessages);
+		People people = mMessages.get(position);
+		people.setMsg("defeat");
+		mWarAdapter.modify(people);
 	}
 
 	private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>

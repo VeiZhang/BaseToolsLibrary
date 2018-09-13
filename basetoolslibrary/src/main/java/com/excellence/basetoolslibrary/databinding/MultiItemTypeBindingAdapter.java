@@ -200,12 +200,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void addAll(List<T> data)
 	{
-		if (EmptyUtils.isEmpty(data))
-		{
-			return;
-		}
-		mData.addAll(data);
-		notifyDataSetChanged();
+		addAll(mData.size(), data);
 	}
 
 	/**
@@ -241,8 +236,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void add(T item)
 	{
-		mData.add(item);
-		notifyDataSetChanged();
+		add(mData.size(), item);
 	}
 
 	/**
@@ -264,6 +258,17 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 		}
 		mData.add(position, item);
 		notifyDataSetChanged();
+	}
+
+	/**
+	 * 修改源数据
+	 *
+	 * @param item 数据集中的对象，修改复杂类型（非基本类型）里面的变量值
+	 */
+	@Override
+	public void modify(T item)
+	{
+		modify(mData.indexOf(item), item);
 	}
 
 	/**

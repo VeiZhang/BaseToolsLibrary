@@ -69,6 +69,13 @@ public interface DataHelper<T>
 	void add(int position, T item);
 
 	/**
+	 * 修改源数据
+	 *
+	 * @param item 数据集中的对象，修改复杂类型（非基本类型）里面的变量值
+	 */
+	void modify(T item);
+
+	/**
 	 * 替换数据
 	 *
 	 * @param position 替换位置

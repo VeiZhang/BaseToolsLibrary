@@ -268,15 +268,16 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 
 	/**
 	 * 新数据集替代旧数据集，刷新视图
-	 * {@link #notifyDataSetChanged()} 没有动画效果，刷新效率比不上下面方法
+	 * {@link #notifyDataSetChanged()} 没有动画效果，刷新效率比不上下面方法（伴有动画效果：闪烁）
+	 * 位置不会刷新的方法，使用{@link #notifyItemRangeChanged}替代
 	 *
-	 * @see #notifyItemChanged(int) ：列表position位置刷新，伴有动画效果
-	 * @see #notifyItemInserted(int) ：列表position位置添加一条数据，伴有动画效果，位置不会刷新，要执行{@link #notifyItemChanged(int)}
-	 * @see #notifyItemRemoved(int) ：列表position位置移除一条数据，伴有动画效果，位置不会刷新，要执行{@link #notifyItemChanged(int)}
-	 * @see #notifyItemRangeChanged(int, int) ：列表从positionStart位置到itemCount数量的列表项进行数据刷新，伴有动画效果
-	 * @see #notifyItemMoved(int, int) ：列表fromPosition位置的数据移到toPosition位置，伴有动画效果，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
-	 * @see #notifyItemRangeInserted(int, int) ：列表从positionStart位置到itemCount数量的列表项批量添加数据，伴有动画效果，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
-	 * @see #notifyItemRangeRemoved(int, int) ：列表从positionStart位置到itemCount数量的列表项批量删除数据，伴有动画效果，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
+	 * @see #notifyItemChanged(int) ：列表position位置刷新
+	 * @see #notifyItemInserted(int) ：列表position位置添加一条数据，位置不会刷新，要执行{@link #notifyItemRangeChanged}
+	 * @see #notifyItemRemoved(int) ：列表position位置移除一条数据，位置会刷新，不用执行{@link #notifyItemRangeChanged}
+	 * @see #notifyItemRangeChanged(int, int) ：列表从positionStart位置到itemCount数量的列表项进行数据刷新
+	 * @see #notifyItemMoved(int, int) ：列表fromPosition位置的数据移到toPosition位置，位置会刷新，不用执行{@link #notifyItemRangeChanged(int, int)}
+	 * @see #notifyItemRangeInserted(int, int) ：列表从positionStart位置到itemCount数量的列表项批量添加数据，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
+	 * @see #notifyItemRangeRemoved(int, int) ：列表从positionStart位置到itemCount数量的列表项批量删除数据，位置会刷新，不用执行{@link #notifyItemRangeChanged(int, int)}
 	 *
 	 * @param data 新数据集
 	 */
@@ -301,13 +302,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	@Override
 	public void addAll(List<T> data)
 	{
-		if (isEmpty(data))
-		{
-			return;
-		}
-		int positionStart = mData.size();
-		mData.addAll(data);
-		notifyItemRangeInserted(positionStart, data.size());
+		addAll(mData.size(), data);
 	}
 
 	/**
@@ -332,7 +327,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			position = mData.size();
 		}
 		mData.addAll(position, data);
-		notifyItemRangeInserted(position, data.size());
+		notifyItemRangeChanged(position, mData.size() - position);
 	}
 
 	/**
@@ -343,8 +338,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	@Override
 	public void add(T item)
 	{
-		mData.add(item);
-		notifyItemInserted(mData.size());
+		add(mData.size(), item);
 	}
 
 	/**
@@ -365,7 +359,18 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			position = mData.size();
 		}
 		mData.add(position, item);
-		notifyItemInserted(position);
+		notifyItemRangeChanged(position, mData.size() - position);
+	}
+
+	/**
+	 * 修改源数据
+	 *
+	 * @param item 数据集中的对象，修改复杂类型（非基本类型）里面的变量值
+	 */
+	@Override
+	public void modify(T item)
+	{
+		modify(mData.indexOf(item), item);
 	}
 
 	/**
@@ -506,6 +511,9 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 		T item = mData.get(fromPosition);
 		mData.remove(fromPosition);
 		mData.add(toPosition, item);
+		int index = fromPosition;
+		fromPosition = Math.min(index, toPosition);
+		toPosition = Math.max(index, toPosition);
 		notifyItemRangeChanged(fromPosition, Math.abs(toPosition - fromPosition) + 1);
 	}
 
