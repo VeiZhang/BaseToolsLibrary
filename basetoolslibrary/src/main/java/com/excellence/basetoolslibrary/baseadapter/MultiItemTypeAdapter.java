@@ -7,8 +7,11 @@ import android.widget.BaseAdapter;
 import com.excellence.basetoolslibrary.baseadapter.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.baseadapter.base.ItemViewDelegateManager;
 import com.excellence.basetoolslibrary.helper.DataHelper;
+import com.excellence.basetoolslibrary.utils.EmptyUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,7 +25,7 @@ import java.util.List;
 
 public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T>
 {
-	protected List<T> mData;
+	protected List<T> mData = new ArrayList<>();
 	private ItemViewDelegateManager<T> mItemViewDelegateManager;
 
 	public MultiItemTypeAdapter(T[] data)
@@ -32,7 +35,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 
 	public MultiItemTypeAdapter(List<T> data)
 	{
-		mData = data;
+		mData.addAll(data);
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -154,6 +157,14 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 		return viewHolder.getConvertView();
 	}
 
+	/**** 以下为辅助方法 ****/
+
+	@Override
+	public List<T> getData()
+	{
+		return mData;
+	}
+
 	/**
 	 * 新数据集替代旧数据集，刷新视图
 	 *
@@ -162,127 +173,227 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void notifyNewData(List<T> data)
 	{
-		mData = data;
+		if (EmptyUtils.isEmpty(data))
+		{
+			return;
+		}
+		mData.clear();
+		mData.addAll(data);
 		notifyDataSetChanged();
 	}
 
 	/**
 	 * 新增数据集
 	 *
-	 * @param list 新数据集
-	 * @return {@code true}:添加成功<br>{@code false}:添加失败
+	 * @param data 新数据集
 	 */
 	@Override
-	public boolean addAll(List<T> list)
+	public void addAll(List<T> data)
 	{
-		boolean result = mData != null && mData.addAll(list);
+		if (EmptyUtils.isEmpty(data))
+		{
+			return;
+		}
+		mData.addAll(data);
 		notifyDataSetChanged();
-		return result;
 	}
 
 	/**
 	 * 插入新数据集
 	 *
 	 * @param position 插入位置
-	 * @param list 新数据集
-	 * @return {@code true}:添加成功<br>{@code false}:添加失败
+	 * @param data 新数据集
 	 */
 	@Override
-	public boolean addAll(int position, List<T> list)
+	public void addAll(int position, List<T> data)
 	{
-		boolean result = mData != null && mData.addAll(position, list);
+		if (EmptyUtils.isEmpty(data))
+		{
+			return;
+		}
+		if (position < 0)
+		{
+			position = 0;
+		}
+		if (position > mData.size())
+		{
+			position = mData.size();
+		}
+		mData.addAll(position, data);
 		notifyDataSetChanged();
-		return result;
 	}
 
 	/**
 	 * 新增数据
 	 *
-	 * @param data 数据
-	 * @return {@code true}:添加成功<br>{@code false}:添加失败
+	 * @param item 数据
 	 */
 	@Override
-	public boolean add(T data)
+	public void add(T item)
 	{
-		boolean result = mData != null && mData.add(data);
+		mData.add(item);
 		notifyDataSetChanged();
-		return result;
 	}
 
 	/**
 	 * 插入新数据
 	 *
 	 * @param position 插入位置
-	 * @param data 数据
+	 * @param item 数据
 	 */
 	@Override
-	public void add(int position, T data)
+	public void add(int position, T item)
 	{
-		if (mData != null)
+		if (position < 0)
 		{
-			mData.add(position, data);
-			notifyDataSetChanged();
+			position = 0;
 		}
-	}
-
-	/**
-	 * 替换数据
-	 *
-	 * @param index 替换位置
-	 * @param newData 替换数据
-	 */
-	@Override
-	public void modify(int index, T newData)
-	{
-		if (mData != null)
+		if (position > mData.size())
 		{
-			mData.set(index, newData);
-			notifyDataSetChanged();
+			position = mData.size();
 		}
-	}
-
-	/**
-	 * 替换数据
-	 *
-	 * @param oldData 被替换数据
-	 * @param newData 替换数据
-	 */
-	@Override
-	public void modify(T oldData, T newData)
-	{
-		if (mData != null)
-		{
-			modify(mData.indexOf(oldData), newData);
-		}
-	}
-
-	/**
-	 * 删除数据
-	 *
-	 * @param data 被删除数据
-	 * @return {@code true}:删除成功<br>{@code false}:删除失败
-	 */
-	@Override
-	public boolean remove(T data)
-	{
-		boolean result = mData != null && mData.remove(data);
+		mData.add(position, item);
 		notifyDataSetChanged();
-		return result;
+	}
+
+	/**
+	 * 替换数据
+	 *
+	 * @param position 替换位置
+	 * @param item 替换数据
+	 */
+	@Override
+	public void modify(int position, T item)
+	{
+		if (position < 0 || position > mData.size() - 1)
+		{
+			return;
+		}
+		mData.set(position, item);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 替换数据
+	 *
+	 * @param oldItem 被替换数据
+	 * @param newItem 替换数据
+	 */
+	@Override
+	public void modify(T oldItem, T newItem)
+	{
+		modify(mData.indexOf(oldItem), newItem);
 	}
 
 	/**
 	 * 删除数据
 	 *
-	 * @param index 删除位置
+	 * @param item 被删除数据
 	 */
 	@Override
-	public void remove(int index)
+	public void remove(T item)
 	{
-		if (mData != null)
+		remove(mData.indexOf(item));
+	}
+
+	/**
+	 * 删除数据
+	 *
+	 * @param position 删除位置
+	 */
+	@Override
+	public void remove(int position)
+	{
+		if (position < 0 || position > mData.size() - 1)
 		{
-			mData.remove(index);
-			notifyDataSetChanged();
+			return;
 		}
+		mData.remove(position);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 批量删除
+	 *
+	 * @param startPosition 起始位置
+	 * @param endPosition 结束位置
+	 */
+	@Override
+	public void remove(int startPosition, int endPosition)
+	{
+		if (startPosition < 0 || startPosition > mData.size() - 1)
+		{
+			return;
+		}
+		if (endPosition < 0 || endPosition > mData.size() - 1)
+		{
+			return;
+		}
+
+		int index = startPosition;
+		startPosition = Math.min(index, endPosition);
+		endPosition = Math.max(index, endPosition);
+		List<T> removeList = new ArrayList<>();
+		for (int i = startPosition; i <= endPosition; i++)
+		{
+			removeList.add(mData.get(i));
+		}
+		mData.removeAll(removeList);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 交换位置，fromPosition与toPosition交换
+	 * 1 2 3 4 -> 1 4 3 2
+	 *
+	 * @param fromPosition
+	 * @param toPosition
+	 */
+	@Override
+	public void swap(int fromPosition, int toPosition)
+	{
+		if (fromPosition < 0 || fromPosition > mData.size() - 1)
+		{
+			return;
+		}
+		if (toPosition < 0 || toPosition > mData.size() - 1)
+		{
+			return;
+		}
+		if (fromPosition == toPosition)
+		{
+			return;
+		}
+		Collections.swap(mData, fromPosition, toPosition);
+		notifyDataSetChanged();
+	}
+
+	/**
+	 * 移动位置，从fromPosition插入到toPosition
+	 * 1 2 3 4 -> 1 3 4 2
+	 *
+	 * @param fromPosition
+	 * @param toPosition
+	 */
+	@Override
+	public void move(int fromPosition, int toPosition)
+	{
+		if (fromPosition < 0 || fromPosition > mData.size() - 1)
+		{
+			return;
+		}
+		if (toPosition < 0 || toPosition > mData.size() - 1)
+		{
+			return;
+		}
+		if (fromPosition == toPosition)
+		{
+			return;
+		}
+		T item = mData.get(fromPosition);
+		mData.remove(fromPosition);
+		mData.add(toPosition, item);
+		notifyDataSetChanged();
 	}
 
 	/**
@@ -291,22 +402,19 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void clear()
 	{
-		if (mData != null)
-		{
-			mData.clear();
-			notifyDataSetChanged();
-		}
+		mData.clear();
+		notifyDataSetChanged();
 	}
 
 	/**
 	 * 判断数据集是否包含数据
 	 *
-	 * @param data 待检测数据
+	 * @param item 待检测数据
 	 * @return {@code true}:包含<br>{@code false}: 不包含
 	 */
 	@Override
-	public boolean contains(T data)
+	public boolean contains(T item)
 	{
-		return mData != null && mData.contains(data);
+		return mData != null && mData.contains(item);
 	}
 }

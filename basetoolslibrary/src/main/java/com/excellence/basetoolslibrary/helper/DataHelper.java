@@ -13,6 +13,19 @@ import java.util.List;
 
 public interface DataHelper<T>
 {
+	/**
+	 * 获取数据集
+	 *
+	 * @return
+	 */
+	List<T> getData();
+
+	/**
+	 * 获取单个数据
+	 *
+	 * @param position
+	 * @return
+	 */
 	T getItem(int position);
 
 	/**
@@ -25,66 +38,92 @@ public interface DataHelper<T>
 	/**
 	 * 新增数据集
 	 *
-	 * @param list 新数据集
+	 * @param data 新数据集
 	 * @return {@code true}:添加成功<br>{@code false}:添加失败
 	 */
-	boolean addAll(List<T> list);
+	void addAll(List<T> data);
 
 	/**
 	 * 插入新数据集
 	 *
 	 * @param position 插入位置
-	 * @param list 新数据集
+	 * @param data 新数据集
 	 * @return {@code true}:添加成功<br>{@code false}:添加失败
 	 */
-	boolean addAll(int position, List<T> list);
+	void addAll(int position, List<T> data);
 
 	/**
 	 * 新增数据
 	 *
-	 * @param data 数据
+	 * @param item 数据
 	 * @return {@code true}:添加成功<br>{@code false}:添加失败
 	 */
-	boolean add(T data);
+	void add(T item);
 
 	/**
 	 * 插入新数据
 	 *
 	 * @param position 插入位置
-	 * @param data 数据
+	 * @param item 数据
 	 */
-	void add(int position, T data);
+	void add(int position, T item);
 
 	/**
 	 * 替换数据
 	 *
-	 * @param index 替换位置
-	 * @param newData 替换数据
+	 * @param position 替换位置
+	 * @param item 替换数据
 	 */
-	void modify(int index, T newData);
+	void modify(int position, T item);
 
 	/**
 	 * 替换数据
 	 *
-	 * @param oldData 被替换数据
-	 * @param newData 替换数据
+	 * @param oldItem 被替换数据
+	 * @param newItem 替换数据
 	 */
-	void modify(T oldData, T newData);
+	void modify(T oldItem, T newItem);
 
 	/**
 	 * 删除数据
 	 *
-	 * @param data 被删除数据
+	 * @param item 被删除数据
 	 * @return {@code true}:删除成功<br>{@code false}:删除失败
 	 */
-	boolean remove(T data);
+	void remove(T item);
 
 	/**
 	 * 删除数据
 	 *
-	 * @param index 删除位置
+	 * @param position 删除位置
 	 */
-	void remove(int index);
+	void remove(int position);
+
+	/**
+	 * 批量删除
+	 *
+	 * @param startPosition 起始位置
+	 * @param endPosition 结束位置
+	 */
+	void remove(int startPosition, int endPosition);
+
+	/**
+	 * 交换位置，fromPosition与toPosition交换
+	 * 1 2 3 4 -> 1 4 3 2
+	 *
+	 * @param fromPosition
+	 * @param toPosition
+	 */
+	void swap(int fromPosition, int toPosition);
+
+	/**
+	 * 移动位置，从fromPosition插入到toPosition
+	 * 1 2 3 4 -> 1 3 4 2
+	 *
+	 * @param fromPosition
+	 * @param toPosition
+	 */
+	void move(int fromPosition, int toPosition);
 
 	/**
 	 * 清空数据集
@@ -94,8 +133,8 @@ public interface DataHelper<T>
 	/**
 	 * 判断数据集是否包含数据
 	 *
-	 * @param data 待检测数据
+	 * @param item 待检测数据
 	 * @return {@code true}:包含<br>{@code false}: 不包含
 	 */
-	boolean contains(T data);
+	boolean contains(T item);
 }
