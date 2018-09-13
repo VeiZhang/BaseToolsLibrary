@@ -267,9 +267,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	 * @see #notifyItemInserted(int) ：列表position位置添加一条数据，位置不会刷新，要执行{@link #notifyItemRangeChanged}
 	 * @see #notifyItemRemoved(int) ：列表position位置移除一条数据，位置会刷新，不用执行{@link #notifyItemRangeChanged}
 	 * @see #notifyItemRangeChanged(int, int) ：列表从positionStart位置到itemCount数量的列表项进行数据刷新
-	 * @see #notifyItemMoved(int, int) ：列表fromPosition位置的数据移到toPosition位置，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
+	 * @see #notifyItemMoved(int, int) ：列表fromPosition位置的数据移到toPosition位置，位置会刷新，不用执行{@link #notifyItemRangeChanged(int, int)}
 	 * @see #notifyItemRangeInserted(int, int) ：列表从positionStart位置到itemCount数量的列表项批量添加数据，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
-	 * @see #notifyItemRangeRemoved(int, int) ：列表从positionStart位置到itemCount数量的列表项批量删除数据，位置不会刷新，要执行{@link #notifyItemRangeChanged(int, int)}
+	 * @see #notifyItemRangeRemoved(int, int) ：列表从positionStart位置到itemCount数量的列表项批量删除数据，位置会刷新，不用执行{@link #notifyItemRangeChanged(int, int)}
 	 *
 	 * @param data 新数据集
 	 */
@@ -492,6 +492,9 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 		T item = mData.get(fromPosition);
 		mData.remove(fromPosition);
 		mData.add(toPosition, item);
+		int index = fromPosition;
+		fromPosition = Math.min(index, toPosition);
+		toPosition = Math.max(index, toPosition);
 		notifyItemRangeChanged(fromPosition, Math.abs(toPosition - fromPosition) + 1);
 	}
 
