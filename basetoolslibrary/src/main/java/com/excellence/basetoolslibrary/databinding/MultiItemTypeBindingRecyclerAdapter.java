@@ -38,6 +38,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	private OnItemLongClickListener mOnItemLongClickListener = null;
 	private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
 	private OnItemKeyListener mOnItemKeyListener = null;
+	private int mSelectedItemPosition = -1;
 
 	public MultiItemTypeBindingRecyclerAdapter(T[] data)
 	{
@@ -172,6 +173,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 			@Override
 			public void onFocusChange(View v, boolean hasFocus)
 			{
+				mSelectedItemPosition = hasFocus ? position : -1;
 				if (mOnItemFocusChangeListener != null)
 				{
 					mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
@@ -227,6 +229,16 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
 	public void setOnItemKeyListener(OnItemKeyListener onItemKeyListener)
 	{
 		mOnItemKeyListener = onItemKeyListener;
+	}
+
+	/**
+	 * 获取当前焦点位置
+	 *
+	 * @return -1表示没有焦点
+	 */
+	public int getSelectedItemPosition()
+	{
+		return mSelectedItemPosition;
 	}
 
 	/**** 以下为辅助方法 ****/
