@@ -54,7 +54,9 @@ public class ItemViewDelegateManager<T>
 	public ItemViewDelegateManager<T> addDelegate(int viewType, ItemViewDelegate<T> delegate)
 	{
 		if (mDelegates.get(viewType) != null)
+		{
 			throw new IllegalArgumentException("An ItemViewDelegate is already registered for the viewType = " + viewType + ". Already registered ItemViewDelegate is " + mDelegates.get(viewType));
+		}
 		mDelegates.put(viewType, delegate);
 		return this;
 	}
@@ -85,7 +87,9 @@ public class ItemViewDelegateManager<T>
 	{
 		int indexToRemove = mDelegates.indexOfKey(viewType);
 		if (indexToRemove >= 0)
+		{
 			mDelegates.removeAt(indexToRemove);
+		}
 		return this;
 	}
 
@@ -102,7 +106,9 @@ public class ItemViewDelegateManager<T>
 		{
 			ItemViewDelegate<T> delegate = mDelegates.valueAt(i);
 			if (delegate.isForViewType(item, position))
+			{
 				return mDelegates.keyAt(i);
+			}
 		}
 		throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + position + " in data source");
 	}
@@ -154,7 +160,9 @@ public class ItemViewDelegateManager<T>
 		{
 			ItemViewDelegate<T> delegate = mDelegates.valueAt(i);
 			if (delegate.isForViewType(item, position))
+			{
 				return delegate;
+			}
 		}
 		throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + position + " in data source");
 	}
