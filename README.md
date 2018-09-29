@@ -1,5 +1,7 @@
 # Android通用适配器和常用的工具类
-Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种ItemType布局
+
+* Android通用的Adapter for ListView,GridView,RecyclerView等，支持多种ItemType布局
+* Android常用的工具类集合
 
 <br>
 
