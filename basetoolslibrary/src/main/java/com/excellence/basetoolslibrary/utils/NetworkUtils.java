@@ -85,7 +85,19 @@ public class NetworkUtils
 	 */
 	public static boolean isAvailableByPing()
 	{
-		ShellUtils.CommandResult result = ShellUtils.execRuntimeCommand("ping -c 1 -w 1 223.5.5.5");
+		return isAvailableByPing("223.5.5.5");
+	}
+
+	/**
+	 * 使用ping命令，判断网络是否可用
+	 *
+	 * @param address
+	 * @return
+	 */
+	public static boolean isAvailableByPing(String address)
+	{
+		String cmd = String.format("ping -c 1 -w 1 %s", address);
+		ShellUtils.CommandResult result = ShellUtils.execRuntimeCommand(cmd);
 		return result.resultCode == 0;
 	}
 
@@ -258,9 +270,9 @@ public class NetworkUtils
 		return manager == null ? null : manager.getNetworkOperatorName();
 	}
 
-    private static final int NETWORK_TYPE_GSM = 16;
-    private static final int NETWORK_TYPE_TD_SCDMA = 17;
-    private static final int NETWORK_TYPE_IWLAN = 18;
+	private static final int NETWORK_TYPE_GSM = 16;
+	private static final int NETWORK_TYPE_TD_SCDMA = 17;
+	private static final int NETWORK_TYPE_IWLAN = 18;
 
 	/**
 	 * 获取当前网络类型
@@ -268,7 +280,7 @@ public class NetworkUtils
 	 * @param context 上下文
 	 * @return NetworkType网络类型
 	 *         <ul>
-     *           <li>{@link NetworkType#NETWORK_ETH    }</li>
+	 *           <li>{@link NetworkType#NETWORK_ETH    } </li>
 	 *           <li>{@link NetworkType#NETWORK_WIFI   } </li>
 	 *           <li>{@link NetworkType#NETWORK_4G     } </li>
 	 *           <li>{@link NetworkType#NETWORK_3G     } </li>
@@ -422,6 +434,24 @@ public class NetworkUtils
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	/**
+	 * 读取Mac地址
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static String readMac(Context context)
+	{
+		if (isEthConnected(context))
+		{
+			return getWiredMac(context);
+		}
+		else
+		{
+			return getWirelessMac(context);
+		}
 	}
 
 	/**
