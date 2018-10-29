@@ -38,7 +38,10 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 
 	public MultiItemTypeBindingAdapter(List<T> data)
 	{
-		mData.addAll(data);
+		if (data != null)
+		{
+			mData.addAll(data);
+		}
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -183,12 +186,11 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void notifyNewData(List<T> data)
 	{
-		if (EmptyUtils.isEmpty(data))
-		{
-			return;
-		}
 		mData.clear();
-		mData.addAll(data);
+		if (data != null)
+		{
+			mData.addAll(data);
+		}
 		notifyDataSetChanged();
 	}
 
@@ -212,10 +214,6 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 	@Override
 	public void addAll(int position, List<T> data)
 	{
-		if (EmptyUtils.isEmpty(data))
-		{
-			return;
-		}
 		if (position < 0)
 		{
 			position = 0;
@@ -224,7 +222,10 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
 		{
 			position = mData.size();
 		}
-		mData.addAll(position, data);
+		if (data != null)
+		{
+			mData.addAll(position, data);
+		}
 		notifyDataSetChanged();
 	}
 

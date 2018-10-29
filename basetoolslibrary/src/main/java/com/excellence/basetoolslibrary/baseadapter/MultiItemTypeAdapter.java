@@ -35,7 +35,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 
 	public MultiItemTypeAdapter(List<T> data)
 	{
-		mData.addAll(data);
+		if (data != null)
+		{
+			mData.addAll(data);
+		}
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -173,12 +176,11 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void notifyNewData(List<T> data)
 	{
-		if (EmptyUtils.isEmpty(data))
-		{
-			return;
-		}
 		mData.clear();
-		mData.addAll(data);
+		if (data != null)
+		{
+			mData.addAll(data);
+		}
 		notifyDataSetChanged();
 	}
 
@@ -202,10 +204,6 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 	@Override
 	public void addAll(int position, List<T> data)
 	{
-		if (EmptyUtils.isEmpty(data))
-		{
-			return;
-		}
 		if (position < 0)
 		{
 			position = 0;
@@ -214,7 +212,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 		{
 			position = mData.size();
 		}
-		mData.addAll(position, data);
+		if (data != null)
+		{
+			mData.addAll(position, data);
+		}
 		notifyDataSetChanged();
 	}
 

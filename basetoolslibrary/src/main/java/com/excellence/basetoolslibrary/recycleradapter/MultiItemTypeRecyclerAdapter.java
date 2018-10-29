@@ -14,8 +14,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
-
 /**
  * <pre>
  *     author : VeiZhang
@@ -42,7 +40,10 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
 	public MultiItemTypeRecyclerAdapter(List<T> data)
 	{
-		mData.addAll(data);
+		if (data != null)
+		{
+			mData.addAll(data);
+		}
 		mItemViewDelegateManager = new ItemViewDelegateManager<>();
 	}
 
@@ -276,13 +277,12 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void notifyNewData(List<T> data)
 	{
-		if (isEmpty(data))
-		{
-			return;
-		}
 		notifyItemRangeRemoved(0, mData.size());
 		mData.clear();
-		mData.addAll(data);
+		if (data != null)
+		{
+			mData.addAll(data);
+		}
 		notifyItemRangeChanged(0, mData.size());
 	}
 
@@ -306,10 +306,6 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 	@Override
 	public void addAll(int position, List<T> data)
 	{
-		if (isEmpty(data))
-		{
-			return;
-		}
 		if (position < 0)
 		{
 			position = 0;
@@ -318,7 +314,10 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 		{
 			position = mData.size();
 		}
-		mData.addAll(position, data);
+		if (data != null)
+		{
+			mData.addAll(position, data);
+		}
 		notifyItemRangeChanged(position, mData.size() - position);
 	}
 
