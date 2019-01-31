@@ -18,36 +18,32 @@ import java.util.List;
  * </pre>
  */
 
-public class BaseRecyclerBindingAdapter<T> extends MultiItemTypeBindingRecyclerAdapter<T>
-{
-	private int mLayoutId;
-	private int mVariableId;
+public class BaseRecyclerBindingAdapter<T> extends MultiItemTypeBindingRecyclerAdapter<T> {
 
-	public BaseRecyclerBindingAdapter(T[] data, @LayoutRes int layoutId, int variableId)
-	{
-		this(Arrays.asList(data), layoutId, variableId);
-	}
+    private int mLayoutId;
+    private int mVariableId;
 
-	public BaseRecyclerBindingAdapter(List<T> data, @LayoutRes int layoutId, int variableId)
-	{
-		super(data);
-		mLayoutId = layoutId;
-		mVariableId = variableId;
-	}
+    public BaseRecyclerBindingAdapter(T[] data, @LayoutRes int layoutId, int variableId) {
+        this(Arrays.asList(data), layoutId, variableId);
+    }
 
-	@Override
-	public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-	{
-		ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mLayoutId, parent, false);
-		return new RecyclerViewHolder(binding);
-	}
+    public BaseRecyclerBindingAdapter(List<T> data, @LayoutRes int layoutId, int variableId) {
+        super(data);
+        mLayoutId = layoutId;
+        mVariableId = variableId;
+    }
 
-	@Override
-	public void onBindViewHolder(RecyclerViewHolder holder, int position)
-	{
-		ViewDataBinding binding = holder.getBinding();
-		binding.setVariable(mVariableId, mData.get(position));
-		binding.executePendingBindings();
-		setViewListener(binding, position);
-	}
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mLayoutId, parent, false);
+        return new RecyclerViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        ViewDataBinding binding = holder.getBinding();
+        binding.setVariable(mVariableId, mData.get(position));
+        binding.executePendingBindings();
+        setViewListener(binding, position);
+    }
 }

@@ -15,84 +15,74 @@ import android.view.ViewGroup;
  * </pre>
  */
 
-public abstract class BasePagerAdapter extends PagerAdapter
-{
-	private SparseArray<View> mViews = null;
-	private int mPageCount = 0;
+public abstract class BasePagerAdapter extends PagerAdapter {
 
-	/**
-	 * paging load
-	 */
-	public BasePagerAdapter()
-	{
-		this(0);
-	}
+    private SparseArray<View> mViews = null;
+    private int mPageCount = 0;
 
-	/**
-	 * paging load
-	 *
-	 * @param pageCount total page count
-	 */
-	public BasePagerAdapter(int pageCount)
-	{
-		mViews = new SparseArray<>();
-		setData(pageCount);
-	}
+    /**
+     * paging load
+     */
+    public BasePagerAdapter() {
+        this(0);
+    }
 
-	public void setData(int pageCount)
-	{
-		mViews.clear();
-		mPageCount = pageCount;
-	}
+    /**
+     * paging load
+     *
+     * @param pageCount total page count
+     */
+    public BasePagerAdapter(int pageCount) {
+        mViews = new SparseArray<>();
+        setData(pageCount);
+    }
 
-	@Override
-	public int getCount()
-	{
-		return mPageCount > 0 ? mPageCount : 0;
-	}
+    public void setData(int pageCount) {
+        mViews.clear();
+        mPageCount = pageCount;
+    }
 
-	/**
-	 * 一定要重写，否则刷新不成功
-	 *
-	 * @param object
-	 * @return
-	 */
-	@Override
-	public int getItemPosition(Object object)
-	{
-		return POSITION_NONE;
-	}
+    @Override
+    public int getCount() {
+        return mPageCount > 0 ? mPageCount : 0;
+    }
 
-	@Override
-	public boolean isViewFromObject(View view, Object object)
-	{
-		return view == object;
-	}
+    /**
+     * 一定要重写，否则刷新不成功
+     *
+     * @param object
+     * @return
+     */
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
 
-	@Override
-	public Object instantiateItem(ViewGroup container, int position)
-	{
-		View view = mViews.get(position);
-		if (view == null)
-		{
-			view = loadView(container.getContext(), position);
-			mViews.put(position, view);
-		}
-		container.addView(view);
-		return view;
-	}
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
 
-	@Override
-	public void destroyItem(ViewGroup container, int position, Object object)
-	{
-		container.removeView((View) object);
-	}
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        View view = mViews.get(position);
+        if (view == null) {
+            view = loadView(container.getContext(), position);
+            mViews.put(position, view);
+        }
+        container.addView(view);
+        return view;
+    }
 
-	protected abstract View loadView(Context context, int pageIndex);
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((View) object);
+    }
 
-	public void notifyNewData(int pageCount)
-	{
-		setData(pageCount);
-		notifyDataSetChanged();
-	}
+    protected abstract View loadView(Context context, int pageIndex);
+
+    public void notifyNewData(int pageCount) {
+        setData(pageCount);
+        notifyDataSetChanged();
+    }
 }

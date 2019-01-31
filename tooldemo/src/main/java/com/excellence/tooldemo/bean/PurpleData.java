@@ -9,11 +9,9 @@ package com.excellence.tooldemo.bean;
  * </pre>
  */
 
-public class PurpleData extends People
-{
+public class PurpleData extends People {
 
-	public PurpleData(String msg)
-	{
-		super(msg);
-	}
+    public PurpleData(String msg) {
+        super(msg);
+    }
 }

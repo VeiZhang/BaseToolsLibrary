@@ -9,22 +9,19 @@ package com.excellence.tooldemo.bean;
  * </pre>
  */
 
-public class People
-{
-	private String mMsg = null;
+public class People {
 
-	public People(String msg)
-	{
-		setMsg(msg);
-	}
+    private String mMsg = null;
 
-	public String getMsg()
-	{
-		return mMsg;
-	}
+    public People(String msg) {
+        setMsg(msg);
+    }
 
-	public void setMsg(String msg)
-	{
-		mMsg = msg;
-	}
+    public String getMsg() {
+        return mMsg;
+    }
+
+    public void setMsg(String msg) {
+        mMsg = msg;
+    }
 }

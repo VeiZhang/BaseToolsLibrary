@@ -1,10 +1,10 @@
 package com.excellence.basetoolslibrary.recycleradapter;
 
-import java.util.Arrays;
-import java.util.List;
-
 import android.support.annotation.LayoutRes;
 import android.view.ViewGroup;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * <pre>
@@ -15,44 +15,40 @@ import android.view.ViewGroup;
  * </pre>
  */
 
-public abstract class BaseRecyclerAdapter<T> extends MultiItemTypeRecyclerAdapter<T>
-{
-	private int mLayoutId;
+public abstract class BaseRecyclerAdapter<T> extends MultiItemTypeRecyclerAdapter<T> {
 
-	/**
-	 *
-	 * @param data 数组数据源
-	 * @param layoutId 布局资源Id
-	 */
-	public BaseRecyclerAdapter(T[] data, @LayoutRes int layoutId)
-	{
-		this(data == null ? null : Arrays.asList(data), layoutId);
-	}
+    private int mLayoutId;
 
-	/**
-	 *
-	 * @param data 列表数据源
-	 * @param layoutId 布局资源Id
-	 */
-	public BaseRecyclerAdapter(List<T> data, @LayoutRes int layoutId)
-	{
-		super(data);
-		mLayoutId = layoutId;
-	}
+    /**
+     *
+     * @param data 数组数据源
+     * @param layoutId 布局资源Id
+     */
+    public BaseRecyclerAdapter(T[] data, @LayoutRes int layoutId) {
+        this(data == null ? null : Arrays.asList(data), layoutId);
+    }
 
-	@Override
-	public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-	{
-		return RecyclerViewHolder.getViewHolder(parent.getContext(), parent, mLayoutId);
-	}
+    /**
+     *
+     * @param data 列表数据源
+     * @param layoutId 布局资源Id
+     */
+    public BaseRecyclerAdapter(List<T> data, @LayoutRes int layoutId) {
+        super(data);
+        mLayoutId = layoutId;
+    }
 
-	@Override
-	public void onBindViewHolder(RecyclerViewHolder holder, int position)
-	{
-		convert(holder, mData.get(position), position);
-		setViewListener(holder, position);
-	}
+    @Override
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return RecyclerViewHolder.getViewHolder(parent.getContext(), parent, mLayoutId);
+    }
 
-	public abstract void convert(RecyclerViewHolder viewHolder, T item, int position);
+    @Override
+    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        convert(holder, mData.get(position), position);
+        setViewListener(holder, position);
+    }
+
+    public abstract void convert(RecyclerViewHolder viewHolder, T item, int position);
 
 }

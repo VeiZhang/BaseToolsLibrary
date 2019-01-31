@@ -16,39 +16,36 @@ import java.util.List;
  * </pre>
  */
 
-public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T>
-{
-	private int mLayoutId;
+public abstract class CommonAdapter<T> extends MultiItemTypeAdapter<T> {
 
-	/**
-	 *
-	 * @param data 数组数据源
-	 * @param layoutId 布局资源Id
-	 */
-	public CommonAdapter(T[] data, @LayoutRes int layoutId)
-	{
-		this(data == null ? null : Arrays.asList(data), layoutId);
-	}
+    private int mLayoutId;
 
-	/**
-	 *
-	 * @param data 列表数据源
-	 * @param layoutId 布局资源Id
-	 */
-	public CommonAdapter(List<T> data, @LayoutRes int layoutId)
-	{
-		super(data);
-		mLayoutId = layoutId;
-	}
+    /**
+     *
+     * @param data 数组数据源
+     * @param layoutId 布局资源Id
+     */
+    public CommonAdapter(T[] data, @LayoutRes int layoutId) {
+        this(data == null ? null : Arrays.asList(data), layoutId);
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
-		ViewHolder viewHolder = ViewHolder.getViewHolder(parent.getContext(), convertView, parent, mLayoutId);
-		convert(viewHolder, getItem(position), position);
-		return viewHolder.getConvertView();
-	}
+    /**
+     *
+     * @param data 列表数据源
+     * @param layoutId 布局资源Id
+     */
+    public CommonAdapter(List<T> data, @LayoutRes int layoutId) {
+        super(data);
+        mLayoutId = layoutId;
+    }
 
-	public abstract void convert(ViewHolder viewHolder, T item, int position);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = ViewHolder.getViewHolder(parent.getContext(), convertView, parent, mLayoutId);
+        convert(viewHolder, getItem(position), position);
+        return viewHolder.getConvertView();
+    }
+
+    public abstract void convert(ViewHolder viewHolder, T item, int position);
 
 }

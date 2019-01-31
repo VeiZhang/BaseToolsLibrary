@@ -1,7 +1,7 @@
 package com.excellence.tooldemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,118 +17,101 @@ import com.excellence.tooldemo.bean.PurpleData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implements MultiItemTypeRecyclerAdapter.OnItemClickListener
-{
-	private RecyclerView mRecyclerView = null;
-	private WarAdapter mWarAdapter = null;
-	private List<People> mMessages = null;
+public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implements MultiItemTypeRecyclerAdapter.OnItemClickListener {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_multi_item_recycler_adapter);
+    private RecyclerView mRecyclerView = null;
+    private WarAdapter mWarAdapter = null;
+    private List<People> mMessages = null;
 
-		initMsg();
-		mRecyclerView = (RecyclerView) findViewById(R.id.multi_item_recyclerview);
-		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-		mWarAdapter = new WarAdapter(mMessages);
-		mWarAdapter.setOnItemClickListener(this);
-		mRecyclerView.setAdapter(mWarAdapter);
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_multi_item_recycler_adapter);
 
-	private void initMsg()
-	{
-		mMessages = new ArrayList<>();
-		mMessages.add(new ComputerData("欢迎来到召唤师峡谷！"));
-		mMessages.add(new BlueData("1 2 3 4，提莫队长正在待命"));
-		mMessages.add(new PurpleData("你就是个loser"));
-		mMessages.add(new BlueData("那个，你有看到我的小熊吗！"));
-		mMessages.add(new ComputerData("全军出击"));
-		mMessages.add(new PurpleData("Miss，怎么可能"));
-		mMessages.add(new BlueData("阿木木"));
-		mMessages.add(new ComputerData("Victory!"));
-	}
+        initMsg();
+        mRecyclerView = (RecyclerView) findViewById(R.id.multi_item_recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mWarAdapter = new WarAdapter(mMessages);
+        mWarAdapter.setOnItemClickListener(this);
+        mRecyclerView.setAdapter(mWarAdapter);
+    }
 
-	@Override
-	public void onItemClick(RecyclerViewHolder viewHolder, View v, int position)
-	{
-		People people = mMessages.get(position);
-		people.setMsg("defeat");
-		mWarAdapter.modify(people);
-	}
+    private void initMsg() {
+        mMessages = new ArrayList<>();
+        mMessages.add(new ComputerData("欢迎来到召唤师峡谷！"));
+        mMessages.add(new BlueData("1 2 3 4，提莫队长正在待命"));
+        mMessages.add(new PurpleData("你就是个loser"));
+        mMessages.add(new BlueData("那个，你有看到我的小熊吗！"));
+        mMessages.add(new ComputerData("全军出击"));
+        mMessages.add(new PurpleData("Miss，怎么可能"));
+        mMessages.add(new BlueData("阿木木"));
+        mMessages.add(new ComputerData("Victory!"));
+    }
 
-	private class WarAdapter extends MultiItemTypeRecyclerAdapter<People>
-	{
-		public WarAdapter(List<People> data)
-		{
-			super(data);
-			addItemViewDelegate(new ComputerRecyclerDelegate());
-			addItemViewDelegate(new BlueRecyclerDelegate());
-			addItemViewDelegate(new PurpleRecyclerDelegate());
-		}
-	}
+    @Override
+    public void onItemClick(RecyclerViewHolder viewHolder, View v, int position) {
+        People people = mMessages.get(position);
+        people.setMsg("defeat");
+        mWarAdapter.modify(people);
+    }
 
-	private class ComputerRecyclerDelegate implements ItemViewDelegate<People>
-	{
-		@Override
-		public int getItemViewLayoutId()
-		{
-			return R.layout.item_computer;
-		}
+    private class WarAdapter extends MultiItemTypeRecyclerAdapter<People> {
+        public WarAdapter(List<People> data) {
+            super(data);
+            addItemViewDelegate(new ComputerRecyclerDelegate());
+            addItemViewDelegate(new BlueRecyclerDelegate());
+            addItemViewDelegate(new PurpleRecyclerDelegate());
+        }
+    }
 
-		@Override
-		public boolean isForViewType(People item, int position)
-		{
-			return item instanceof ComputerData;
-		}
+    private class ComputerRecyclerDelegate implements ItemViewDelegate<People> {
+        @Override
+        public int getItemViewLayoutId() {
+            return R.layout.item_computer;
+        }
 
-		@Override
-		public void convert(RecyclerViewHolder viewHolder, People item, int position)
-		{
-			viewHolder.setText(R.id.computer_text, item.getMsg());
-		}
-	}
+        @Override
+        public boolean isForViewType(People item, int position) {
+            return item instanceof ComputerData;
+        }
 
-	private class BlueRecyclerDelegate implements ItemViewDelegate<People>
-	{
-		@Override
-		public int getItemViewLayoutId()
-		{
-			return R.layout.item_blue;
-		}
+        @Override
+        public void convert(RecyclerViewHolder viewHolder, People item, int position) {
+            viewHolder.setText(R.id.computer_text, item.getMsg());
+        }
+    }
 
-		@Override
-		public boolean isForViewType(People item, int position)
-		{
-			return item instanceof BlueData;
-		}
+    private class BlueRecyclerDelegate implements ItemViewDelegate<People> {
+        @Override
+        public int getItemViewLayoutId() {
+            return R.layout.item_blue;
+        }
 
-		@Override
-		public void convert(RecyclerViewHolder viewHolder, People item, int position)
-		{
-			viewHolder.setText(R.id.blue_text, item.getMsg());
-		}
-	}
+        @Override
+        public boolean isForViewType(People item, int position) {
+            return item instanceof BlueData;
+        }
 
-	private class PurpleRecyclerDelegate implements ItemViewDelegate<People>
-	{
-		@Override
-		public int getItemViewLayoutId()
-		{
-			return R.layout.item_purple;
-		}
+        @Override
+        public void convert(RecyclerViewHolder viewHolder, People item, int position) {
+            viewHolder.setText(R.id.blue_text, item.getMsg());
+        }
+    }
 
-		@Override
-		public boolean isForViewType(People item, int position)
-		{
-			return item instanceof PurpleData;
-		}
+    private class PurpleRecyclerDelegate implements ItemViewDelegate<People> {
+        @Override
+        public int getItemViewLayoutId() {
+            return R.layout.item_purple;
+        }
 
-		@Override
-		public void convert(RecyclerViewHolder viewHolder, People item, int position)
-		{
-			viewHolder.setText(R.id.purple_text, item.getMsg());
-		}
-	}
+        @Override
+        public boolean isForViewType(People item, int position) {
+            return item instanceof PurpleData;
+        }
+
+        @Override
+        public void convert(RecyclerViewHolder viewHolder, People item, int position) {
+            viewHolder.setText(R.id.purple_text, item.getMsg());
+        }
+    }
 }

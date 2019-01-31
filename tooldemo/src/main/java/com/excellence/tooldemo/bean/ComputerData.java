@@ -9,10 +9,9 @@ package com.excellence.tooldemo.bean;
  * </pre>
  */
 
-public class ComputerData extends People
-{
-	public ComputerData(String msg)
-	{
-		super(msg);
-	}
+public class ComputerData extends People {
+
+    public ComputerData(String msg) {
+        super(msg);
+    }
 }

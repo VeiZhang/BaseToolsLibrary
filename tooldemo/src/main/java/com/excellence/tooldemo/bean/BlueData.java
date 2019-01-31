@@ -9,10 +9,9 @@ package com.excellence.tooldemo.bean;
  * </pre>
  */
 
-public class BlueData extends People
-{
-	public BlueData(String msg)
-	{
-		super(msg);
-	}
+public class BlueData extends People {
+
+    public BlueData(String msg) {
+        super(msg);
+    }
 }

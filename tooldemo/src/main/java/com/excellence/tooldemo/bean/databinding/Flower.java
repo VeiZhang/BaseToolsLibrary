@@ -18,51 +18,44 @@ import com.excellence.tooldemo.BR;
  * </pre>
  */
 
-public class Flower extends BaseObservable
-{
-	protected String mName = null;
-	protected int mIconRes;
+public class Flower extends BaseObservable {
 
-	public Flower(String name, @DrawableRes int iconRes)
-	{
-		mName = name;
-		mIconRes = iconRes;
-	}
+    protected String mName = null;
+    protected int mIconRes;
 
-	@Bindable
-	public String getName()
-	{
-		return mName;
-	}
+    public Flower(String name, @DrawableRes int iconRes) {
+        mName = name;
+        mIconRes = iconRes;
+    }
 
-	public void setName(String name)
-	{
-		mName = name;
-	}
+    @Bindable
+    public String getName() {
+        return mName;
+    }
 
-	public int getIconRes()
-	{
-		return mIconRes;
-	}
+    public void setName(String name) {
+        mName = name;
+    }
 
-	public void setIconRes(@DrawableRes int iconRes)
-	{
-		mIconRes = iconRes;
-	}
+    public int getIconRes() {
+        return mIconRes;
+    }
 
-	@BindingAdapter("img")
-	public static void loadImg(ImageView imageView, @DrawableRes int resId)
-	{
-		imageView.setImageResource(resId);
-	}
+    public void setIconRes(@DrawableRes int iconRes) {
+        mIconRes = iconRes;
+    }
 
-	public void onImageClick(View view)
-	{
-		String flag = "[点击]";
-		if (mName.contains(flag))
-			setName(mName.replace(flag, ""));
-		else
-			setName(mName + flag);
-		notifyPropertyChanged(BR.name);
-	}
+    @BindingAdapter("img")
+    public static void loadImg(ImageView imageView, @DrawableRes int resId) {
+        imageView.setImageResource(resId);
+    }
+
+    public void onImageClick(View view) {
+        String flag = "[点击]";
+        if (mName.contains(flag))
+            setName(mName.replace(flag, ""));
+        else
+            setName(mName + flag);
+        notifyPropertyChanged(BR.name);
+    }
 }

@@ -14,51 +14,39 @@ import java.io.IOException;
  * </pre>
  */
 
-public class CloseUtils
-{
-	/**
-	 * 关闭IO
-	 *
-	 * @param closeables closeable
-	 */
-	public static void closeIO(@NonNull Closeable... closeables)
-	{
-		for (Closeable closeable : closeables)
-		{
-			if (closeable != null)
-			{
-				try
-				{
-					closeable.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
-	}
+public class CloseUtils {
 
-	/**
-	 * 安静关闭IO
-	 *
-	 * @param closeables closeable
-	 */
-	public static void closeIOQuietly(@NonNull Closeable... closeables)
-	{
-		for (Closeable closeable : closeables)
-		{
-			if (closeable != null)
-			{
-				try
-				{
-					closeable.close();
-				}
-				catch (IOException ignored)
-				{
+    /**
+     * 关闭IO
+     *
+     * @param closeables closeable
+     */
+    public static void closeIO(@NonNull Closeable... closeables) {
+        for (Closeable closeable : closeables) {
+            if (closeable != null) {
+                try {
+                    closeable.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
-				}
-			}
-		}
-	}
+    /**
+     * 安静关闭IO
+     *
+     * @param closeables closeable
+     */
+    public static void closeIOQuietly(@NonNull Closeable... closeables) {
+        for (Closeable closeable : closeables) {
+            if (closeable != null) {
+                try {
+                    closeable.close();
+                } catch (IOException ignored) {
+
+                }
+            }
+        }
+    }
 }

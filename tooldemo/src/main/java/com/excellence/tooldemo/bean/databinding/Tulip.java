@@ -11,10 +11,9 @@ import android.support.annotation.DrawableRes;
  * </pre>
  */
 
-public class Tulip extends Flower
-{
-	public Tulip(String name, @DrawableRes int iconRes)
-	{
-		super(name, iconRes);
-	}
+public class Tulip extends Flower {
+
+    public Tulip(String name, @DrawableRes int iconRes) {
+        super(name, iconRes);
+    }
 }

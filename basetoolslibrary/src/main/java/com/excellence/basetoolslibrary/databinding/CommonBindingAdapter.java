@@ -19,36 +19,30 @@ import java.util.List;
  * </pre>
  */
 
-public class CommonBindingAdapter<T> extends MultiItemTypeBindingAdapter<T>
-{
-	private int mLayoutId;
-	private int mVariableId;
+public class CommonBindingAdapter<T> extends MultiItemTypeBindingAdapter<T> {
 
-	public CommonBindingAdapter(T[] data, @LayoutRes int layoutId, int variableId)
-	{
-		this(Arrays.asList(data), layoutId, variableId);
-	}
+    private int mLayoutId;
+    private int mVariableId;
 
-	public CommonBindingAdapter(List<T> data, @LayoutRes int layoutId, int variableId)
-	{
-		super(data);
-		mLayoutId = layoutId;
-		mVariableId = variableId;
-	}
+    public CommonBindingAdapter(T[] data, @LayoutRes int layoutId, int variableId) {
+        this(Arrays.asList(data), layoutId, variableId);
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
-		ViewDataBinding binding;
-		if (convertView == null)
-		{
-			binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mLayoutId, parent, false);
-		}
-		else
-		{
-			binding = DataBindingUtil.getBinding(convertView);
-		}
-		binding.setVariable(mVariableId, getItem(position));
-		return binding.getRoot();
-	}
+    public CommonBindingAdapter(List<T> data, @LayoutRes int layoutId, int variableId) {
+        super(data);
+        mLayoutId = layoutId;
+        mVariableId = variableId;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewDataBinding binding;
+        if (convertView == null) {
+            binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mLayoutId, parent, false);
+        } else {
+            binding = DataBindingUtil.getBinding(convertView);
+        }
+        binding.setVariable(mVariableId, getItem(position));
+        return binding.getRoot();
+    }
 }

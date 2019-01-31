@@ -18,107 +18,93 @@ import com.excellence.basetoolslibrary.utils.AppUtils;
 
 import java.util.List;
 
-public class CommonAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener
-{
-	private static final String TAG = CommonAdapterActivity.class.getSimpleName();
+public class CommonAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-	private static final int APP_TYPE_ALL = 0;
-	private static final int APP_TYPE_SYSTEM = 1;
-	private static final int APP_TYPE_USER = 2;
+    private static final String TAG = CommonAdapterActivity.class.getSimpleName();
 
-	private Button mRefreshBtn = null;
-	private GridView mGridView = null;
-	private AppGridAdapter mAppGridAdapter = null;
-	private List<ResolveInfo> mAppList = null;
-	private PackageManager mPackageManager = null;
-	private int mAppType = APP_TYPE_ALL;
+    private static final int APP_TYPE_ALL = 0;
+    private static final int APP_TYPE_SYSTEM = 1;
+    private static final int APP_TYPE_USER = 2;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_grid_adapter);
+    private Button mRefreshBtn = null;
+    private GridView mGridView = null;
+    private AppGridAdapter mAppGridAdapter = null;
+    private List<ResolveInfo> mAppList = null;
+    private PackageManager mPackageManager = null;
+    private int mAppType = APP_TYPE_ALL;
 
-		init();
-		setAdapter();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_grid_adapter);
 
-	private void init()
-	{
-		mPackageManager = getPackageManager();
-		mRefreshBtn = (Button) findViewById(R.id.refresh_btn);
-		mGridView = (GridView) findViewById(R.id.adapter_gridview);
-		mRefreshBtn.setOnClickListener(this);
-		mGridView.setOnItemClickListener(this);
-	}
+        init();
+        setAdapter();
+    }
 
-	private void setAdapter()
-	{
-		// 模拟刷新
-		if (mAppList != null)
-		{
-			mAppList.clear();
-		}
+    private void init() {
+        mPackageManager = getPackageManager();
+        mRefreshBtn = (Button) findViewById(R.id.refresh_btn);
+        mGridView = (GridView) findViewById(R.id.adapter_gridview);
+        mRefreshBtn.setOnClickListener(this);
+        mGridView.setOnItemClickListener(this);
+    }
 
-		switch (mAppType % 3)
-		{
-		case APP_TYPE_ALL:
-			mAppList = AppUtils.getAllInstalledApps(this);
-			mRefreshBtn.setText(R.string.all_apps);
-			break;
+    private void setAdapter() {
+        // 模拟刷新
+        if (mAppList != null) {
+            mAppList.clear();
+        }
 
-		case APP_TYPE_SYSTEM:
-			mAppList = AppUtils.getSystemInstalledApps(this);
-			mRefreshBtn.setText(R.string.system_apps);
-			break;
+        switch (mAppType % 3) {
+            case APP_TYPE_ALL:
+                mAppList = AppUtils.getAllInstalledApps(this);
+                mRefreshBtn.setText(R.string.all_apps);
+                break;
 
-		case APP_TYPE_USER:
-			mAppList = AppUtils.getUserInstalledApps(this);
-			mRefreshBtn.setText(R.string.user_apps);
-			break;
-		}
-		mAppType++;
+            case APP_TYPE_SYSTEM:
+                mAppList = AppUtils.getSystemInstalledApps(this);
+                mRefreshBtn.setText(R.string.system_apps);
+                break;
 
-		if (mAppGridAdapter == null)
-		{
-			mAppGridAdapter = new AppGridAdapter(mAppList, android.R.layout.activity_list_item);
-			mGridView.setAdapter(mAppGridAdapter);
-		}
-		else
-		{
-			mAppGridAdapter.notifyNewData(mAppList);
-		}
-	}
+            case APP_TYPE_USER:
+                mAppList = AppUtils.getUserInstalledApps(this);
+                mRefreshBtn.setText(R.string.user_apps);
+                break;
+        }
+        mAppType++;
 
-	@Override
-	public void onClick(View v)
-	{
-		setAdapter();
-	}
+        if (mAppGridAdapter == null) {
+            mAppGridAdapter = new AppGridAdapter(mAppList, android.R.layout.activity_list_item);
+            mGridView.setAdapter(mAppGridAdapter);
+        } else {
+            mAppGridAdapter.notifyNewData(mAppList);
+        }
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-	{
-		boolean result = ActivityUtils.startAnotherActivity(this, mAppList.get(position).activityInfo.packageName);
-		if (!result)
-		{
-			Toast.makeText(this, mAppList.get(position).loadLabel(getPackageManager()) + "打开失败", Toast.LENGTH_SHORT).show();
-		}
-	}
+    @Override
+    public void onClick(View v) {
+        setAdapter();
+    }
 
-	private class AppGridAdapter extends CommonAdapter<ResolveInfo>
-	{
-		public AppGridAdapter(List<ResolveInfo> data, int layoutId)
-		{
-			super(data, layoutId);
-		}
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        boolean result = ActivityUtils.startAnotherActivity(this, mAppList.get(position).activityInfo.packageName);
+        if (!result) {
+            Toast.makeText(this, mAppList.get(position).loadLabel(getPackageManager()) + "打开失败", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-		@Override
-		public void convert(ViewHolder viewHolder, ResolveInfo item, int position)
-		{
-			ImageView iconView = viewHolder.getView(android.R.id.icon);
-			iconView.setImageDrawable(item.loadIcon(mPackageManager));
-			viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
-		}
-	}
+    private class AppGridAdapter extends CommonAdapter<ResolveInfo> {
+        public AppGridAdapter(List<ResolveInfo> data, int layoutId) {
+            super(data, layoutId);
+        }
+
+        @Override
+        public void convert(ViewHolder viewHolder, ResolveInfo item, int position) {
+            ImageView iconView = viewHolder.getView(android.R.id.icon);
+            iconView.setImageDrawable(item.loadIcon(mPackageManager));
+            viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
+        }
+    }
 }

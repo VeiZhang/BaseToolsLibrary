@@ -17,61 +17,51 @@ import com.excellence.tooldemo.bean.databinding.Flower;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity
-{
-	private ActivityBaseRecyclerBindingAdapterBinding mBinding = null;
-	private List<Flower> mFlowers = null;
+public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		mBinding = DataBindingUtil.setContentView(this, R.layout.activity_base_recycler_binding_adapter);
+    private ActivityBaseRecyclerBindingAdapterBinding mBinding = null;
+    private List<Flower> mFlowers = null;
 
-		initAdapter();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_base_recycler_binding_adapter);
 
-	private void initAdapter()
-	{
-		mFlowers = new ArrayList<>();
-		for (int i = 0; i < 10; i++)
-		{
-			mFlowers.add(new Flower("Flower x Flower = Flowers " + i, R.drawable.logo));
-		}
-		BaseRecyclerBindingAdapter<Flower> adapter = new BaseRecyclerBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
-		mBinding.setAdapter(adapter);
-		mBinding.setLayoutManager(new LinearLayoutManager(this));
-		adapter.setOnItemClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemClickListener()
-		{
-			@Override
-			public void onItemClick(ViewDataBinding binding, View v, int position)
-			{
-				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "点击事件" + position, Toast.LENGTH_SHORT).show();
-			}
-		});
+        initAdapter();
+    }
 
-		adapter.setOnItemLongClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemLongClickListener()
-		{
-			@Override
-			public boolean onItemLongClick(ViewDataBinding binding, View v, int position)
-			{
-				Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "长按事件" + position, Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		});
+    private void initAdapter() {
+        mFlowers = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            mFlowers.add(new Flower("Flower x Flower = Flowers " + i, R.drawable.logo));
+        }
+        BaseRecyclerBindingAdapter<Flower> adapter = new BaseRecyclerBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
+        mBinding.setAdapter(adapter);
+        mBinding.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setOnItemClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ViewDataBinding binding, View v, int position) {
+                Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "点击事件" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
-		adapter.setOnItemFocusChangeListener(new MultiItemTypeBindingRecyclerAdapter.OnItemFocusChangeListener()
-		{
-			@Override
-			public void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position)
-			{
-				ItemFlowerBinding itemFlowerBinding = (ItemFlowerBinding) binding;
-				itemFlowerBinding.text.setSelected(hasFocus);
-				if (hasFocus)
-				{
-					Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "焦点事件 " + position, Toast.LENGTH_SHORT).show();
-				}
-			}
-		});
-	}
+        adapter.setOnItemLongClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(ViewDataBinding binding, View v, int position) {
+                Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "长按事件" + position, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        adapter.setOnItemFocusChangeListener(new MultiItemTypeBindingRecyclerAdapter.OnItemFocusChangeListener() {
+            @Override
+            public void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position) {
+                ItemFlowerBinding itemFlowerBinding = (ItemFlowerBinding) binding;
+                itemFlowerBinding.text.setSelected(hasFocus);
+                if (hasFocus) {
+                    Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "焦点事件 " + position, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 }

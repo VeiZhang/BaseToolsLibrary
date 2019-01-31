@@ -18,82 +18,70 @@ import com.excellence.tooldemo.bean.databinding.Tulip;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity
-{
-	private ActivityMultiItemTypeBindingAdapterBinding mBinding = null;
-	private List<Flower> mFlowers = null;
+public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		mBinding = DataBindingUtil.setContentView(this, R.layout.activity_multi_item_type_binding_adapter);
+    private ActivityMultiItemTypeBindingAdapterBinding mBinding = null;
+    private List<Flower> mFlowers = null;
 
-		initAdapter();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_multi_item_type_binding_adapter);
 
-	private void initAdapter()
-	{
-		mFlowers = new ArrayList<>();
-		mFlowers.add(new Rose("I am Rose", R.drawable.blue));
-		mFlowers.add(new Rose("Hello", R.drawable.blue));
-		mFlowers.add(new Tulip("e...", R.drawable.purple));
-		mFlowers.add(new Rose("King is mine", R.drawable.blue));
-		mFlowers.add(new Tulip("Nice", R.drawable.purple));
-		MultiItemTypeBindingAdapter<Flower> adapter = new MultiItemTypeBindingAdapter<>(mFlowers);
-		adapter.addItemViewDelegate(new RoseViewDelegate());
-		adapter.addItemViewDelegate(new TulipViewDelegate());
-		mBinding.setAdapter(adapter);
-		mBinding.setOnItemClickListener(new AdapterView.OnItemClickListener()
-		{
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-			{
-				Toast.makeText(MultiItemTypeBindingAdapterActivity.this, "点击了" + position, Toast.LENGTH_SHORT).show();
-			}
-		});
-	}
+        initAdapter();
+    }
 
-	public static class RoseViewDelegate implements ItemViewDelegate<Flower>
-	{
-		@Override
-		public int getItemViewLayoutId()
-		{
-			return R.layout.item_rose;
-		}
+    private void initAdapter() {
+        mFlowers = new ArrayList<>();
+        mFlowers.add(new Rose("I am Rose", R.drawable.blue));
+        mFlowers.add(new Rose("Hello", R.drawable.blue));
+        mFlowers.add(new Tulip("e...", R.drawable.purple));
+        mFlowers.add(new Rose("King is mine", R.drawable.blue));
+        mFlowers.add(new Tulip("Nice", R.drawable.purple));
+        MultiItemTypeBindingAdapter<Flower> adapter = new MultiItemTypeBindingAdapter<>(mFlowers);
+        adapter.addItemViewDelegate(new RoseViewDelegate());
+        adapter.addItemViewDelegate(new TulipViewDelegate());
+        mBinding.setAdapter(adapter);
+        mBinding.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MultiItemTypeBindingAdapterActivity.this, "点击了" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-		@Override
-		public int getItemVariable()
-		{
-			return BR.rose;
-		}
+    public static class RoseViewDelegate implements ItemViewDelegate<Flower> {
+        @Override
+        public int getItemViewLayoutId() {
+            return R.layout.item_rose;
+        }
 
-		@Override
-		public boolean isForViewType(Flower item, int position)
-		{
-			return item instanceof Rose;
-		}
-	}
+        @Override
+        public int getItemVariable() {
+            return BR.rose;
+        }
 
-	public static class TulipViewDelegate implements ItemViewDelegate<Flower>
-	{
-		@Override
-		public int getItemViewLayoutId()
-		{
-			return R.layout.item_tulip;
-		}
+        @Override
+        public boolean isForViewType(Flower item, int position) {
+            return item instanceof Rose;
+        }
+    }
 
-		@Override
-		public int getItemVariable()
-		{
-			return BR.tulip;
-		}
+    public static class TulipViewDelegate implements ItemViewDelegate<Flower> {
+        @Override
+        public int getItemViewLayoutId() {
+            return R.layout.item_tulip;
+        }
 
-		@Override
-		public boolean isForViewType(Flower item, int position)
-		{
-			return item instanceof Tulip;
-		}
-	}
+        @Override
+        public int getItemVariable() {
+            return BR.tulip;
+        }
+
+        @Override
+        public boolean isForViewType(Flower item, int position) {
+            return item instanceof Tulip;
+        }
+    }
 
 }

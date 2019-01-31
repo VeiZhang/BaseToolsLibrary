@@ -16,31 +16,31 @@ import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
  * </pre>
  */
 
-public interface ItemViewDelegate<T>
-{
-	/**
-	 * 布局资源Id
-	 * 
-	 * @return 布局Id
-	 */
-	@LayoutRes
-	int getItemViewLayoutId();
+public interface ItemViewDelegate<T> {
 
-	/**
-	 * 判断视图是否使用该类布局
-	 *
-	 * @param item 数据
-	 * @param position 位置
-	 * @return {@code true}:是<br>{@code false}:否
-	 */
-	boolean isForViewType(T item, int position);
+    /**
+     * 布局资源Id
+     *
+     * @return 布局Id
+     */
+    @LayoutRes
+    int getItemViewLayoutId();
 
-	/**
-	 * 初始化Item视图
-	 *
-	 * @param viewHolder
-	 * @param item 数据
-	 * @param position 位置
-	 */
-	void convert(RecyclerViewHolder viewHolder, T item, int position);
+    /**
+     * 判断视图是否使用该类布局
+     *
+     * @param item 数据
+     * @param position 位置
+     * @return {@code true}:是<br>{@code false}:否
+     */
+    boolean isForViewType(T item, int position);
+
+    /**
+     * 初始化Item视图
+     *
+     * @param viewHolder
+     * @param item 数据
+     * @param position 位置
+     */
+    void convert(RecyclerViewHolder viewHolder, T item, int position);
 }

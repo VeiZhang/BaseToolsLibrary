@@ -1,11 +1,5 @@
 package com.excellence.tooldemo;
 
-import java.util.List;
-
-import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter;
-import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
-import com.excellence.basetoolslibrary.utils.AppUtils;
-
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
@@ -17,111 +11,103 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RecyclerAdapterActivity extends AppCompatActivity implements View.OnClickListener, BaseRecyclerAdapter.OnItemClickListener
-{
-	private static final String TAG = RecyclerAdapterActivity.class.getSimpleName();
+import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter;
+import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
+import com.excellence.basetoolslibrary.utils.AppUtils;
 
-	private static final int APP_TYPE_ALL = 0;
-	private static final int APP_TYPE_SYSTEM = 1;
-	private static final int APP_TYPE_USER = 2;
+import java.util.List;
 
-	private Button mRefreshBtn = null;
-	private RecyclerView mRecyclerView = null;
-	private AppRecyclerAdapter mAdapter = null;
-	private List<ResolveInfo> mAppList = null;
-	private int mAppType = APP_TYPE_ALL;
+public class RecyclerAdapterActivity extends AppCompatActivity implements View.OnClickListener, BaseRecyclerAdapter.OnItemClickListener {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_recycler);
+    private static final String TAG = RecyclerAdapterActivity.class.getSimpleName();
 
-		init();
-		setAdapter();
-		setListener();
-	}
+    private static final int APP_TYPE_ALL = 0;
+    private static final int APP_TYPE_SYSTEM = 1;
+    private static final int APP_TYPE_USER = 2;
 
-	private void init()
-	{
-		mRefreshBtn = (Button) findViewById(R.id.recycler_refresh);
-		mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-		GridLayoutManager manager = new GridLayoutManager(this, 2);
-		mRecyclerView.setLayoutManager(manager);
-	}
+    private Button mRefreshBtn = null;
+    private RecyclerView mRecyclerView = null;
+    private AppRecyclerAdapter mAdapter = null;
+    private List<ResolveInfo> mAppList = null;
+    private int mAppType = APP_TYPE_ALL;
 
-	private void setAdapter()
-	{
-		// 模拟刷新
-		if (mAppList != null)
-		{
-			mAppList.clear();
-		}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recycler);
 
-		switch (mAppType % 3)
-		{
-		case APP_TYPE_ALL:
-			mAppList = AppUtils.getAllInstalledApps(this);
-			mRefreshBtn.setText(R.string.all_apps);
-			break;
+        init();
+        setAdapter();
+        setListener();
+    }
 
-		case APP_TYPE_SYSTEM:
-			mAppList = AppUtils.getSystemInstalledApps(this);
-			mRefreshBtn.setText(R.string.system_apps);
-			break;
+    private void init() {
+        mRefreshBtn = (Button) findViewById(R.id.recycler_refresh);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        mRecyclerView.setLayoutManager(manager);
+    }
 
-		case APP_TYPE_USER:
-			mAppList = AppUtils.getUserInstalledApps(this);
-			mRefreshBtn.setText(R.string.user_apps);
-			break;
-		}
-		mAppType++;
+    private void setAdapter() {
+        // 模拟刷新
+        if (mAppList != null) {
+            mAppList.clear();
+        }
 
-		if (mAdapter == null)
-		{
-			mAdapter = new AppRecyclerAdapter(mAppList, android.R.layout.activity_list_item);
-			mRecyclerView.setAdapter(mAdapter);
-		}
-		else
-		{
-			mAdapter.notifyNewData(mAppList);
-		}
-	}
+        switch (mAppType % 3) {
+            case APP_TYPE_ALL:
+                mAppList = AppUtils.getAllInstalledApps(this);
+                mRefreshBtn.setText(R.string.all_apps);
+                break;
 
-	private void setListener()
-	{
-		mRefreshBtn.setOnClickListener(this);
-		mAdapter.setOnItemClickListener(this);
-	}
+            case APP_TYPE_SYSTEM:
+                mAppList = AppUtils.getSystemInstalledApps(this);
+                mRefreshBtn.setText(R.string.system_apps);
+                break;
 
-	@Override
-	public void onClick(View v)
-	{
-		setAdapter();
-	}
+            case APP_TYPE_USER:
+                mAppList = AppUtils.getUserInstalledApps(this);
+                mRefreshBtn.setText(R.string.user_apps);
+                break;
+        }
+        mAppType++;
 
-	@Override
-	public void onItemClick(RecyclerViewHolder viewHolder, View v, int position)
-	{
-		Toast.makeText(this, "position " + position + " : " + ((TextView) viewHolder.getView(android.R.id.text1)).getText(), Toast.LENGTH_SHORT).show();
-	}
+        if (mAdapter == null) {
+            mAdapter = new AppRecyclerAdapter(mAppList, android.R.layout.activity_list_item);
+            mRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyNewData(mAppList);
+        }
+    }
 
-	private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo>
-	{
-		private PackageManager mPackageManager = null;
+    private void setListener() {
+        mRefreshBtn.setOnClickListener(this);
+        mAdapter.setOnItemClickListener(this);
+    }
 
-		public AppRecyclerAdapter(List<ResolveInfo> data, int layoutId)
-		{
-			super(data, layoutId);
-			mPackageManager = getPackageManager();
-		}
+    @Override
+    public void onClick(View v) {
+        setAdapter();
+    }
 
-		@Override
-		public void convert(RecyclerViewHolder viewHolder, ResolveInfo item, int position)
-		{
-			viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
-			viewHolder.setImageDrawable(android.R.id.icon, item.loadIcon(mPackageManager));
-		}
+    @Override
+    public void onItemClick(RecyclerViewHolder viewHolder, View v, int position) {
+        Toast.makeText(this, "position " + position + " : " + ((TextView) viewHolder.getView(android.R.id.text1)).getText(), Toast.LENGTH_SHORT).show();
+    }
 
-	}
+    private class AppRecyclerAdapter extends BaseRecyclerAdapter<ResolveInfo> {
+        private PackageManager mPackageManager = null;
+
+        public AppRecyclerAdapter(List<ResolveInfo> data, int layoutId) {
+            super(data, layoutId);
+            mPackageManager = getPackageManager();
+        }
+
+        @Override
+        public void convert(RecyclerViewHolder viewHolder, ResolveInfo item, int position) {
+            viewHolder.setText(android.R.id.text1, item.loadLabel(mPackageManager));
+            viewHolder.setImageDrawable(android.R.id.icon, item.loadIcon(mPackageManager));
+        }
+
+    }
 }
