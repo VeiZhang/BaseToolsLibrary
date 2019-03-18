@@ -21,7 +21,7 @@ ext {
             buildToolsVersion       : "25.0.0",
             minSdkVersion           : 17,
             targetSdkVersion        : 23,
-            versionCode             : getSvnVersionCode(),
+            versionCode             : getVersionCode(),
             versionName             : getVersionName(),
 
             /*************************自定义配置*************************/
@@ -87,32 +87,120 @@ ext {
     ]
 }
 
-/***********************通用方法***********************/
-// 获取版本
+/***********************APP版本控制的通用方法***********************/
+/**
+ * svn
+ * 直接读取svn版本号作为版本控制
+ */
+/**
+ * git
+ *
+ * git tag作为版本名称
+ * git 版本号有两种方法
+ *  ①版本号作为我们内部开发的标识，一般它是+1递增的，每一次发版我们就会打一个tag，tag的数量也会增加1个，和我们版本号的递增逻辑是符合的，tag数量+1，版本号也会跟着+1
+ *  ②还有一种是把提交次数作为versionCode，不推荐。相比较①，②比较难找，因为tag的数量不会很多
+ */
+
+/**
+ * 获取版本
+ * @return
+ */
 def getVersionName() {
-    String prefix = "1.0." + getSvnVersionCode()
-    return prefix + ' [' + getDate() + ']'
+    def date = getDate()
+    def version = getSvnVersionCode()
+    if (version != 0) {
+        return "1.0.${version} [${date}]"
+    }
+    version = getGitTag()
+    if (version != 0) {
+        return "${version} [${date}]"
+    }
+    if (version == 0) {
+        version = 1
+    }
+    return "1.0.${version} [${date}]"
 }
 
-// 根据svn提交版本生成版本号
-def getSvnVersionCode() {
-    def process = ("svnversion -c " + getBuildDir().parent).execute()
-    process.waitFor()
-    def version = process.in.text
-    Pattern pattern = Pattern.compile("(\\d+:)?(\\d+)\\D")
-    Matcher matcher = pattern.matcher(version)
-    if (matcher.find()) {
-        version = matcher.group(matcher.groupCount())
+/**
+ * 获取版本号
+ * @return
+ */
+def getVersionCode() {
+    def versionCode = getSvnVersionCode()
+    if (versionCode == 0) {
+        versionCode = getGitVersionCode()
     }
+    if (versionCode == 0) {
+        versionCode = 1
+    }
+    return versionCode
+}
+
+/***********************读取Git信息***********************/
+
+/**
+ * 读取git tag
+ * @return tag
+ */
+def getGitTag() {
     try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--abbrev=0', '--tags'
+            standardOutput = stdout
+        }
+        return stdout.toString().split("\n")
+    } catch (e) {
+        println e.getMessage()
+    }
+    return 0
+}
+
+/**
+ * 以git tag的数量作为其版本号
+ * @return tag的数量
+ */
+def getGitVersionCode() {
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'tag', '--list'
+            standardOutput = stdout
+        }
+        return stdout.toString().split("\n").size()
+    } catch (e) {
+        println e.getMessage()
+    }
+    return 0
+}
+
+/***********************读取SVN信息***********************/
+
+/**
+ * 根据svn提交版本生成版本号
+ * @return
+ */
+def getSvnVersionCode() {
+    try {
+        def process = ("svnversion -c " + getBuildDir().parent).execute()
+        process.waitFor()
+        def version = process.in.text
+        Pattern pattern = Pattern.compile("(\\d+:)?(\\d+)\\D")
+        Matcher matcher = pattern.matcher(version)
+        if (matcher.find()) {
+            version = matcher.group(matcher.groupCount())
+        }
         return Integer.parseInt(version)
     } catch (e) {
         println e.getMessage()
     }
-    return 1
+    return 0
 }
 
-// 获取日期
+/**
+ * 获取日期
+ * @return
+ */
 def getDate() {
     String date = new SimpleDateFormat("MMddyyyy").format(new Date())
     return date
