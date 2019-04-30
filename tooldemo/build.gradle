@@ -1,4 +1,4 @@
-apply from: '../application.gradle'
+apply from: 'application.gradle'
 
 android {
     defaultConfig {

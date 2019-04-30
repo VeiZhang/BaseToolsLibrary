@@ -1,4 +1,3 @@
-apply from: '../config.gradle'
 /*********************application通用配置*********************/
 def plugins = rootProject.ext.plugins
 def cfg = rootProject.ext.android
