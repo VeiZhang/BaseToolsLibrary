@@ -353,6 +353,14 @@ isActivityTopStack     : 判断Activity是否在栈顶
 getLauncherActivity    : 获取某应用入口Activity
 ```
 
+> - **AlphaUtils相关→[AlphaUtils.java][AlphaUtils]**
+```
+setAlpha : 设置Window透明度
+setAlpha : 设置Activity的Window透明度
+setAlpha : 设置Dialog的Window透明度
+setAlpha : 设置DialogFragment的Window透明度
+```
+
 > - **应用相关→[AppUtils.java][AppUtils]**
 ```
 getInstalledApps       : 获取安装的全部应用
@@ -369,6 +377,9 @@ getAPKFileSignature    : 获取apk文件的签名
 getPackageSignature    : 获取某安装应用的签名
 isAppInstalled         : 判断应用是否安装
 isAppDebug             : 判断当前应用是否是Debug版本
+getMaxMemory           : 当前应用分配的最大内存
+getTotalMemory         : 当前应用分配的总内存
+getFreeMemory          : 当前应用分配的剩余内存
 ```
 
 > - **关闭相关→[CloseUtils.java][CloseUtils]**
@@ -478,9 +489,8 @@ printException : 打印异常信息字符串
 > - **文件流相关→[FileIOUtils.java][FileIOUtils]**
 ```
 writeFile        : 将字符串、字节数组、输入流写入文件
-readStream2Bytes : 读取输入流为字节数组
-readFile2Bytes   : 读取文件为字节数组
-readFile2String  : 读取文件为字符串
+readFile2Bytes   : 读取文件、输入流为字节数组
+readFile2String  : 读取文件、输入流为字符串
 copyFile         : 拷贝文件
 ```
 
@@ -558,6 +568,26 @@ toggleSoftInput              : 如果输入法在窗口上已经显示，则隐�
 clickBlankArea2HideSoftInput : 击屏幕空白区域隐藏软键盘
 ```
 
+> - **多媒体相关→[MediaUtils.java][MediaUtils]**
+```
+getKey      : 读取多媒体信息的键
+getAlbum    : 读取多媒体信息的专辑
+getArtist   : 读取多媒体信息的艺术家
+getAuthor   : 读取多媒体信息的作者
+getComposer : 读取多媒体信息的作曲家
+getDate     : 读取多媒体信息的日期
+getGenre    : 读取多媒体信息的分类
+getTitle    : 读取多媒体信息的名称
+getYear     : 读取多媒体信息的年份
+getDuration : 读取多媒体信息的时长
+getMimeType : 读取多媒体信息的类型
+getHasAudio : 读取多媒体信息是否有音频
+getHasVideo : 读取多媒体信息是否有视频
+getWidth    : 读取多媒体信息的宽度
+getHeight   : 读取多媒体信息的高度
+getBitrate  : 读取多媒体信息的码率
+```
+
 > - **网络相关→[NetworkUtils.java][NetworkUtils]**
 ```
 getActiveNetworkInfo    : 获取活动的网络信息
@@ -577,7 +607,8 @@ getNetworkOperatorName  : 获取网络运营商名称
 getNetworkType          : 获取当前网络类型
 getIPAddress            : 获取网络IP地址
 getDomainAddress        : 根据域名获取ip
-readMac                 : 读取Mac地址
+readMac                 : 读取Mac地址：优先获取Eth的MAC，当Eth为空，接着获取WiFi的MAC
+getMac                  : 获取Mac地址：使用Eth时读取Eth的MAC，否则读取WiFi的MAC
 getWiredMac             : 获取有线Mac地址
 getWirelessMac          : 获取无线Mac地址
 ```
@@ -650,6 +681,7 @@ getDeclaredAnnotations : 获取类中存在的所有注解，不包括继承的�
 
 > - **正则表达式相关→[RegexUtils.java][RegexUtils]**
 ```
+isMAC           : 验证MAC地址
 isMobileSimple  : 验证手机号（简单）
 isMobileExact   : 验证手机号（精确）
 isTel           : 验证电话号码
@@ -662,6 +694,7 @@ isUsername      : 验证用户名
 isDate          : 验证yyyy-MM-dd格式的日期校验，已考虑平闰年
 isIP            : 验证IP地址
 isMatch         : 判断是否匹配正则
+getMatch        : 获取第一个正则匹配的部分
 getMatches      : 获取正则匹配的部分
 getSplits       : 获取正则匹配分组
 getReplaceFirst : 替换正则匹配的第一部分
@@ -681,6 +714,7 @@ readAsset          : 读取asset文件转字符串
 getLocal           : 获取当前系统语言
 getLanguage        : 获取当前系统语言
 getCountry         : 获取当前系统语言国家
+getIdentifier      : 跨APP，读取其他应用的资源
 ```
 
 > - **命令相关→[ShellUtils.java][ShellUtils]**
@@ -697,40 +731,47 @@ getStorageVolumeList : 获取存储卷的相关信息
 
 > - **字符串相关→[StringUtils.java][StringUtils]**
 ```
-isEmpty          : 判断字符串是否为空
-checkNULL        : 判断字符串是否为空，是否是"NULL"字符串
-equals           : 比较字符串是否相等
-equalsIgnoreCase : 比较字符串是否相等，忽略大小写
+isEmpty            : 判断字符串是否为空
+checkNULL          : 判断字符串是否为空，是否是"NULL"字符串
+equals             : 比较字符串是否相等
+equalsIgnoreCase   : 比较字符串是否相等，忽略大小写
+contains           : 判断字符一是否包含字符串二
+containsIgnoreCase : 判断字符一是否包含字符串二，忽略大小写
 ```
 
 > - **系统属性相关→[SystemPropertyUtils.java][SystemPropertyUtils]**
 ```
-get        : 获取String类型系统属性
-getBoolean : 获取Boolean类型系统属性
-getInt     : 获取int类型系统属性
-getLong    : 获取long类型系统属性
-set        : 设置系统属性
+get                   : 获取String类型系统属性
+getBoolean            : 获取Boolean类型系统属性
+getInt                : 获取int类型系统属性
+getLong               : 获取long类型系统属性
+set                   : 设置系统属性
+getLinuxKernelVersion : 读取kernel版本
 ```
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
 ```
-millisec2String  : 时间戳转时间字符串
-string2Date      : 时间字符串转Date类型
-string2Millisec  : 时间字符串转毫秒时间戳
-date2String      : Date转时间字符串
-getTimeSpan      : 获取两个时间差
-getNowTimeMillis : 获取当前毫秒时间戳
-getNowTimeDate   : 获取当前Date时间
-getNowTimeString : 获取当前时间字符串
-getTimeSpanByNow : 获取某时间与当前时间的差
-isSameDay        : 判断时间是否是同一天
-isToday          : 判断时间是否是今天
-isLeapYear       : 判断是否是闰年
-getWeek          : 获取星期几
-getWeekOfMonth   : 获取月份中第几周
-getWeekOfYear    : 获取年份中的第几周
-getChineseZodiac : 获取生肖
-getZodiac        : 获取星座
+millisec2String        : 时间戳转时间字符串
+string2Date            : 时间字符串转Date类型
+string2Millisec        : 时间字符串转毫秒时间戳
+date2String            : Date转时间字符串
+getTimeSpan            : 获取两个时间差
+getNowTimeMillis       : 获取当前毫秒时间戳
+getNowTimeDate         : 获取当前Date时间
+getNowTimeString       : 获取当前时间字符串
+getTimeSpanByNow       : 获取某时间与当前时间的差
+isSameDay              : 判断时间是否是同一天
+isToday                : 判断时间是否是今天
+isLeapYear             : 判断是否是闰年
+getWeek                : 获取星期几
+getWeekOfMonth         : 获取月份中第几周
+getWeekOfYear          : 获取年份中的第几周
+getChineseZodiac       : 获取生肖
+getZodiac              : 获取星座
+is24HoursFormat        : 判断当前时间制是否是24h
+seconds2String         : 秒转 分:秒 字符串
+milliSeconds2String    : 毫秒转 分:秒 字符串
+createSimpleDateFormat : 创建时间格式化
 ```
 
 <br>
@@ -825,6 +866,7 @@ HanziToPinyin : Android汉字转拼音类
 <!-- 常用方法 -->
 
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
+[AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.java
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.java
 [CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.java
 [ConvertUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ConvertUtils.java
@@ -840,6 +882,7 @@ HanziToPinyin : Android汉字转拼音类
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
 [IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.java
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.java
+[MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.java
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
 [PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.java
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
