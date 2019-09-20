@@ -1,5 +1,7 @@
 package com.excellence.basetoolslibrary.utils;
 
+import android.content.Context;
+import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 
 import java.text.ParseException;
@@ -45,6 +47,7 @@ public class TimeUtils {
     private final static int[] ZODIAC_FLAGS = new int[]{20, 19, 21, 20, 21, 22, 23, 23, 23, 24, 23, 22};
 
     public static final int SEC = 1000;
+    private static final int MIN_SEC = 60;
     public static final int MIN = 60 * 1000;
     public static final int HOUR = 60 * 60 * 1000;
     public static final int DAY = 24 * 60 * 60 * 1000;
@@ -66,7 +69,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String millisec2String(long millisec, String pattern) {
-        return new SimpleDateFormat(pattern, Locale.getDefault()).format(new Date(millisec));
+        return createSimpleDateFormat(pattern).format(new Date(millisec));
     }
 
     /**
@@ -113,7 +116,7 @@ public class TimeUtils {
      */
     public static long string2Millisec(String time, String pattern) {
         try {
-            return new SimpleDateFormat(pattern, Locale.getDefault()).parse(time).getTime();
+            return createSimpleDateFormat(pattern).parse(time).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -140,7 +143,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String date2String(Date date, String pattern) {
-        return new SimpleDateFormat(pattern, Locale.getDefault()).format(date);
+        return createSimpleDateFormat(pattern).format(date);
     }
 
     /**
@@ -151,7 +154,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String date2String(Date date) {
-        return new SimpleDateFormat(DEFAULT_PATTERN, Locale.getDefault()).format(date);
+        return createSimpleDateFormat(DEFAULT_PATTERN).format(date);
     }
 
     /**
@@ -447,7 +450,7 @@ public class TimeUtils {
      * @return 星期字符串
      */
     public static String getWeek(Date date) {
-        return new SimpleDateFormat(WEEK_PATTERN, Locale.getDefault()).format(date);
+        return createSimpleDateFormat(WEEK_PATTERN).format(date);
     }
 
     /**
@@ -642,5 +645,45 @@ public class TimeUtils {
      */
     public static String getZodiac(String time) {
         return getZodiac(time, DEFAULT_PATTERN);
+    }
+
+    /**
+     * 判断当前时间制是否是24h
+     *
+     * @param context
+     * @return {@code true}:是<br>{@code false}:否，12h
+     */
+    public static boolean is24HoursFormat(Context context) {
+        return DateFormat.is24HourFormat(context);
+    }
+
+    /**
+     * 秒转 分:秒 字符串
+     *
+     * @param seconds s
+     * @return
+     */
+    public static String seconds2String(long seconds) {
+        return String.format(Locale.getDefault(), "%02d:%02d", seconds / MIN_SEC, seconds % MIN_SEC);
+    }
+
+    /**
+     * 毫秒转 分:秒 字符串
+     *
+     * @param milliSeconds ms
+     * @return
+     */
+    public static String milliSeconds2String(long milliSeconds) {
+        return seconds2String(milliSeconds / SEC);
+    }
+
+    /**
+     * 创建时间格式化
+     *
+     * @param format
+     * @return
+     */
+    public static SimpleDateFormat createSimpleDateFormat(String format) {
+        return new SimpleDateFormat(format, Locale.getDefault());
     }
 }
