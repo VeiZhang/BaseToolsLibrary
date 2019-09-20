@@ -1,8 +1,11 @@
 package com.excellence.basetoolslibrary.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.AnyRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringDef;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -195,6 +198,104 @@ public class ResourceUtils {
      */
     public static String getCountry() {
         return Locale.getDefault().getCountry();
+    }
+
+    /*************** 跨APP进程，读取其他应用里面的资源 ***************/
+    private static final String TAG = ResourceUtils.class.getSimpleName();
+
+    /**属性值对应的类型是color*/
+    public static final String TYPE_NAME_COLOR = "color";
+
+    /**属性值对应的类型是drawable*/
+    public static final String TYPE_NAME_DRAWABLE = "drawable";
+
+    /**属性值对应的类型是mipmap*/
+    public static final String TYPE_NAME_MIPMAP = "mipmap";
+
+    /**属性值对应的类型是string**/
+    public static final String TYPE_NAME_TEXT = "string";
+
+    /**属性值对应的类型是dimen**/
+    public static final String TYPE_NAME_DIMEN = "dimen";
+
+    /**
+     * 跨APP进程，读取其他应用里面的资源：读取资源id，匹配一个type
+     *
+     * R.drawable.icon
+     *
+     * @param context
+     * @param targetName target resource entry name -> icon
+     * @param packageName package name
+     * @param def default resource when target resource is empty
+     * @param type resource type name -> drawable
+     * @return resource id
+     */
+    public static Loader getIdentifier(Context context, String targetName, String packageName, int def, @Type String type) {
+        Resources skinResources = null;
+        int resId = 0;
+        try {
+            Context skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
+            skinResources = skinContext.getResources();
+            resId = skinResources.getIdentifier(targetName, type, packageName);
+            Log.i(TAG, "getIdentifier: " + resId + " -- " + skinResources.getString(resId));
+        } catch (Exception e) {
+            Log.e(TAG, "getIdentifier: " + e.getMessage());
+        }
+        if (resId == 0) {
+            skinResources = context.getResources();
+            resId = def;
+        }
+        return new Loader(skinResources, resId);
+    }
+
+    /**
+     * 跨APP进程，读取其他应用里面的资源：读取资源id，匹配多个type，直到找到第一个资源文件
+     *
+     * @param context
+     * @param targetName target resource entry name
+     * @param packageName package name
+     * @param def default resource when target resource is empty
+     * @param types resource type names
+     * @return
+     */
+    public static Loader getIdentifier(Context context, String targetName, String packageName, int def, @Type String... types) {
+        Resources skinResources = null;
+        int resId = 0;
+
+        try {
+            Context skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
+            skinResources = skinContext.getResources();
+            for (String type : types) {
+                resId = skinResources.getIdentifier(targetName, type, packageName);
+                if (resId != 0) {
+                    break;
+                }
+            }
+            Log.i(TAG, "getIdentifier: " + resId);
+        } catch (Exception e) {
+            Log.e(TAG, "getIdentifier: " + e.getMessage());
+        }
+        if (resId == 0) {
+            skinResources = context.getResources();
+            resId = def;
+        }
+        return new Loader(skinResources, resId);
+    }
+
+    public static class Loader {
+
+        public Resources mResources;
+        public int mResId;
+
+        public Loader(Resources skinResources, int resId) {
+            mResources = skinResources;
+            mResId = resId;
+        }
+    }
+
+    @StringDef({TYPE_NAME_COLOR, TYPE_NAME_DRAWABLE, TYPE_NAME_MIPMAP, TYPE_NAME_TEXT, TYPE_NAME_DIMEN})
+    public @interface Type {
+
     }
 
 }
