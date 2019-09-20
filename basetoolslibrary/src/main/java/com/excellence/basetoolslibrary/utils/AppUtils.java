@@ -358,4 +358,31 @@ public class AppUtils {
         }
         return false;
     }
+
+    /**
+     * 当前应用分配的最大内存
+     *
+     * @return
+     */
+    public static long getMaxMemory() {
+        return Runtime.getRuntime().maxMemory();
+    }
+
+    /**
+     * 当前应用分配的总内存
+     *
+     * @return
+     */
+    public static long getTotalMemory() {
+        return Runtime.getRuntime().totalMemory();
+    }
+
+    /**
+     * 当前应用分配的剩余内存
+     *
+     * @return
+     */
+    public static long getFreeMemory() {
+        return Runtime.getRuntime().freeMemory();
+    }
 }
