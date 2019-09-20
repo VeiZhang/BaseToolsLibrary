@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 public class RegexUtils {
 
     /******************** 正则相关常量 ********************/
+    public static final String REGEX_MAC = "([A-Fa-f0-9]{2}[-,:]){5}[A-Fa-f0-9]{2}";
+
     /**
      * 正则：数字
      */
@@ -119,6 +121,16 @@ public class RegexUtils {
     public static final String REGEX_NEGATIVE_FLOAT = "^-[1-9]\\d*\\.\\d*|-0\\.\\d*[1-9]\\d*$";
 
     /************** If u want more please visit http://toutiao.com/i6231678548520731137/ **************/
+
+    /**
+     * 验证MAC地址
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     */
+    public static boolean isMAC(CharSequence input) {
+        return isMatch(REGEX_MAC, input);
+    }
 
     /**
      * 验证手机号（简单）
