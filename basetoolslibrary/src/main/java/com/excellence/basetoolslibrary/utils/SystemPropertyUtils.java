@@ -143,4 +143,27 @@ public class SystemPropertyUtils {
         }
     }
 
+    /************ 系统内核kernel信息读取 ************/
+
+    /**
+     * Linux version 3.14.29 (eric@bogon) (gcc version 4.9.2 20140904 (prerelease) (cro
+     * sstool-NG linaro-1.13.1-4.9-2014.09 - Linaro GCC 4.9-2014.09) ) #11 SMP PREEMPT
+     * Tue Jul 16 12:15:26 CST 2019
+     *
+     * 解析为 3.14.29
+     *
+     * @return
+     */
+    public static String getLinuxKernelVersion() {
+        try {
+            ShellUtils.CommandResult result = ShellUtils.execProcessBuilderCommand("cat", "/proc/version");
+            String kernelInfo = result.resultString;
+            if (EmptyUtils.isNotEmpty(kernelInfo)) {
+                return RegexUtils.getMatch("version\\s(.*?(?=\\s))", kernelInfo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
