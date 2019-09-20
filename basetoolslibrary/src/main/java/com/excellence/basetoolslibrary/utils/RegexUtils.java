@@ -255,6 +255,25 @@ public class RegexUtils {
     }
 
     /**
+     * 获取第一个正则匹配的部分
+     *
+     * @param regex 正则表达式
+     * @param input 要匹配的字符串
+     * @return 正则匹配的部分
+     */
+    public static String getMatch(String regex, CharSequence input) {
+        if (input == null) {
+            return null;
+        }
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.find()) {
+            return matcher.group();
+        }
+        return null;
+    }
+
+    /**
      * 获取正则匹配的部分
      *
      * @param regex 正则表达式
