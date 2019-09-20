@@ -40,6 +40,8 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
 public class NetworkUtils {
 
+    public static final String DEFAULT_WIRELESS_MAC = "02:00:00:00:00:00";
+
     public enum NetworkType {
         NETWORK_ETH,
         NETWORK_WIFI,
@@ -381,12 +383,29 @@ public class NetworkUtils {
     }
 
     /**
-     * 读取Mac地址
+     * 读取Mac地址：优先获取Eth的MAC，当Eth为空，接着获取WiFi的MAC
      *
      * @param context
      * @return
      */
     public static String readMac(Context context) {
+        String mac = getWiredMac(context);
+        if (isEmpty(mac)) {
+            mac = getWiredMac("eth0");
+        }
+        if (isEmpty(mac)) {
+            mac = getWirelessMac(context);
+        }
+        return mac;
+    }
+
+    /**
+     * 获取Mac地址：使用Eth时读取Eth的MAC，否则读取WiFi的MAC
+     *
+     * @param context
+     * @return
+     */
+    public static String getMac(Context context) {
         if (isEthConnected(context)) {
             return getWiredMac(context);
         } else {
@@ -452,7 +471,7 @@ public class NetworkUtils {
     }
 
     /**
-     * 获取无线Mac地址
+     * 获取无线Mac地址，有可能获取{@link #DEFAULT_WIRELESS_MAC}，再进一步读取WiFi接口wlan0的MAC
      *
      * @param context
      * @return
@@ -467,6 +486,9 @@ public class NetworkUtils {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if (DEFAULT_WIRELESS_MAC.equalsIgnoreCase(macAddress)) {
+            macAddress = getWiredMac("wlan0");
         }
         return macAddress;
     }
