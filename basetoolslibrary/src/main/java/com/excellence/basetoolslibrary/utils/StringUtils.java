@@ -98,4 +98,26 @@ public class StringUtils {
     public static boolean equalsIgnoreCase(CharSequence str1, CharSequence str2) {
         return isEmpty(str1) && isEmpty(str2) || str1 != null && str2 != null && str1.toString().equalsIgnoreCase(str2.toString());
     }
+
+    /**
+     * 判断字符一是否包含字符串二
+     *
+     * @param str1 字符串一
+     * @param str2 字符串二
+     * @return {@code true}：包含<br>{@code false}：不包含
+     */
+    public static boolean contains(CharSequence str1, CharSequence str2) {
+        return isEmpty(str1) && isEmpty(str2) || str1 != null && str2 != null && str1.toString().contains(str2.toString());
+    }
+
+    /**
+     * 判断字符一是否包含字符串二，忽略大小写
+     *
+     * @param str1 字符串一
+     * @param str2 字符串二
+     * @return {@code true}：包含<br>{@code false}：不包含
+     */
+    public static boolean containsIgnoreCase(CharSequence str1, CharSequence str2) {
+        return isEmpty(str1) && isEmpty(str2) || str1 != null && str2 != null && str1.toString().toLowerCase().contains(str2.toString().toLowerCase());
+    }
 }
