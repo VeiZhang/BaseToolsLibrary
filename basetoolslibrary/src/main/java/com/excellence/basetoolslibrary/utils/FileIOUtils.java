@@ -158,7 +158,7 @@ public class FileIOUtils {
      * @param is
      * @return
      */
-    public static byte[] readStream2Bytes(InputStream is) {
+    public static byte[] readFile2Bytes(InputStream is) {
         try {
             ByteArrayOutputStream os = new ByteArrayOutputStream();
             byte[] buf = new byte[BUF_SIZE];
@@ -187,7 +187,7 @@ public class FileIOUtils {
                 return null;
             }
             InputStream is = new FileInputStream(file);
-            return readStream2Bytes(is);
+            return readFile2Bytes(is);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -208,6 +208,33 @@ public class FileIOUtils {
     }
 
     /**
+     * 读取输入流为字符串
+     *
+     * @param is
+     * @param charset
+     * @return
+     */
+    public static String readFile2String(InputStream is, String charset) {
+        try {
+            if (isEmpty(is)) {
+                return null;
+            }
+
+            byte[] bytes = readFile2Bytes(is);
+            if (bytes != null) {
+                if (isEmpty(charset)) {
+                    return new String(bytes);
+                } else {
+                    return new String(bytes, charset);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * 读取文件为字符串
      *
      * @param file
@@ -216,14 +243,11 @@ public class FileIOUtils {
      */
     public static String readFile2String(File file, String charset) {
         try {
-            byte[] bytes = readFile2Bytes(file);
-            if (bytes != null) {
-                if (isEmpty(charset)) {
-                    return new String(bytes);
-                } else {
-                    return new String(bytes, charset);
-                }
+            if (!isFileExists(file)) {
+                return null;
             }
+            InputStream is = new FileInputStream(file);
+            return readFile2String(is, charset);
         } catch (Exception e) {
             e.printStackTrace();
         }

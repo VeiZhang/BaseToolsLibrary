@@ -12,7 +12,7 @@ import java.util.Locale;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 import static com.excellence.basetoolslibrary.utils.FileIOUtils.copyFile;
-import static com.excellence.basetoolslibrary.utils.FileIOUtils.readStream2Bytes;
+import static com.excellence.basetoolslibrary.utils.FileIOUtils.readFile2Bytes;
 
 /**
  * <pre>
@@ -156,7 +156,7 @@ public class ResourceUtils {
     public static String readAsset(Context context, String fileName, String charset) {
         try {
             InputStream is = context.getAssets().open(fileName);
-            byte[] bytes = readStream2Bytes(is);
+            byte[] bytes = readFile2Bytes(is);
             if (bytes != null) {
                 if (isEmpty(charset)) {
                     return new String(bytes);
