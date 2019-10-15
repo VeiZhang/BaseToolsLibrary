@@ -41,3 +41,5 @@ dependencies {
     compile libs["appcompat-v7"]
     compile libs["recyclerview-v7"]
 }
+
+apply from: 'bintray.gradle'
