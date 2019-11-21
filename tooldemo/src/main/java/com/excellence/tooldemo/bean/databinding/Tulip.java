@@ -1,6 +1,6 @@
 package com.excellence.tooldemo.bean.databinding;
 
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 /**
  * <pre>

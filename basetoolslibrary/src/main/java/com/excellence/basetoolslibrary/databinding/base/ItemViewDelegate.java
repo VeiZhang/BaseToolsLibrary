@@ -1,6 +1,6 @@
 package com.excellence.basetoolslibrary.databinding.base;
 
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * <pre>

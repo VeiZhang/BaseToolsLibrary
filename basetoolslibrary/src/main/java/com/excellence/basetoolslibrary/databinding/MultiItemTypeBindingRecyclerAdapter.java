@@ -1,8 +1,5 @@
 package com.excellence.basetoolslibrary.databinding;
 
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +15,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <pre>
@@ -116,8 +118,9 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
         return mData == null ? 0 : mData.size();
     }
 
+    @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType);
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId, parent, false);
         return new RecyclerViewHolder(binding);

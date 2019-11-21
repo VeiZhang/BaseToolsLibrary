@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/activity_recycler"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.excellence.tooldemo.RecyclerAdapterActivity">
@@ -11,12 +10,11 @@
         android:id="@+id/recycler_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/refresh"/>
+        android:text="@string/refresh" />
 
-    <view
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        class="android.support.v7.widget.RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/recycler_refresh"/>
+        android:layout_below="@+id/recycler_refresh" />
 </RelativeLayout>

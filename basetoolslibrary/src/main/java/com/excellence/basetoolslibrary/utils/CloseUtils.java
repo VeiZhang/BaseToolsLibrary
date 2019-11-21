@@ -1,9 +1,9 @@
 package com.excellence.basetoolslibrary.utils;
 
-import android.support.annotation.NonNull;
-
 import java.io.Closeable;
 import java.io.IOException;
+
+import androidx.annotation.NonNull;
 
 /**
  * <pre>

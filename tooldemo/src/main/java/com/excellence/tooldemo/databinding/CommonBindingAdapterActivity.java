@@ -1,8 +1,6 @@
 package com.excellence.tooldemo.databinding;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -15,6 +13,9 @@ import com.excellence.tooldemo.bean.databinding.Flower;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 public class CommonBindingAdapterActivity extends AppCompatActivity {
 

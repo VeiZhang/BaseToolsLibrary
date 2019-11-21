@@ -1,8 +1,8 @@
 package com.excellence.basetoolslibrary.recycleradapter.base;
 
-import android.support.v4.util.SparseArrayCompat;
-
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
+
+import androidx.collection.SparseArrayCompat;
 
 /**
  * <pre>

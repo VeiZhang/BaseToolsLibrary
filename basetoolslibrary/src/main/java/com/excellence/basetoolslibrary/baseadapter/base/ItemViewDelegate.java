@@ -1,8 +1,8 @@
 package com.excellence.basetoolslibrary.baseadapter.base;
 
-import android.support.annotation.LayoutRes;
-
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * <pre>

@@ -1,6 +1,6 @@
 package com.excellence.basetoolslibrary.databinding.base;
 
-import android.support.v4.util.SparseArrayCompat;
+import androidx.collection.SparseArrayCompat;
 
 /**
  * <pre>

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.excellence.tooldemo.databinding.MultiItemTypeBindingAdapterActivity">
 
     <data>
-        <variable name="adapter" type="android.widget.BaseAdapter"/>
-        <variable name="onItemClickListener" type="android.widget.AdapterView.OnItemClickListener"/>
+
+        <variable
+            name="adapter"
+            type="android.widget.BaseAdapter" />
+
+        <variable
+            name="onItemClickListener"
+            type="android.widget.AdapterView.OnItemClickListener" />
     </data>
 
     <RelativeLayout
@@ -19,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:adapter="@{adapter}"
-            app:onItemClickListener="@{onItemClickListener}"/>
+            app:onItemClickListener="@{onItemClickListener}" />
 
     </RelativeLayout>
 </layout>

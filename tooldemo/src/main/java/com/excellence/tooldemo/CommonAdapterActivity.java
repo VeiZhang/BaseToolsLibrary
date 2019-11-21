@@ -3,7 +3,6 @@ package com.excellence.tooldemo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,6 +16,8 @@ import com.excellence.basetoolslibrary.utils.ActivityUtils;
 import com.excellence.basetoolslibrary.utils.AppUtils;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CommonAdapterActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 

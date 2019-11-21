@@ -2,9 +2,6 @@ package com.excellence.basetoolslibrary.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.AnyRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
 import android.util.Log;
 
 import java.io.File;
@@ -12,6 +9,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Locale;
+
+import androidx.annotation.AnyRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringDef;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 import static com.excellence.basetoolslibrary.utils.FileIOUtils.copyFile;

@@ -2,15 +2,16 @@ package com.excellence.tooldemo;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.excellence.basetoolslibrary.pageradapter.BasePagerAdapter;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 public class ViewPagerAdapterActivity extends AppCompatActivity {
-    
+
     private ViewPager mViewPager = null;
     private NumAdapter mAdapter = null;
     private int mPageCount = 1;

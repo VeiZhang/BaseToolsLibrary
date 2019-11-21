@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="flower" type="com.excellence.tooldemo.bean.databinding.Flower"/>
+
+        <variable
+            name="flower"
+            type="com.excellence.tooldemo.bean.databinding.Flower" />
     </data>
 
     <RelativeLayout
@@ -20,7 +22,7 @@
             android:layout_height="80dp"
             android:layout_centerVertical="true"
             android:onClick="@{flower.onImageClick}"
-            app:img="@{flower.iconRes}"/>
+            app:img="@{flower.iconRes}" />
 
         <TextView
             android:id="@+id/text"
@@ -32,7 +34,7 @@
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
-            android:text="@{flower.name}"/>
+            android:text="@{flower.name}" />
 
     </RelativeLayout>
 </layout>

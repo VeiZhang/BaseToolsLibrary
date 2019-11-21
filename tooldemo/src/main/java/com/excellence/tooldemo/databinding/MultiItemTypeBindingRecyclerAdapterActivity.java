@@ -1,9 +1,6 @@
 package com.excellence.tooldemo.databinding;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 
 import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter;
 import com.excellence.tooldemo.R;
@@ -15,6 +12,10 @@ import com.excellence.tooldemo.databinding.MultiItemTypeBindingAdapterActivity.T
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class MultiItemTypeBindingRecyclerAdapterActivity extends AppCompatActivity {
 

@@ -7,11 +7,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.v4.content.FileProvider;
 import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.util.ArrayList;
+
+import androidx.core.content.FileProvider;
 
 import static com.excellence.basetoolslibrary.utils.FileUtils.isFileExists;
 

@@ -6,11 +6,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
 import android.view.WindowManager;
 
 import java.util.List;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
 
 /**
  * <pre>

@@ -9,9 +9,9 @@ android {
 dependencies {
     /**可以使用远程库或者使用本地Module Library*/
     /**远程库**/
-    // compile 'com.excellence:basetools:_latestVersion'
+    // implementation 'com.excellence:basetools:_latestVersion'
     /**或者使用+，自动使用最新依赖包**/
-    // compile 'com.excellence:basetools:+'
+    // implementation 'com.excellence:basetools:+'
     /**本地Library**/
-    compile project(':basetoolslibrary')
+    implementation project(':basetoolslibrary')
 }

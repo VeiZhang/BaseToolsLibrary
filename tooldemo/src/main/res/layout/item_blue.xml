@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/portrait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/blue"/>
+        android:src="@drawable/blue" />
 
     <TextView
         android:id="@+id/blue_text"
@@ -16,5 +16,5 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/portrait"
         android:textColor="@android:color/holo_blue_light"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 </RelativeLayout>

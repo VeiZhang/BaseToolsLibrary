@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="rose" type="com.excellence.tooldemo.bean.databinding.Rose"/>
+
+        <variable
+            name="rose"
+            type="com.excellence.tooldemo.bean.databinding.Rose" />
     </data>
 
     <RelativeLayout
@@ -15,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/image"
-            android:text="@{rose.name}"/>
+            android:text="@{rose.name}" />
 
         <ImageView
             android:id="@+id/image"
@@ -23,7 +27,7 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            app:img="@{rose.iconRes}"/>
+            app:img="@{rose.iconRes}" />
 
     </RelativeLayout>
 </layout>

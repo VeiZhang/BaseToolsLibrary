@@ -1,7 +1,6 @@
 package com.excellence.tooldemo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +15,8 @@ import com.excellence.tooldemo.bean.PurpleData;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MultiItemAdapterActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 

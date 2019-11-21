@@ -1,11 +1,12 @@
 package com.excellence.basetoolslibrary.utils;
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+
+import androidx.annotation.NonNull;
 
 /**
  * <pre>

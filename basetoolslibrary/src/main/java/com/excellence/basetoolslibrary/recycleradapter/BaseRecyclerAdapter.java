@@ -1,10 +1,11 @@
 package com.excellence.basetoolslibrary.recycleradapter;
 
-import android.support.annotation.LayoutRes;
 import android.view.ViewGroup;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * <pre>

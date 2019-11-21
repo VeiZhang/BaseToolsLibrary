@@ -1,8 +1,8 @@
 package com.excellence.basetoolslibrary.baseadapter.base;
 
-import android.support.v4.util.SparseArrayCompat;
-
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder;
+
+import androidx.collection.SparseArrayCompat;
 
 /**
  * <pre>

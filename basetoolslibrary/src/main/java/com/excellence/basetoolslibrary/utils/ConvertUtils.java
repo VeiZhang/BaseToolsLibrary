@@ -1,13 +1,13 @@
 package com.excellence.basetoolslibrary.utils;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Size;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Size;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 

@@ -1,8 +1,8 @@
 package com.excellence.basetoolslibrary.recycleradapter.base;
 
-import android.support.annotation.LayoutRes;
-
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * <pre>

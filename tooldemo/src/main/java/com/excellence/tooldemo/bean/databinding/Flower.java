@@ -1,13 +1,14 @@
 package com.excellence.tooldemo.bean.databinding;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.excellence.tooldemo.BR;
+
+import androidx.annotation.DrawableRes;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 
 /**
  * <pre>

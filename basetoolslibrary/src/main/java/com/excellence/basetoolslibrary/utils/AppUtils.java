@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
-import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 
 import java.io.File;
@@ -22,6 +21,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.annotation.Nullable;
 
 /**
  * <pre>

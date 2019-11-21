@@ -1,11 +1,12 @@
 package com.excellence.basetoolslibrary.baseadapter;
 
-import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * <pre>

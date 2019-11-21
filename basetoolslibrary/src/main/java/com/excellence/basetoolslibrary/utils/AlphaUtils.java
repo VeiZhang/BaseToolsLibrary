@@ -81,7 +81,7 @@ public class AlphaUtils {
      * @param dialogFragment
      * @param alpha
      */
-    public static void setAlpha(android.support.v4.app.DialogFragment dialogFragment, float alpha) {
+    public static void setAlpha(androidx.fragment.app.DialogFragment dialogFragment, float alpha) {
         if (dialogFragment == null) {
             return;
         }
