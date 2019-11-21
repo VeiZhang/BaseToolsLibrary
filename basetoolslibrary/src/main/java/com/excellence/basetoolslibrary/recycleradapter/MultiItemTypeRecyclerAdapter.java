@@ -121,7 +121,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItemViewType(position));
-        delegate.convert(holder, mData.get(position), position);
+        delegate.convert(holder, getItem(position), position);
         setViewListener(holder, position);
     }
 

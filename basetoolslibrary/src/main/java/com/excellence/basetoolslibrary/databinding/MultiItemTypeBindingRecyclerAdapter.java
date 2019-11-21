@@ -130,7 +130,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
-        binding.setVariable(delegate.getItemVariable(), mData.get(position));
+        binding.setVariable(delegate.getItemVariable(), getItem(position));
         binding.executePendingBindings();
         setViewListener(binding, position);
     }

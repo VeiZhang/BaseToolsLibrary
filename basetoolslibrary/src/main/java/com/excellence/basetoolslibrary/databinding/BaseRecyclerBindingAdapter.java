@@ -43,7 +43,7 @@ public class BaseRecyclerBindingAdapter<T> extends MultiItemTypeBindingRecyclerA
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         ViewDataBinding binding = holder.getBinding();
-        binding.setVariable(mVariableId, mData.get(position));
+        binding.setVariable(mVariableId, getItem(position));
         binding.executePendingBindings();
         setViewListener(binding, position);
     }

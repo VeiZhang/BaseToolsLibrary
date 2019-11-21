@@ -46,7 +46,7 @@ public abstract class BaseRecyclerAdapter<T> extends MultiItemTypeRecyclerAdapte
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        convert(holder, mData.get(position), position);
+        convert(holder, getItem(position), position);
         setViewListener(holder, position);
     }
 
