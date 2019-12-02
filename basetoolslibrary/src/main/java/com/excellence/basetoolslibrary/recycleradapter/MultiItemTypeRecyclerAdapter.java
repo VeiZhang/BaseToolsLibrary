@@ -226,6 +226,19 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     }
 
     /**
+     * {@link RecyclerView.Adapter#notifyDataSetChanged()}处理焦点问题
+     *
+     * @param data
+     */
+    public void notifyData(List<T> data) {
+        mData.clear();
+        if (data != null) {
+            mData.addAll(data);
+        }
+        notifyDataSetChanged();
+    }
+
+    /**
      * 新数据集替代旧数据集，刷新视图
      * {@link #notifyDataSetChanged()} 没有动画效果，刷新效率比不上下面方法（伴有动画效果：闪烁）
      * 位置不会刷新的方法，使用{@link #notifyItemRangeChanged}替代
