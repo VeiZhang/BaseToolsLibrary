@@ -7,10 +7,15 @@ import android.view.ViewGroup;
 import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegateManager;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+
+import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
 /**
  * <pre>
@@ -184,6 +189,18 @@ public abstract class MultiItemTypeRecyclerListAdapter<T> extends ListAdapter<T,
 
     public void setOnItemKeyListener(OnItemKeyListener onItemKeyListener) {
         mOnItemKeyListener = onItemKeyListener;
+    }
+
+    @Override
+    public void submitList(@Nullable List<T> list) {
+        if (isEmpty(list)) {
+            /**
+             * 当list为空或者size为0时，使用null清空快速
+             */
+            super.submitList(null);
+        } else {
+            super.submitList(list);
+        }
     }
 
 }

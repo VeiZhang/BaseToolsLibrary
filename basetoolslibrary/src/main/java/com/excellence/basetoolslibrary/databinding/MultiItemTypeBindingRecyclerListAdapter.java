@@ -9,13 +9,18 @@ import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerL
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
 /**
  * <pre>
@@ -195,6 +200,18 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
 
     public void setOnItemFocusChangeListener(OnItemFocusChangeListener listener) {
         mOnItemFocusChangeListener = listener;
+    }
+
+    @Override
+    public void submitList(@Nullable List<T> list) {
+        if (isEmpty(list)) {
+            /**
+             * 当list为空或者size为0时，使用null清空快速
+             */
+            super.submitList(null);
+        } else {
+            super.submitList(list);
+        }
     }
 
     /**
