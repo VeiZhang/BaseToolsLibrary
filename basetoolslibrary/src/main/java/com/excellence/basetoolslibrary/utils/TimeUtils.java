@@ -84,6 +84,29 @@ public class TimeUtils {
     }
 
     /**
+     * 时间戳转时间字符串
+     * <p>自定时间格式</p>
+     *
+     * @param sec 秒时间戳
+     * @param pattern 自定时间格式
+     * @return 时间字符串
+     */
+    public static String sec2String(long sec, String pattern) {
+        return createSimpleDateFormat(pattern).format(new Date(sec));
+    }
+
+    /**
+     * 时间戳转时间字符串
+     * <p>默认时间格式</p>
+     *
+     * @param sec 秒时间戳
+     * @return 时间字符串
+     */
+    public static String sec2String(long sec) {
+        return millisec2String(sec, DEFAULT_PATTERN);
+    }
+
+    /**
      * 时间字符串转Date类型
      * <p>自定时间格式</p>
      *
