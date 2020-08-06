@@ -140,6 +140,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
         ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
         binding.setVariable(delegate.getItemVariable(), getItem(position));
+        delegate.convert(binding, getItem(position), position);
         binding.executePendingBindings();
         setViewListener(binding, position);
     }

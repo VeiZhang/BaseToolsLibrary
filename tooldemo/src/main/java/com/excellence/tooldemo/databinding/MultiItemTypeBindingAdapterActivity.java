@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingAdapter;
-import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
+import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateImp;
 import com.excellence.tooldemo.BR;
 import com.excellence.tooldemo.R;
 import com.excellence.tooldemo.bean.databinding.Flower;
@@ -51,7 +51,7 @@ public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity {
         });
     }
 
-    public static class RoseViewDelegate implements ItemViewDelegate<Flower> {
+    public static class RoseViewDelegate extends ItemViewDelegateImp<Flower> {
         @Override
         public int getItemViewLayoutId() {
             return R.layout.item_rose;
@@ -68,7 +68,7 @@ public class MultiItemTypeBindingAdapterActivity extends AppCompatActivity {
         }
     }
 
-    public static class TulipViewDelegate implements ItemViewDelegate<Flower> {
+    public static class TulipViewDelegate extends ItemViewDelegateImp<Flower> {
         @Override
         public int getItemViewLayoutId() {
             return R.layout.item_tulip;

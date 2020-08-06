@@ -1,6 +1,7 @@
 package com.excellence.basetoolslibrary.databinding.base;
 
 import androidx.annotation.LayoutRes;
+import androidx.databinding.ViewDataBinding;
 
 /**
  * <pre>
@@ -25,13 +26,6 @@ public interface ItemViewDelegate<T> {
     int getItemViewLayoutId();
 
     /**
-     * ViewDataBinding的设置项{@link android.databinding.ViewDataBinding#setVariable(int, Object)}
-     *
-     * @return variableId
-     */
-    int getItemVariable();
-
-    /**
      * 判断视图是否使用该类布局
      *
      * @param item 数据
@@ -40,4 +34,20 @@ public interface ItemViewDelegate<T> {
      */
     boolean isForViewType(T item, int position);
 
+    /**
+     * ViewDataBinding的设置项{@link androidx.databinding.ViewDataBinding#setVariable(int, Object)}
+     * 可搭配{@link #convert}
+     *
+     * @return variableId
+     */
+    int getItemVariable();
+
+    /**
+     * 初始化Item视图，可能需要单独处理
+     *
+     * @param binding
+     * @param item 数据
+     * @param position 位置
+     */
+    void convert(ViewDataBinding binding, T item, int position);
 }

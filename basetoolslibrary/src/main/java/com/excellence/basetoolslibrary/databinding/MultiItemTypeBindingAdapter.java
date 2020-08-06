@@ -158,6 +158,8 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
             binding = DataBindingUtil.getBinding(convertView);
         }
         binding.setVariable(delegate.getItemVariable(), getItem(position));
+        delegate.convert(binding, getItem(position), position);
+        binding.executePendingBindings();
         return binding.getRoot();
     }
 
