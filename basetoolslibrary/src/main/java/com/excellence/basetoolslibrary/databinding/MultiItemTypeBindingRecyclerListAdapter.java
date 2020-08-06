@@ -94,6 +94,16 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
     }
 
     /**
+     * 获取视图
+     *
+     * @param viewType 布局类型
+     * @return
+     */
+    public ItemViewDelegate<T> getItemViewDelegate(int viewType) {
+        return mItemViewDelegateManager.getItemViewDelegate(viewType);
+    }
+
+    /**
      * 判断视图是否可用
      *
      * @return {@code true}:是<br>{@code false}:否
@@ -127,7 +137,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItemViewType(position));
+        ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
         binding.setVariable(delegate.getItemVariable(), getItem(position));
         binding.executePendingBindings();

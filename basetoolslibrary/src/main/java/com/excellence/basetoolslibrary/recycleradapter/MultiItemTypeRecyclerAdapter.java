@@ -91,6 +91,16 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     }
 
     /**
+     * 获取视图
+     *
+     * @param viewType 布局类型
+     * @return
+     */
+    public ItemViewDelegate<T> getItemViewDelegate(int viewType) {
+        return mItemViewDelegateManager.getItemViewDelegate(viewType);
+    }
+
+    /**
      * 判断视图是否可用
      *
      * @return {@code true}:是<br>{@code false}:否
@@ -120,7 +130,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItemViewType(position));
+        ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         delegate.convert(holder, getItem(position), position);
         setViewListener(holder, position);
     }

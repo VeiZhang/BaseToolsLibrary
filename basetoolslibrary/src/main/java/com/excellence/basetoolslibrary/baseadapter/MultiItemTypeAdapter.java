@@ -84,6 +84,16 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
     }
 
     /**
+     * 获取视图
+     *
+     * @param viewType 布局类型
+     * @return
+     */
+    public ItemViewDelegate<T> getItemViewDelegate(int viewType) {
+        return mItemViewDelegateManager.getItemViewDelegate(viewType);
+    }
+
+    /**
      * 判断视图是否可用
      *
      * @return {@code true}:是<br>{@code false}:否
@@ -136,7 +146,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter implements DataHelper<T
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ItemViewDelegate<T> delegate = mItemViewDelegateManager.getItemViewDelegate(getItem(position), position);
+        ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         int layoutId = delegate.getItemViewLayoutId();
         ViewHolder viewHolder = ViewHolder.getViewHolder(parent.getContext(), convertView, parent, layoutId);
         delegate.convert(viewHolder, getItem(position), position);
