@@ -36,7 +36,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
-    implementation libs["appcompat-v7"]
     implementation libs["recyclerview-v7"]
     implementation libs["androidx-appcompat"]
 }
