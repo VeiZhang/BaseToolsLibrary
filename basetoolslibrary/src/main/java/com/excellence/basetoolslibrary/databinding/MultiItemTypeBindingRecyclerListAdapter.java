@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerListAdapter.RecyclerViewHolder;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
 
@@ -18,7 +17,6 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
@@ -179,22 +177,6 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         });
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(ViewDataBinding binding, View v, int position);
-    }
-
-    public interface OnItemLongClickListener {
-        boolean onItemLongClick(ViewDataBinding binding, View v, int position);
-    }
-
-    public interface OnItemFocusChangeListener {
-        void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position);
-    }
-
-    public interface OnItemKeyListener {
-        boolean onKey(ViewDataBinding binding, View v, int keyCode, KeyEvent event, int position);
-    }
-
     public void setOnItemKeyListener(OnItemKeyListener onItemKeyListener) {
         mOnItemKeyListener = onItemKeyListener;
     }
@@ -223,21 +205,4 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         }
     }
 
-    /**
-     * 注意添加 static ，否则没有Javadoc红色错误，但是在编译时会报“方法不会覆盖或实现超类型的方法”的异常
-     *
-     * DataBinding可以直接设置控件属性，无需 {@link com.excellence.basetoolslibrary.helper.ViewHelper}
-     */
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        private ViewDataBinding mBinding = null;
-
-        public RecyclerViewHolder(ViewDataBinding dataBinding) {
-            super(dataBinding.getRoot());
-            mBinding = dataBinding;
-        }
-
-        public ViewDataBinding getBinding() {
-            return mBinding;
-        }
-    }
 }

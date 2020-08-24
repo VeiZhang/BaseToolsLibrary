@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.excellence.basetoolslibrary.recycleradapter.MultiItemTypeRecyclerAdapter;
+import com.excellence.basetoolslibrary.recycleradapter.OnItemClickListener;
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
 import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegate;
 import com.excellence.tooldemo.bean.BlueData;
@@ -18,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implements MultiItemTypeRecyclerAdapter.OnItemClickListener {
+public class MultiItemRecyclerAdapterActivity extends AppCompatActivity implements OnItemClickListener {
 
     private RecyclerView mRecyclerView = null;
     private WarAdapter mWarAdapter = null;

@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.excellence.basetoolslibrary.databinding.BaseRecyclerBindingAdapter;
-import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter;
+import com.excellence.basetoolslibrary.databinding.OnItemClickListener;
+import com.excellence.basetoolslibrary.databinding.OnItemFocusChangeListener;
+import com.excellence.basetoolslibrary.databinding.OnItemLongClickListener;
 import com.excellence.tooldemo.BR;
 import com.excellence.tooldemo.R;
 import com.excellence.tooldemo.bean.databinding.Flower;
@@ -39,14 +41,14 @@ public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity {
         BaseRecyclerBindingAdapter<Flower> adapter = new BaseRecyclerBindingAdapter<>(mFlowers, R.layout.item_flower, BR.flower);
         mBinding.setAdapter(adapter);
         mBinding.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setOnItemClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ViewDataBinding binding, View v, int position) {
                 Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "点击事件" + position, Toast.LENGTH_SHORT).show();
             }
         });
 
-        adapter.setOnItemLongClickListener(new MultiItemTypeBindingRecyclerAdapter.OnItemLongClickListener() {
+        adapter.setOnItemLongClickListener(new OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(ViewDataBinding binding, View v, int position) {
                 Toast.makeText(BaseRecyclerBindingAdapterActivity.this, "长按事件" + position, Toast.LENGTH_SHORT).show();
@@ -54,7 +56,7 @@ public class BaseRecyclerBindingAdapterActivity extends AppCompatActivity {
             }
         });
 
-        adapter.setOnItemFocusChangeListener(new MultiItemTypeBindingRecyclerAdapter.OnItemFocusChangeListener() {
+        adapter.setOnItemFocusChangeListener(new OnItemFocusChangeListener() {
             @Override
             public void onItemFocusChange(ViewDataBinding binding, View v, boolean hasFocus, int position) {
                 ItemFlowerBinding itemFlowerBinding = (ItemFlowerBinding) binding;

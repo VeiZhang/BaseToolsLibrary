@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter;
+import com.excellence.basetoolslibrary.recycleradapter.OnItemClickListener;
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder;
 import com.excellence.basetoolslibrary.utils.AppUtils;
 
@@ -18,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerAdapterActivity extends AppCompatActivity implements View.OnClickListener, BaseRecyclerAdapter.OnItemClickListener {
+public class RecyclerAdapterActivity extends AppCompatActivity implements View.OnClickListener, OnItemClickListener {
 
     private static final String TAG = RecyclerAdapterActivity.class.getSimpleName();
 

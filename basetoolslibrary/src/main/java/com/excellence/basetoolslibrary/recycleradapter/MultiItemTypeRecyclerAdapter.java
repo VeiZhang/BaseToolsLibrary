@@ -171,22 +171,6 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         });
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(RecyclerViewHolder viewHolder, View v, int position);
-    }
-
-    public interface OnItemLongClickListener {
-        boolean onItemLongClick(RecyclerViewHolder viewHolder, View v, int position);
-    }
-
-    public interface OnItemFocusChangeListener {
-        void onItemFocusChange(RecyclerViewHolder viewHolder, View v, boolean hasFocus, int position);
-    }
-
-    public interface OnItemKeyListener {
-        boolean onKey(RecyclerViewHolder viewHolder, View v, int keyCode, KeyEvent event, int position);
-    }
-
     public void setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
     }
