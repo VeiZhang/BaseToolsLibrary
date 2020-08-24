@@ -708,6 +708,7 @@ getEntryName       : 解析资源名
 getTypeName        : 解析资源类型名
 getPackageName     : 解析资源的包名
 getIdentifier      : 获取资源Id
+getIdentifiers     : 遍历读取资源Id
 copyFileFromAssets : 拷贝assets文件到指定目录
 copyFileFromRaw    : 拷贝raw资源到指定目录文件
 readAsset          : 读取asset文件转字符串
@@ -751,7 +752,8 @@ getLinuxKernelVersion : 读取kernel版本
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
 ```
-millisec2String        : 时间戳转时间字符串
+millisec2String        : 毫秒时间戳转时间字符串
+sec2String             : 秒时间戳转时间字符串
 string2Date            : 时间字符串转Date类型
 string2Millisec        : 时间字符串转毫秒时间戳
 date2String            : Date转时间字符串

@@ -4,10 +4,15 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 
+import com.excellence.basetoolslibrary.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.AnyRes;
@@ -15,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringDef;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
+import static com.excellence.basetoolslibrary.utils.EmptyUtils.isNotEmpty;
 import static com.excellence.basetoolslibrary.utils.FileIOUtils.copyFile;
 import static com.excellence.basetoolslibrary.utils.FileIOUtils.readFile2Bytes;
 
@@ -63,8 +69,8 @@ public class ResourceUtils {
 
     /**
      * 解析资源类型名
-     * 例如：R.string.app_name
-     * 结果：string
+     * 例如：R.drawable.app_name
+     * 结果：drawable
      *
      * @see #getName
      *
@@ -96,14 +102,19 @@ public class ResourceUtils {
      * @see #getName
      *
      * @param context 上下文
-     * @param name 资源名
+     * @param entryName 资源名
      * @param type 资源类型名
      * @param packageName 包名
      * @param def 默认资源
      * @return 0表示没有该资源
      */
-    public static int getIdentifier(Context context, String name, String type, String packageName, int def) {
-        int res = context.getResources().getIdentifier(name, type, packageName);
+    public static int getIdentifier(Context context, String entryName, String type, String packageName, int def) {
+        int res = def;
+        try {
+            res = context.getResources().getIdentifier(entryName, type, packageName);
+        } catch (Exception e) {
+            Log.e(TAG, "getIdentifier: ", e);
+        }
         return res == 0 ? def : res;
     }
 
@@ -112,13 +123,81 @@ public class ResourceUtils {
      * @see #getName
      *
      * @param context
-     * @param name
+     * @param entryName
      * @param type
      * @param def
      * @return
      */
-    public static int getIdentifier(Context context, String name, String type, int def) {
-        return getIdentifier(context, name, type, context.getPackageName(), def);
+    public static int getIdentifier(Context context, String entryName, String type, int def) {
+        return getIdentifier(context, entryName, type, context.getPackageName(), def);
+    }
+
+    /**
+     * 遍历读取 R 资源列表
+     *
+     * @param context
+     * @param type
+     * @param rPackageName 因为Lib$R 与 App$R 区别，Lib$R 拿不到App里面的资源，需要App$R
+     * @param prefix 资源文件过滤条件，前缀
+     * @return
+     */
+    public static List<Integer> getIdentifiers(Context context, String type, String rPackageName,
+                                               String prefix) {
+        Class desireClass = R.drawable.class;
+        List<Integer> resList = new ArrayList<>();
+
+        try {
+            Class r = Class.forName(rPackageName);
+            Class[] classes = r.getClasses();
+            for (int i = 0; i < classes.length; ++i) {
+                /**
+                 * com.excellence.R$drawable -> drawable
+                 * 过滤出需要的资源类型
+                 */
+                if (classes[i].getName().split("\\$")[1].equals(type)) {
+                    desireClass = classes[i];
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "getIdentifier: ", e);
+        }
+
+        Field[] fields = desireClass.getDeclaredFields();
+
+        if (isNotEmpty(prefix)) {
+            for (Field field : fields) {
+                if (field.getName().startsWith(prefix)) {
+                    int resId = getIdentifier(context, field.getName(), type, 0);
+                    if (resId != 0) {
+                        resList.add(resId);
+                    }
+                }
+            }
+        } else {
+            for (Field field : fields) {
+                /**
+                 * field.getName() -> resource entryName
+                 */
+                int resId = getIdentifier(context, field.getName(), type, 0);
+                if (resId != 0) {
+                    resList.add(resId);
+                }
+            }
+        }
+        return resList;
+    }
+
+    /**
+     * 遍历Context对应的 R 资源列表
+     *
+     * @param context
+     * @param type
+     * @return
+     */
+    public static List<Integer> getIdentifiers(Context context, String type) {
+        String rPackageName = context.getPackageName() + ".R";
+        return getIdentifiers(context, type, rPackageName, null);
     }
 
     /**
@@ -248,19 +327,19 @@ public class ResourceUtils {
      * R.drawable.icon
      *
      * @param context
-     * @param targetName target resource entry name -> icon
+     * @param entryName target resource entry name -> icon
      * @param packageName package name
      * @param def default resource when target resource is empty
      * @param type resource type name -> drawable
      * @return resource id
      */
-    public static Loader getIdentifier(Context context, String targetName, String packageName, int def, @Type String type) {
+    public static Loader getIdentifier(Context context, String entryName, String packageName, int def, @Type String type) {
         Resources skinResources = null;
         int resId = 0;
         try {
             Context skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
             skinResources = skinContext.getResources();
-            resId = skinResources.getIdentifier(targetName, type, packageName);
+            resId = skinResources.getIdentifier(entryName, type, packageName);
             Log.i(TAG, "getIdentifier: " + resId);
         } catch (Exception e) {
             Log.e(TAG, "getIdentifier: " + e.getMessage());
@@ -276,13 +355,13 @@ public class ResourceUtils {
      * 跨APP进程，读取其他应用里面的资源：读取资源id，匹配多个type，直到找到第一个资源文件
      *
      * @param context
-     * @param targetName target resource entry name
+     * @param entryName target resource entry name
      * @param packageName package name
      * @param def default resource when target resource is empty
      * @param types resource type names
      * @return
      */
-    public static Loader getIdentifier(Context context, String targetName, String packageName, int def, @Type String... types) {
+    public static Loader getIdentifier(Context context, String entryName, String packageName, int def, @Type String... types) {
         Resources skinResources = null;
         int resId = 0;
 
@@ -290,7 +369,7 @@ public class ResourceUtils {
             Context skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
             skinResources = skinContext.getResources();
             for (String type : types) {
-                resId = skinResources.getIdentifier(targetName, type, packageName);
+                resId = skinResources.getIdentifier(entryName, type, packageName);
                 if (resId != 0) {
                     break;
                 }
