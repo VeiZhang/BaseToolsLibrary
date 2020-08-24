@@ -10,7 +10,6 @@ import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
 
 import java.util.List;
 
-import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -18,7 +17,6 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
@@ -38,7 +36,6 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
     private OnItemLongClickListener mOnItemLongClickListener = null;
     private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
     private int mSelectedItemPosition = -1;
-    private List<T> mList;
 
     public MultiItemTypeBindingRecyclerListAdapter(@NonNull DiffUtil.ItemCallback<T> diffCallback) {
         super(diffCallback);
@@ -127,10 +124,6 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         return super.getItem(position);
     }
 
-    public int getItemPosition(T item) {
-        return mList == null ? -1 : mList.indexOf(item);
-    }
-
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -143,34 +136,28 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
-        /**
-         * 1.重写该方法时，position正确，但是{@link #setViewListener(ViewDataBinding, Object)}要传入Item，而不是position
-         *
-         * 2.当submitList改变列表时，监听事件里面的position不对，需要纠正，
-         * 可以用 {@link RecyclerView#getChildAdapterPosition(View)}
-         *
-         * 为了纠正position，不使用提供的position，而使用{@link List#indexOf(Object)}
-         */
+
         T item = getItem(position);
         binding.setVariable(delegate.getItemVariable(), item);
         delegate.convert(binding, item, position);
         binding.executePendingBindings();
-        setViewListener(binding, item);
+        setViewListener(holder, position);
     }
 
-    @CallSuper
-    protected void setViewListener(final ViewDataBinding binding, final T item) {
+    protected void setViewListener(final RecyclerViewHolder holder, int position) {
+        final ViewDataBinding binding = holder.getBinding();
         View itemView = binding.getRoot();
 
         /**
-         * 为了纠正position，不使用提供的position，而使用{@link List#indexOf(Object)}
+         * 如果执行了submitList增减，则当监听事件时，position就是错误的
+         * 此时应该使用{@link RecyclerViewHolder#getAdapterPosition()} 纠正
          */
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(binding, v, getItemPosition(item));
+                    mOnItemClickListener.onItemClick(binding, v, holder.getAdapterPosition());
                 }
             }
         });
@@ -179,14 +166,14 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
             @Override
             public boolean onLongClick(View v) {
                 return mOnItemLongClickListener != null
-                        && mOnItemLongClickListener.onItemLongClick(binding, v, getItemPosition(item));
+                        && mOnItemLongClickListener.onItemLongClick(binding, v, holder.getAdapterPosition());
             }
         });
 
         itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                int position = getItemPosition(item);
+                int position = holder.getAdapterPosition();
                 mSelectedItemPosition = hasFocus ? position : -1;
                 if (mOnItemFocusChangeListener != null) {
                     mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
@@ -198,7 +185,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 return mOnItemKeyListener != null
-                        && mOnItemKeyListener.onKey(binding, v, keyCode, event, getItemPosition(item));
+                        && mOnItemKeyListener.onKey(binding, v, keyCode, event, holder.getAdapterPosition());
             }
         });
     }
@@ -234,10 +221,8 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
             /**
              * 当list为空或者size为0时，使用null清空快速
              */
-            mList = null;
             super.submitList(null);
         } else {
-            mList = list;
             super.submitList(list);
         }
     }

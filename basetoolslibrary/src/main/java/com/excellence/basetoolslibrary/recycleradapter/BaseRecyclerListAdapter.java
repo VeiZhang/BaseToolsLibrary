@@ -1,16 +1,12 @@
 package com.excellence.basetoolslibrary.recycleradapter;
 
-import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.List;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <pre>
@@ -42,17 +38,8 @@ public abstract class BaseRecyclerListAdapter<T> extends MultiItemTypeRecyclerLi
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        /**
-         * 1.重写该方法，position正确，但是{@link #setViewListener(RecyclerViewHolder, Object)}要传入Item，而不是position
-         *
-         * 2.当submitList改变列表时，监听事件里面的position不对，需要纠正，
-         * 可以用 {@link RecyclerView#getChildAdapterPosition(View)}
-         *
-         * 为了纠正position，不使用提供的position，而使用{@link List#indexOf(Object)}
-         */
-        T item = getItem(position);
-        convert(holder, item, position);
-        setViewListener(holder, item);
+        convert(holder, getItem(position), position);
+        setViewListener(holder, position);
     }
 
     public abstract void convert(RecyclerViewHolder viewHolder, T item, int position);
