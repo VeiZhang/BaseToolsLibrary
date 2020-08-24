@@ -48,6 +48,8 @@ public class ResourceUtils {
 
     /**
      * 解析资源名
+     * 例如：R.string.app_name
+     * 结果：app_name
      *
      * @see #getName
      *
@@ -61,6 +63,8 @@ public class ResourceUtils {
 
     /**
      * 解析资源类型名
+     * 例如：R.string.app_name
+     * 结果：string
      *
      * @see #getName
      *
@@ -74,6 +78,9 @@ public class ResourceUtils {
 
     /**
      * 解析资源的包名
+     * 例如：R.string.app_name
+     * 结果：com.excellence.tooldemo
+     *
      * @see #getName
      *
      * @param context 上下文
@@ -92,10 +99,26 @@ public class ResourceUtils {
      * @param name 资源名
      * @param type 资源类型名
      * @param packageName 包名
+     * @param def 默认资源
      * @return 0表示没有该资源
      */
-    public static int getIdentifier(Context context, String name, String type, String packageName) {
-        return context.getResources().getIdentifier(name, type, packageName);
+    public static int getIdentifier(Context context, String name, String type, String packageName, int def) {
+        int res = context.getResources().getIdentifier(name, type, packageName);
+        return res == 0 ? def : res;
+    }
+
+    /**
+     * 获取资源Id
+     * @see #getName
+     *
+     * @param context
+     * @param name
+     * @param type
+     * @param def
+     * @return
+     */
+    public static int getIdentifier(Context context, String name, String type, int def) {
+        return getIdentifier(context, name, type, context.getPackageName(), def);
     }
 
     /**
@@ -238,7 +261,7 @@ public class ResourceUtils {
             Context skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY);
             skinResources = skinContext.getResources();
             resId = skinResources.getIdentifier(targetName, type, packageName);
-            Log.i(TAG, "getIdentifier: " + resId + " -- " + skinResources.getString(resId));
+            Log.i(TAG, "getIdentifier: " + resId);
         } catch (Exception e) {
             Log.e(TAG, "getIdentifier: " + e.getMessage());
         }
@@ -285,12 +308,15 @@ public class ResourceUtils {
 
     public static class Loader {
 
-        public Resources mResources;
-        public int mResId;
+        /**
+         * 跨进度App的资源对象，需要使用它的Resources去加载资源，不能用本应用的Resource，否则无法成功显示
+         */
+        public Resources resources;
+        public int resId;
 
         public Loader(Resources skinResources, int resId) {
-            mResources = skinResources;
-            mResId = resId;
+            this.resources = skinResources;
+            this.resId = resId;
         }
     }
 
