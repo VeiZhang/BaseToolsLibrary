@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    private ViewDataBinding mBinding = null;
+    protected ViewDataBinding mBinding = null;
 
     public RecyclerViewHolder(ViewDataBinding dataBinding) {
         super(dataBinding.getRoot());
