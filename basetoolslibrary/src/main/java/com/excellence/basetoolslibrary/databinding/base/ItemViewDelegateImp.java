@@ -10,23 +10,15 @@ import androidx.databinding.ViewDataBinding;
  *     desc   : binding可能需要单独的convertItemView
  * </pre> 
  */
-public class ItemViewDelegateImp<T> implements ItemViewDelegate<T> {
+public abstract class ItemViewDelegateImp<T> implements ItemViewDelegate<T> {
 
-    @Override
-    public int getItemViewLayoutId() {
-        return 0;
-    }
-
-    @Override
-    public boolean isForViewType(T item, int position) {
-        return false;
-    }
-
-    @Override
-    public int getItemVariable() {
-        return 0;
-    }
-
+    /**
+     * 如果有额外的处理
+     *
+     * @param binding
+     * @param item 数据
+     * @param position 位置
+     */
     @Override
     public void convert(ViewDataBinding binding, T item, int position) {
 
