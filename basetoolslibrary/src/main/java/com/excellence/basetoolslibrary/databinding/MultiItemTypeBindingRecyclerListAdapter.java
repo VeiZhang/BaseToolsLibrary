@@ -30,7 +30,7 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
  *     desc   : 开启dataBinding，多种类型布局RecyclerView {@link ListAdapter}通用适配器
  * </pre> 
  */
-public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends RecyclerViewHolder> extends ListAdapter<T, VH> {
+public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
 
     private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
     private OnItemKeyListener mOnItemKeyListener = null;
@@ -54,7 +54,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
      * @param delegate 视图
      * @return
      */
-    public MultiItemTypeBindingRecyclerListAdapter<T, VH> addItemViewDelegate(ItemViewDelegate<T> delegate) {
+    public MultiItemTypeBindingRecyclerListAdapter<T> addItemViewDelegate(ItemViewDelegate<T> delegate) {
         mItemViewDelegateManager.addDelegate(delegate);
         return this;
     }
@@ -66,7 +66,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
      * @param delegate 视图
      * @return
      */
-    public MultiItemTypeBindingRecyclerListAdapter<T, VH> addItemViewDelegate(int viewType, ItemViewDelegate<T> delegate) {
+    public MultiItemTypeBindingRecyclerListAdapter<T> addItemViewDelegate(int viewType, ItemViewDelegate<T> delegate) {
         mItemViewDelegateManager.addDelegate(viewType, delegate);
         return this;
     }
@@ -77,7 +77,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
      * @param delegate 视图
      * @return
      */
-    public MultiItemTypeBindingRecyclerListAdapter<T, VH> removeItemViewDelegate(ItemViewDelegate<T> delegate) {
+    public MultiItemTypeBindingRecyclerListAdapter<T> removeItemViewDelegate(ItemViewDelegate<T> delegate) {
         mItemViewDelegateManager.removeDelegate(delegate);
         return this;
     }
@@ -88,7 +88,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
      * @param viewType 布局类型
      * @return
      */
-    public MultiItemTypeBindingRecyclerListAdapter<T, VH> removeItemViewDelegate(int viewType) {
+    public MultiItemTypeBindingRecyclerListAdapter<T> removeItemViewDelegate(int viewType) {
         mItemViewDelegateManager.removeDelegate(viewType);
         return this;
     }
@@ -127,16 +127,14 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T, VH extends Recy
 
     @NonNull
     @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType);
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId, parent, false);
-        return onCreateViewHolder(binding);
+        return new RecyclerViewHolder(binding);
     }
 
-    protected abstract VH onCreateViewHolder(ViewDataBinding binding);
-
     @Override
-    public void onBindViewHolder(@NonNull VH holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
         binding.setVariable(delegate.getItemVariable(), getItem(position));

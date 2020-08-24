@@ -3,8 +3,6 @@ package com.excellence.basetoolslibrary.databinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerListAdapter.RecyclerViewHolder;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -20,7 +18,7 @@ import androidx.recyclerview.widget.DiffUtil;
  *     desc   :
  * </pre> 
  */
-public abstract class BaseRecyclerBindingListAdapter<T, VH extends RecyclerViewHolder> extends MultiItemTypeBindingRecyclerListAdapter<T, VH> {
+public abstract class BaseRecyclerBindingListAdapter<T> extends MultiItemTypeBindingRecyclerListAdapter<T> {
 
     private int mLayoutId;
     private int mVariableId;
@@ -39,13 +37,13 @@ public abstract class BaseRecyclerBindingListAdapter<T, VH extends RecyclerViewH
 
     @NonNull
     @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), mLayoutId, parent, false);
-        return onCreateViewHolder(binding);
+        return new RecyclerViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         ViewDataBinding binding = holder.getBinding();
         binding.setVariable(mVariableId, getItem(position));
         binding.executePendingBindings();
