@@ -45,6 +45,6 @@ public class BaseRecyclerBindingAdapter<T> extends MultiItemTypeBindingRecyclerA
         ViewDataBinding binding = holder.getBinding();
         binding.setVariable(mVariableId, getItem(position));
         binding.executePendingBindings();
-        setViewListener(binding, position);
+        setViewListener(holder, position);
     }
 }

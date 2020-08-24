@@ -138,19 +138,28 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
-        binding.setVariable(delegate.getItemVariable(), getItem(position));
-        delegate.convert(binding, getItem(position), position);
+
+        T item = getItem(position);
+        binding.setVariable(delegate.getItemVariable(), item);
+        delegate.convert(binding, item, position);
         binding.executePendingBindings();
-        setViewListener(binding, position);
+        setViewListener(holder, position);
     }
 
-    protected void setViewListener(final ViewDataBinding binding, final int position) {
+    protected void setViewListener(final RecyclerViewHolder holder, int position) {
+        final ViewDataBinding binding = holder.getBinding();
         View itemView = binding.getRoot();
+
+        /**
+         * 如果执行了submitList增减，则当监听事件时，position就是错误的
+         * 此时应该使用{@link RecyclerViewHolder#getAdapterPosition()} 纠正
+         */
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(binding, v, position);
+                    mOnItemClickListener.onItemClick(binding, v, holder.getAdapterPosition());
                 }
             }
         });
@@ -158,13 +167,15 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
         itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                return mOnItemLongClickListener != null && mOnItemLongClickListener.onItemLongClick(binding, v, position);
+                return mOnItemLongClickListener != null
+                        && mOnItemLongClickListener.onItemLongClick(binding, v, holder.getAdapterPosition());
             }
         });
 
         itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                int position = holder.getAdapterPosition();
                 mSelectedItemPosition = hasFocus ? position : -1;
                 if (mOnItemFocusChangeListener != null) {
                     mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
@@ -175,7 +186,8 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
         itemView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                return mOnItemKeyListener != null && mOnItemKeyListener.onKey(binding, v, keyCode, event, position);
+                return mOnItemKeyListener != null
+                        && mOnItemKeyListener.onKey(binding, v, keyCode, event, holder.getAdapterPosition());
             }
         });
     }
