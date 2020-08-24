@@ -10,6 +10,7 @@ import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
 
 import java.util.List;
 
+import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -17,6 +18,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
 
@@ -25,8 +27,8 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
  *     author : VeiZhang
  *     blog   : http://tiimor.cn
  *     time   : 2019/11/14
- *     desc   : 开启dataBinding，多种类型布局RecyclerView {@link ListAdapter}通用适配器
- * </pre> 
+ *     desc   : 开启dataBinding，多种类型布局RecyclerView {@link ListAdapter}通用适配器，继承{@link ListAdapter}，使用内部的Diff
+ * </pre>
  */
 public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
 
@@ -35,6 +37,8 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
     private OnItemClickListener mOnItemClickListener = null;
     private OnItemLongClickListener mOnItemLongClickListener = null;
     private OnItemFocusChangeListener mOnItemFocusChangeListener = null;
+    private int mSelectedItemPosition = -1;
+    private List<T> mList;
 
     public MultiItemTypeBindingRecyclerListAdapter(@NonNull DiffUtil.ItemCallback<T> diffCallback) {
         super(diffCallback);
@@ -123,6 +127,10 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         return super.getItem(position);
     }
 
+    public int getItemPosition(T item) {
+        return mList == null ? -1 : mList.indexOf(item);
+    }
+
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -135,20 +143,34 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         ItemViewDelegate<T> delegate = getItemViewDelegate(getItemViewType(position));
         ViewDataBinding binding = holder.getBinding();
-        binding.setVariable(delegate.getItemVariable(), getItem(position));
-        delegate.convert(binding, getItem(position), position);
+        /**
+         * 1.重写该方法时，position正确，但是{@link #setViewListener(ViewDataBinding, Object)}要传入Item，而不是position
+         *
+         * 2.当submitList改变列表时，监听事件里面的position不对，需要纠正，
+         * 可以用 {@link RecyclerView#getChildAdapterPosition(View)}
+         *
+         * 为了纠正position，不使用提供的position，而使用{@link List#indexOf(Object)}
+         */
+        T item = getItem(position);
+        binding.setVariable(delegate.getItemVariable(), item);
+        delegate.convert(binding, item, position);
         binding.executePendingBindings();
-        setViewListener(binding, position);
+        setViewListener(binding, item);
     }
 
-    protected void setViewListener(final ViewDataBinding binding, final int position) {
+    @CallSuper
+    protected void setViewListener(final ViewDataBinding binding, final T item) {
         View itemView = binding.getRoot();
+
+        /**
+         * 为了纠正position，不使用提供的position，而使用{@link List#indexOf(Object)}
+         */
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(binding, v, position);
+                    mOnItemClickListener.onItemClick(binding, v, getItemPosition(item));
                 }
             }
         });
@@ -156,13 +178,16 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                return mOnItemLongClickListener != null && mOnItemLongClickListener.onItemLongClick(binding, v, position);
+                return mOnItemLongClickListener != null
+                        && mOnItemLongClickListener.onItemLongClick(binding, v, getItemPosition(item));
             }
         });
 
         itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                int position = getItemPosition(item);
+                mSelectedItemPosition = hasFocus ? position : -1;
                 if (mOnItemFocusChangeListener != null) {
                     mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
                 }
@@ -172,7 +197,8 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         itemView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                return mOnItemKeyListener != null && mOnItemKeyListener.onKey(binding, v, keyCode, event, position);
+                return mOnItemKeyListener != null
+                        && mOnItemKeyListener.onKey(binding, v, keyCode, event, getItemPosition(item));
             }
         });
     }
@@ -193,14 +219,25 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         mOnItemFocusChangeListener = listener;
     }
 
+    /**
+     * 获取当前焦点位置
+     *
+     * @return -1表示没有焦点
+     */
+    public int getSelectedItemPosition() {
+        return mSelectedItemPosition;
+    }
+
     @Override
     public void submitList(@Nullable List<T> list) {
         if (isEmpty(list)) {
             /**
              * 当list为空或者size为0时，使用null清空快速
              */
+            mList = null;
             super.submitList(null);
         } else {
+            mList = list;
             super.submitList(list);
         }
     }
