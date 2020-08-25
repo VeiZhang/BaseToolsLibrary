@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
@@ -26,9 +27,13 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
  *     blog   : http://tiimor.cn
  *     time   : 2019/11/14
  *     desc   : 开启dataBinding，多种类型布局RecyclerView {@link ListAdapter}通用适配器，继承{@link ListAdapter}，使用内部的Diff
+ *
+ *              拓展：ViewDataBinding绑定生命周期LifecycleOwner [可选]
  * </pre>
  */
 public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
+
+    protected final LifecycleOwner mLifecycleOwner;
 
     private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
     private OnItemKeyListener mOnItemKeyListener = null;
@@ -38,12 +43,24 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
     private int mSelectedItemPosition = -1;
 
     public MultiItemTypeBindingRecyclerListAdapter(@NonNull DiffUtil.ItemCallback<T> diffCallback) {
-        super(diffCallback);
-        mItemViewDelegateManager = new ItemViewDelegateManager<>();
+        this(diffCallback, null);
     }
 
     public MultiItemTypeBindingRecyclerListAdapter(@NonNull AsyncDifferConfig<T> config) {
+        this(config, null);
+    }
+
+    public MultiItemTypeBindingRecyclerListAdapter(@NonNull DiffUtil.ItemCallback<T> diffCallback,
+                                                   LifecycleOwner lifecycleOwner) {
+        super(diffCallback);
+        mLifecycleOwner = lifecycleOwner;
+        mItemViewDelegateManager = new ItemViewDelegateManager<>();
+    }
+
+    public MultiItemTypeBindingRecyclerListAdapter(@NonNull AsyncDifferConfig<T> config,
+                                                   LifecycleOwner lifecycleOwner) {
         super(config);
+        mLifecycleOwner = lifecycleOwner;
         mItemViewDelegateManager = new ItemViewDelegateManager<>();
     }
 
@@ -124,12 +141,22 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
         return super.getItem(position);
     }
 
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerViewHolder holder) {
+        holder.markAttachedToWindow();
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull RecyclerViewHolder holder) {
+        holder.markDetachedFromWindow();
+    }
+
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType);
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId, parent, false);
-        return new RecyclerViewHolder(binding);
+        return RecyclerViewHolder.getViewHolder(binding, mLifecycleOwner);
     }
 
     @Override

@@ -10,11 +10,20 @@ package com.excellence.basetoolslibrary.databinding;
  */
 
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     protected ViewDataBinding mBinding = null;
+
+    public static RecyclerViewHolder getViewHolder(ViewDataBinding binding, LifecycleOwner lifecycleOwner) {
+        if (lifecycleOwner == null) {
+            return new RecyclerViewHolder(binding);
+        } else {
+            return new DataBoundViewHolder(binding, lifecycleOwner);
+        }
+    }
 
     public RecyclerViewHolder(ViewDataBinding dataBinding) {
         super(dataBinding.getRoot());
@@ -23,5 +32,13 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public ViewDataBinding getBinding() {
         return mBinding;
+    }
+
+    public void markAttachedToWindow() {
+
+    }
+
+    public void markDetachedFromWindow() {
+
     }
 }

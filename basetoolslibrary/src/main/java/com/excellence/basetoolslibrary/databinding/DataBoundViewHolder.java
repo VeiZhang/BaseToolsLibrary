@@ -38,6 +38,7 @@ public class DataBoundViewHolder extends RecyclerViewHolder implements Lifecycle
         mViewLifecycleOwner.handleLifecycleEvent(event);
     }
 
+    @Override
     @CallSuper
     public void markAttachedToWindow() {
         mViewLifecycleOwner = new ViewLifecycleOwner();
@@ -47,6 +48,7 @@ public class DataBoundViewHolder extends RecyclerViewHolder implements Lifecycle
         mParentLifecycleOwner.getLifecycle().addObserver(this);
     }
 
+    @Override
     @CallSuper
     public void markDetachedFromWindow() {
         mParentLifecycleOwner.getLifecycle().removeObserver(this);

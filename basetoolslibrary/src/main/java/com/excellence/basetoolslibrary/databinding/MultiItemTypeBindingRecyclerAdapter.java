@@ -17,6 +17,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -25,12 +26,17 @@ import androidx.recyclerview.widget.RecyclerView;
  *     blog   : http://tiimor.cn
  *     date   : 2017/10/17
  *     desc   : 开启dataBinding，多种类型布局RecyclerView通用适配器
+ *
+ *              拓展：ViewDataBinding绑定生命周期LifecycleOwner [可选]
  * </pre>
  */
 
-public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> implements DataHelper<T> {
+public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder>
+        implements DataHelper<T> {
 
-    protected List<T> mData = new ArrayList<>();
+    protected final LifecycleOwner mLifecycleOwner;
+
+    protected final List<T> mData = new ArrayList<>();
     private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
     private OnItemClickListener mOnItemClickListener = null;
     private OnItemLongClickListener mOnItemLongClickListener = null;
@@ -39,10 +45,19 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
     private int mSelectedItemPosition = -1;
 
     public MultiItemTypeBindingRecyclerAdapter(T[] data) {
-        this(data == null ? null : Arrays.asList(data));
+        this(data, null);
     }
 
     public MultiItemTypeBindingRecyclerAdapter(List<T> data) {
+        this(data, null);
+    }
+
+    public MultiItemTypeBindingRecyclerAdapter(T[] data, LifecycleOwner lifecycleOwner) {
+        this(data == null ? null : Arrays.asList(data), lifecycleOwner);
+    }
+
+    public MultiItemTypeBindingRecyclerAdapter(List<T> data, LifecycleOwner lifecycleOwner) {
+        mLifecycleOwner = lifecycleOwner;
         if (data != null) {
             mData.addAll(data);
         }
@@ -126,12 +141,22 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
         return mData == null ? 0 : mData.size();
     }
 
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerViewHolder holder) {
+        holder.markAttachedToWindow();
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull RecyclerViewHolder holder) {
+        holder.markDetachedFromWindow();
+    }
+
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType);
         ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId, parent, false);
-        return new RecyclerViewHolder(binding);
+        return RecyclerViewHolder.getViewHolder(binding, mLifecycleOwner);
     }
 
     @Override
