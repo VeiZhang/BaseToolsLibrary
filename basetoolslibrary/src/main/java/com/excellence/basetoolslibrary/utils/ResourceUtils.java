@@ -143,6 +143,26 @@ public class ResourceUtils {
      */
     public static List<Integer> getIdentifiers(Context context, String type, String rPackageName,
                                                String prefix) {
+        Class desireClass = null;
+        try {
+            desireClass = Class.forName(rPackageName);
+        } catch (Exception e) {
+            Log.e(TAG, "getIdentifier: ", e);
+        }
+        return getIdentifiers(context, type, desireClass, prefix);
+    }
+
+    /**
+     * 传入R类名com.excellence.iptv.R，遍历读取 R 资源列表，找到指定的资源类型，如drawable
+     *
+     * @param context
+     * @param type
+     * @param rPackageClass 因为Lib#R 与 App#R 区别，Lib#R 拿不到App里面的资源，需要App#R
+     * @param prefix 资源文件过滤条件，前缀
+     * @return
+     */
+    public static List<Integer> getIdentifiers(Context context, String type, Class rPackageClass,
+                                               String prefix) {
         Class desireClass;
         switch (type) {
             case TYPE_NAME_COLOR:
@@ -160,11 +180,14 @@ public class ResourceUtils {
                 desireClass = R.drawable.class;
                 break;
         }
+        if (rPackageClass == null) {
+            rPackageClass = desireClass;
+        }
 
         List<Integer> resList = new ArrayList<>();
 
         try {
-            Class r = Class.forName(rPackageName);
+            Class r = rPackageClass;
             Class[] classes = r.getClasses();
             for (int i = 0; i < classes.length; ++i) {
                 /**
@@ -220,13 +243,34 @@ public class ResourceUtils {
      */
     public static List<Integer> getIdentifiers(Context context, String rClassName,
                                                String prefix) {
-        Class desireClass = R.drawable.class;
+        Class desireClass = null;
+        try {
+            desireClass = Class.forName(rClassName);
+        } catch (Exception e) {
+            Log.e(TAG, "getIdentifier: ", e);
+        }
+        return getIdentifiers(context, desireClass, prefix);
+    }
+
+    /**
+     * 指定类中带了资源类型，如com.excellence.R$drawable，直接找到类，然后遍历读取 R 资源列表
+     *
+     * @param context
+     * @param rClass 因为Lib#R$drawable 与 App#R$drawable 区别，Lib#R$drawable 拿不到App里面的资源，需要App#R$drawable
+     * @param prefix 资源文件过滤条件，前缀
+     * @return
+     */
+    public static List<Integer> getIdentifiers(Context context, Class rClass,
+                                               String prefix) {
+        Class desireClass = rClass;
+        if (desireClass == null) {
+            desireClass = R.drawable.class;
+        }
         String type = TYPE_NAME_DRAWABLE;
 
         List<Integer> resList = new ArrayList<>();
 
         try {
-            desireClass = Class.forName(rClassName);
             type = desireClass.getName().split("\\$")[1];
         } catch (Exception e) {
             Log.e(TAG, "getIdentifier: ", e);
