@@ -166,7 +166,7 @@ public abstract class MultiItemTypeRecyclerListAdapter<T> extends ListAdapter<T,
             public void onFocusChange(View v, boolean hasFocus) {
                 int position = viewHolder.getAdapterPosition();
                 mSelectedItemPosition = hasFocus ? position : -1;
-                if (mOnItemFocusChangeListener != null) {
+                if (mOnItemFocusChangeListener != null && position >= 0) {
                     mOnItemFocusChangeListener.onItemFocusChange(viewHolder, v, hasFocus, position);
                 }
             }

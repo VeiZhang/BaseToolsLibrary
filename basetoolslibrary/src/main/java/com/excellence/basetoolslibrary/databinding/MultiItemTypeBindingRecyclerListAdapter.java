@@ -202,7 +202,7 @@ public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAda
             public void onFocusChange(View v, boolean hasFocus) {
                 int position = holder.getAdapterPosition();
                 mSelectedItemPosition = hasFocus ? position : -1;
-                if (mOnItemFocusChangeListener != null) {
+                if (mOnItemFocusChangeListener != null && position >= 0) {
                     mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
                 }
             }

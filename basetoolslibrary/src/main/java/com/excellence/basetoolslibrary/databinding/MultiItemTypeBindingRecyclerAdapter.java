@@ -202,7 +202,7 @@ public class MultiItemTypeBindingRecyclerAdapter<T> extends RecyclerView.Adapter
             public void onFocusChange(View v, boolean hasFocus) {
                 int position = holder.getAdapterPosition();
                 mSelectedItemPosition = hasFocus ? position : -1;
-                if (mOnItemFocusChangeListener != null) {
+                if (mOnItemFocusChangeListener != null && position >= 0) {
                     mOnItemFocusChangeListener.onItemFocusChange(binding, v, hasFocus, position);
                 }
             }
