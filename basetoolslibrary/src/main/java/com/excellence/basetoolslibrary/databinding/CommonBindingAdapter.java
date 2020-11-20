@@ -16,7 +16,7 @@ import androidx.databinding.ViewDataBinding;
  *     author : VeiZhang
  *     blog   : http://tiimor.cn
  *     date   : 2017/10/16
- *     desc   : 开启dataBinding，GridView、ListView通用适配器
+ *     desc   : 开启dataBinding，ListView、GridView通用适配器
  * </pre>
  */
 
