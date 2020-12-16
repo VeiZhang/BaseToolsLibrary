@@ -25,7 +25,7 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
  *     desc   : 多种类型布局RecyclerView {@link ListAdapter}通用适配器
  * </pre> 
  */
-public abstract class MultiItemTypeRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
+public class MultiItemTypeRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
 
     private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
     private OnItemKeyListener mOnItemKeyListener = null;

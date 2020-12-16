@@ -31,7 +31,7 @@ import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
  *              拓展：ViewDataBinding绑定生命周期LifecycleOwner [可选]
  * </pre>
  */
-public abstract class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
+public class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, RecyclerViewHolder> {
 
     protected final LifecycleOwner mLifecycleOwner;
 

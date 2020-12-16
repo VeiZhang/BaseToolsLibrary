@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.ListAdapter;
  *              拓展：ViewDataBinding绑定生命周期LifecycleOwner [可选]
  * </pre> 
  */
-public abstract class BaseRecyclerBindingListAdapter<T> extends MultiItemTypeBindingRecyclerListAdapter<T> {
+public class BaseRecyclerBindingListAdapter<T> extends MultiItemTypeBindingRecyclerListAdapter<T> {
 
     private int mLayoutId;
     private int mVariableId;
