@@ -42,4 +42,5 @@ dependencies {
     implementation libs["leanback"]
 }
 
-apply from: 'bintray.gradle'
+//apply from: 'bintray.gradle'
+apply from: 'github_package_publish.gradle'
