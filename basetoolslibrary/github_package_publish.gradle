@@ -5,7 +5,10 @@ apply plugin: 'maven-publish'
 
 def GITHUB_USER = getPropertyValue('GITHUB_USER')
 def GITHUB_PERSONAL_ACCESS_TOKEN = getPropertyValue('GITHUB_PERSONAL_ACCESS_TOKEN')
-def GITHUB_REPO = getRepoDirName()
+
+/** 统一管理包仓库，方便引用 **/
+// def GITHUB_REPO = getRepoDirName()
+def GITHUB_REPO = "GitHubPackages-Android"
 
 /**读取当前所在的Module目录名，目的是匹配自动生成的aar文件名**/
 def getLibraryName() {
@@ -79,18 +82,6 @@ publishing {
 
             artifact("$buildDir/outputs/aar/${getLibraryName()}-release.aar")
             artifact(sourceJar)
-
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-
-                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.api.allDependencies.each {
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', it.group)
-                    dependencyNode.appendNode('artifactId', it.name)
-                    dependencyNode.appendNode('version', it.version)
-                }
-            }
         }
     }
 }
