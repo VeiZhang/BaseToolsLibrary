@@ -17,6 +17,16 @@ buildscript {
 
 allprojects {
     repositories {
+        /** Github packages **/
+        maven {
+            url = "https://maven.pkg.github.com/VeiZhang/GitHubPackages-Android"
+            credentials {
+                // 输入自己的账号和个人令牌（需要 read packages权限）
+                // 可放gradle.properties 或者 local.properties中
+                username = getPropertyValue("GITHUB_USERNAME")
+                password = getPropertyValue("GITHUB_TOKEN")
+            }
+        }
         google()
         jcenter()
     }
@@ -24,4 +34,20 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+def getPropertyValue(String key) {
+    if (key == null || key.length() == 0)
+        return null
+
+    File file = project.rootProject.file('local.properties')
+    if (!file.exists())
+        return null
+
+    InputStream inputStream = file.newDataInputStream()
+    Properties properties = new Properties()
+    properties.load(inputStream)
+
+    //读取Key
+    return properties.getProperty(key)
 }
