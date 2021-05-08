@@ -6,6 +6,11 @@ android {
     }
 }
 
+configurations.all {
+    // 不使用缓存，使用仓库中最新的包
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
 dependencies {
     /**可以使用远程库或者使用本地Module Library*/
     /**远程库**/
@@ -13,10 +18,10 @@ dependencies {
     /**或者使用+，自动使用最新依赖包**/
     // implementation 'com.excellence:basetools:+'
     /**本地Library**/
-    implementation project(':basetoolslibrary')
+//    implementation project(':basetoolslibrary')
 
     /** Github packages **/
-//    implementation('com.excellence:basetools:1.2.9-RC3') {
-//        changing = true
-//    }
+    implementation('com.excellence:basetools:1.2.9-RC3') {
+        changing = true
+    }
 }
