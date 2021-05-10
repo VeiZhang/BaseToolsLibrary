@@ -1,137 +1,31 @@
-import java.util.regex.Matcher
-import java.util.regex.Pattern
-
-apply plugin: 'maven-publish'
-
-def GITHUB_USER = getPropertyValue('GITHUB_USER')
-def GITHUB_PERSONAL_ACCESS_TOKEN = getPropertyValue('GITHUB_PERSONAL_ACCESS_TOKEN')
-
-/** 统一管理包仓库，方便引用 **/
-// def GITHUB_REPO = getRepoDirName()
-def GITHUB_REPO = "GitHubPackages-Android"
-
-/**读取当前所在的Module目录名，目的是匹配自动生成的aar文件名**/
-def getLibraryName() {
-    return getProjectDir().name
-}
-
-/**读取Repo的仓库名**/
-def getRepoDirName() {
-    def GITHUB_USER = getPropertyValue('GITHUB_USER')
-
-    def process = ("git remote -v").execute()
-    def urls = process.text.trim()
-    String regex = String.format("%s/(?<title>\\S*).git", GITHUB_USER)
-    Pattern pattern = Pattern.compile(regex)
-    Matcher matcher = pattern.matcher(urls)
-    if (matcher.find()) {
-        return matcher.group("title")
-    }
-    return null
-}
-
-/**读取bintray.key文件的key**/
-def getPropertyValue(String key) {
-    if (key == null || key.length() == 0)
-        return null
-
-    File file = project.rootProject.file('../../bintray.key')
-    if (!file.exists())
-        return null
-
-    InputStream inputStream = file.newDataInputStream()
-    Properties properties = new Properties()
-    properties.load(inputStream)
-
-    //读取Key
-    return properties.getProperty(key)
-}
+apply from: '../github_package_publish.gradle'
 
 /**发布到GitHub Packages仓库**/
 def LIB_GROUP_ID = 'com.excellence'
 def LIB_ARTIFACT_ID = 'basetools'
 def LIB_VERSION = '1.2.9-RC3'
-
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier "sources"
-}
+def LIB_DESC = 'Android通用适配器和常用的工具类'
+def LIB_URL = 'https://github.com/VeiZhang/BaseToolsLibrary'
 
 publishing {
-    repositories {
-        maven {
-            // 固定GithubPackages
-            name = "GithubPackages"
-            // 匹配到对应的GitHub Repo仓库
-            url = uri(String.format("https://maven.pkg.github.com/%s/%s", GITHUB_USER, GITHUB_REPO))
-            credentials {
-                // System.getenv 读取环境变量里面的 GITHUB_USER & GITHUB_PERSONAL_ACCESS_TOKEN
-                // project.properties 读取~/.gradle/gradle.properties里面的 GITHUB_USER & GITHUB_PERSONAL_ACCESS_TOKEN
-                // username = System.getenv('GITHUB_USER') ?: project.properties['GITHUB_USER']
-                // password = System.getenv('GITHUB_PERSONAL_ACCESS_TOKEN') ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
-                username = GITHUB_USER
-                password = GITHUB_PERSONAL_ACCESS_TOKEN
-            }
-        }
-    }
     publications {
         maven(MavenPublication) {
+            // Specify own groupId as package name of your library,
+            // otherwise it would just use project's name (=name of the root directory) by default.
             groupId LIB_GROUP_ID
+
+            // Specify custom artifactId if needed,
+            // otherwise it would use module's name by default.
             artifactId LIB_ARTIFACT_ID
-            version LIB_VERSION
 
-            artifact("$buildDir/outputs/aar/${getLibraryName()}-release.aar")
-            artifact(sourceJar)
+            // You can specify custom version,
+            // otherwise it would use version from `android { defaultConfig { ... } }` by default.
+            version = LIB_VERSION
 
-            pom.withXml {
-                final dependenciesNode = asNode().appendNode('dependencies')
-                ext.addDependency = { Dependency dep, String scope ->
-                    if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
-                        return // ignore invalid dependencies
-                    final dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', dep.group)
-                    dependencyNode.appendNode('artifactId', dep.name)
-                    dependencyNode.appendNode('version', dep.version)
-                    dependencyNode.appendNode('scope', scope)
-                    if (!dep.transitive) {
-                        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
-                        exclusionNode.appendNode('groupId', '*')
-                        exclusionNode.appendNode('artifactId', '*')
-                    } else if (!dep.properties.excludeRules.empty) {
-                        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
-                        dep.properties.excludeRules.each { ExcludeRule rule ->
-                            exclusionNode.appendNode('groupId', rule.group ?: '*')
-                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
-                        }
-                    }
-                }
-                configurations.compile.getDependencies().each { dep -> addDependency(dep, "compile") }
-
-                configurations.api.getDependencies().each { dep -> addDependency(dep, "compile") }
-
-                configurations.implementation.getDependencies().each { dep -> addDependency(dep, "runtime") }
+            pom {
+                description = LIB_DESC
+                url = LIB_URL
             }
-
-
-//            pom.withXml {
-//                def dependenciesNode = asNode().appendNode('dependencies')
-//
-//                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-//                configurations.api.allDependencies.each {
-//                    if (it.version != "unspecified") {
-//                        /** 过滤项目内library引用 **/
-//                        def dependencyNode = dependenciesNode.appendNode('dependency')
-//                        dependencyNode.appendNode('groupId', it.group)
-//                        dependencyNode.appendNode('artifactId', it.name)
-//                        dependencyNode.appendNode('version', it.version)
-//                    } else {
-//                        /** 是Project的Library **/
-//                    }
-//                }
-//            }
-
-
         }
     }
 }
-

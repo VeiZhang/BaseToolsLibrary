@@ -1,0 +1,198 @@
+/**
+ * Maven Publish Helper
+ *
+ * Requires Android Gradle plugin 3.6.0 or higher (available since Android Studio 3.6).
+ * See also: https://developer.android.com/studio/build/maven-publish-plugin
+ * https://gist.github.com/Robyer/a6578e60127418b380ca133a1291f017#gistcomment-3716173
+ * https://petrakeas.medium.com/publish-a-multi-module-java-android-library-to-maven-central-github-ci-automation-at-2021-4f98a311df2a
+ * https://dzone.com/articles/publishing-multi-module-android-libraries
+ *
+ * @Author Robert Pösel -> 改进了
+ * @Version 1.5* @Date 3.3.2020
+ */
+
+apply plugin: 'maven-publish'
+
+task androidJavadoc(type: Javadoc) {
+    if (plugins.hasPlugin('android-library')) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        android.libraryVariants.all { variant ->
+            if (variant.name == 'release') {
+                owner.classpath += variant.javaCompileProvider.get().classpath
+            }
+        }
+    } else {
+        source = sourceSets.main.allJava
+        classpath += configurations.runtimeClasspath
+        classpath += configurations.compileClasspath
+    }
+    exclude '**/R.html', '**/R.*.html', '**/index.html'
+    options.encoding 'utf-8'
+    options {
+        addStringOption 'docencoding', 'utf-8'
+        addStringOption 'charset', 'utf-8'
+        links 'https://docs.oracle.com/javase/7/docs/api/'
+        links 'https://d.android.com/reference'
+        links 'https://developer.android.com/reference/androidx/'
+    }
+}
+
+task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
+    archiveClassifier.set('javadoc')
+    from androidJavadoc.destinationDir
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+task javaSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    if (plugins.hasPlugin('android-library')) {
+        from android.sourceSets.main.java.srcDirs
+    } else {
+        from sourceSets.main.allSource
+    }
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+/************************* 读取属性值 *************************/
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+def GITHUB_USER = getPropertyValue('GITHUB_USER')
+def GITHUB_PERSONAL_ACCESS_TOKEN = getPropertyValue('GITHUB_PERSONAL_ACCESS_TOKEN')
+
+/** 统一管理包仓库，方便引用 **/
+// def GITHUB_REPO = getRepoDirName()
+def GITHUB_REPO = "GitHubPackages-Android"
+
+/**读取当前所在的Module目录名，目的是匹配自动生成的aar文件名**/
+def getLibraryName() {
+    return getProjectDir().name
+}
+
+/**读取Repo的仓库名**/
+def getRepoDirName() {
+    def GITHUB_USER = getPropertyValue('GITHUB_USER')
+
+    def process = ("git remote -v").execute()
+    def urls = process.text.trim()
+    String regex = String.format("%s/(?<title>\\S*).git", GITHUB_USER)
+    Pattern pattern = Pattern.compile(regex)
+    Matcher matcher = pattern.matcher(urls)
+    if (matcher.find()) {
+        return matcher.group("title")
+    }
+    return null
+}
+
+/**读取bintray.key文件的key**/
+def getPropertyValue(String key) {
+    if (key == null || key.length() == 0)
+        return null
+
+    File file = project.rootProject.file('../../bintray.key')
+    if (!file.exists())
+        return null
+
+    InputStream inputStream = file.newDataInputStream()
+    Properties properties = new Properties()
+    properties.load(inputStream)
+
+    //读取Key
+    return properties.getProperty(key)
+}
+
+/**避免中文注释:编码GBK的不可映射字符**/
+tasks.withType(Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        links "http://docs.oracle.com/javase/7/docs/api"
+    }
+}
+
+/**避免Javadocs错误:找不到引用**/
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+}
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        /**
+         * 上传至GitHub Packages
+         */
+        repositories {
+            maven {
+                // 固定GithubPackages服务
+                name = "GithubPackages"
+                // 匹配到对应的GitHub Repo仓库
+                url = uri(String.format("https://maven.pkg.github.com/%s/%s", GITHUB_USER, GITHUB_REPO))
+                credentials {
+                    // System.getenv 读取环境变量里面的 GITHUB_USER & GITHUB_PERSONAL_ACCESS_TOKEN
+                    // project.properties 读取~/.gradle/gradle.properties里面的 GITHUB_USER & GITHUB_PERSONAL_ACCESS_TOKEN
+                    // username = System.getenv('GITHUB_USER') ?: project.properties['GITHUB_USER']
+                    // password = System.getenv('GITHUB_PERSONAL_ACCESS_TOKEN') ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
+                    username = GITHUB_USER
+                    password = GITHUB_PERSONAL_ACCESS_TOKEN
+                }
+            }
+        }
+
+        publications {
+            // Creates a Maven publication called "maven".
+            maven(MavenPublication) {
+                // Applies the component for the release build variant.
+                if (plugins.hasPlugin('android-library')) {
+                    from components.release
+                } else if (plugins.hasPlugin('java')) {
+                    from components.java
+                    jar.preserveFileTimestamps = false
+                    jar.reproducibleFileOrder = true
+                }
+
+                // Adds javadocs and sources as separate jars.
+                artifact androidJavadocJar
+                artifact javaSourcesJar
+
+                /**
+                 * 不能被重写，父脚本需要屏蔽
+                 */
+                // You can customize attributes of the publication here or in module's build.gradle file.
+                // groupId = 'com.example'
+                // artifactId = 'custom-artifact'
+                // version = android.defaultConfig.versionName // or just '1.0'
+
+                pom {
+                    // name = artifactId
+                    /**
+                     * 不能被重写，父脚本需要屏蔽
+                     */
+                    // description = ''
+                    // url = ''
+                    licenses {
+                        license {
+                            name = 'Apache-2.0'
+                            // url = ''
+                        }
+                    }
+                    // scm {
+                    //    connection = ''
+                    //    url = ''
+                    // }
+                    developers {
+                        developer {
+                            // id = ''
+                            name = 'VeiZhang'
+                            email = 'tiimor@qq.com'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
