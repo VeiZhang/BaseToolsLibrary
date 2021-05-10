@@ -1,3 +1,10 @@
+/********************* 备注 *****************************/
+/**
+ * 只需要在根目录下的build.gradle中引入apply from: 'config.gradle'，其他子module则不需要引入config.gradle，否则可能会出现一些异常：如上传Bintray时报错
+ * 或者在根目录下远程引入apply from: "https://github.com/VeiZhang/build.gradle/blob/master/config.gradle?raw=true"
+ */
+
+/*********************library通用配置*********************/
 def plugins = rootProject.ext.plugins
 def cfg = rootProject.ext.android
 def libs = rootProject.ext.dependencies
@@ -30,6 +37,17 @@ android {
 
     dataBinding {
         enabled true
+    }
+    // 兼容高版本Android Studio
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion cfg.buildToolsVersion
+                }
+            }
+        }
     }
 }
 

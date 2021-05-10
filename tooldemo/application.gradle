@@ -1,3 +1,9 @@
+/********************* 备注 *****************************/
+/**
+ * 只需要在根目录下的build.gradle中引入apply from: 'config.gradle'，其他子module则不需要引入config.gradle
+ * 或者在根目录下远程引入apply from: "https://github.com/VeiZhang/build.gradle/blob/master/config.gradle?raw=true"
+ */
+
 /*********************application通用配置*********************/
 def plugins = rootProject.ext.plugins
 def cfg = rootProject.ext.android
@@ -16,6 +22,12 @@ android {
         versionCode cfg.versionCode
         versionName cfg.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // 兼容高版本Android Studio
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
     buildTypes {
         debug {
@@ -29,13 +41,18 @@ android {
     dataBinding {
         enabled true
     }
+    // 兼容高版本Android Studio
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion cfg.buildToolsVersion
+                }
+            }
+        }
+    }
 }
 
 dependencies {
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
-    implementation libs["recyclerview-v7"]
-    implementation libs["androidx-appcompat"]
 }

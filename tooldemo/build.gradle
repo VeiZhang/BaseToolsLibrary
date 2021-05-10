@@ -1,5 +1,7 @@
 apply from: 'application.gradle'
 
+def libs = rootProject.ext.dependencies
+
 android {
     defaultConfig {
         applicationId "com.excellence.tooldemo"
@@ -12,6 +14,13 @@ configurations.all {
 }
 
 dependencies {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'junit:junit:4.12'
+    implementation libs["recyclerview-v7"]
+    implementation libs["androidx-appcompat"]
+
     /**可以使用远程库或者使用本地Module Library*/
     /**远程库**/
     // implementation 'com.excellence:basetools:_latestVersion'
