@@ -1,55 +1,6 @@
-/********************* 备注 *****************************/
-/**
- * 只需要在根目录下的build.gradle中引入apply from: 'config.gradle'，其他子module则不需要引入config.gradle，否则可能会出现一些异常：如上传Bintray时报错
- * 或者在根目录下远程引入apply from: "https://github.com/VeiZhang/build.gradle/blob/master/config.gradle?raw=true"
- */
+apply from: 'https://gist.githubusercontent.com/VeiZhang/f703697d56fe717c3433f4218f296b36/raw/f68042ab86189c3367882afe58d080cd18ea674a/library.gradle'
 
-/*********************library通用配置*********************/
-def plugins = rootProject.ext.plugins
-def cfg = rootProject.ext.android
 def libs = rootProject.ext.dependencies
-
-apply plugin: plugins.library
-
-android {
-    compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
-
-    defaultConfig {
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
-        versionCode cfg.versionCode
-        versionName cfg.versionName
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-
-    dataBinding {
-        enabled true
-    }
-    // 兼容高版本Android Studio
-    configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'com.android.support') {
-                if (!requested.name.startsWith("multidex")) {
-                    details.useVersion cfg.buildToolsVersion
-                }
-            }
-        }
-    }
-}
 
 dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -60,5 +11,5 @@ dependencies {
     implementation libs["leanback"]
 }
 
-//apply from: 'bintray.gradle'
+//apply from: 'bintray.gradle' /** gradle 3.5.0 <-> 5.4.1 使用 **/
 apply from: 'github_package_publish.gradle'

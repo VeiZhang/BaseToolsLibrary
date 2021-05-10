@@ -1,4 +1,4 @@
-apply from: 'application.gradle'
+apply from: 'https://gist.githubusercontent.com/VeiZhang/01779005843bc5b70b11551ca13c2ced/raw/0e9952dc36a8d5ae09282d0a983f1a3530bb8726/application.gradle'
 
 def libs = rootProject.ext.dependencies
 
