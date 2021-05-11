@@ -1,5 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: "https://gist.githubusercontent.com/VeiZhang/0af7b332e757362784467648fed7d7ef/raw/367a3d92ed024c99e95382ca9e26d1bf5ac7f9b7/config.gradle"
+apply from: 'https://gist.githubusercontent.com/VeiZhang/0af7b332e757362784467648fed7d7ef/raw/config.gradle'
 
 buildscript {
     repositories {
