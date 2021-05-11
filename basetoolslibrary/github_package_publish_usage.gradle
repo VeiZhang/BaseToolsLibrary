@@ -1,4 +1,4 @@
-apply from: 'https://gist.githubusercontent.com/VeiZhang/aebbbd6d9d570dffac81eea80cdcda0a/raw/3605a6f6151625441f6d9ab7fbeba8c1fe3d07c1/github_package_publish.gradle'
+apply from: 'https://gist.githubusercontent.com/VeiZhang/aebbbd6d9d570dffac81eea80cdcda0a/raw/github_package_publish.gradle'
 
 /**发布到GitHub Packages仓库**/
 def LIB_GROUP_ID = 'com.excellence'
