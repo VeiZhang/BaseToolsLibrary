@@ -5,7 +5,23 @@
 
 <br>
 
-[![Download][icon_download]][download]
+```
+allprojects {
+    repositories {
+        /** Github packages **/
+        maven {
+            url = "https://maven.pkg.github.com/VeiZhang/GitHubPackages-Android"
+            credentials {
+                // 输入自己的账号和个人令牌（需要 read packages权限）
+                // 可放项目根目录的gradle.properties 或者 local.properties中
+                username = getPropertyValue("GITHUB_USER") ?: project.properties['GITHUB_USER']
+                password = getPropertyValue("GITHUB_READ_TOKEN") ?: project.properties['GITHUB_READ_TOKEN']
+            }
+        }
+    }
+}
+```
+~~[![Download][icon_download]][download]~~
 
 
 ## 目录<a name="目录">
