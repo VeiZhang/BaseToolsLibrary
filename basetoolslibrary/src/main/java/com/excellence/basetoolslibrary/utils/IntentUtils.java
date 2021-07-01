@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import androidx.core.content.FileProvider;
 
+import static com.excellence.basetoolslibrary.utils.EmptyUtils.isNotEmpty;
 import static com.excellence.basetoolslibrary.utils.FileUtils.isFileExists;
 
 /**
@@ -25,6 +26,8 @@ import static com.excellence.basetoolslibrary.utils.FileUtils.isFileExists;
  * </pre> 
  */
 public class IntentUtils {
+
+    private static final String HTTP = "http://";
 
     /**
      * 判断Intent是否存在
@@ -358,15 +361,20 @@ public class IntentUtils {
     }
 
     /**
-     * 播放本地视频
+     * 播放视频：本地 / 网络
      *
-     * @param filePath
+     * @param url
      * @return
      */
-    public static Intent getVideoIntent(String filePath) {
+    public static Intent getVideoIntent(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        File file = new File(filePath);
-        Uri uri = Uri.fromFile(file);
+
+        Uri uri;
+        if (isNotEmpty(url) && url.startsWith(HTTP)) {
+            uri = Uri.parse(url);
+        } else {
+            uri = Uri.fromFile(new File(url));
+        }
         intent.setDataAndType(uri, "video/*");
         return intent;
     }
