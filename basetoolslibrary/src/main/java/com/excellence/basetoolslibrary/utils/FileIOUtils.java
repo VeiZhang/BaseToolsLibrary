@@ -312,4 +312,76 @@ public class FileIOUtils {
         }
         return false;
     }
+
+    /**
+     * 拷贝文件
+     * 1.起始位置
+     * 2.截止长度，最大为原始文件长度；<=0，表示不截取
+     *
+     * @param sourceFile
+     * @param targetFile
+     * @param skip
+     * @param targetSize
+     * @return
+     */
+    public static boolean copyFile(File sourceFile, File targetFile, long skip, long targetSize) {
+        if (!isFileExists(sourceFile)) {
+            return false;
+        }
+        try {
+            InputStream is = new FileInputStream(sourceFile);
+            OutputStream os = new FileOutputStream(targetFile);
+
+            is.skip(skip);
+
+            if (targetSize > 0 && targetSize < sourceFile.length()) {
+                if (targetSize <= BUF_SIZE) {
+                    byte[] buf = new byte[(int) targetSize];
+                    int len;
+                    if ((len = is.read(buf, 0, buf.length)) != -1) {
+                        os.write(buf, 0, len);
+                    }
+
+                } else {
+                    byte[] buf = new byte[BUF_SIZE];
+                    int len;
+                    long count = 0;
+                    while ((len = is.read(buf, 0, buf.length)) != -1) {
+                        os.write(buf, 0, len);
+                        count += len;
+
+                        if (targetSize + BUF_SIZE > count) {
+                            len = is.read(buf, 0, buf.length);
+                            os.write(buf, 0, len);
+                            count += len;
+                        }
+
+                        if (targetSize <= count) {
+                            break;
+                        }
+                    }
+                }
+                is.close();
+                os.close();
+                return true;
+            } else {
+                return copyFile(is, os);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 拷贝文件，截止长度，最大为原始文件长度；<=0，表示不截取
+     *
+     * @param sourceFile
+     * @param targetFile
+     * @param targetSize
+     * @return
+     */
+    public static boolean copyFile(File sourceFile, File targetFile, long targetSize) {
+        return copyFile(sourceFile, targetFile, 0, targetSize);
+    }
 }
