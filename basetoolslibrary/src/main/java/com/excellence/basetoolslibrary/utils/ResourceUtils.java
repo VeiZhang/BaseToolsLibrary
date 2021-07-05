@@ -1,7 +1,9 @@
 package com.excellence.basetoolslibrary.utils;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.util.Log;
 
 import com.excellence.basetoolslibrary.R;
@@ -387,6 +389,18 @@ public class ResourceUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 转换raw为Uri
+     *
+     * @param context
+     * @param rawId
+     * @return
+     */
+    public static Uri readRaw(Context context, int rawId) {
+        return Uri.parse(String.format(Locale.getDefault(), "%s://%s/%d",
+                ContentResolver.SCHEME_ANDROID_RESOURCE, context.getPackageName(), rawId));
     }
 
     /**
