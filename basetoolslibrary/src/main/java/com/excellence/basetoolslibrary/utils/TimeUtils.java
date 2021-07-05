@@ -709,4 +709,14 @@ public class TimeUtils {
     public static SimpleDateFormat createSimpleDateFormat(String format) {
         return new SimpleDateFormat(format, Locale.getDefault());
     }
+
+    /**
+     * 去掉日期里面的时分秒，只留天
+     *
+     * @param date
+     * @return
+     */
+    public static long getDay(Date date) {
+        return date.getTime() - date.getTime() % DAY;
+    }
 }
