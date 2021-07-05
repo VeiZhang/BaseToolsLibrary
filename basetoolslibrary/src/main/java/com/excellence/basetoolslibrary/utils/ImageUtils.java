@@ -2,13 +2,18 @@ package com.excellence.basetoolslibrary.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.view.View;
+
+import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
 
 /**
  * <pre>
@@ -20,6 +25,28 @@ import android.view.View;
  */
 
 public class ImageUtils {
+
+    /**
+     *  资源转Drawable
+     *
+     * @param context
+     * @param resourceId
+     * @return
+     */
+    public static Drawable resource2Drawable(Context context, @DrawableRes int resourceId) {
+        return context.getResources().getDrawable(resourceId);
+    }
+
+    /**
+     * 资源转Bitmap
+     *
+     * @param context
+     * @param resourceId
+     * @return
+     */
+    public static Bitmap resource2Bitmap(Context context, @DrawableRes int resourceId) {
+        return BitmapFactory.decodeResource(context.getResources(), resourceId);
+    }
 
     /**
      * drawable转bitmap
@@ -91,4 +118,76 @@ public class ImageUtils {
         return bitmap;
     }
 
+    /**
+     * 创建空白位图
+     *
+     * @param width
+     * @param height
+     * @return
+     */
+    public static Bitmap createBitmap(int width, int height) {
+        return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+    }
+
+    /**
+     * 在位图上绘资源图片
+     *
+     * @param context
+     * @param drawable
+     * @param width
+     * @param height
+     * @return
+     */
+    public static Bitmap createBitmap(Context context, @DrawableRes int drawable, int width, int height) {
+        Drawable maskDrawable = ContextCompat.getDrawable(context, drawable);
+
+        Bitmap maskBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas maskCanvas = new Canvas(maskBitmap);
+        maskDrawable.setBounds(0, 0, width, height);
+        maskDrawable.draw(maskCanvas);
+        return maskBitmap;
+    }
+
+    /**
+     * 加遮罩，多层叠加
+     *
+     * @param context
+     * @param blankBitmap
+     * @param source
+     * @return
+     */
+    public static Bitmap addBitmapShadows(Context context, Bitmap blankBitmap, Bitmap source, int resourceId) {
+        Canvas canvas = new Canvas(blankBitmap);
+
+        Paint paint = new Paint();
+        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(source, 0, 0, paint);
+        canvas.save();
+
+        /**
+         * 加资源遮罩
+         */
+        Bitmap maskBitmap = createBitmap(context, resourceId, source.getWidth(), source.getHeight());
+        canvas.drawBitmap(maskBitmap, 0, 0, paint);
+
+        canvas.restore();
+        return blankBitmap;
+    }
+
+    /**
+     * 加一层遮罩叠加
+     *
+     * @param blankBitmap
+     * @return
+     */
+    private Bitmap addBitmapShadow(Bitmap blankBitmap, Bitmap source) {
+        Canvas canvas = new Canvas(blankBitmap);
+        canvas.scale(1, 1);
+
+        Paint paint = new Paint();
+        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(source, 0, 0, paint);
+
+        return blankBitmap;
+    }
 }

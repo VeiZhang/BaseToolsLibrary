@@ -19,6 +19,7 @@ import java.util.Locale;
 
 import androidx.annotation.AnyRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.RawRes;
 import androidx.annotation.StringDef;
 
 import static com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty;
@@ -398,7 +399,7 @@ public class ResourceUtils {
      * @param rawId
      * @return
      */
-    public static Uri readRaw(Context context, int rawId) {
+    public static Uri readRaw(Context context, @RawRes int rawId) {
         return Uri.parse(String.format(Locale.getDefault(), "%s://%s/%d",
                 ContentResolver.SCHEME_ANDROID_RESOURCE, context.getPackageName(), rawId));
     }
