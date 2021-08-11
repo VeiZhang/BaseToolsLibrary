@@ -27,10 +27,10 @@ dependencies {
     /**或者使用+，自动使用最新依赖包**/
     // implementation 'com.excellence:basetools:+'
     /**本地Library**/
-//    implementation project(':basetoolslibrary')
+    implementation project(':basetoolslibrary')
 
     /** Github packages **/
-    implementation('com.excellence:basetools:1.2.9-RC3') {
-        changing = true
-    }
+//    implementation('com.excellence:basetools:1.2.9-RC3') {
+//        changing = true
+//    }
 }

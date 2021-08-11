@@ -92,7 +92,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String sec2String(long sec, String pattern) {
-        return createSimpleDateFormat(pattern).format(new Date(sec));
+        return millisec2String(sec * SEC, pattern);
     }
 
     /**
@@ -103,7 +103,7 @@ public class TimeUtils {
      * @return 时间字符串
      */
     public static String sec2String(long sec) {
-        return millisec2String(sec, DEFAULT_PATTERN);
+        return sec2String(sec, DEFAULT_PATTERN);
     }
 
     /**
