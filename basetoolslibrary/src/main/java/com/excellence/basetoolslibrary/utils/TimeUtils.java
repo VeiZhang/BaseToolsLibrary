@@ -701,6 +701,29 @@ public class TimeUtils {
     }
 
     /**
+     * 秒转 时:分:秒 字符串
+     *
+     * @param seconds s
+     * @return
+     */
+    public static String seconds2HourString(long seconds) {
+        int hour = (int) (seconds / (MIN_SEC * MIN_SEC));
+        int minute = (int) (seconds % (MIN_SEC * MIN_SEC)) / MIN_SEC;
+        int second = (int) (seconds % (MIN_SEC * MIN_SEC)) % MIN_SEC;
+        return String.format(Locale.getDefault(), "%02d:%02d:%02d", hour, minute, second);
+    }
+
+    /**
+     * 毫秒转 时:分:秒 字符串
+     *
+     * @param milliSeconds ms
+     * @return
+     */
+    public static String milliSeconds2HourString(long milliSeconds) {
+        return seconds2HourString(milliSeconds / SEC);
+    }
+
+    /**
      * 创建时间格式化
      *
      * @param format

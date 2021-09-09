@@ -768,28 +768,30 @@ getLinuxKernelVersion : 读取kernel版本
 
 > - **时间相关→[TimeUtils.java][TimeUtils]**
 ```
-millisec2String        : 毫秒时间戳转时间字符串
-sec2String             : 秒时间戳转时间字符串
-string2Date            : 时间字符串转Date类型
-string2Millisec        : 时间字符串转毫秒时间戳
-date2String            : Date转时间字符串
-getTimeSpan            : 获取两个时间差
-getNowTimeMillis       : 获取当前毫秒时间戳
-getNowTimeDate         : 获取当前Date时间
-getNowTimeString       : 获取当前时间字符串
-getTimeSpanByNow       : 获取某时间与当前时间的差
-isSameDay              : 判断时间是否是同一天
-isToday                : 判断时间是否是今天
-isLeapYear             : 判断是否是闰年
-getWeek                : 获取星期几
-getWeekOfMonth         : 获取月份中第几周
-getWeekOfYear          : 获取年份中的第几周
-getChineseZodiac       : 获取生肖
-getZodiac              : 获取星座
-is24HoursFormat        : 判断当前时间制是否是24h
-seconds2String         : 秒转 分:秒 字符串
-milliSeconds2String    : 毫秒转 分:秒 字符串
-createSimpleDateFormat : 创建时间格式化
+millisec2String         : 毫秒时间戳转时间字符串
+sec2String              : 秒时间戳转时间字符串
+string2Date             : 时间字符串转Date类型
+string2Millisec         : 时间字符串转毫秒时间戳
+date2String             : Date转时间字符串
+getTimeSpan             : 获取两个时间差
+getNowTimeMillis        : 获取当前毫秒时间戳
+getNowTimeDate          : 获取当前Date时间
+getNowTimeString        : 获取当前时间字符串
+getTimeSpanByNow        : 获取某时间与当前时间的差
+isSameDay               : 判断时间是否是同一天
+isToday                 : 判断时间是否是今天
+isLeapYear              : 判断是否是闰年
+getWeek                 : 获取星期几
+getWeekOfMonth          : 获取月份中第几周
+getWeekOfYear           : 获取年份中的第几周
+getChineseZodiac        : 获取生肖
+getZodiac               : 获取星座
+is24HoursFormat         : 判断当前时间制是否是24h
+seconds2String          : 秒转 分:秒 字符串
+milliSeconds2String     : 毫秒转 分:秒 字符串
+seconds2HourString      : 秒转 时:分:秒 字符串
+milliSeconds2HourString : 毫秒转 时:分:秒 字符串
+createSimpleDateFormat  : 创建时间格式化
 ```
 
 <br>
