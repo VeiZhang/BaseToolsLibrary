@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate;
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, R
 
     protected final LifecycleOwner mLifecycleOwner;
 
+    protected final List<T> mData = new ArrayList<>();
     private ItemViewDelegateManager<T> mItemViewDelegateManager = null;
     private OnItemKeyListener mOnItemKeyListener = null;
     private OnItemClickListener mOnItemClickListener = null;
@@ -248,10 +250,16 @@ public class MultiItemTypeBindingRecyclerListAdapter<T> extends ListAdapter<T, R
             /**
              * 当list为空或者size为0时，使用null清空快速
              */
+            mData.clear();
             super.submitList(null);
         } else {
+            mData.addAll(list);
             super.submitList(list);
         }
     }
 
+    @Nullable
+    public List<T> getData() {
+        return mData;
+    }
 }
