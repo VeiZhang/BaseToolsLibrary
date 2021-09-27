@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * <pre>
@@ -409,6 +410,17 @@ public class TimeUtils {
      */
     public static boolean isToday(long millisec) {
         return DateUtils.isToday(millisec);
+    }
+
+    /**
+     * 获取当天零点
+     * SimpleDateFormat dayFormat = new SimpleDateFormat("yyyyMMdd");
+     * long todayZero = dayFormat.parse(dayFormat.format(new Date())).getTime();
+     *
+     * @return ms
+     */
+    public static long getTodayZero() {
+        return getNowTimeMillis() / DAY * DAY - TimeZone.getDefault().getRawOffset();
     }
 
     /**

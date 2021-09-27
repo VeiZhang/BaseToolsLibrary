@@ -780,6 +780,7 @@ getNowTimeString        : 获取当前时间字符串
 getTimeSpanByNow        : 获取某时间与当前时间的差
 isSameDay               : 判断时间是否是同一天
 isToday                 : 判断时间是否是今天
+getTodayZero            : 获取当天零点
 isLeapYear              : 判断是否是闰年
 getWeek                 : 获取星期几
 getWeekOfMonth          : 获取月份中第几周
