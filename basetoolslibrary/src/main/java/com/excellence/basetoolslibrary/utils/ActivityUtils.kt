@@ -13,7 +13,7 @@ import androidx.annotation.NonNull
  *     author : VeiZhang
  *     blog   : http://tiimor.cn
  *     time   : 2022/4/2
- *     desc   :
+ *     desc   : Activity相关工具类
  * </pre>
  */
 class ActivityUtils {
@@ -49,9 +49,7 @@ class ActivityUtils {
          */
         @JvmStatic
         fun setActivityWindowAlpha(activity: Activity, @FloatRange(from = 0.0, to = 1.0) alpha: Float) {
-            val params = activity.window.attributes
-            params.alpha = alpha
-            activity.window.attributes = params
+            AlphaUtils.setAlpha(activity, alpha)
         }
 
         /**
