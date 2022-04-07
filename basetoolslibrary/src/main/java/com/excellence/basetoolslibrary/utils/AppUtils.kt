@@ -297,6 +297,7 @@ class AppUtils {
          *
          * @return
          */
+        @JvmStatic
         fun getMaxMemory() = Runtime.getRuntime().maxMemory()
 
         /**
@@ -304,6 +305,7 @@ class AppUtils {
          *
          * @return
          */
+        @JvmStatic
         fun getTotalMemory() = Runtime.getRuntime().totalMemory()
 
         /**
@@ -311,6 +313,7 @@ class AppUtils {
          *
          * @return
          */
+        @JvmStatic
         fun getFreeMemory() = Runtime.getRuntime().freeMemory()
     }
 }

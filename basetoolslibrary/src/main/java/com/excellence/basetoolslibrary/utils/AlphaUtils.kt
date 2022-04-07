@@ -63,6 +63,7 @@ class AlphaUtils {
         /**
          * 设置DialogFragment的Window透明度
          */
+        @JvmStatic
         fun setAlpha(dialogFragment: android.app.DialogFragment?, @FloatRange(from = 0.0, to = 1.0) alpha: Float) {
             val window = dialogFragment?.dialog?.window
             setAlpha(window, alpha)

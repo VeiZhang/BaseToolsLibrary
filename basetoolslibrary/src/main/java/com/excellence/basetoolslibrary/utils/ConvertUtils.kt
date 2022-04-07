@@ -3,7 +3,10 @@ package com.excellence.basetoolslibrary.utils
 import androidx.annotation.Size
 import com.excellence.basetoolslibrary.utils.CloseUtils.Companion.closeIO
 import com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty
-import java.io.*
+import java.io.BufferedReader
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
+import java.io.InputStreamReader
 import java.util.*
 
 /**
@@ -350,10 +353,10 @@ class ConvertUtils {
          *
          * @param stream 输入流
          * @return StringBuilder
-         * @throws IOException
+         * @throws Exception
          */
         @JvmStatic
-        @Throws(IOException::class)
+        @Throws(java.lang.Exception::class)
         fun inputStream2StringBuilder(stream: InputStream): java.lang.StringBuilder {
             val result = java.lang.StringBuilder()
             if (isEmpty(stream)) {

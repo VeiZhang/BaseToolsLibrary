@@ -31,9 +31,8 @@ class DBUtils {
             SHARE_PREFERENCES_FILE_NAME = sharedFileName
         }
 
-        private fun getSharedPreferences(context: Context): SharedPreferences {
-            return context.getSharedPreferences(SHARE_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
-        }
+        private fun getSharedPreferences(context: Context): SharedPreferences =
+                context.getSharedPreferences(SHARE_PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
 
         /**
          * 判断键值是否存在
@@ -43,9 +42,8 @@ class DBUtils {
          * @return `true`:存在<br></br>`false`:不存在
          */
         @JvmStatic
-        fun contains(context: Context, key: String?): Boolean {
-            return getSharedPreferences(context).contains(key)
-        }
+        fun contains(context: Context, key: String?): Boolean =
+                getSharedPreferences(context).contains(key)
 
         /**
          * 存储字符串
@@ -70,9 +68,8 @@ class DBUtils {
          * @return 字符串
          */
         @JvmStatic
-        fun getString(context: Context, key: String?, defValue: String?): String? {
-            return getSharedPreferences(context).getString(key, defValue)
-        }
+        fun getString(context: Context, key: String?, defValue: String?): String? =
+                getSharedPreferences(context).getString(key, defValue)
 
         /**
          * 读取字符串
@@ -82,9 +79,8 @@ class DBUtils {
          * @return 字符串
          */
         @JvmStatic
-        fun getString(context: Context, key: String?): String? {
-            return getString(context, key, null)
-        }
+        fun getString(context: Context, key: String?): String? =
+                getString(context, key, null)
 
         /**
          * 存储布尔类型
@@ -109,9 +105,8 @@ class DBUtils {
          * @return boolean
          */
         @JvmStatic
-        fun getBoolean(context: Context, key: String?, defValue: Boolean): Boolean {
-            return getSharedPreferences(context).getBoolean(key, defValue)
-        }
+        fun getBoolean(context: Context, key: String?, defValue: Boolean): Boolean =
+                getSharedPreferences(context).getBoolean(key, defValue)
 
         /**
          * 读取布尔类型
@@ -121,9 +116,8 @@ class DBUtils {
          * @return boolean
          */
         @JvmStatic
-        fun getBoolean(context: Context, key: String?): Boolean {
-            return getBoolean(context, key, false)
-        }
+        fun getBoolean(context: Context, key: String?): Boolean =
+                getBoolean(context, key, false)
 
         /**
          * 存储int
@@ -148,9 +142,8 @@ class DBUtils {
          * @return int
          */
         @JvmStatic
-        fun getInt(context: Context, key: String?, defValue: Int): Int {
-            return getSharedPreferences(context).getInt(key, defValue)
-        }
+        fun getInt(context: Context, key: String?, defValue: Int): Int =
+                getSharedPreferences(context).getInt(key, defValue)
 
         /**
          * 读取int
@@ -160,9 +153,8 @@ class DBUtils {
          * @return int
          */
         @JvmStatic
-        fun getInt(context: Context, key: String?): Int {
-            return getInt(context, key, 0)
-        }
+        fun getInt(context: Context, key: String?): Int =
+                getInt(context, key, 0)
 
         /**
          * 存储long
@@ -187,9 +179,8 @@ class DBUtils {
          * @return long
          */
         @JvmStatic
-        fun getLong(context: Context, key: String?, defValue: Long): Long {
-            return getSharedPreferences(context).getLong(key, defValue)
-        }
+        fun getLong(context: Context, key: String?, defValue: Long): Long =
+                getSharedPreferences(context).getLong(key, defValue)
 
         /**
          * 读取long
@@ -199,9 +190,8 @@ class DBUtils {
          * @return long
          */
         @JvmStatic
-        fun getLong(context: Context, key: String?): Long {
-            return getLong(context, key, 0)
-        }
+        fun getLong(context: Context, key: String?): Long =
+                getLong(context, key, 0)
 
         /**
          * 存储float
@@ -226,9 +216,9 @@ class DBUtils {
          * @return float
          */
         @JvmStatic
-        fun getFloat(context: Context, key: String?, defValue: Float): Float {
-            return getSharedPreferences(context).getFloat(key, defValue)
-        }
+        fun getFloat(context: Context, key: String?, defValue: Float): Float =
+                getSharedPreferences(context).getFloat(key, defValue)
+
 
         /**
          * 读取float
@@ -238,9 +228,8 @@ class DBUtils {
          * @return float
          */
         @JvmStatic
-        fun getFloat(context: Context, key: String?): Float {
-            return getSharedPreferences(context).getFloat(key, 0f)
-        }
+        fun getFloat(context: Context, key: String?): Float =
+                getSharedPreferences(context).getFloat(key, 0f)
 
         /**
          * 存储Set<String>
@@ -265,9 +254,8 @@ class DBUtils {
          * @return Set<String>
          */
         @JvmStatic
-        fun getStringSet(context: Context, key: String?, defValue: Set<String>?): Set<String>? {
-            return getSharedPreferences(context).getStringSet(key, defValue)
-        }
+        fun getStringSet(context: Context, key: String?, defValue: Set<String>?): Set<String>? =
+                getSharedPreferences(context).getStringSet(key, defValue)
 
         /**
          * 读取Set<String>
@@ -277,9 +265,8 @@ class DBUtils {
          * @return Set<String>
          */
         @JvmStatic
-        fun getStringSet(context: Context, key: String?): Set<String>? {
-            return getStringSet(context, key, null)
-        }
+        fun getStringSet(context: Context, key: String?): Set<String>? =
+                getStringSet(context, key, null)
 
         /**
          * 删除配置
