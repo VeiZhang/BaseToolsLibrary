@@ -10,36 +10,34 @@ import java.io.Closeable
  *     desc   : 关闭相关工具类
  * </pre>
  */
-class CloseUtils {
+object CloseUtils {
 
-    companion object {
-
-        /**
-         * 关闭IO
-         */
-        @JvmStatic
-        fun closeIO(vararg closeables: Closeable) {
-            for (closeable in closeables) {
-                try {
-                    closeable.close()
-                } catch (e: java.lang.Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-
-        /**
-         * 安静关闭IO
-         */
-        @JvmStatic
-        fun closeIOQuietly(vararg closeables: Closeable) {
-            for (closeable in closeables) {
-                try {
-                    closeable.close()
-                } catch (ignored: java.lang.Exception) {
-
-                }
+    /**
+     * 关闭IO
+     */
+    @JvmStatic
+    fun closeIO(vararg closeables: Closeable) {
+        for (closeable in closeables) {
+            try {
+                closeable.close()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
             }
         }
     }
+
+    /**
+     * 安静关闭IO
+     */
+    @JvmStatic
+    fun closeIOQuietly(vararg closeables: Closeable) {
+        for (closeable in closeables) {
+            try {
+                closeable.close()
+            } catch (ignored: java.lang.Exception) {
+
+            }
+        }
+    }
+
 }
