@@ -160,9 +160,9 @@ object ConvertUtils {
      * @return
      */
     @JvmStatic
-    fun hexString2Bytes(src: String): ByteArray {
+    fun hexString2Bytes(src: String): ByteArray? {
         if (isEmpty(src)) {
-            return ByteArray(0)
+            return null
         }
         val l = src.length / 2
         val ret = ByteArray(l)
@@ -217,7 +217,7 @@ object ConvertUtils {
      * @return
      */
     @JvmStatic
-    fun string2Bytes(src: String): ByteArray {
+    fun string2Bytes(src: String): ByteArray? {
         val hexStr = string2HexString(src)
         return hexString2Bytes(hexStr)
     }

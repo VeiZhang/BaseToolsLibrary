@@ -69,14 +69,14 @@ object ActivityUtils {
      * 获取某应用入口Activity
      */
     @JvmStatic
-    fun getLauncherActivity(context: Context, packageName: String): String? {
+    fun getLauncherActivity(context: Context, packageName: String): String {
         val infos: List<ResolveInfo> = AppUtils.getAllInstalledApps(context)
         for (info: ResolveInfo in infos) {
             if (info.activityInfo.packageName == packageName) {
                 return info.activityInfo.name
             }
         }
-        return null
+        return ""
     }
 
 }

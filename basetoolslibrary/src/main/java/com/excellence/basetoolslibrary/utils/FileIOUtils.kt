@@ -156,7 +156,7 @@ object FileIOUtils {
      * @return
      */
     @JvmStatic
-    fun readFile2Bytes(stream: InputStream?): ByteArray {
+    fun readFile2Bytes(stream: InputStream?): ByteArray? {
         try {
             val os = ByteArrayOutputStream()
             val buf = ByteArray(BUF_SIZE)
@@ -170,7 +170,7 @@ object FileIOUtils {
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
-        return ByteArray(0)
+        return null
     }
 
     /**
@@ -180,17 +180,17 @@ object FileIOUtils {
      * @return
      */
     @JvmStatic
-    fun readFile2Bytes(file: File?): ByteArray {
+    fun readFile2Bytes(file: File?): ByteArray? {
         try {
             if (!FileUtils.isFileExists(file)) {
-                return ByteArray(0)
+                return null
             }
             val stream: InputStream = FileInputStream(file)
             return readFile2Bytes(stream)
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
-        return ByteArray(0)
+        return null
     }
 
     /**
@@ -220,7 +220,7 @@ object FileIOUtils {
             if (isEmpty(stream)) {
                 return ""
             }
-            val bytes = readFile2Bytes(stream)
+            val bytes = readFile2Bytes(stream)!!
             if (isEmpty(charset)) {
                 return String(bytes)
             } else {
