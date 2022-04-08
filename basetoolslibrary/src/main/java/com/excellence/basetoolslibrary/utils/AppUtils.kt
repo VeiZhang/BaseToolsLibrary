@@ -150,8 +150,8 @@ object AppUtils {
     fun getAppSize(context: Context): String {
         var size = ""
         try {
-            val pi = getPackageInfo(context)
-            size = FileUtils.formatFileSize(File(pi!!.applicationInfo.publicSourceDir).length())
+            val pi = getPackageInfo(context)!!
+            size = FileUtils.formatFileSize(File(pi.applicationInfo.publicSourceDir).length())
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -165,8 +165,8 @@ object AppUtils {
     fun getAppTime(context: Context): String {
         var time = ""
         try {
-            val pi = getPackageInfo(context)
-            time = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date(File(pi!!.applicationInfo.sourceDir).lastModified()))
+            val pi = getPackageInfo(context)!!
+            time = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date(File(pi.applicationInfo.sourceDir).lastModified()))
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -180,8 +180,8 @@ object AppUtils {
     fun getAppPath(context: Context): String {
         var path = ""
         try {
-            val pi = getPackageInfo(context)
-            path = pi!!.applicationInfo.sourceDir
+            val pi = getPackageInfo(context)!!
+            path = pi.applicationInfo.sourceDir
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -251,8 +251,8 @@ object AppUtils {
     fun getPackageSignature(context: Context, packageName: String): String {
         var signatureMD5 = ""
         try {
-            val pi = getPackageInfo(context, packageName)
-            signatureMD5 = getSignatureMD5(pi!!.signatures[0])
+            val pi = getPackageInfo(context, packageName)!!
+            signatureMD5 = getSignatureMD5(pi.signatures[0])
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }

@@ -9,7 +9,7 @@ import android.content.SharedPreferences
  * blog   : https://veizhang.github.io/
  * time   : 2017/1/23
  * desc   : 配置存储相关工具类
-</pre> *
+ * </pre>
  */
 object DBUtils {
 

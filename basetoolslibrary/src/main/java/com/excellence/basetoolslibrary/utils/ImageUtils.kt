@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
  * blog   : https://veizhang.github.io/
  * time   : 2017/1/24
  * desc   : 图片相关工具类
-</pre> *
+ * </pre>
  */
 object ImageUtils {
 
@@ -144,11 +144,11 @@ object ImageUtils {
      */
     @JvmStatic
     fun createBitmap(context: Context, @DrawableRes drawable: Int, width: Int, height: Int): Bitmap {
-        val maskDrawable = ContextCompat.getDrawable(context, drawable)
+        val maskDrawable = ContextCompat.getDrawable(context, drawable)!!
 
         val maskBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val maskCanvas = Canvas(maskBitmap)
-        maskDrawable!!.setBounds(0, 0, width, height)
+        maskDrawable.setBounds(0, 0, width, height)
         maskDrawable.draw(maskCanvas)
         return maskBitmap
     }

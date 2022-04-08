@@ -11,7 +11,7 @@ import java.io.Writer
  * blog   : https://veizhang.github.io/
  * time   : 2017/4/7
  * desc   : 异常相关工具
-</pre> *
+ * </pre>
  */
 object ExceptionUtils {
 

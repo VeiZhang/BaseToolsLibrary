@@ -13,7 +13,7 @@ import java.lang.reflect.Array
  * blog   : https://veizhang.github.io/
  * time   : 2017/1/24
  * desc   : 判断空相关工具类
-</pre> *
+ * </pre>
  */
 object EmptyUtils {
 

@@ -11,7 +11,7 @@ import android.telephony.TelephonyManager
  * time   : 2018/9/10
  * desc   : 设备相关 权限：[android.Manifest.permission.READ_PHONE_STATE]
  *
-</pre> *
+ * </pre>
  */
 object DeviceUtils {
 

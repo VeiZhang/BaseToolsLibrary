@@ -15,7 +15,7 @@ import java.text.DecimalFormat
  * time   : 2017/1/23
  * desc   : 文件相关工具类 权限 [android.Manifest.permission.WRITE_EXTERNAL_STORAGE]
  *
-</pre> *
+ * </pre>
  */
 object FileUtils {
 
