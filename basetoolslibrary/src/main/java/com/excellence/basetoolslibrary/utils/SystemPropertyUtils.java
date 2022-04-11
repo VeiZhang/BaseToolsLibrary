@@ -157,7 +157,7 @@ public class SystemPropertyUtils {
     public static String getLinuxKernelVersion() {
         try {
             ShellUtils.CommandResult result = ShellUtils.execProcessBuilderCommand("cat", "/proc/version");
-            String kernelInfo = result.resultString;
+            String kernelInfo = result.getResultString();
             if (EmptyUtils.isNotEmpty(kernelInfo)) {
                 return RegexUtils.getMatch("version\\s(.*?(?=\\s))", kernelInfo);
             }

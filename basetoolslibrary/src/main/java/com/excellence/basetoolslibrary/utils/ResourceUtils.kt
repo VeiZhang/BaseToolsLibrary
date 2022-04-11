@@ -118,7 +118,7 @@ object ResourceUtils {
      *
      * @param context 上下文
      * @param entryName 资源名
-     * @param type 资源类型名
+     * @param type 资源类型名 [Type]
      * @param packageName 包名
      * @param def 默认资源
      * @return 0表示没有该资源
@@ -175,7 +175,7 @@ object ResourceUtils {
      * 传入R类名com.excellence.iptv.R，遍历读取 R 资源列表，找到指定的资源类型，如drawable
      *
      * @param context
-     * @param type
+     * @param type [Type]
      * @param rPackageClass 因为Lib#R 与 App#R 区别，Lib#R 拿不到App里面的资源，需要App#R
      * @param prefix 资源文件过滤条件，前缀
      * @return
@@ -456,7 +456,7 @@ object ResourceUtils {
      * @param entryName target resource entry name -> icon
      * @param packageName package name
      * @param def default resource when target resource is empty
-     * @param type resource type name -> drawable
+     * @param type resource type name -> drawable [Type]
      * @return resource id
      */
     @JvmStatic
@@ -485,11 +485,11 @@ object ResourceUtils {
      * @param entryName target resource entry name
      * @param packageName package name
      * @param def default resource when target resource is empty
-     * @param types resource type names
+     * @param types resource type names [Type]
      * @return
      */
     @JvmStatic
-    fun getIdentifier(context: Context, entryName: String?, packageName: String?, def: Int, @Type vararg types: String?): Loader {
+    fun getIdentifier(context: Context, entryName: String?, packageName: String?, def: Int, vararg types: String?): Loader {
         var skinResources: Resources? = null
         var resId = 0
         try {
