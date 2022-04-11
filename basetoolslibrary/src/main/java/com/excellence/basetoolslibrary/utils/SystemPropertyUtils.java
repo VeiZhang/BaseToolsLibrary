@@ -25,7 +25,7 @@ public class SystemPropertyUtils {
             Method mthd = clazz.getMethod("get", new Class[]{String.class});
             mthd.setAccessible(true);
             Object obj = mthd.invoke(clazz, new Object[]{key});
-            if (obj != null && obj instanceof String) {
+            if (obj instanceof String) {
                 ret = (String) obj;
             }
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class SystemPropertyUtils {
             Method mthd = clazz.getMethod("get", new Class[]{String.class, String.class});
             mthd.setAccessible(true);
             Object obj = mthd.invoke(clazz, new Object[]{key, def});
-            if (obj != null && obj instanceof String) {
+            if (obj instanceof String) {
                 ret = (String) obj;
             }
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class SystemPropertyUtils {
             Method mthd = clazz.getMethod("getBoolean", new Class[]{String.class, boolean.class});
             mthd.setAccessible(true);
             Object obj = mthd.invoke(clazz, new Object[]{key, def});
-            if (obj != null && obj instanceof Boolean) {
+            if (obj instanceof Boolean) {
                 ret = (Boolean) obj;
             }
         } catch (Exception e) {
@@ -94,7 +94,7 @@ public class SystemPropertyUtils {
             Method mthd = clazz.getMethod("getInt", new Class[]{String.class, int.class});
             mthd.setAccessible(true);
             Object obj = mthd.invoke(clazz, new Object[]{key, def});
-            if (obj != null && obj instanceof Integer) {
+            if (obj instanceof Integer) {
                 ret = (Integer) obj;
             }
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class SystemPropertyUtils {
             Method mthd = clazz.getMethod("getLong", new Class[]{String.class, long.class});
             mthd.setAccessible(true);
             Object obj = mthd.invoke(clazz, new Object[]{key, def});
-            if (obj != null && obj instanceof Long) {
+            if (obj instanceof Long) {
                 ret = (Long) obj;
             }
         } catch (Exception e) {

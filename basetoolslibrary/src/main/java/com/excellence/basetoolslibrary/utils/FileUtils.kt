@@ -541,7 +541,7 @@ object FileUtils {
             fis.close()
             dis.close()
             return bytes2HexString(*md.digest())
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return ""

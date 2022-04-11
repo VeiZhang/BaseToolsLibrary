@@ -238,7 +238,7 @@ object AppUtils {
             if (signatures.isNotEmpty()) {
                 signatureMD5 = getSignatureMD5(signatures[0])
             }
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return signatureMD5

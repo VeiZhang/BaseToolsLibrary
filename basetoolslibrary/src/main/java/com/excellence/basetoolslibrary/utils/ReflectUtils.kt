@@ -52,7 +52,7 @@ object ReflectUtils {
             return if (isEmpty(clsName)) {
                 null
             } else getDeclaredFields(Class.forName(clsName))
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return null
@@ -94,7 +94,7 @@ object ReflectUtils {
             return if (isEmpty(clsName)) {
                 null
             } else getFields(Class.forName(clsName))
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return null
@@ -114,7 +114,7 @@ object ReflectUtils {
             val field = cls.getDeclaredField(fieldName)
             field.isAccessible = true
             field[owner] = value
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
     }
@@ -133,7 +133,7 @@ object ReflectUtils {
             val field = cls.getDeclaredField(fieldName)
             field.isAccessible = true
             return field[owner]
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return null
@@ -173,7 +173,7 @@ object ReflectUtils {
     fun getDeclaredMethods(owner: Any?, methodName: String?, argsCls: Array<Class<*>?>): Method? {
         try {
             return owner?.javaClass?.getDeclaredMethod(methodName, *argsCls)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return null
@@ -250,7 +250,7 @@ object ReflectUtils {
                 }
             }
             ret = invokeDeclaredMethod(owner, methodName, args, argsCls)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return ret
@@ -272,7 +272,7 @@ object ReflectUtils {
             val ownerCls: Class<*> = owner.javaClass
             val method = ownerCls.getDeclaredMethod(methodName, *argsClass)
             ret = method.invoke(owner, *args)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return ret
@@ -309,7 +309,7 @@ object ReflectUtils {
                 }
             }
             ret = invokeMethod(owner, methodName, args, argsCls)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return ret
@@ -331,7 +331,7 @@ object ReflectUtils {
             val ownerClass: Class<*> = owner.javaClass
             val method = ownerClass.getMethod(methodName, *argsClass)
             ret = method.invoke(owner, *args)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return ret
@@ -353,7 +353,7 @@ object ReflectUtils {
             }
             val constructor = cls.getConstructor(*argsClass)
             return constructor.newInstance(*args)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return null

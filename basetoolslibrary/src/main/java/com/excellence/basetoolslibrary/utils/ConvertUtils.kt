@@ -309,7 +309,7 @@ object ConvertUtils {
                 os.write(buffer, 0, offset)
             }
             return os
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         } finally {
             closeIO(stream)

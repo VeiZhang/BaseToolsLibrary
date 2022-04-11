@@ -27,7 +27,7 @@ object ShellUtils {
             process = ProcessBuilder(*command).redirectErrorStream(true).start()
             msg = StringBuilder(inputStream2StringBuilder(process.inputStream))
             resultCode = process.waitFor()
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         } finally {
             process?.destroy()
@@ -51,7 +51,7 @@ object ShellUtils {
             msg = StringBuilder(inputStream2StringBuilder(process.inputStream))
             msg.append(inputStream2StringBuilder(process.errorStream))
             resultCode = process.waitFor()
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         } finally {
             process?.destroy()

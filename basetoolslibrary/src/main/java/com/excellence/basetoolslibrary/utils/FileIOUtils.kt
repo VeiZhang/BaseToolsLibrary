@@ -35,7 +35,7 @@ object FileIOUtils {
             writer.write(content)
             writer.close()
             return true
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return false

@@ -124,7 +124,7 @@ object NetworkUtils {
             val manager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             val setMobileDataEnabledMethod = manager.javaClass.getDeclaredMethod("setDataEnabled", Boolean::class.javaPrimitiveType)
             setMobileDataEnabledMethod.invoke(manager, enabled)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
     }

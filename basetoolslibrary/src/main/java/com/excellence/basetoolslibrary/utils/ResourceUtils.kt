@@ -128,7 +128,7 @@ object ResourceUtils {
         var res = def
         try {
             res = context.resources.getIdentifier(entryName, type, packageName)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: ", e)
         }
         return if (res == 0) def else res
@@ -165,7 +165,7 @@ object ResourceUtils {
         var desireClass: Class<*>? = null
         try {
             desireClass = Class.forName(rPackageName)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: ", e)
         }
         return getIdentifiers(context, type, desireClass, prefix)
@@ -220,7 +220,7 @@ object ResourceUtils {
                 desireClass = r
                 Log.i(TAG, "getIdentifiers itself: $desireClass")
             }
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: ", e)
         }
 
@@ -262,7 +262,7 @@ object ResourceUtils {
         var desireClass: Class<*>? = null
         try {
             desireClass = Class.forName(rClassName)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: ", e)
         }
         return getIdentifiers(context, desireClass, prefix)
@@ -287,7 +287,7 @@ object ResourceUtils {
         val resList: MutableList<Int> = ArrayList()
         try {
             type = desireClass.name.split("\\$").toTypedArray()[1]
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: ", e)
         }
 
@@ -352,7 +352,7 @@ object ResourceUtils {
                 }
             }
             return ret
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return false
@@ -375,7 +375,7 @@ object ResourceUtils {
             val `is` = context.resources.openRawResource(resId)
             val os: OutputStream = FileOutputStream(destFilePath)
             return copyFile(`is`, os)
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return false
@@ -401,7 +401,7 @@ object ResourceUtils {
                     String(bytes, Charset.forName(charset))
                 }
             }
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
         return null
@@ -468,7 +468,7 @@ object ResourceUtils {
             skinResources = skinContext.resources
             resId = skinResources.getIdentifier(entryName, type, packageName)
             Log.i(TAG, "getIdentifier: $resId")
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: " + e.message)
         }
         if (resId == 0) {
@@ -502,7 +502,7 @@ object ResourceUtils {
                 }
             }
             Log.i(TAG, "getIdentifier: $resId")
-        } catch (e: Exception) {
+        } catch (e: java.lang.Exception) {
             Log.e(TAG, "getIdentifier: " + e.message)
         }
         if (resId == 0) {
