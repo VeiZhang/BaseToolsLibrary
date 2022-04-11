@@ -37,7 +37,7 @@ object DBUtils {
      *
      * @param context 上下文
      * @param key 键值
-     * @return `true`:存在<br></br>`false`:不存在
+     * @return `true`:存在<br>`false`:不存在
      */
     @JvmStatic
     fun contains(context: Context, key: String?): Boolean =

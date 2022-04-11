@@ -364,7 +364,7 @@ object ReflectUtils {
      *
      * @param cls 类
      * @param owner 对象
-     * @return `true`:是<br></br>`false`:否
+     * @return `true`:是<br>`false`:否
      */
     @JvmStatic
     fun isInstance(cls: Class<*>, owner: Any?): Boolean {

@@ -21,7 +21,7 @@ object EmptyUtils {
      * 判断对象是否为空
      *
      * @param obj 对象
-     * @return `true`: 为空<br></br>`false`: 不为空
+     * @return `true`: 为空<br>`false`: 不为空
      */
     @JvmStatic
     fun isEmpty(obj: Any?): Boolean {
@@ -61,7 +61,7 @@ object EmptyUtils {
      * 判断对象是否非空
      *
      * @param obj 对象
-     * @return `true`: 非空<br></br>`false`: 空
+     * @return `true`: 非空<br>`false`: 空
      */
     @JvmStatic
     fun isNotEmpty(obj: Any?): Boolean {
