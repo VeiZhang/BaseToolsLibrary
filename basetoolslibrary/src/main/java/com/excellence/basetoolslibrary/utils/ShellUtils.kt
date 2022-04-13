@@ -4,10 +4,10 @@ import com.excellence.basetoolslibrary.utils.ConvertUtils.inputStream2StringBuil
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : https://veizhang.github.io/
- * time   : 2017/1/23
- * desc   : 命令相关工具类
+ *     author : VeiZhang
+ *     blog   : https://veizhang.github.io/
+ *     time   : 2017/1/23
+ *     desc   : 命令相关工具类
  * </pre>
  */
 object ShellUtils {

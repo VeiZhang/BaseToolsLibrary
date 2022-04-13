@@ -5,10 +5,10 @@ import java.util.*
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : https://veizhang.github.io/
- * time   : 2017/2/13
- * desc   : 字符串相关工具类
+ *     author : VeiZhang
+ *     blog   : https://veizhang.github.io/
+ *     time   : 2017/2/13
+ *     desc   : 字符串相关工具类
  * </pre>
  */
 object StringUtils {

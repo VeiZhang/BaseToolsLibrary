@@ -6,10 +6,10 @@ import java.util.*
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2018/8/30
- * desc   : SD、TF等存储相关工具
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2018/8/30
+ *     desc   : SD、TF等存储相关工具
  * </pre>
  */
 object StorageUtils {

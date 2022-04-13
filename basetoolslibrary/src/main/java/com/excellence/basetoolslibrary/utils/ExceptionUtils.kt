@@ -7,10 +7,10 @@ import java.io.Writer
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : https://veizhang.github.io/
- * time   : 2017/4/7
- * desc   : 异常相关工具
+ *     author : VeiZhang
+ *     blog   : https://veizhang.github.io/
+ *     time   : 2017/4/7
+ *     desc   : 异常相关工具
  * </pre>
  */
 object ExceptionUtils {

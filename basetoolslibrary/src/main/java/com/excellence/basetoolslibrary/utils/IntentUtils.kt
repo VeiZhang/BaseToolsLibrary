@@ -15,10 +15,10 @@ import java.util.*
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2018/9/10
- * desc   : 常见的Intent相关
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2018/9/10
+ *     desc   : 常见的Intent相关
  * </pre>
  */
 object IntentUtils {

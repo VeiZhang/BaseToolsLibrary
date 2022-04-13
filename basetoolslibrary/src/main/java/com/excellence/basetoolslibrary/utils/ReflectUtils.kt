@@ -8,10 +8,10 @@ import java.lang.reflect.Method
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2017/7/20
- * desc   : 反射相关工具类
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2017/7/20
+ *     desc   : 反射相关工具类
  * </pre>
  */
 object ReflectUtils {

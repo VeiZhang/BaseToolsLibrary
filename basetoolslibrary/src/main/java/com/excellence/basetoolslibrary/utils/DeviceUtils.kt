@@ -6,10 +6,10 @@ import android.telephony.TelephonyManager
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2018/9/10
- * desc   : 设备相关 权限：[android.Manifest.permission.READ_PHONE_STATE]
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2018/9/10
+ *     desc   : 设备相关 权限：[android.Manifest.permission.READ_PHONE_STATE]
  *
  * </pre>
  */

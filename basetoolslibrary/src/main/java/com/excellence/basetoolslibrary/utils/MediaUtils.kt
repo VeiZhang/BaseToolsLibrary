@@ -4,10 +4,10 @@ import android.media.MediaMetadataRetriever
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2019/9/20
- * desc   : 多媒体：音视频相关
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2019/9/20
+ *     desc   : 多媒体：音视频相关
  * </pre>
  */
 object MediaUtils {

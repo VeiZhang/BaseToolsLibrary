@@ -8,10 +8,10 @@ import android.view.inputmethod.InputMethodManager
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2017/7/21
- * desc   : 键盘相关工具类
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2017/7/21
+ *     desc   : 键盘相关工具类
  * </pre>
  */
 object KeyboardUtils {
