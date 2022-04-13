@@ -12,15 +12,11 @@ import androidx.annotation.LayoutRes
  *     desc   : ListView、GridView通用适配器
  * </pre>
  */
-abstract class CommonAdapter<T> : MultiItemTypeAdapter<T> {
+abstract class CommonAdapter<T>(data: List<T>?, @LayoutRes layoutId: Int) : MultiItemTypeAdapter<T>(data) {
 
-    private var mLayoutId: Int
+    private val mLayoutId: Int = layoutId
 
     constructor(data: Array<T>?, @LayoutRes layoutId: Int) : this(if (data == null) null else listOf(*data), layoutId)
-
-    constructor(data: List<T>?, @LayoutRes layoutId: Int) : super(data) {
-        mLayoutId = layoutId
-    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val viewHolder = ViewHolder.getViewHolder(parent.context, convertView, parent, mLayoutId)
