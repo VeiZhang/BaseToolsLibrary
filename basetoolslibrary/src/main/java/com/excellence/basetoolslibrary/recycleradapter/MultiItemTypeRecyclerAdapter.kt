@@ -1,13 +1,14 @@
-package com.excellence.basetoolslibrary.baseadapter
+package com.excellence.basetoolslibrary.recycleradapter
 
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import com.excellence.basetoolslibrary.baseadapter.base.ItemViewDelegate
-import com.excellence.basetoolslibrary.baseadapter.base.ItemViewDelegateManager
+import androidx.recyclerview.widget.RecyclerView
 import com.excellence.basetoolslibrary.helper.DataHelper
+import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegate
+import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegateManager
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -15,20 +16,25 @@ import kotlin.math.min
  * <pre>
  *     author : VeiZhang
  *     blog   : http://tiimor.cn
- *     time   : 2022/4/12
- *     desc   :
+ *     time   : 2022/4/13
+ *     desc   : 多种类型布局RecyclerView通用适配器
  * </pre>
  */
-open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
+open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerViewHolder>(), DataHelper<T> {
 
     val mData: MutableList<T?> = ArrayList()
-    private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
-
-    constructor(data: List<T>?) : this() {
-        data?.let { mData.addAll(it) }
-    }
+    private var mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
+    private var mOnItemClickListener: OnItemClickListener? = null
+    private var mOnItemLongClickListener: OnItemLongClickListener? = null
+    private var mOnItemFocusChangeListener: OnItemFocusChangeListener? = null
+    private var mOnItemKeyListener: OnItemKeyListener? = null
+    private var mSelectedItemPosition = -1
 
     constructor(data: Array<T>?) : this(if (data == null) null else listOf(*data))
+
+    constructor(data: List<T>?) : this() {
+        data?.let { mData.addAll(data) }
+    }
 
     /**
      * 添加视图
@@ -36,7 +42,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
      * @param delegate 视图
      * @return
      */
-    fun addItemViewDelegate(delegate: ItemViewDelegate<T>): MultiItemTypeAdapter<T> {
+    fun addItemViewDelegate(delegate: ItemViewDelegate<T>): MultiItemTypeRecyclerAdapter<T> {
         mItemViewDelegateManager.addDelegate(delegate)
         return this
     }
@@ -48,7 +54,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
      * @param delegate 视图
      * @return
      */
-    fun addItemViewDelegate(viewType: Int, delegate: ItemViewDelegate<T>): MultiItemTypeAdapter<T> {
+    fun addItemViewDelegate(viewType: Int, delegate: ItemViewDelegate<T>): MultiItemTypeRecyclerAdapter<T> {
         mItemViewDelegateManager.addDelegate(viewType, delegate)
         return this
     }
@@ -59,7 +65,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
      * @param delegate 视图
      * @return
      */
-    fun removeItemViewDelegate(delegate: ItemViewDelegate<T>): MultiItemTypeAdapter<T> {
+    fun removeItemViewDelegate(delegate: ItemViewDelegate<T>?): MultiItemTypeRecyclerAdapter<T> {
         mItemViewDelegateManager.removeDelegate(delegate)
         return this
     }
@@ -70,7 +76,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
      * @param viewType 布局类型
      * @return
      */
-    fun removeItemViewDelegate(viewType: Int): MultiItemTypeAdapter<T> {
+    fun removeItemViewDelegate(viewType: Int): MultiItemTypeRecyclerAdapter<T> {
         mItemViewDelegateManager.removeDelegate(viewType)
         return this
     }
@@ -81,75 +87,140 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
      * @param viewType 布局类型
      * @return
      */
-    fun getItemViewDelegate(viewType: Int): ItemViewDelegate<T>? {
+    fun getItemViewDelegate(viewType: Int): ItemViewDelegate<T?> {
         return mItemViewDelegateManager.getItemViewDelegate(viewType)
     }
 
     /**
      * 判断视图是否可用
      *
-     * @return `true`:是<br>`false`:否
+     * @return `true`:是<br></br>`false`:否
      */
     private fun userItemViewDelegateManager(): Boolean {
-        return mItemViewDelegateManager.getItemViewDelegateCount() > 0
+        return mItemViewDelegateManager.itemViewDelegateCount > 0
     }
 
-    /**
-     * 获取视图数量
-     *
-     * @return 视图数量
-     */
-    override fun getViewTypeCount(): Int {
-        return if (userItemViewDelegateManager()) {
-            mItemViewDelegateManager.getItemViewDelegateCount()
-        } else super.getViewTypeCount()
-    }
-
-    /**
-     * 获取视图类型
-     *
-     * @param position 位置
-     * @return 视图类型
-     */
     override fun getItemViewType(position: Int): Int {
         return if (userItemViewDelegateManager()) {
             mItemViewDelegateManager.getItemViewType(mData[position], position)
         } else super.getItemViewType(position)
     }
 
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return mData.size
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
+        val layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType)
+        return RecyclerViewHolder.getViewHolder(parent.context, parent, layoutId)
+    }
+
+    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        val delegate = getItemViewDelegate(getItemViewType(position))
+        delegate.convert(holder, getItem(position), position)
+        setViewListener(holder, position)
+    }
+
+    protected fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+        val itemView = holder.convertView
+
+        /**
+         * 如果执行了submitList增减，则当监听事件时，position就是错误的
+         * 此时应该使用[RecyclerViewHolder.getAdapterPosition] 纠正
+         */
+        itemView.setOnClickListener { v ->
+            mOnItemClickListener?.onItemClick(holder, v, holder.adapterPosition)
+        }
+        itemView.setOnLongClickListener { v ->
+            (mOnItemLongClickListener?.onItemLongClick(holder, v, holder.adapterPosition) ?: false)
+        }
+        itemView.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+            val position = holder.adapterPosition
+            mSelectedItemPosition = if (hasFocus) position else -1
+            if (position >= 0) {
+                mOnItemFocusChangeListener?.onItemFocusChange(holder, v, hasFocus, position)
+            }
+        }
+        itemView.setOnKeyListener { v, keyCode, event ->
+            (mOnItemKeyListener?.onKey(holder, v, keyCode, event, holder.adapterPosition)) ?: false
+        }
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        mOnItemClickListener = listener
+    }
+
+    fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
+        mOnItemLongClickListener = listener
+    }
+
+    fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
+        mOnItemFocusChangeListener = listener
+    }
+
+    fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
+        mOnItemKeyListener = onItemKeyListener
+    }
+
+    /**
+     * 获取当前焦点位置
+     *
+     * @return -1表示没有焦点
+     */
+    fun getSelectedItemPosition(): Int {
+        return mSelectedItemPosition
+    }
+
+    /**** 以下为辅助方法 ****/
+
+    /**
+     * 获取数据集
+     *
+     * @return
+     */
+    override val data: List<T?> = mData
+
+    /**
+     * 获取单个数据
+     *
+     * @param position
+     * @return
+     */
     override fun getItem(position: Int): T? {
         return mData[position]
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
+    /**
+     * [RecyclerView.Adapter.notifyDataSetChanged]处理焦点问题
+     *
+     * @param data
+     */
+    fun notifyData(data: List<T>?) {
+        mData.clear()
+        data?.let { mData.addAll(data) }
+        notifyDataSetChanged()
     }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val delegate = getItemViewDelegate(getItemViewType(position))
-        val layoutId = delegate!!.getItemViewLayoutId()
-        val viewHolder = ViewHolder.getViewHolder(parent.context, convertView, parent, layoutId)
-        delegate.convert(viewHolder, getItem(position), position)
-        return viewHolder.getConvertView()
-    }
-
-    /**** 以下为辅助方法  */
-
-    override val data: List<T?> = mData
 
     /**
      * 新数据集替代旧数据集，刷新视图
+     * [notifyDataSetChanged] 没有动画效果，刷新效率比不上下面方法（伴有动画效果：闪烁）
+     * 位置不会刷新的方法，使用[.notifyItemRangeChanged]替代
+     *
+     * @see notifyItemChanged
+     * @see notifyItemInserted
+     * @see notifyItemRemoved
+     * @see notifyItemRangeChanged
+     * @see notifyItemMoved
+     * @see notifyItemRangeInserted
+     * @see notifyItemRangeRemoved
      *
      * @param data 新数据集
      */
     override fun notifyNewData(data: List<T>?) {
+        notifyItemRangeRemoved(0, mData.size)
         mData.clear()
-        data?.let { mData.addAll(it) }
-        notifyDataSetChanged()
+        data?.let { mData.addAll(data) }
+        notifyItemRangeChanged(0, mData.size)
     }
 
     /**
@@ -177,9 +248,8 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
                 position = mData.size
             }
         }
-
-        data?.let { mData.addAll(position, it) }
-        notifyDataSetChanged()
+        data?.let { mData.addAll(position, data) }
+        notifyItemRangeChanged(position, mData.size - position)
     }
 
     /**
@@ -190,7 +260,6 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
     override fun add(item: T?) {
         add(mData.size, item)
     }
-
 
     /**
      * 插入新数据
@@ -209,7 +278,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
             }
         }
         mData.add(position, item)
-        notifyDataSetChanged()
+        notifyItemRangeChanged(position, mData.size - position)
     }
 
     /**
@@ -232,7 +301,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
             return
         }
         mData[position] = item
-        notifyDataSetChanged()
+        notifyItemChanged(position)
     }
 
     /**
@@ -264,7 +333,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
             return
         }
         mData.removeAt(position)
-        notifyDataSetChanged()
+        notifyItemRemoved(position)
     }
 
     /**
@@ -282,6 +351,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
         if (endPosition < 0 || endPosition > mData.size - 1) {
             return
         }
+
         val index = startPosition
         startPosition = min(index, endPosition)
         endPosition = max(index, endPosition)
@@ -289,8 +359,8 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
         for (i in startPosition..endPosition) {
             removeList.add(mData[i])
         }
+        notifyItemRangeRemoved(startPosition, removeList.size)
         mData.removeAll(removeList)
-        notifyDataSetChanged()
     }
 
     /**
@@ -311,7 +381,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
             return
         }
         Collections.swap(mData, fromPosition, toPosition)
-        notifyDataSetChanged()
+        notifyItemMoved(fromPosition, toPosition)
     }
 
     /**
@@ -322,6 +392,8 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
      * @param toPosition
      */
     override fun move(fromPosition: Int, toPosition: Int) {
+        var fromPosition = fromPosition
+        var toPosition = toPosition
         if (fromPosition < 0 || fromPosition > mData.size - 1) {
             return
         }
@@ -331,25 +403,28 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
         if (fromPosition == toPosition) {
             return
         }
-        val item: T? = mData[fromPosition]
+        val item = mData[fromPosition]
         mData.removeAt(fromPosition)
         mData.add(toPosition, item)
-        notifyDataSetChanged()
+        val index = fromPosition
+        fromPosition = min(index, toPosition)
+        toPosition = max(index, toPosition)
+        notifyItemRangeChanged(fromPosition, abs(toPosition - fromPosition) + 1)
     }
 
     /**
      * 清空数据集
      */
     override fun clear() {
+        notifyItemRangeRemoved(0, mData.size)
         mData.clear()
-        notifyDataSetChanged()
     }
 
     /**
      * 判断数据集是否包含数据
      *
      * @param item 待检测数据
-     * @return `true`:包含<br>`false`: 不包含
+     * @return `true`:包含<br></br>`false`: 不包含
      */
     override fun contains(item: T?): Boolean {
         return mData.contains(item)

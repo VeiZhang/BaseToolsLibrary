@@ -69,7 +69,7 @@ interface DataHelper<T> {
      *
      * @param item 数据集中的对象，修改复杂类型（非基本类型）里面的变量值
      */
-    fun modify(item: T)
+    fun modify(item: T?)
 
     /**
      * 替换数据
@@ -77,7 +77,7 @@ interface DataHelper<T> {
      * @param position 替换位置
      * @param item 替换数据
      */
-    fun modify(position: Int, item: T)
+    fun modify(position: Int, item: T?)
 
     /**
      * 替换数据
@@ -85,7 +85,7 @@ interface DataHelper<T> {
      * @param oldItem 被替换数据
      * @param newItem 替换数据
      */
-    fun modify(oldItem: T, newItem: T)
+    fun modify(oldItem: T?, newItem: T?)
 
     /**
      * 删除数据
@@ -93,7 +93,7 @@ interface DataHelper<T> {
      * @param item 被删除数据
      * @return `true`:删除成功<br>`false`:删除失败
      */
-    fun remove(item: T)
+    fun remove(item: T?)
 
     /**
      * 删除数据
