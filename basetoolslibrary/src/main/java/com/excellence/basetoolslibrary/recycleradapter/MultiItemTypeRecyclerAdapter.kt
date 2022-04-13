@@ -97,7 +97,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
      * @return `true`:是<br>`false`:否
      */
     private fun userItemViewDelegateManager(): Boolean {
-        return mItemViewDelegateManager.itemViewDelegateCount > 0
+        return mItemViewDelegateManager.getItemViewDelegateCount() > 0
     }
 
     override fun getItemViewType(position: Int): Int {

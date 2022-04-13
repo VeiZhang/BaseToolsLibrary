@@ -1,21 +1,22 @@
-package com.excellence.basetoolslibrary.baseadapter.base
+package com.excellence.basetoolslibrary.recycleradapter.base
 
 import androidx.collection.SparseArrayCompat
-import com.excellence.basetoolslibrary.baseadapter.ViewHolder
+import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder
+
 
 /**
  * <pre>
  *     author : VeiZhang
  *     blog   : https://veizhang.github.io/
- *     time   : 2022/4/13
- *     desc   : [com.excellence.basetoolslibrary.baseadapter.MultiItemTypeAdapter]
+ *     time   : 2017/4/19
+ *     desc   : [com.excellence.basetoolslibrary.recycleradapter.MultiItemTypeRecyclerAdapter]
  *     			多布局视图管理器
  *              默认0，1，2，3...为视图类型，且每个类型唯一；非位置标志
  * </pre>
  */
 class ItemViewDelegateManager<T> {
 
-    private val mDelegates: SparseArrayCompat<ItemViewDelegate<T>> = SparseArrayCompat<ItemViewDelegate<T>>()
+    private val mDelegates = SparseArrayCompat<ItemViewDelegate<T>>()
 
     /**
      * 获取视图数量
@@ -47,8 +48,8 @@ class ItemViewDelegateManager<T> {
      * @param delegate 视图
      * @return
      */
-    fun addDelegate(viewType: Int, delegate: ItemViewDelegate<T>?): ItemViewDelegateManager<T> {
-        require(mDelegates[viewType] == null) { "An ItemViewDelegate is already registered for the viewType = $viewType. Already registered ItemViewDelegate is ${mDelegates[viewType]}." }
+    fun addDelegate(viewType: Int, delegate: ItemViewDelegate<T>?): ItemViewDelegateManager<T>? {
+        require(mDelegates[viewType] == null) { "An ItemViewDelegate is already registered for the viewType = " + viewType + ". Already registered ItemViewDelegate is " + mDelegates[viewType] }
         mDelegates.put(viewType, delegate)
         return this
     }
@@ -107,7 +108,7 @@ class ItemViewDelegateManager<T> {
      * @param item 数据
      * @param position 位置
      */
-    fun convert(viewHolder: ViewHolder?, item: T?, position: Int) {
+    fun convert(viewHolder: RecyclerViewHolder?, item: T?, position: Int) {
         for (i in 0 until mDelegates.size()) {
             val delegate = mDelegates.valueAt(i)
             if (delegate.isForViewType(item, position)) {
@@ -135,7 +136,7 @@ class ItemViewDelegateManager<T> {
      * @param position 位置
      * @return 布局资源Id
      */
-    fun getItemViewLayoutId(item: T?, position: Int): Int {
+    fun getItemViewLayoutId(item: T, position: Int): Int {
         return getItemViewDelegate(item, position).getItemViewLayoutId()
     }
 
@@ -156,10 +157,10 @@ class ItemViewDelegateManager<T> {
      * @param position 位置
      * @return 视图
      */
-    fun getItemViewDelegate(item: T?, position: Int): ItemViewDelegate<T> {
+    fun getItemViewDelegate(item: T, position: Int): ItemViewDelegate<T> {
         for (i in 0 until mDelegates.size()) {
             val delegate = mDelegates.valueAt(i)
-            if (delegate.isForViewType(item, position)) {
+            if (delegate!!.isForViewType(item, position)) {
                 return delegate
             }
         }
