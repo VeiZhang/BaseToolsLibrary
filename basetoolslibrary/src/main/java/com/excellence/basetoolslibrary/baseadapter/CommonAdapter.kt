@@ -21,7 +21,7 @@ abstract class CommonAdapter<T>(data: List<T>?, @LayoutRes layoutId: Int) : Mult
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val viewHolder = ViewHolder.getViewHolder(parent.context, convertView, parent, mLayoutId)
         convert(viewHolder, getItem(position), position)
-        return viewHolder.convertView
+        return viewHolder.getConvertView()
     }
 
     abstract fun convert(viewHolder: ViewHolder?, item: T?, position: Int)

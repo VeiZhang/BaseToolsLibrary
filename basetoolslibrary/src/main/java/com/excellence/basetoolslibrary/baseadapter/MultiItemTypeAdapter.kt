@@ -139,7 +139,7 @@ open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
         val layoutId = delegate!!.getItemViewLayoutId()
         val viewHolder = ViewHolder.getViewHolder(parent.context, convertView, parent, layoutId)
         delegate.convert(viewHolder, getItem(position), position)
-        return viewHolder.convertView
+        return viewHolder.getConvertView()
     }
 
     /**** 以下为辅助方法  */
