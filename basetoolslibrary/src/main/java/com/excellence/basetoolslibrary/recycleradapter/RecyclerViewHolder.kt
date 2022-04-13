@@ -1,4 +1,4 @@
-package com.excellence.basetoolslibrary.baseadapter
+package com.excellence.basetoolslibrary.recycleradapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -18,37 +18,38 @@ import android.view.animation.AlphaAnimation
 import android.widget.*
 import androidx.annotation.*
 import androidx.leanback.widget.Visibility
+import androidx.recyclerview.widget.RecyclerView
 import com.excellence.basetoolslibrary.helper.ViewHelper
 
 /**
  * <pre>
  *     author : VeiZhang
- *     blog   : http://tiimor.cn
- *     time   : 2022/4/13
- *     desc   : CommonAdapter控件方法
+ *     blog   : https://veizhang.github.io/
+ *     time   : 2016/12/20
+ *     desc   : BaseRecyclerAdapter控件方法
  * </pre>
  */
-class ViewHolder : ViewHelper<ViewHolder> {
+class RecyclerViewHolder : RecyclerView.ViewHolder, ViewHelper<RecyclerViewHolder?> {
 
-    private val mContext: Context
-    private val mConvertView: View
-    private val mViews: SparseArray<View?>
+    private var mContext: Context
+    private var mConvertView: View
+    private var mViews: SparseArray<View?>
 
-    constructor(context: Context, parent: ViewGroup, layoutId: Int) : super() {
+    constructor(context: Context, itemView: View) : super(itemView) {
         mContext = context
+        mConvertView = itemView
         mViews = SparseArray()
-        mConvertView = LayoutInflater.from(context).inflate(layoutId, parent, false)
-        mConvertView.tag = this
     }
 
     companion object {
-
-        @JvmStatic
-        fun getViewHolder(context: Context, convertView: View?, parent: ViewGroup, layoutId: Int): ViewHolder {
-            return convertView?.let { it.tag as ViewHolder }
-                    ?: ViewHolder(context, parent, layoutId)
+        fun getViewHolder(context: Context, view: View): RecyclerViewHolder {
+            return RecyclerViewHolder(context, view)
         }
 
+        fun getViewHolder(context: Context, parent: ViewGroup?, @LayoutRes layoutId: Int): RecyclerViewHolder {
+            val view = LayoutInflater.from(context).inflate(layoutId, parent, false)
+            return getViewHolder(context, view)
+        }
     }
 
     fun getConvertView(): View {
@@ -59,9 +60,9 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * 获取view控件
      *
      * @param viewId 控件资源Id
-     * @return view
+     * @return 获取view对象
      */
-    fun <T : View> getView(@IdRes viewId: Int): T? {
+    fun <T : View?> getView(@IdRes viewId: Int): T? {
         var view = mViews[viewId]
         if (view == null) {
             view = mConvertView.findViewById(viewId)
@@ -70,7 +71,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
         return view as T?
     }
 
-    /**** 以下为辅助方法  */
+    /**** 以下为辅助方法 同 [com.excellence.basetoolslibrary.baseadapter.ViewHolder]  */
 
     /**
      * 关于属性
@@ -83,7 +84,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param strId 字符串资源Id
      * @return
      */
-    override fun setText(@IdRes viewId: Int, @StringRes strId: Int): ViewHolder {
+    override fun setText(@IdRes viewId: Int, @StringRes strId: Int): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         view.setText(strId)
         return this
@@ -96,7 +97,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param text 字符串
      * @return
      */
-    override fun setText(@IdRes viewId: Int, text: String?): ViewHolder {
+    override fun setText(@IdRes viewId: Int, text: String?): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         view.text = text
         return this
@@ -109,7 +110,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param text 字符串
      * @return
      */
-    override fun setText(@IdRes viewId: Int, text: CharSequence?): ViewHolder {
+    override fun setText(@IdRes viewId: Int, text: CharSequence?): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         view.text = text
         return this
@@ -122,7 +123,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param textColor 颜色资源
      * @return
      */
-    override fun setTextColor(@IdRes viewId: Int, @ColorInt textColor: Int): ViewHolder {
+    override fun setTextColor(@IdRes viewId: Int, @ColorInt textColor: Int): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         view.setTextColor(textColor)
         return this
@@ -135,7 +136,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param textColorRes 颜色资源Id
      * @return
      */
-    override fun setTextColorRes(@IdRes viewId: Int, @ColorRes textColorRes: Int): ViewHolder {
+    override fun setTextColorRes(@IdRes viewId: Int, @ColorRes textColorRes: Int): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         view.setTextColor(mContext.resources.getColor(textColorRes))
         return this
@@ -148,7 +149,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param resId 图片资源Id
      * @return
      */
-    override fun setImageResource(@IdRes viewId: Int, @DrawableRes resId: Int): ViewHolder {
+    override fun setImageResource(@IdRes viewId: Int, @DrawableRes resId: Int): RecyclerViewHolder {
         val view = getView<ImageView>(viewId)!!
         view.setImageResource(resId)
         return this
@@ -161,7 +162,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param bitmap 位图资源
      * @return
      */
-    override fun setImageBitmap(@IdRes viewId: Int, bitmap: Bitmap?): ViewHolder {
+    override fun setImageBitmap(@IdRes viewId: Int, bitmap: Bitmap?): RecyclerViewHolder {
         val view = getView<ImageView>(viewId)!!
         view.setImageBitmap(bitmap)
         return this
@@ -174,7 +175,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param drawable 图片资源
      * @return
      */
-    override fun setImageDrawable(@IdRes viewId: Int, drawable: Drawable?): ViewHolder {
+    override fun setImageDrawable(@IdRes viewId: Int, drawable: Drawable?): RecyclerViewHolder {
         val view = getView<ImageView>(viewId)!!
         view.setImageDrawable(drawable)
         return this
@@ -187,7 +188,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param color 背景图片颜色
      * @return
      */
-    override fun setBackgroundColor(@IdRes viewId: Int, @ColorInt color: Int): ViewHolder {
+    override fun setBackgroundColor(@IdRes viewId: Int, @ColorInt color: Int): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.setBackgroundColor(color)
         return this
@@ -200,7 +201,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param backgroundRes 背景图片资源Id
      * @return
      */
-    override fun setBackgroundRes(@IdRes viewId: Int, @DrawableRes backgroundRes: Int): ViewHolder {
+    override fun setBackgroundRes(@IdRes viewId: Int, @DrawableRes backgroundRes: Int): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.setBackgroundResource(backgroundRes)
         return this
@@ -214,7 +215,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @return
      */
     @SuppressLint("NewApi")
-    override fun setAlpha(@IdRes viewId: Int, @FloatRange(from = 0.0, to = 1.0) value: Float): ViewHolder {
+    override fun setAlpha(@IdRes viewId: Int, @FloatRange(from = 0.0, to = 1.0) value: Float): RecyclerViewHolder {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getView<View>(viewId)!!.alpha = value
         } else {
@@ -240,7 +241,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      *
      * @return
      */
-    override fun setVisible(@IdRes viewId: Int, @Visibility visibility: Int): ViewHolder {
+    override fun setVisible(@IdRes viewId: Int, @Visibility visibility: Int): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.visibility = visibility
         return this
@@ -253,7 +254,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param visible 是否可见
      * @return
      */
-    override fun setVisible(@IdRes viewId: Int, visible: Boolean): ViewHolder {
+    override fun setVisible(@IdRes viewId: Int, visible: Boolean): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.visibility = if (visible) View.VISIBLE else View.GONE
         return this
@@ -265,7 +266,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param viewId 控件资源Id
      * @return 超链接
      */
-    override fun linkify(@IdRes viewId: Int): ViewHolder {
+    override fun linkify(@IdRes viewId: Int): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         Linkify.addLinks(view, Linkify.ALL)
         return this
@@ -278,7 +279,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param typeface 字体样式
      * @return
      */
-    override fun setTypeface(viewId: Int, typeface: Typeface?): ViewHolder {
+    override fun setTypeface(viewId: Int, typeface: Typeface?): RecyclerViewHolder {
         val view = getView<TextView>(viewId)!!
         view.typeface = typeface
         view.paintFlags = view.paintFlags or Paint.SUBPIXEL_TEXT_FLAG
@@ -292,7 +293,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param viewIds 控件资源Ids
      * @return
      */
-    override fun setTypeface(typeface: Typeface?, vararg viewIds: Int): ViewHolder {
+    override fun setTypeface(typeface: Typeface?, vararg viewIds: Int): RecyclerViewHolder {
         for (viewId in viewIds) {
             setTypeface(viewId, typeface)
         }
@@ -306,7 +307,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param progress 进度
      * @return
      */
-    override fun setProgress(@IdRes viewId: Int, progress: Int): ViewHolder {
+    override fun setProgress(@IdRes viewId: Int, progress: Int): RecyclerViewHolder {
         val view = getView<ProgressBar>(viewId)!!
         view.progress = progress
         return this
@@ -320,7 +321,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param max 最大进度
      * @return
      */
-    override fun setProgress(@IdRes viewId: Int, progress: Int, max: Int): ViewHolder {
+    override fun setProgress(@IdRes viewId: Int, progress: Int, max: Int): RecyclerViewHolder {
         val view = getView<ProgressBar>(viewId)!!
         view.max = max
         view.progress = progress
@@ -331,10 +332,10 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * 设置进度条最大值
      *
      * @param viewId 控件资源Id
-     * @param max 最大值
+     * @param max 最大进度
      * @return
      */
-    override fun setMax(@IdRes viewId: Int, max: Int): ViewHolder {
+    override fun setMax(@IdRes viewId: Int, max: Int): RecyclerViewHolder {
         val view = getView<ProgressBar>(viewId)!!
         view.max = max
         return this
@@ -347,7 +348,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param rating 评分
      * @return
      */
-    override fun setRating(@IdRes viewId: Int, rating: Float): ViewHolder {
+    override fun setRating(@IdRes viewId: Int, rating: Float): RecyclerViewHolder {
         val view = getView<RatingBar>(viewId)!!
         view.rating = rating
         return this
@@ -358,10 +359,10 @@ class ViewHolder : ViewHelper<ViewHolder> {
      *
      * @param viewId 控件资源Id
      * @param rating 评分
-     * @param max 最大值
+     * @param max 最大分数
      * @return
      */
-    override fun setRating(@IdRes viewId: Int, rating: Float, max: Int): ViewHolder {
+    override fun setRating(@IdRes viewId: Int, rating: Float, max: Int): RecyclerViewHolder {
         val view = getView<RatingBar>(viewId)!!
         view.max = max
         view.rating = rating
@@ -375,7 +376,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param tag 标签
      * @return
      */
-    override fun setTag(@IdRes viewId: Int, tag: Any?): ViewHolder {
+    override fun setTag(@IdRes viewId: Int, tag: Any?): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.tag = tag
         return this
@@ -389,7 +390,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param tag 标签
      * @return
      */
-    override fun setTag(@IdRes viewId: Int, key: Int, tag: Any?): ViewHolder {
+    override fun setTag(@IdRes viewId: Int, key: Int, tag: Any?): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.setTag(key, tag)
         return this
@@ -402,23 +403,21 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param checked check状态
      * @return
      */
-    override fun setChecked(@IdRes viewId: Int, checked: Boolean): ViewHolder {
+    override fun setChecked(@IdRes viewId: Int, checked: Boolean): RecyclerViewHolder {
         val view = getView<View>(viewId) as Checkable
         view.isChecked = checked
         return this
     }
-
     /**
      * 关于事件的
      */
-
     /**
      *
      * @param viewId 控件资源Id
      * @param listener 点击事件
      * @return
      */
-    override fun setOnClickListener(@IdRes viewId: Int, listener: View.OnClickListener?): ViewHolder {
+    override fun setOnClickListener(@IdRes viewId: Int, listener: View.OnClickListener?): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.setOnClickListener(listener)
         return this
@@ -430,7 +429,7 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param listener 触摸事件
      * @return
      */
-    override fun setOnTouchListener(@IdRes viewId: Int, listener: OnTouchListener?): ViewHolder {
+    override fun setOnTouchListener(@IdRes viewId: Int, listener: OnTouchListener?): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.setOnTouchListener(listener)
         return this
@@ -442,9 +441,10 @@ class ViewHolder : ViewHelper<ViewHolder> {
      * @param listener 长按事件
      * @return
      */
-    override fun setOnLongClickListener(@IdRes viewId: Int, listener: OnLongClickListener?): ViewHolder {
+    override fun setOnLongClickListener(@IdRes viewId: Int, listener: OnLongClickListener?): RecyclerViewHolder {
         val view = getView<View>(viewId)!!
         view.setOnLongClickListener(listener)
         return this
     }
+
 }

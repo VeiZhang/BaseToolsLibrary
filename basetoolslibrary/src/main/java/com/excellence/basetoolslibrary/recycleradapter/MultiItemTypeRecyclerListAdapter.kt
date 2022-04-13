@@ -114,7 +114,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
     }
 
     fun setViewListener(holder: RecyclerViewHolder, position: Int) {
-        val itemView = holder.convertView
+        val itemView = holder.getConvertView()
 
         /**
          * 如果执行了submitList增减，则当监听事件时，position就是错误的
