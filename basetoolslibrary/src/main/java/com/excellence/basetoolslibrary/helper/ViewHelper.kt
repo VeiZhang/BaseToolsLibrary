@@ -1,18 +1,13 @@
-package com.excellence.basetoolslibrary.helper;
+package com.excellence.basetoolslibrary.helper
 
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.view.View
+import android.view.View.OnLongClickListener
+import android.view.View.OnTouchListener
+import androidx.annotation.*
 
 /**
  * <pre>
@@ -22,9 +17,7 @@ import androidx.annotation.StringRes;
  *     desc   : 适配器控件方法接口
  * </pre>
  */
-
-public interface ViewHelper<T> {
-
+interface ViewHelper<T> {
     /**
      * 设置文本
      *
@@ -32,7 +25,7 @@ public interface ViewHelper<T> {
      * @param strId 字符串资源Id
      * @return
      */
-    T setText(@IdRes int viewId, @StringRes int strId);
+    fun setText(@IdRes viewId: Int, @StringRes strId: Int): T
 
     /**
      * 设置文本
@@ -41,7 +34,7 @@ public interface ViewHelper<T> {
      * @param text 字符串
      * @return
      */
-    T setText(@IdRes int viewId, String text);
+    fun setText(@IdRes viewId: Int, text: String?): T
 
     /**
      * 设置文本
@@ -50,7 +43,7 @@ public interface ViewHelper<T> {
      * @param text 字符串
      * @return
      */
-    T setText(@IdRes int viewId, CharSequence text);
+    fun setText(@IdRes viewId: Int, text: CharSequence?): T
 
     /**
      * 设置文字颜色
@@ -59,7 +52,7 @@ public interface ViewHelper<T> {
      * @param textColor 颜色资源
      * @return
      */
-    T setTextColor(@IdRes int viewId, @ColorInt int textColor);
+    fun setTextColor(@IdRes viewId: Int, @ColorInt textColor: Int): T
 
     /**
      * 设置文字颜色
@@ -68,7 +61,7 @@ public interface ViewHelper<T> {
      * @param textColorRes 颜色资源Id
      * @return
      */
-    T setTextColorRes(@IdRes int viewId, @ColorRes int textColorRes);
+    fun setTextColorRes(@IdRes viewId: Int, @ColorRes textColorRes: Int): T
 
     /**
      * 设置图片
@@ -77,7 +70,7 @@ public interface ViewHelper<T> {
      * @param resId 图片资源Id
      * @return
      */
-    T setImageResource(@IdRes int viewId, @DrawableRes int resId);
+    fun setImageResource(@IdRes viewId: Int, @DrawableRes resId: Int): T
 
     /**
      * 设置图片
@@ -86,7 +79,7 @@ public interface ViewHelper<T> {
      * @param bitmap 位图资源
      * @return
      */
-    T setImageBitmap(@IdRes int viewId, Bitmap bitmap);
+    fun setImageBitmap(@IdRes viewId: Int, bitmap: Bitmap?): T
 
     /**
      * 设置图片
@@ -95,7 +88,7 @@ public interface ViewHelper<T> {
      * @param drawable 图片资源
      * @return
      */
-    T setImageDrawable(@IdRes int viewId, @Nullable Drawable drawable);
+    fun setImageDrawable(@IdRes viewId: Int, drawable: Drawable?): T
 
     /**
      * 设置背景颜色
@@ -104,7 +97,7 @@ public interface ViewHelper<T> {
      * @param color 背景图片颜色
      * @return
      */
-    T setBackgroundColor(@IdRes int viewId, @ColorInt int color);
+    fun setBackgroundColor(@IdRes viewId: Int, @ColorInt color: Int): T
 
     /**
      * 设置背景图片
@@ -113,7 +106,7 @@ public interface ViewHelper<T> {
      * @param backgroundRes 背景图片资源Id
      * @return
      */
-    T setBackgroundRes(@IdRes int viewId, @DrawableRes int backgroundRes);
+    fun setBackgroundRes(@IdRes viewId: Int, @DrawableRes backgroundRes: Int): T
 
     /**
      * 设置透明度
@@ -123,21 +116,21 @@ public interface ViewHelper<T> {
      * @return
      */
     @SuppressLint("NewApi")
-    T setAlpha(@IdRes int viewId, @FloatRange(from = 0.0, to = 1.0) float value);
+    fun setAlpha(@IdRes viewId: Int, @FloatRange(from = 0.0, to = 1.0) value: Float): T
 
     /**
      * 设置控件是否可见
      *
      * @param viewId 控件资源Id
      * @param visibility
-     *        <ul>
-     *          <li>{@link View#VISIBLE  }</li>
-     *          <li>{@link View#INVISIBLE}</li>
-     *          <li>{@link View#GONE     }</li>
-     *        </ul>
+     *
+     *  * [View.VISIBLE]
+     *  * [View.INVISIBLE]
+     *  * [View.GONE]
+     *
      * @return
      */
-    T setVisible(@IdRes int viewId, int visibility);
+    fun setVisible(@IdRes viewId: Int, visibility: Int): T
 
     /**
      * 设置控件是否可见
@@ -146,7 +139,7 @@ public interface ViewHelper<T> {
      * @param visible 是否可见
      * @return
      */
-    T setVisible(@IdRes int viewId, boolean visible);
+    fun setVisible(@IdRes viewId: Int, visible: Boolean): T
 
     /**
      * 设置文本链接
@@ -154,7 +147,7 @@ public interface ViewHelper<T> {
      * @param viewId 控件资源Id
      * @return 超链接
      */
-    T linkify(@IdRes int viewId);
+    fun linkify(@IdRes viewId: Int): T
 
     /**
      * 设置文字字体样式
@@ -163,7 +156,7 @@ public interface ViewHelper<T> {
      * @param typeface 字体样式
      * @return
      */
-    T setTypeface(int viewId, Typeface typeface);
+    fun setTypeface(viewId: Int, typeface: Typeface?): T
 
     /**
      * 设置文字字体样式
@@ -172,7 +165,7 @@ public interface ViewHelper<T> {
      * @param viewIds 控件资源Ids
      * @return
      */
-    T setTypeface(Typeface typeface, int... viewIds);
+    fun setTypeface(typeface: Typeface?, vararg viewIds: Int): T
 
     /**
      * 设置进度条进度
@@ -181,7 +174,7 @@ public interface ViewHelper<T> {
      * @param progress 进度
      * @return
      */
-    T setProgress(@IdRes int viewId, int progress);
+    fun setProgress(@IdRes viewId: Int, progress: Int): T
 
     /**
      * 设置进度条进度和最大值
@@ -191,7 +184,7 @@ public interface ViewHelper<T> {
      * @param max 最大进度
      * @return
      */
-    T setProgress(@IdRes int viewId, int progress, int max);
+    fun setProgress(@IdRes viewId: Int, progress: Int, max: Int): T
 
     /**
      * 设置进度条最大值
@@ -200,7 +193,7 @@ public interface ViewHelper<T> {
      * @param max 最大值
      * @return
      */
-    T setMax(@IdRes int viewId, int max);
+    fun setMax(@IdRes viewId: Int, max: Int): T
 
     /**
      * 设置评分
@@ -209,7 +202,7 @@ public interface ViewHelper<T> {
      * @param rating 评分
      * @return
      */
-    T setRating(@IdRes int viewId, float rating);
+    fun setRating(@IdRes viewId: Int, rating: Float): T
 
     /**
      * 设置评分和最大值
@@ -219,7 +212,7 @@ public interface ViewHelper<T> {
      * @param max 最大值
      * @return
      */
-    T setRating(@IdRes int viewId, float rating, int max);
+    fun setRating(@IdRes viewId: Int, rating: Float, max: Int): T
 
     /**
      * 设置标签
@@ -228,7 +221,7 @@ public interface ViewHelper<T> {
      * @param tag 标签
      * @return
      */
-    T setTag(@IdRes int viewId, Object tag);
+    fun setTag(@IdRes viewId: Int, tag: Any?): T
 
     /**
      * 设置标签
@@ -238,7 +231,7 @@ public interface ViewHelper<T> {
      * @param tag 标签
      * @return
      */
-    T setTag(@IdRes int viewId, int key, Object tag);
+    fun setTag(@IdRes viewId: Int, key: Int, tag: Any?): T
 
     /**
      * 设置check状态
@@ -247,7 +240,7 @@ public interface ViewHelper<T> {
      * @param checked check状态
      * @return
      */
-    T setChecked(@IdRes int viewId, boolean checked);
+    fun setChecked(@IdRes viewId: Int, checked: Boolean): T
 
     /**
      *
@@ -255,7 +248,7 @@ public interface ViewHelper<T> {
      * @param listener 点击事件
      * @return
      */
-    T setOnClickListener(@IdRes int viewId, View.OnClickListener listener);
+    fun setOnClickListener(@IdRes viewId: Int, listener: View.OnClickListener?): T
 
     /**
      *
@@ -263,7 +256,7 @@ public interface ViewHelper<T> {
      * @param listener 触摸事件
      * @return
      */
-    T setOnTouchListener(@IdRes int viewId, View.OnTouchListener listener);
+    fun setOnTouchListener(@IdRes viewId: Int, listener: OnTouchListener?): T
 
     /**
      *
@@ -271,5 +264,5 @@ public interface ViewHelper<T> {
      * @param listener 长按事件
      * @return
      */
-    T setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener);
+    fun setOnLongClickListener(@IdRes viewId: Int, listener: OnLongClickListener?): T
 }

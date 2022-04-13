@@ -176,7 +176,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
      * @param data 新数据集
      */
     @Override
-    public void notifyNewData(List<T> data) {
+    public void notifyNewData(List<? extends T> data) {
         mData.clear();
         if (data != null) {
             mData.addAll(data);
@@ -190,7 +190,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
      * @param data 新数据集
      */
     @Override
-    public void addAll(List<T> data) {
+    public void addAll(List<? extends T> data) {
         addAll(mData.size(), data);
     }
 
@@ -201,7 +201,7 @@ public class MultiItemTypeBindingAdapter<T> extends BaseAdapter implements DataH
      * @param data 新数据集
      */
     @Override
-    public void addAll(int position, List<T> data) {
+    public void addAll(int position, List<? extends T> data) {
         if (position < 0) {
             position = 0;
         }

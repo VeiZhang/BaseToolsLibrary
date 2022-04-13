@@ -257,7 +257,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      * @param data 新数据集
      */
     @Override
-    public void notifyNewData(List<T> data) {
+    public void notifyNewData(List<? extends T> data) {
         notifyItemRangeRemoved(0, mData.size());
         mData.clear();
         if (data != null) {
@@ -272,7 +272,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      * @param data 新数据集
      */
     @Override
-    public void addAll(List<T> data) {
+    public void addAll(List<? extends T> data) {
         addAll(mData.size(), data);
     }
 
@@ -283,7 +283,7 @@ public class MultiItemTypeRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      * @param data 新数据集
      */
     @Override
-    public void addAll(int position, List<T> data) {
+    public void addAll(int position, List<? extends T> data) {
         if (position < 0) {
             position = 0;
         }
