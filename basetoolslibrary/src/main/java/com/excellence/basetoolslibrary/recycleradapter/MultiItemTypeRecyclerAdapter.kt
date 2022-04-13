@@ -87,14 +87,14 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
      * @param viewType 布局类型
      * @return
      */
-    fun getItemViewDelegate(viewType: Int): ItemViewDelegate<T?> {
+    fun getItemViewDelegate(viewType: Int): ItemViewDelegate<T>? {
         return mItemViewDelegateManager.getItemViewDelegate(viewType)
     }
 
     /**
      * 判断视图是否可用
      *
-     * @return `true`:是<br></br>`false`:否
+     * @return `true`:是<br>`false`:否
      */
     private fun userItemViewDelegateManager(): Boolean {
         return mItemViewDelegateManager.itemViewDelegateCount > 0
@@ -117,7 +117,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val delegate = getItemViewDelegate(getItemViewType(position))
-        delegate.convert(holder, getItem(position), position)
+        delegate!!.convert(holder, getItem(position), position)
         setViewListener(holder, position)
     }
 
@@ -424,7 +424,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
      * 判断数据集是否包含数据
      *
      * @param item 待检测数据
-     * @return `true`:包含<br></br>`false`: 不包含
+     * @return `true`:包含<br>`false`: 不包含
      */
     override fun contains(item: T?): Boolean {
         return mData.contains(item)
