@@ -4,13 +4,13 @@ import androidx.collection.SparseArrayCompat
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * date   : 2017/10/16
- * desc   : [com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingAdapter]
- *          [com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter]
- *          多布局视图管理器
- *          默认0，1，2，3...为视图类型，且每个类型唯一；非位置标志
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     date   : 2017/10/16
+ *     desc   : [com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingAdapter]
+ *              [com.excellence.basetoolslibrary.databinding.MultiItemTypeBindingRecyclerAdapter]
+ *              多布局视图管理器
+ *              默认0，1，2，3...为视图类型，且每个类型唯一；非位置标志
  * </pre>
  */
 class ItemViewDelegateManager<T> {

@@ -4,10 +4,10 @@ import androidx.databinding.ViewDataBinding
 
 /**
  * <pre>
- * author : VeiZhang
- * blog   : http://tiimor.cn
- * time   : 2020/8/6
- * desc   : binding可能需要单独的convertItemView
+ *     author : VeiZhang
+ *     blog   : http://tiimor.cn
+ *     time   : 2020/8/6
+ *     desc   : binding可能需要单独的convertItemView
  * </pre>
  */
 abstract class ItemViewDelegateImp<T> : ItemViewDelegate<T> {
