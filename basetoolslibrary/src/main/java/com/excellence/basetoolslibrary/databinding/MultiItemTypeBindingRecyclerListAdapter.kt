@@ -28,24 +28,22 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
 
     @JvmField
     val mLifecycleOwner: LifecycleOwner?
-    val mData: MutableList<T?> = ArrayList()
-
+    private val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
+
     private var mOnItemKeyListener: OnItemKeyListener? = null
     private var mOnItemClickListener: OnItemClickListener? = null
     private var mOnItemLongClickListener: OnItemLongClickListener? = null
     private var mOnItemFocusChangeListener: OnItemFocusChangeListener? = null
     private var mSelectedItemPosition = -1
 
-    constructor(diffCallback: DiffUtil.ItemCallback<T>) : this(diffCallback, null)
-
-    constructor(diffCallback: DiffUtil.ItemCallback<T>, lifecycleOwner: LifecycleOwner?) : super(diffCallback) {
+    @JvmOverloads
+    constructor(diffCallback: DiffUtil.ItemCallback<T>, lifecycleOwner: LifecycleOwner? = null) : super(diffCallback) {
         mLifecycleOwner = lifecycleOwner
     }
 
-    constructor(config: AsyncDifferConfig<T>) : this(config, null)
-
-    constructor(config: AsyncDifferConfig<T>, lifecycleOwner: LifecycleOwner?) : super(config) {
+    @JvmOverloads
+    constructor(config: AsyncDifferConfig<T>, lifecycleOwner: LifecycleOwner? = null) : super(config) {
         mLifecycleOwner = lifecycleOwner
     }
 

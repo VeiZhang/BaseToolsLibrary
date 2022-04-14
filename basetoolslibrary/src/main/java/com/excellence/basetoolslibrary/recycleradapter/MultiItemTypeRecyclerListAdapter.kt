@@ -20,8 +20,9 @@ import com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty
  */
 open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHolder> {
 
-    val mData: MutableList<T?> = ArrayList()
+    private val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
+
     private var mOnItemKeyListener: OnItemKeyListener? = null
     private var mOnItemClickListener: OnItemClickListener? = null
     private var mOnItemLongClickListener: OnItemLongClickListener? = null

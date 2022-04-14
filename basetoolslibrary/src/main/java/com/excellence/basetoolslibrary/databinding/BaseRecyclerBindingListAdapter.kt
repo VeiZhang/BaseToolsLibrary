@@ -25,20 +25,16 @@ open class BaseRecyclerBindingListAdapter<T> : MultiItemTypeBindingRecyclerListA
     private val mLayoutId: Int
     private val mVariableId: Int
 
+    @JvmOverloads
     constructor(diffCallback: DiffUtil.ItemCallback<T>, @LayoutRes layoutId: Int,
-                variableId: Int) : this(diffCallback, layoutId, variableId, null)
-
-    constructor(diffCallback: DiffUtil.ItemCallback<T>, @LayoutRes layoutId: Int,
-                variableId: Int, lifecycleOwner: LifecycleOwner?) : super(diffCallback, lifecycleOwner) {
+                variableId: Int, lifecycleOwner: LifecycleOwner? = null) : super(diffCallback, lifecycleOwner) {
         mLayoutId = layoutId
         mVariableId = variableId
     }
 
+    @JvmOverloads
     constructor(config: AsyncDifferConfig<T>, @LayoutRes layoutId: Int,
-                variableId: Int) : this(config, layoutId, variableId, null)
-
-    constructor(config: AsyncDifferConfig<T>, @LayoutRes layoutId: Int,
-                variableId: Int, lifecycleOwner: LifecycleOwner?) : super(config, lifecycleOwner) {
+                variableId: Int, lifecycleOwner: LifecycleOwner? = null) : super(config, lifecycleOwner) {
         mLayoutId = layoutId
         mVariableId = variableId
     }

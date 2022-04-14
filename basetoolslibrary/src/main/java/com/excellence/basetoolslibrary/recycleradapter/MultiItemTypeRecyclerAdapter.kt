@@ -22,8 +22,9 @@ import kotlin.math.min
  */
 open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerViewHolder>(), DataHelper<T> {
 
-    val mData: MutableList<T?> = ArrayList()
-    private var mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
+    private val mData: MutableList<T?> = ArrayList()
+    private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
+
     private var mOnItemClickListener: OnItemClickListener? = null
     private var mOnItemLongClickListener: OnItemLongClickListener? = null
     private var mOnItemFocusChangeListener: OnItemFocusChangeListener? = null

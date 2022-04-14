@@ -165,15 +165,7 @@ object FileUtils {
     fun deletePostfixFiles(dirPath: String?, postfix: String?): Boolean {
         return !StringUtils.isEmpty(dirPath) && deletePostfixFiles(File(dirPath), postfix)
     }
-    /**
-     * 格式化文件大小
-     *
-     * 自定格式，保留位数
-     *
-     * @param fileSize 文件大小
-     * @param pattern 保留格式
-     * @return 转换后文件大小
-     */
+
     /**
      * 格式化文件大小
      *
@@ -317,7 +309,7 @@ object FileUtils {
      * @see File.getFreeSpace() 获取系统root用户可用空间
      * @see File.getUsableSpace() 取非root用户可用空间
      *
-     * 获取目录剩余空间，同 [StatFs.getFreeBytes]
+     * 获取目录剩余空间，同 [android.os.StatFs.getFreeBytes]
      * 剩余空间 = 总空间 - 已使用空间
      * 剩余空间 ！= 可用空间
      *
@@ -341,7 +333,7 @@ object FileUtils {
      * @see File.getFreeSpace() 获取系统root用户可用空间
      * @see File.getUsableSpace() 取非root用户可用空间
      *
-     * 获取目录剩余空间，同 [StatFs.getFreeBytes]
+     * 获取目录剩余空间，同 [android.os.StatFs.getFreeBytes]
      * 剩余空间 = 总空间 - 已使用空间
      * 剩余空间 ！= 可用空间
      *
@@ -356,7 +348,7 @@ object FileUtils {
     }
 
     /**
-     * 获取目录总空间，同[StatFs.getTotalBytes]
+     * 获取目录总空间，同[android.os.StatFs.getTotalBytes]
      *
      * @param dir File类型
      * @return
@@ -375,7 +367,7 @@ object FileUtils {
     }
 
     /**
-     * 获取目录总空间，同[StatFs.getTotalBytes]
+     * 获取目录总空间，同[android.os.StatFs.getTotalBytes]
      *
      * @param filePath 文件路径字符串
      * @return
@@ -391,7 +383,7 @@ object FileUtils {
      * @see File.getFreeSpace 获取系统root用户可用空间
      * @see File.getUsableSpace 取非root用户可用空间
      *
-     * 获取目录可用空间，同[StatFs.getAvailableBytes]
+     * 获取目录可用空间，同[android.os.StatFs.getAvailableBytes]
      *
      * @param dir File类型
      * @return
@@ -413,7 +405,7 @@ object FileUtils {
      * @see File.getFreeSpace 获取系统root用户可用空间
      * @see File.getUsableSpace 取非root用户可用空间
      *
-     * 获取目录可用空间，同[StatFs.getAvailableBytes]
+     * 获取目录可用空间，同[android.os.StatFs.getAvailableBytes]
      *
      * @param filePath 文件路径字符串
      * @return

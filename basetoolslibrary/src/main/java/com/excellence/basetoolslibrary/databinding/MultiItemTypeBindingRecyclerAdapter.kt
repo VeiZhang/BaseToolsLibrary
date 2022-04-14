@@ -11,6 +11,7 @@ import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate
 import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager
 import com.excellence.basetoolslibrary.helper.DataHelper
 import java.util.*
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -28,22 +29,20 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
 
     @JvmField
     val mLifecycleOwner: LifecycleOwner?
-    val mData: MutableList<T?> = ArrayList()
-
+    private val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
+
     private var mOnItemClickListener: OnItemClickListener? = null
     private var mOnItemLongClickListener: OnItemLongClickListener? = null
     private var mOnItemFocusChangeListener: OnItemFocusChangeListener? = null
     private var mOnItemKeyListener: OnItemKeyListener? = null
     private var mSelectedItemPosition = -1
 
-    constructor(data: Array<T>?) : this(data, null)
+    @JvmOverloads
+    constructor(data: Array<T>?, lifecycleOwner: LifecycleOwner? = null) : this(if (data == null) null else listOf(*data), lifecycleOwner)
 
-    constructor(data: Array<T>?, lifecycleOwner: LifecycleOwner?) : this(if (data == null) null else listOf(*data), lifecycleOwner)
-
-    constructor(data: List<T>?) : this(data, null)
-
-    constructor(data: List<T>?, lifecycleOwner: LifecycleOwner?) : super() {
+    @JvmOverloads
+    constructor(data: List<T>?, lifecycleOwner: LifecycleOwner? = null) : super() {
         mLifecycleOwner = lifecycleOwner
         data?.let { mData.addAll(data) }
     }
@@ -436,7 +435,7 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
         val index = fromPosition
         fromPosition = min(index, toPosition)
         toPosition = max(index, toPosition)
-        notifyItemRangeChanged(fromPosition, Math.abs(toPosition - fromPosition) + 1)
+        notifyItemRangeChanged(fromPosition, abs(toPosition - fromPosition) + 1)
     }
 
     /**

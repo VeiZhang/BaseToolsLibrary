@@ -15,7 +15,7 @@ import java.util.*
 object StorageUtils {
 
     /**
-     * 获取所有存储路径，包括内置、外置存储设备：sdcard [Environment.getExternalStorageDirectory]、SD、TF
+     * 获取所有存储路径，包括内置、外置存储设备：sdcard [android.os.Environment.getExternalStorageDirectory]、SD、TF
      *
      * @param context
      * @return
@@ -82,7 +82,7 @@ object StorageUtils {
 
             /**
              * Returns true if the volume is the primary shared/external storage, which is the volume
-             * backed by [Environment.getExternalStorageDirectory]
+             * backed by [android.os.Environment.getExternalStorageDirectory]
              */
             var isPrimary: Boolean,
 

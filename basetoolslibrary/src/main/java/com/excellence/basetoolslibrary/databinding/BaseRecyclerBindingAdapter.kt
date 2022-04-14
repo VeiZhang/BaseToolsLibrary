@@ -22,15 +22,13 @@ open class BaseRecyclerBindingAdapter<T> : MultiItemTypeBindingRecyclerAdapter<T
     private val mLayoutId: Int
     private val mVariableId: Int
 
-    constructor(data: Array<T>?, @LayoutRes layoutId: Int, variableId: Int) : this(data, layoutId, variableId, null)
-
+    @JvmOverloads
     constructor(data: Array<T>?, @LayoutRes layoutId: Int, variableId: Int,
-                lifecycleOwner: LifecycleOwner?) : this(if (data == null) null else listOf(*data), layoutId, variableId, lifecycleOwner)
+                lifecycleOwner: LifecycleOwner? = null) : this(if (data == null) null else listOf(*data), layoutId, variableId, lifecycleOwner)
 
-    constructor(data: List<T>?, @LayoutRes layoutId: Int, variableId: Int) : this(data, layoutId, variableId, null)
-
+    @JvmOverloads
     constructor(data: List<T>?, @LayoutRes layoutId: Int, variableId: Int,
-                lifecycleOwner: LifecycleOwner?) : super(data, lifecycleOwner) {
+                lifecycleOwner: LifecycleOwner? = null) : super(data, lifecycleOwner) {
         mLayoutId = layoutId
         mVariableId = variableId
     }

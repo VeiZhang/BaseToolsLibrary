@@ -102,7 +102,7 @@ object FileIOUtils {
      * 将输入流写入文件里
      *
      * @param file
-     * @param is
+     * @param stream
      * @param append
      * @param isCloseable 是否关闭输入流
      * @return

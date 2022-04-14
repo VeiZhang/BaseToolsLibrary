@@ -25,7 +25,7 @@ import kotlin.math.min
  */
 open class MultiItemTypeBindingAdapter<T>() : BaseAdapter(), DataHelper<T> {
 
-    val mData: MutableList<T?> = ArrayList()
+    private val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
 
     constructor(data: List<T>?) : this() {
