@@ -108,7 +108,7 @@ class ItemViewDelegateManager<T> {
      * @param item 数据
      * @param position 位置
      */
-    fun convert(viewHolder: RecyclerViewHolder?, item: T?, position: Int) {
+    fun convert(viewHolder: RecyclerViewHolder, item: T?, position: Int) {
         for (i in 0 until mDelegates.size()) {
             val delegate = mDelegates.valueAt(i)
             if (delegate.isForViewType(item, position)) {

@@ -40,5 +40,5 @@ interface ItemViewDelegate<T> {
      * @param item 数据
      * @param position 位置
      */
-    fun convert(viewHolder: RecyclerViewHolder?, item: T?, position: Int)
+    fun convert(viewHolder: RecyclerViewHolder, item: T?, position: Int)
 }
