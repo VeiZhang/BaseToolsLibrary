@@ -1,26 +1,35 @@
-package com.excellence.basetoolslibrary.recycleradapter
+package com.excellence.basetoolslibrary.databinding
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegate
-import com.excellence.basetoolslibrary.recycleradapter.base.ItemViewDelegateManager
+import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegate
+import com.excellence.basetoolslibrary.databinding.base.ItemViewDelegateManager
 import com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty
+import java.util.*
 
 /**
  * <pre>
  *     author : VeiZhang
  *     blog   : http://tiimor.cn
- *     time   : 2022/4/13
- *     desc   : 多种类型布局RecyclerView [ListAdapter]通用适配器
+ *     time   : 2022/4/14
+ *     desc   : 开启dataBinding，多种类型布局RecyclerView {@link ListAdapter}通用适配器，继承{@link ListAdapter}，使用内部的Diff
+ *
+ *              拓展：ViewDataBinding绑定生命周期LifecycleOwner [可选]
  * </pre>
  */
-open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHolder> {
+open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHolder> {
 
+    @JvmField
+    val mLifecycleOwner: LifecycleOwner?
     val mData: MutableList<T?> = ArrayList()
+
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
     private var mOnItemKeyListener: OnItemKeyListener? = null
     private var mOnItemClickListener: OnItemClickListener? = null
@@ -28,9 +37,17 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
     private var mOnItemFocusChangeListener: OnItemFocusChangeListener? = null
     private var mSelectedItemPosition = -1
 
-    constructor(@NonNull diffCallback: DiffUtil.ItemCallback<T>) : super(diffCallback)
+    constructor(diffCallback: DiffUtil.ItemCallback<T>) : this(diffCallback, null)
 
-    constructor(@NonNull config: AsyncDifferConfig<T>) : super(config)
+    constructor(diffCallback: DiffUtil.ItemCallback<T>, lifecycleOwner: LifecycleOwner?) : super(diffCallback) {
+        mLifecycleOwner = lifecycleOwner
+    }
+
+    constructor(config: AsyncDifferConfig<T>) : this(config, null)
+
+    constructor(config: AsyncDifferConfig<T>, lifecycleOwner: LifecycleOwner?) : super(config) {
+        mLifecycleOwner = lifecycleOwner
+    }
 
     /**
      * 添加视图
@@ -38,7 +55,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
      * @param delegate 视图
      * @return
      */
-    fun addItemViewDelegate(delegate: ItemViewDelegate<T>): MultiItemTypeRecyclerListAdapter<T> {
+    fun addItemViewDelegate(delegate: ItemViewDelegate<T>): MultiItemTypeBindingRecyclerListAdapter<T> {
         mItemViewDelegateManager.addDelegate(delegate)
         return this
     }
@@ -50,7 +67,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
      * @param delegate 视图
      * @return
      */
-    fun addItemViewDelegate(viewType: Int, delegate: ItemViewDelegate<T>): MultiItemTypeRecyclerListAdapter<T> {
+    fun addItemViewDelegate(viewType: Int, delegate: ItemViewDelegate<T>): MultiItemTypeBindingRecyclerListAdapter<T> {
         mItemViewDelegateManager.addDelegate(viewType, delegate)
         return this
     }
@@ -61,7 +78,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
      * @param delegate 视图
      * @return
      */
-    fun removeItemViewDelegate(delegate: ItemViewDelegate<T>?): MultiItemTypeRecyclerListAdapter<T> {
+    fun removeItemViewDelegate(delegate: ItemViewDelegate<T>?): MultiItemTypeBindingRecyclerListAdapter<T> {
         mItemViewDelegateManager.removeDelegate(delegate)
         return this
     }
@@ -72,7 +89,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
      * @param viewType 布局类型
      * @return
      */
-    fun removeItemViewDelegate(viewType: Int): MultiItemTypeRecyclerListAdapter<T> {
+    fun removeItemViewDelegate(viewType: Int): MultiItemTypeBindingRecyclerListAdapter<T> {
         mItemViewDelegateManager.removeDelegate(viewType)
         return this
     }
@@ -98,43 +115,62 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
 
     override fun getItemViewType(position: Int): Int {
         return if (userItemViewDelegateManager()) {
-            mItemViewDelegateManager.getItemViewType(getItem(position), position)
+            mItemViewDelegateManager.getItemViewType(mData[position], position)
         } else super.getItemViewType(position)
+    }
+
+    override fun getItemCount(): Int {
+        return mData.size
+    }
+
+    override fun onViewAttachedToWindow(holder: RecyclerViewHolder) {
+        holder.markAttachedToWindow()
+    }
+
+    override fun onViewDetachedFromWindow(holder: RecyclerViewHolder) {
+        holder.markDetachedFromWindow()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType)
-        return RecyclerViewHolder.getViewHolder(parent.context, parent, layoutId)
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(LayoutInflater.from(parent.context), layoutId, parent, false)
+        return RecyclerViewHolder.getViewHolder(binding, mLifecycleOwner)
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val delegate = getItemViewDelegate(getItemViewType(position))
-        delegate!!.convert(holder, getItem(position), position)
+        val binding = holder.getBinding()
+
+        val item: T? = getItem(position)
+        binding.setVariable(delegate!!.getItemVariable(), item)
+        delegate.convert(binding, item, position)
+        binding.executePendingBindings()
         setViewListener(holder, position)
     }
 
-    fun setViewListener(holder: RecyclerViewHolder, position: Int) {
-        val itemView = holder.getConvertView()
+    protected fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+        val binding = holder.getBinding()
+        val itemView = binding.root
 
         /**
          * 如果执行了submitList增减，则当监听事件时，position就是错误的
          * 此时应该使用[RecyclerViewHolder.getAdapterPosition] 纠正
          */
         itemView.setOnClickListener { v ->
-            mOnItemClickListener?.onItemClick(holder, v, holder.adapterPosition)
+            mOnItemClickListener?.onItemClick(binding, v, holder.adapterPosition)
         }
         itemView.setOnLongClickListener { v ->
-            (mOnItemLongClickListener?.onItemLongClick(holder, v, holder.adapterPosition) ?: false)
+            (mOnItemLongClickListener?.onItemLongClick(binding, v, holder.adapterPosition) ?: false)
         }
         itemView.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             val position = holder.adapterPosition
             mSelectedItemPosition = if (hasFocus) position else -1
             if (position >= 0) {
-                mOnItemFocusChangeListener?.onItemFocusChange(holder, v, hasFocus, position)
+                mOnItemFocusChangeListener?.onItemFocusChange(binding, v, hasFocus, position)
             }
         }
         itemView.setOnKeyListener { v, keyCode, event ->
-            (mOnItemKeyListener?.onKey(holder, v, keyCode, event, holder.adapterPosition)) ?: false
+            (mOnItemKeyListener?.onKey(binding, v, keyCode, event, holder.adapterPosition)) ?: false
         }
     }
 
@@ -179,5 +215,4 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
     fun getData(): List<T?> {
         return mData
     }
-
 }
