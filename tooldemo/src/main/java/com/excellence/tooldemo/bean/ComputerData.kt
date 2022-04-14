@@ -1,4 +1,4 @@
-package com.excellence.tooldemo.bean;
+package com.excellence.tooldemo.bean
 
 /**
  * <pre>
@@ -8,10 +8,4 @@ package com.excellence.tooldemo.bean;
  *     desc   : 电脑方信息
  * </pre>
  */
-
-public class ComputerData extends People {
-
-    public ComputerData(String msg) {
-        super(msg);
-    }
-}
+class ComputerData(msg: String?) : People(msg)

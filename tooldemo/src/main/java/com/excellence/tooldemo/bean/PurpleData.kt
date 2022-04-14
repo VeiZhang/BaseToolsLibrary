@@ -1,4 +1,4 @@
-package com.excellence.tooldemo.bean;
+package com.excellence.tooldemo.bean
 
 /**
  * <pre>
@@ -8,10 +8,4 @@ package com.excellence.tooldemo.bean;
  *     desc   : 紫色方信息
  * </pre>
  */
-
-public class PurpleData extends People {
-
-    public PurpleData(String msg) {
-        super(msg);
-    }
-}
+class PurpleData(msg: String?) : People(msg)

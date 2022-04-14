@@ -1,4 +1,4 @@
-package com.excellence.tooldemo.bean;
+package com.excellence.tooldemo.bean
 
 /**
  * <pre>
@@ -8,10 +8,4 @@ package com.excellence.tooldemo.bean;
  *     desc   : 蓝色方信息
  * </pre>
  */
-
-public class BlueData extends People {
-
-    public BlueData(String msg) {
-        super(msg);
-    }
-}
+class BlueData(msg: String?) : People(msg)
