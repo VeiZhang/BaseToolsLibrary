@@ -20,7 +20,8 @@ import com.excellence.basetoolslibrary.utils.EmptyUtils.isEmpty
  */
 open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHolder> {
 
-    private val mData: MutableList<T?> = ArrayList()
+    @JvmField
+    val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
 
     private var mOnItemKeyListener: OnItemKeyListener? = null
@@ -103,6 +104,13 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
         } else super.getItemViewType(position)
     }
 
+    /**
+     * 开放接口，如果删除，则他是protected方法无法被调用
+     */
+    public override fun getItem(position: Int): T {
+        return super.getItem(position)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val layoutId = mItemViewDelegateManager.getItemViewLayoutId(viewType)
         return RecyclerViewHolder.getViewHolder(parent.context, parent, layoutId)
@@ -114,7 +122,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
         setViewListener(holder, position)
     }
 
-    fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val itemView = holder.getConvertView()
 
         /**
@@ -139,19 +147,19 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
         }
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    open fun setOnItemClickListener(listener: OnItemClickListener) {
         mOnItemClickListener = listener
     }
 
-    fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
+    open fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
         mOnItemLongClickListener = listener
     }
 
-    fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
+    open fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
         mOnItemFocusChangeListener = listener
     }
 
-    fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
+    open fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
         mOnItemKeyListener = onItemKeyListener
     }
 
@@ -177,7 +185,7 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
         }
     }
 
-    fun getData(): List<T?> {
+    open fun getData(): List<T?> {
         return mData
     }
 

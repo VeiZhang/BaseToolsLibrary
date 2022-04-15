@@ -19,6 +19,7 @@ import java.io.OutputStream
 import java.nio.charset.Charset
 import java.util.*
 
+
 /**
  * <pre>
  *     author : VeiZhang
@@ -461,7 +462,7 @@ object ResourceUtils {
      */
     @JvmStatic
     fun getIdentifier(context: Context, entryName: String?, packageName: String?, def: Int, @Type type: String?): Loader {
-        var skinResources: Resources? = null
+        var skinResources = context.resources
         var resId = 0
         try {
             val skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY)
@@ -490,7 +491,7 @@ object ResourceUtils {
      */
     @JvmStatic
     fun getIdentifier(context: Context, entryName: String?, packageName: String?, def: Int, vararg types: String?): Loader {
-        var skinResources: Resources? = null
+        var skinResources = context.resources
         var resId = 0
         try {
             val skinContext = context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY)
@@ -515,7 +516,7 @@ object ResourceUtils {
     /**
      * 跨进度App的资源对象，需要使用它的Resources去加载资源，不能用本应用的Resource，否则无法成功显示
      */
-    class Loader(var resources: Resources?, var resId: Int)
+    class Loader(@field:JvmField var resources: Resources, @field:JvmField var resId: Int)
 
     @StringDef(TYPE_NAME_COLOR,
             TYPE_NAME_DRAWABLE,

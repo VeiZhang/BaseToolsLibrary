@@ -22,7 +22,8 @@ import kotlin.math.min
  */
 open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerViewHolder>(), DataHelper<T> {
 
-    private val mData: MutableList<T?> = ArrayList()
+    @JvmField
+    val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
 
     private var mOnItemClickListener: OnItemClickListener? = null
@@ -122,7 +123,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
         setViewListener(holder, position)
     }
 
-    protected fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val itemView = holder.getConvertView()
 
         /**
@@ -147,19 +148,19 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
         }
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    open fun setOnItemClickListener(listener: OnItemClickListener) {
         mOnItemClickListener = listener
     }
 
-    fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
+    open fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
         mOnItemLongClickListener = listener
     }
 
-    fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
+    open fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
         mOnItemFocusChangeListener = listener
     }
 
-    fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
+    open fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
         mOnItemKeyListener = onItemKeyListener
     }
 
@@ -196,7 +197,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
      *
      * @param data
      */
-    fun notifyData(data: List<T>?) {
+    open fun notifyData(data: List<T>?) {
         mData.clear()
         data?.let { mData.addAll(data) }
         notifyDataSetChanged()

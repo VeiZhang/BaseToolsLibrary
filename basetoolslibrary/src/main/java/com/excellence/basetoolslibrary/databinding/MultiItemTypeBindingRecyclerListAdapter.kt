@@ -28,7 +28,9 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
 
     @JvmField
     val mLifecycleOwner: LifecycleOwner?
-    private val mData: MutableList<T?> = ArrayList()
+
+    @JvmField
+    val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
 
     private var mOnItemKeyListener: OnItemKeyListener? = null
@@ -117,8 +119,11 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
         } else super.getItemViewType(position)
     }
 
-    override fun getItemCount(): Int {
-        return mData.size
+    /**
+     * 开放接口，如果删除，则他是protected方法无法被调用
+     */
+    public override fun getItem(position: Int): T {
+        return super.getItem(position)
     }
 
     override fun onViewAttachedToWindow(holder: RecyclerViewHolder) {
@@ -146,7 +151,7 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
         setViewListener(holder, position)
     }
 
-    protected fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val binding = holder.getBinding()
         val itemView = binding.root
 
@@ -172,19 +177,19 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
         }
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    open fun setOnItemClickListener(listener: OnItemClickListener) {
         mOnItemClickListener = listener
     }
 
-    fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
+    open fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
         mOnItemLongClickListener = listener
     }
 
-    fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
+    open fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
         mOnItemFocusChangeListener = listener
     }
 
-    fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
+    open fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
         mOnItemKeyListener = onItemKeyListener
     }
 
@@ -210,7 +215,7 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
         }
     }
 
-    fun getData(): List<T?> {
+    open fun getData(): List<T?> {
         return mData
     }
 }

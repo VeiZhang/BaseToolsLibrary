@@ -29,7 +29,9 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
 
     @JvmField
     val mLifecycleOwner: LifecycleOwner?
-    private val mData: MutableList<T?> = ArrayList()
+
+    @JvmField
+    val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
 
     private var mOnItemClickListener: OnItemClickListener? = null
@@ -146,7 +148,7 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
         setViewListener(holder, position)
     }
 
-    protected fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val binding = holder.getBinding()
         val itemView = binding.root
 
@@ -172,19 +174,19 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
         }
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
+    open fun setOnItemClickListener(listener: OnItemClickListener) {
         mOnItemClickListener = listener
     }
 
-    fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
+    open fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
         mOnItemLongClickListener = listener
     }
 
-    fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
+    open fun setOnItemFocusChangeListener(listener: OnItemFocusChangeListener) {
         mOnItemFocusChangeListener = listener
     }
 
-    fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
+    open fun setOnItemKeyListener(onItemKeyListener: OnItemKeyListener) {
         mOnItemKeyListener = onItemKeyListener
     }
 
@@ -221,7 +223,7 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
      *
      * @param data
      */
-    fun notifyData(data: List<T>?) {
+    open fun notifyData(data: List<T>?) {
         mData.clear()
         data?.let { mData.addAll(data) }
         notifyDataSetChanged()

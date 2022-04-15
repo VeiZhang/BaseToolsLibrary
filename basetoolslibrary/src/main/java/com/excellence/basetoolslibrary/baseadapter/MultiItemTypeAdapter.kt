@@ -21,7 +21,8 @@ import kotlin.math.min
  */
 open class MultiItemTypeAdapter<T>() : BaseAdapter(), DataHelper<T> {
 
-    private val mData: MutableList<T?> = ArrayList()
+    @JvmField
+    val mData: MutableList<T?> = ArrayList()
     private val mItemViewDelegateManager: ItemViewDelegateManager<T> = ItemViewDelegateManager()
 
     constructor(data: List<T>?) : this() {
