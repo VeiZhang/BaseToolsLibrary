@@ -122,7 +122,7 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
     /**
      * 开放接口，如果删除，则他是protected方法无法被调用
      */
-    public override fun getItem(position: Int): T {
+    public override fun getItem(position: Int): T? {
         return super.getItem(position)
     }
 
@@ -151,7 +151,7 @@ open class MultiItemTypeBindingRecyclerListAdapter<T> : ListAdapter<T, RecyclerV
         setViewListener(holder, position)
     }
 
-    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    protected open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val binding = holder.getBinding()
         val itemView = binding.root
 

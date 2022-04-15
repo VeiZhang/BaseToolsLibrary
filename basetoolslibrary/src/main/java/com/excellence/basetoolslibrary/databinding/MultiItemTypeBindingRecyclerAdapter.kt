@@ -148,7 +148,7 @@ open class MultiItemTypeBindingRecyclerAdapter<T> : RecyclerView.Adapter<Recycle
         setViewListener(holder, position)
     }
 
-    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    protected open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val binding = holder.getBinding()
         val itemView = binding.root
 

@@ -123,7 +123,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
         setViewListener(holder, position)
     }
 
-    open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
+    protected open fun setViewListener(holder: RecyclerViewHolder, position: Int) {
         val itemView = holder.getConvertView()
 
         /**
