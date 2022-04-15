@@ -48,7 +48,7 @@ class MultiItemAdapterActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         adapter.notifyNewData(mMessages)
     }
 
-    private inner class ChatAdapter(messages: List<People>?) : MultiItemTypeAdapter<People?>(messages) {
+    private inner class ChatAdapter(messages: List<People>) : MultiItemTypeAdapter<People>(messages) {
         init {
             addItemViewDelegate(ComputerDelegate())
             addItemViewDelegate(BlueDelegate())
@@ -56,7 +56,7 @@ class MultiItemAdapterActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         }
     }
 
-    private inner class ComputerDelegate : ItemViewDelegate<People?> {
+    private inner class ComputerDelegate : ItemViewDelegate<People> {
         override fun getItemViewLayoutId(): Int {
             return R.layout.item_computer
         }
@@ -70,7 +70,7 @@ class MultiItemAdapterActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         }
     }
 
-    private inner class BlueDelegate : ItemViewDelegate<People?> {
+    private inner class BlueDelegate : ItemViewDelegate<People> {
         override fun getItemViewLayoutId(): Int {
             return R.layout.item_blue
         }
@@ -84,7 +84,7 @@ class MultiItemAdapterActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         }
     }
 
-    private inner class PurpleDelegate : ItemViewDelegate<People?> {
+    private inner class PurpleDelegate : ItemViewDelegate<People> {
         override fun getItemViewLayoutId(): Int {
             return R.layout.item_purple
         }

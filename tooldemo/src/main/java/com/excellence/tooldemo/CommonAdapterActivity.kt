@@ -73,7 +73,7 @@ class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, Adapter
         }
     }
 
-    private inner class AppGridAdapter(data: List<ResolveInfo>?, layoutId: Int) : CommonAdapter<ResolveInfo?>(data, layoutId) {
+    private inner class AppGridAdapter(data: List<ResolveInfo>?, layoutId: Int) : CommonAdapter<ResolveInfo>(data, layoutId) {
         override fun convert(viewHolder: ViewHolder, item: ResolveInfo?, position: Int) {
             val iconView = viewHolder.getView<ImageView>(android.R.id.icon)
             iconView!!.setImageDrawable(item!!.loadIcon(mPackageManager))

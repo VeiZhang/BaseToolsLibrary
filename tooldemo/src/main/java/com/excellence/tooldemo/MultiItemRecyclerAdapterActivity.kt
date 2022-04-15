@@ -49,7 +49,7 @@ class MultiItemRecyclerAdapterActivity : AppCompatActivity(), OnItemClickListene
         mWarAdapter!!.modify(people)
     }
 
-    private inner class WarAdapter(data: List<People>?) : MultiItemTypeRecyclerAdapter<People?>(data) {
+    private inner class WarAdapter(data: List<People>?) : MultiItemTypeRecyclerAdapter<People>(data) {
         init {
             addItemViewDelegate(ComputerRecyclerDelegate())
             addItemViewDelegate(BlueRecyclerDelegate())
@@ -57,7 +57,7 @@ class MultiItemRecyclerAdapterActivity : AppCompatActivity(), OnItemClickListene
         }
     }
 
-    private inner class ComputerRecyclerDelegate : ItemViewDelegate<People?> {
+    private inner class ComputerRecyclerDelegate : ItemViewDelegate<People> {
         override fun getItemViewLayoutId(): Int {
             return R.layout.item_computer
         }
@@ -71,7 +71,7 @@ class MultiItemRecyclerAdapterActivity : AppCompatActivity(), OnItemClickListene
         }
     }
 
-    private inner class BlueRecyclerDelegate : ItemViewDelegate<People?> {
+    private inner class BlueRecyclerDelegate : ItemViewDelegate<People> {
         override fun getItemViewLayoutId(): Int {
             return R.layout.item_blue
         }
@@ -85,7 +85,7 @@ class MultiItemRecyclerAdapterActivity : AppCompatActivity(), OnItemClickListene
         }
     }
 
-    private inner class PurpleRecyclerDelegate : ItemViewDelegate<People?> {
+    private inner class PurpleRecyclerDelegate : ItemViewDelegate<People> {
         override fun getItemViewLayoutId(): Int {
             return R.layout.item_purple
         }

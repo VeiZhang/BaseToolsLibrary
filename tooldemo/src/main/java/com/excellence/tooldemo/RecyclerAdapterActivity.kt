@@ -78,8 +78,10 @@ class RecyclerAdapterActivity : AppCompatActivity(), View.OnClickListener, OnIte
         Toast.makeText(this, "position " + position + " : " + (viewHolder.getView<View>(android.R.id.text1) as TextView?)!!.text, Toast.LENGTH_SHORT).show()
     }
 
-    private inner class AppRecyclerAdapter(data: List<ResolveInfo>?, layoutId: Int) : BaseRecyclerAdapter<ResolveInfo?>(data, layoutId) {
+    private inner class AppRecyclerAdapter(data: List<ResolveInfo>?, layoutId: Int) : BaseRecyclerAdapter<ResolveInfo>(data, layoutId) {
+
         private var mPackageManager: PackageManager? = null
+
         override fun convert(viewHolder: RecyclerViewHolder, item: ResolveInfo?, position: Int) {
             viewHolder.setText(android.R.id.text1, item!!.loadLabel(mPackageManager))
             viewHolder.setImageDrawable(android.R.id.icon, item.loadIcon(mPackageManager))
