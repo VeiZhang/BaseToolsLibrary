@@ -361,7 +361,7 @@ private class NumAdapter extends BasePagerAdapter
 
 ### 常用工具类<a name="常用工具类">
 
-> - **Activity相关→[ActivityUtils.java][ActivityUtils]**
+> - **Activity相关→[ActivityUtils.kt][ActivityUtils]**
 ```
 startAnotherActivity   : Activity跳转
 setActivityWindowAlpha : 设置Activity窗口透明值
@@ -369,7 +369,7 @@ isActivityTopStack     : 判断Activity是否在栈顶
 getLauncherActivity    : 获取某应用入口Activity
 ```
 
-> - **AlphaUtils相关→[AlphaUtils.java][AlphaUtils]**
+> - **AlphaUtils相关→[AlphaUtils.kt][AlphaUtils]**
 ```
 setAlpha : 设置Window透明度
 setAlpha : 设置Activity的Window透明度
@@ -377,7 +377,7 @@ setAlpha : 设置Dialog的Window透明度
 setAlpha : 设置DialogFragment的Window透明度
 ```
 
-> - **应用相关→[AppUtils.java][AppUtils]**
+> - **应用相关→[AppUtils.kt][AppUtils]**
 ```
 getInstalledApps       : 获取安装的全部应用
 getSystemInstalledApps : 获取安装的系统应用
@@ -398,13 +398,18 @@ getTotalMemory         : 当前应用分配的总内存
 getFreeMemory          : 当前应用分配的剩余内存
 ```
 
-> - **关闭相关→[CloseUtils.java][CloseUtils]**
+> - **关闭相关→[CloseUtils.kt][CloseUtils]**
 ```
 closeIO        : 关闭IO
 closeIOQuietly : 安静关闭IO
 ```
 
-> - **转换相关→[ConvertUtils.java][ConvertUtils]**
+> - **关闭相关→[CollectionUtils.kt][CollectionUtils]**
+```
+removeEmptyElement : 清除集合里的空元素
+```
+
+> - **转换相关→[ConvertUtils.kt][ConvertUtils]**
 ```
 bytes2Short               : byte转short
 shortToByte               : short转byte
@@ -426,7 +431,7 @@ inputStream2String        : inputStream转字符串
 inputStream2StringBuilder : inputStream转StringBuilder
 ```
 
-> - **配置存储相关→[DBUtils.java][DBUtils]**
+> - **配置存储相关→[DBUtils.kt][DBUtils]**
 ```
 init         : 初始化，设置存储文件名
 contains     : 判断键值是否存在
@@ -441,7 +446,7 @@ remove       : 删除配置
 clear        : 清空配置
 ```
 
-> - **分辨率相关→[DensityUtils.java][DensityUtils]**
+> - **分辨率相关→[DensityUtils.kt][DensityUtils]**
 ```
 getDensity      : 获取当前屏幕分辨率
 getScaleDensity : 获取当前文字分辨率
@@ -454,7 +459,7 @@ sp2px           : sp转px
 px2sp           : px转sp
 ```
 
-> - **设备相关→[DeviceUtils.java][DeviceUtils]**
+> - **设备相关→[DeviceUtils.kt][DeviceUtils]**
 ```
 getIMEI            : 获取IMEI
 getIMSI            : 获取IMSI
@@ -466,7 +471,7 @@ getSimOperatorName : 获取SIM卡运营商名字
 getSimState        : 获取SIM卡状态
 ```
 
-> - **判断空相关→[EmptyUtils.java][EmptyUtils]**
+> - **判断空相关→[EmptyUtils.kt][EmptyUtils]**
 ```
 isEmpty    : 判断对象是否为空
 isNotEmpty : 判断对象是否非空
@@ -497,12 +502,12 @@ decryptRSA            : RSA解密
 decryptHexStringRSA   : 16进制字符串RSA解密
 ```
 
-> - **异常相关→[ExceptionUtils.java][ExceptionUtils]**
+> - **异常相关→[ExceptionUtils.kt][ExceptionUtils]**
 ```
 printException : 打印异常信息字符串
 ```
 
-> - **文件流相关→[FileIOUtils.java][FileIOUtils]**
+> - **文件流相关→[FileIOUtils.kt][FileIOUtils]**
 ```
 writeFile        : 将字符串、字节数组、输入流写入文件
 readFile2Bytes   : 读取文件、输入流为字节数组
@@ -510,7 +515,7 @@ readFile2String  : 读取文件、输入流为字符串
 copyFile         : 拷贝文件
 ```
 
-> - **文件相关→[FileUtils.java][FileUtils]**
+> - **文件相关→[FileUtils.kt][FileUtils]**
 ```
 createNewFile       : 创建文件
 deleteFile          : 删除文件
@@ -535,14 +540,14 @@ getFileMd5          : 读取文件MD5值
 HandlerHolder : 使用必读
 ```
 
-> - **Image相关→[ImageUtils.java][ImageUtils]**
+> - **Image相关→[ImageUtils.kt][ImageUtils]**
 ```
 drawable2Bitmap : drawable转bitmap
 bitmap2Drawable : bitmap转drawable
 view2Bitmap     : view转Bitmap
 ```
 
-> - **常见的Intent相关→[IntentUtils.java][IntentUtils]**
+> - **常见的Intent相关→[IntentUtils.kt][IntentUtils]**
 ```
 isIntentAvailable      : 判断Intent是否存在
 startIntent            : Intent跳转
@@ -576,7 +581,7 @@ getNetVideoIntent      : 播放网络视频
 getAudioIntent         : 播放本地音乐
 ```
 
-> - **键盘相关→[KeyboardUtils.java][KeyboardUtils]**
+> - **键盘相关→[KeyboardUtils.kt][KeyboardUtils]**
 ```
 hideSoftInput                : 隐藏软键盘
 showSoftInput                : 打开软键盘
@@ -584,7 +589,7 @@ toggleSoftInput              : 如果输入法在窗口上已经显示，则隐�
 clickBlankArea2HideSoftInput : 击屏幕空白区域隐藏软键盘
 ```
 
-> - **多媒体相关→[MediaUtils.java][MediaUtils]**
+> - **多媒体相关→[MediaUtils.kt][MediaUtils]**
 ```
 getKey      : 读取多媒体信息的键
 getAlbum    : 读取多媒体信息的专辑
@@ -604,7 +609,7 @@ getHeight   : 读取多媒体信息的高度
 getBitrate  : 读取多媒体信息的码率
 ```
 
-> - **网络相关→[NetworkUtils.java][NetworkUtils]**
+> - **网络相关→[NetworkUtils.kt][NetworkUtils]**
 ```
 getActiveNetworkInfo    : 获取活动的网络信息
 isConnected             : 检查网络是否连接
@@ -629,7 +634,7 @@ getWiredMac             : 获取有线Mac地址
 getWirelessMac          : 获取无线Mac地址
 ```
 
-> - **路径相关→[PathUtils.java][PathUtils]**
+> - **路径相关→[PathUtils.kt][PathUtils]**
 ```
 getRootPath                     : 获取根路径
 getDataPath                     : 获取数据路径
@@ -677,7 +682,7 @@ getPinyinHeadChars    : 获取所有中文首字母
 isAllHanzi            : 判断是否全是汉字
 ```
 
-> - **反射相关→[ReflectUtils.java][ReflectUtils]**
+> - **反射相关→[ReflectUtils.kt][ReflectUtils]**
 ```
 getDeclaredFields      : 获取类中所有成员，能访问类中所有的字段，与public、private、protect无关，不能访问从其它类继承来的方法
 getFields              : 获取类中所有的公有成员，只能访问类中声明为公有的字段，私有的字段它无法访问，能访问从其它类继承来的公有方法
@@ -695,7 +700,7 @@ getDeclaredAnnotation  : 获取存在的、指定类型的注解，不包括继�
 getDeclaredAnnotations : 获取类中存在的所有注解，不包括继承的注解
 ```
 
-> - **正则表达式相关→[RegexUtils.java][RegexUtils]**
+> - **正则表达式相关→[RegexUtils.kt][RegexUtils]**
 ```
 isMAC           : 验证MAC地址
 isMobileSimple  : 验证手机号（简单）
@@ -717,7 +722,7 @@ getReplaceFirst : 替换正则匹配的第一部分
 getReplaceAll   : 替换所有正则匹配的部分
 ```
 
-> - **资源相关→[ResourceUtils.java][ResourceUtils]**
+> - **资源相关→[ResourceUtils.kt][ResourceUtils]**
 ```
 getName            : 解析资源的全名
 getEntryName       : 解析资源名
@@ -734,19 +739,19 @@ getCountry         : 获取当前系统语言国家
 getIdentifier      : 跨APP，读取其他应用的资源
 ```
 
-> - **命令相关→[ShellUtils.java][ShellUtils]**
+> - **命令相关→[ShellUtils.kt][ShellUtils]**
 ```
 execProcessBuilderCommand : 执行命令
 execRuntimeCommand        : 执行命令
 ```
 
-> - **SD、TF等存储相关→[StorageUtils.java][StorageUtils]**
+> - **SD、TF等存储相关→[StorageUtils.kt][StorageUtils]**
 ```
 getStorageList       : 获取所有的内置、外置存储设备
 getStorageVolumeList : 获取存储卷的相关信息
 ```
 
-> - **字符串相关→[StringUtils.java][StringUtils]**
+> - **字符串相关→[StringUtils.kt][StringUtils]**
 ```
 isEmpty            : 判断字符串是否为空
 checkNULL          : 判断字符串是否为空，是否是"NULL"字符串
@@ -754,6 +759,11 @@ equals             : 比较字符串是否相等
 equalsIgnoreCase   : 比较字符串是否相等，忽略大小写
 contains           : 判断字符一是否包含字符串二
 containsIgnoreCase : 判断字符一是否包含字符串二，忽略大小写
+```
+
+> - **SurfaceView相关→[SurfaceViewUtils.kt][SurfaceViewUtils]**
+```
+clearSurfaceView : 清除SurfaceView的最后一帧画面
 ```
 
 > - **系统属性相关→[SystemPropertyUtils.java][SystemPropertyUtils]**
@@ -882,45 +892,47 @@ HanziToPinyin : Android汉字转拼音类
 
 <!-- 代码引用 -->
 
-[CommonAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/CommonAdapterActivity.java
-[RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.java
-[MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.java
-[MultiItemRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemRecyclerAdapterActivity.java
-[ViewPagerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/ViewPagerAdapterActivity.java
-[CommonBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/databinding/CommonBindingAdapterActivity.java
-[MultiItemTypeBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/MultiItemTypeBindingAdapter.java
-[BaseRecyclerBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/BaseRecyclerBindingAdapter.java
-[MultiItemTypeBindingRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/MultiItemTypeBindingRecyclerAdapter.java
+[CommonAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/CommonAdapterActivity.kt
+[RecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/RecyclerAdapterActivity.kt
+[MultiItemAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemAdapterActivity.kt
+[MultiItemRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/MultiItemRecyclerAdapterActivity.kt
+[ViewPagerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/ViewPagerAdapterActivity.kt
+[CommonBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/tooldemo/src/main/java/com/excellence/tooldemo/databinding/CommonBindingAdapterActivity.kt
+[MultiItemTypeBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/MultiItemTypeBindingAdapter.kt
+[BaseRecyclerBindingAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/BaseRecyclerBindingAdapter.kt
+[MultiItemTypeBindingRecyclerAdapterActivity]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/databinding/MultiItemTypeBindingRecyclerAdapter.kt
 
 <!-- 常用方法 -->
 
-[ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.java
-[AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.java
-[AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.java
-[CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.java
-[ConvertUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ConvertUtils.java
-[DBUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DBUtils.java
-[DensityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DensityUtils.java
-[DeviceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DeviceUtils.java
-[EmptyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EmptyUtils.java
+[ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.kt
+[AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.kt
+[AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.kt
+[CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.kt
+[CollectionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CollectionUtils.kt
+[ConvertUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ConvertUtils.kt
+[DBUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DBUtils.kt
+[DensityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DensityUtils.kt
+[DeviceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/DeviceUtils.kt
+[EmptyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EmptyUtils.kt
 [EncryptUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/EncryptUtils.java
-[ExceptionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ExceptionUtils.java
-[FileIOUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileIOUtils.java
-[FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.java
+[ExceptionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ExceptionUtils.kt
+[FileIOUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileIOUtils.kt
+[FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.kt
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
-[ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.java
-[IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.java
-[KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.java
-[MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.java
-[NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.java
-[PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.java
+[ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.kt
+[IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.kt
+[KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.kt
+[MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
+[NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.kt
+[PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.kt
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
-[ReflectUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ReflectUtils.java
-[RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.java
-[ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.java
-[ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.java
-[StorageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StorageUtils.java
-[StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.java
+[ReflectUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ReflectUtils.kt
+[RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.kt
+[ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.kt
+[ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.kt
+[StorageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StorageUtils.kt
+[StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.kt
+[SurfaceViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SurfaceViewUtils.kt
 [SystemPropertyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SystemPropertyUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 
