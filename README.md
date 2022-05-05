@@ -398,6 +398,15 @@ getTotalMemory         : 当前应用分配的总内存
 getFreeMemory          : 当前应用分配的剩余内存
 ```
 
+> - **音频相关→[AudioUtils.kt][AudioUtils]**
+```
+getMaxVolume : 获取最大音量
+getMinVolume : 获取最小音量
+getVolume    : 获取音量
+setVolume    : 设置音量
+adjustVolume : 调整音量
+```
+
 > - **关闭相关→[CloseUtils.kt][CloseUtils]**
 ```
 closeIO        : 关闭IO
@@ -908,6 +917,7 @@ HanziToPinyin : Android汉字转拼音类
 
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.kt
 [AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.kt
+[AudioUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AudioUtils.kt
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.kt
 [CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.kt
 [CollectionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CollectionUtils.kt
