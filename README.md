@@ -542,9 +542,11 @@ HandlerHolder : 使用必读
 
 > - **Image相关→[ImageUtils.kt][ImageUtils]**
 ```
-drawable2Bitmap : drawable转bitmap
-bitmap2Drawable : bitmap转drawable
-view2Bitmap     : view转Bitmap
+drawable2Bitmap  : drawable转bitmap
+bitmap2Drawable  : bitmap转drawable
+view2Bitmap      : view转Bitmap
+shotActivity     : Activity截图
+addBitmapShadows : 增加遮罩
 ```
 
 > - **常见的Intent相关→[IntentUtils.kt][IntentUtils]**

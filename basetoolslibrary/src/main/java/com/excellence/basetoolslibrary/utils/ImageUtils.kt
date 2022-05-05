@@ -1,5 +1,6 @@
 package com.excellence.basetoolslibrary.utils
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
@@ -8,6 +9,7 @@ import android.graphics.drawable.NinePatchDrawable
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+
 
 /**
  * <pre>
@@ -118,6 +120,20 @@ object ImageUtils {
         view.buildDrawingCache()
         val bitmap = view.drawingCache
         view.isDrawingCacheEnabled = false
+        return bitmap
+    }
+
+    /**
+     * Activity截图，包含状态栏
+     */
+    @JvmStatic
+    fun shotActivity(activity: Activity): Bitmap? {
+        val view = activity.window.decorView
+        view.isDrawingCacheEnabled = true
+        view.buildDrawingCache()
+        val bitmap = Bitmap.createBitmap(view.drawingCache, 0, 0, view.measuredWidth, view.measuredHeight)
+        view.isDrawingCacheEnabled = false
+        view.destroyDrawingCache()
         return bitmap
     }
 
