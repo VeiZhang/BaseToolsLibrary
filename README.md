@@ -407,6 +407,15 @@ setVolume    : 设置音量
 adjustVolume : 调整音量
 ```
 
+> - **广播相关→[BroadcastUtils.kt][BroadcastUtils]**
+```
+registerMountAction        : USB广播
+registerScreenAction       : 屏幕熄亮广播
+registerPackageAction      : 安装卸载广播
+registerNetworkStateAction : 网络状态广播
+registerBootAction         : 开机广播
+```
+
 > - **关闭相关→[CloseUtils.kt][CloseUtils]**
 ```
 closeIO        : 关闭IO
@@ -945,6 +954,7 @@ HanziToPinyin : Android汉字转拼音类
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.kt
 [AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.kt
 [AudioUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AudioUtils.kt
+[BroadcastUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/BroadcastUtils.kt
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.kt
 [CloseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CloseUtils.kt
 [CollectionUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/CollectionUtils.kt
