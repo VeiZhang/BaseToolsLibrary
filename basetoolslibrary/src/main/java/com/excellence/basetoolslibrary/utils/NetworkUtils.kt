@@ -72,6 +72,8 @@ object NetworkUtils {
      * 223.5.5.5：阿里云
      * 206.190.36.45：yahoo.com
      *
+     * [HttpUtils.isUrlExists]
+     *
      * @return `true`：可用<br>`false`：不可用
      */
     @JvmStatic
@@ -82,6 +84,8 @@ object NetworkUtils {
     /**
      * 使用ping命令，判断网络是否可用
      * `ping -c 1 -w 1`：`-c 1`：执行次数 1次；`-w 1`：等待每个响应的最长时间 1s
+     *
+     * [HttpUtils.isUrlExists]
      *
      * @param address
      * @return

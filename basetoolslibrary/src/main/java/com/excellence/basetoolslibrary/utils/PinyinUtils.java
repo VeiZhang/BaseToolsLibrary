@@ -121,4 +121,24 @@ public class PinyinUtils {
         }
         return true;
     }
+
+    /**
+     * 判断是否含有中文字符
+     *
+     * @param text
+     * @return {@code true}:是<br>{@code false}:否
+     */
+    public static boolean hasDoubleCharacter(String text) {
+        if (StringUtils.isEmpty(text)) {
+            return false;
+        }
+
+        char[] charArray = text.toCharArray();
+        for (char ch : charArray) {
+            if (ch >= 0x0391 && ch <= 0xFFE5) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

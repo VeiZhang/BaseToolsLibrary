@@ -558,6 +558,20 @@ getFileMd5          : 读取文件MD5值
 HandlerHolder : 使用必读
 ```
 
+> - **HTTP相关→[HttpUtils.kt][HttpUtils]**
+```
+checkURL           : 检测有效的URL
+checkHttpURL       : 检测Http、Https，没有则增加前缀http://
+appendURLPath      : 拼接url
+isUrlExists        : 通过访问的方式检查链接是否有效
+convertHttpUrl     : 转换链接中中文字符
+convertInputStream : 通过类型转换流
+setConnectParam    : 设置请求头信息
+printHeader        : 打印全部请求头信息
+getHeader          : 获取具体的请求头信息
+```
+
+
 > - **Image相关→[ImageUtils.kt][ImageUtils]**
 ```
 drawable2Bitmap  : drawable转bitmap
@@ -841,11 +855,10 @@ observeViewLayout        : 监听绘制完成
 observeViewLayoutForever : 监听绘制完成
 ```
 
-> - **WebView相关→[WebViewUtils.kt][WebViewUtils]**
+> - **WebView相关→[WebViewUtils.java][WebViewUtils]**
 ```
 callOnWebviewThread : 发送js指令
 callJavaScript      : 发送js指令
-isUrlExists         : 通过访问的方式检查链接是否有效
 hookWebView         : 系统应用绕过UID 是 root 检测
 ```
 
@@ -968,6 +981,7 @@ HanziToPinyin : Android汉字转拼音类
 [FileIOUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileIOUtils.kt
 [FileUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/FileUtils.kt
 [HandlerUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HandlerUtils.java
+[HttpUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/HttpUtils.kt
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.kt
 [IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.kt
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.kt
@@ -986,7 +1000,7 @@ HanziToPinyin : Android汉字转拼音类
 [SystemPropertyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SystemPropertyUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 [ViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ViewUtils.kt
-[WebViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/WebViewUtils.kt
+[WebViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/WebViewUtils.java
 
 <!-- 转载方法 -->
 

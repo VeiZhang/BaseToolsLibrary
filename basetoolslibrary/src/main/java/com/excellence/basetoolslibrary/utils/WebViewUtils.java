@@ -28,14 +28,9 @@ import android.os.Build;
 import android.util.Log;
 import android.webkit.WebView;
 
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import kotlin.jvm.JvmStatic;
 
 /**
  * <pre>
@@ -56,7 +51,6 @@ public class WebViewUtils {
      * @param methodName function name
      * @param params     function parameters
      */
-    @JvmStatic
     public static void callJavaScript(final WebView webView, String methodName, Object... params) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("javascript:try{");
@@ -82,30 +76,12 @@ public class WebViewUtils {
     }
 
     /**
-     * Check if url exists.
-     *
-     * @param url URL to check
-     * @return
-     * @throws IOException
-     */
-    @JvmStatic
-    public static boolean isUrlExists(final String url) throws IOException {
-        HttpURLConnection huc = (HttpURLConnection) new URL(url).openConnection();
-        huc.setRequestMethod("GET");
-        huc.connect();
-        int code = huc.getResponseCode();
-        huc.disconnect();
-        return (code != 404);
-    }
-
-    /**
      * Call javascript functions in webview thread.
      *
      * @param webView    webview object
      * @param methodName function name
      * @param params     function parameters
      */
-    @JvmStatic
     public static void callOnWebviewThread(final WebView webView, final String methodName, final Object... params) {
         webView.post(new Runnable() {
             @Override
@@ -120,7 +96,6 @@ public class WebViewUtils {
      * 需要绕过底层UID 是 root 进程或者系统进程检测
      * 在WebView之前执行该方法即可 https://www.jianshu.com/p/e71761597697
      */
-    @JvmStatic
     public static void hookWebView() {
         int sdkInt = Build.VERSION.SDK_INT;
         try {
