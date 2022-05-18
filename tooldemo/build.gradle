@@ -1,6 +1,11 @@
 apply from: 'https://gist.githubusercontent.com/VeiZhang/01779005843bc5b70b11551ca13c2ced/raw/application.gradle'
 
+def plugins = rootProject.ext.plugins
 def libs = rootProject.ext.dependencies
+
+apply plugin: plugins.kotlin
+apply plugin: plugins."kotlin-extensions"
+apply plugin: plugins."kotlin-kapt"
 
 android {
     defaultConfig {
@@ -20,6 +25,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation libs["recyclerview-v7"]
     implementation libs["androidx-appcompat"]
+    implementation libs["kotlin-stdlib"]
+    implementation libs["core-ktx"]
 
     /**可以使用远程库或者使用本地Module Library*/
     /**远程库**/

@@ -1,6 +1,10 @@
 apply from: 'https://gist.githubusercontent.com/VeiZhang/f703697d56fe717c3433f4218f296b36/raw/library.gradle'
 
+def plugins = rootProject.ext.plugins
 def libs = rootProject.ext.dependencies
+
+apply plugin: plugins.kotlin
+apply plugin: plugins."kotlin-extensions"
 
 dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -9,6 +13,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation libs["androidx-appcompat"]
     implementation libs["leanback"]
+    implementation libs["kotlin-stdlib"]
+    implementation libs["core-ktx"]
 }
 
 //apply from: 'bintray.gradle' /** gradle 3.5.0 <-> 5.4.1 使用 **/
