@@ -600,6 +600,16 @@ toggleSoftInput              : 如果输入法在窗口上已经显示，则隐�
 clickBlankArea2HideSoftInput : 击屏幕空白区域隐藏软键盘
 ```
 
+> - **键盘相关→[KeyEventUtils.kt][KeyEventUtils]**
+```
+listKeyUp    : 向上循环
+listKeyDown  : 向下循环
+listKeyLeft  : 向左循环
+listKeyRight : 向右循环
+listPageUp   : 上翻页循环
+listPageDown : 下翻页循环
+```
+
 > - **多媒体相关→[MediaUtils.kt][MediaUtils]**
 ```
 getKey      : 读取多媒体信息的键
@@ -951,6 +961,7 @@ HanziToPinyin : Android汉字转拼音类
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.kt
 [IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.kt
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.kt
+[KeyEventUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyEventUtils.kt
 [MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.kt
 [PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.kt
