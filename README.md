@@ -818,8 +818,19 @@ createSimpleDateFormat  : 创建时间格式化
 
 > - **View相关→[ViewUtils.kt][ViewUtils]**
 ```
-observeViewLayout : 监听绘制完成
+observeViewLayout        : 监听绘制完成
+observeViewLayoutForever : 监听绘制完成
 ```
+
+> - **WebView相关→[WebViewUtils.kt][WebViewUtils]**
+```
+callOnWebviewThread : 发送js指令
+callJavaScript      : 发送js指令
+isUrlExists         : 通过访问的方式检查链接是否有效
+hookWebView         : 系统应用绕过UID 是 root 检测
+```
+
+
 
 
 <br>
@@ -954,6 +965,7 @@ HanziToPinyin : Android汉字转拼音类
 [SystemPropertyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SystemPropertyUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 [ViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ViewUtils.kt
+[WebViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/WebViewUtils.kt
 
 <!-- 转载方法 -->
 

@@ -19,6 +19,7 @@ object ViewUtils {
      * @param view
      * @param listener
      */
+    @JvmStatic
     fun observeViewLayout(view: View?, listener: OnGlobalLayoutListener?) {
         observeViewLayout(view, listener, true)
     }
@@ -29,6 +30,7 @@ object ViewUtils {
      * @param view
      * @param listener
      */
+    @JvmStatic
     fun observeViewLayoutForever(view: View?, listener: OnGlobalLayoutListener?) {
         observeViewLayout(view, listener, false)
     }
@@ -40,6 +42,7 @@ object ViewUtils {
      * @param listener
      * @param removed 是否移除监听
      */
+    @JvmStatic
     fun observeViewLayout(view: View?, listener: OnGlobalLayoutListener?, removed: Boolean) {
         view?.viewTreeObserver?.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
