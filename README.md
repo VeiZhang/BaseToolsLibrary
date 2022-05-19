@@ -640,6 +640,12 @@ listPageUp   : 上翻页循环
 listPageDown : 下翻页循环
 ```
 
+> - **数学函数相关→[MathUtils.kt][MathUtils]**
+```
+gcd       : 求最大公约数
+fraction  : 约分
+```
+
 > - **多媒体相关→[MediaUtils.kt][MediaUtils]**
 ```
 getKey      : 读取多媒体信息的键
@@ -996,6 +1002,7 @@ HanziToPinyin : Android汉字转拼音类
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.kt
 [KeyEventUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyEventUtils.kt
 [MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
+[MathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MathUtils.kt
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.kt
 [PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.kt
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
