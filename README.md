@@ -369,6 +369,12 @@ isActivityTopStack     : 判断Activity是否在栈顶
 getLauncherActivity    : 获取某应用入口Activity
 ```
 
+> - **算法相关→[AlgorithmUtils.java][AlgorithmUtils]**
+```
+getMD5   : 生成MD5
+checkMD5 : 检测MD5
+```
+
 > - **AlphaUtils相关→[AlphaUtils.kt][AlphaUtils]**
 ```
 setAlpha : 设置Window透明度
@@ -980,6 +986,7 @@ HanziToPinyin : Android汉字转拼音类
 <!-- 常用方法 -->
 
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.kt
+[AlgorithmUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlgorithmUtils.java
 [AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.kt
 [AudioUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AudioUtils.kt
 [BroadcastUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/BroadcastUtils.kt
