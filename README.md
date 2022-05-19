@@ -390,6 +390,21 @@ translateView : 平移动画
 alphaView     : 透明度动画
 ```
 
+> - **属性动画相关→[AnimatorUtils.kt][AnimatorUtils]**
+```
+marginLeftTranslateIn  : 相邻View联动
+marginLeftTranslateOut : 相邻View联动
+marginUpTranslateIn    : 相邻View联动
+marginUpTranslateOut   : 相邻View联动
+marginTranslateIn      : 相邻View联动
+marginTranslateOut     : 相邻View联动
+marginByLayout         : 在原基础上，移动View的外边距
+marginToLayout         : 设置View的外边距
+heightToLayout         : 变化View的高度动画
+scaleView              : 放大缩小动画
+translateView          : 平移动画
+alphaView              : 透明度动画
+```
 
 > - **应用相关→[AppUtils.kt][AppUtils]**
 ```
@@ -997,6 +1012,7 @@ HanziToPinyin : Android汉字转拼音类
 [AlgorithmUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlgorithmUtils.java
 [AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.kt
 [AnimationUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AnimationUtils.kt
+[AnimatorUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AnimatorUtils.kt
 [AudioUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AudioUtils.kt
 [BroadcastUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/BroadcastUtils.kt
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.kt
