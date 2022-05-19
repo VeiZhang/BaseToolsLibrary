@@ -20,6 +20,7 @@ object AnimatorUtils {
     private const val SCALE_Y = "scaleY"
     private const val TRANSLATION_X = "translationX"
     private const val TRANSLATION_Y = "translationY"
+    private const val TRANSLATION_Z = "translationZ"
     private const val ALPHA = "alpha"
 
     /**
@@ -385,15 +386,19 @@ object AnimatorUtils {
         if (translate) {
             val animX = ObjectAnimator.ofFloat(view, TRANSLATION_X, fromX, toX)
             val animY = ObjectAnimator.ofFloat(view, TRANSLATION_Y, fromY, toY)
+            // 解决ViewGroup中放大被遮挡问题
+            val animZ = ObjectAnimator.ofFloat(view, TRANSLATION_Z, 0F, 0.05F)
             val animatorSet = AnimatorSet()
-            animatorSet.play(animX).with(animY)
+            animatorSet.play(animX).with(animY).with(animZ)
             animatorSet.duration = duration
             animatorSet.start()
         } else {
             val animX = ObjectAnimator.ofFloat(view, TRANSLATION_X, toX, fromX)
             val animY = ObjectAnimator.ofFloat(view, TRANSLATION_Y, toY, fromY)
+            // 解决ViewGroup中放大被遮挡问题
+            val animZ = ObjectAnimator.ofFloat(view, TRANSLATION_Z, 0.05F, 0F)
             val animatorSet = AnimatorSet()
-            animatorSet.play(animX).with(animY)
+            animatorSet.play(animX).with(animY).with(animZ)
             animatorSet.duration = duration
             animatorSet.start()
         }
