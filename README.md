@@ -383,6 +383,14 @@ setAlpha : 设置Dialog的Window透明度
 setAlpha : 设置DialogFragment的Window透明度
 ```
 
+> - **补间动画相关→[AnimationUtils.kt][AnimationUtils]**
+```
+scaleView     : 放大缩小动画
+translateView : 平移动画
+alphaView     : 透明度动画
+```
+
+
 > - **应用相关→[AppUtils.kt][AppUtils]**
 ```
 getInstalledApps       : 获取安装的全部应用
@@ -988,6 +996,7 @@ HanziToPinyin : Android汉字转拼音类
 [ActivityUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ActivityUtils.kt
 [AlgorithmUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlgorithmUtils.java
 [AlphaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AlphaUtils.kt
+[AnimationUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AnimationUtils.kt
 [AudioUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AudioUtils.kt
 [BroadcastUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/BroadcastUtils.kt
 [AppUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/AppUtils.kt
