@@ -425,6 +425,8 @@ closeIOQuietly : 安静关闭IO
 > - **关闭相关→[CollectionUtils.kt][CollectionUtils]**
 ```
 removeEmptyElement : 清除集合里的空元素
+listEquals         : 比较两个列表元素对象是否一致
+listContentEquals  : 比较两个列表元素内容是否一致
 ```
 
 > - **转换相关→[ConvertUtils.kt][ConvertUtils]**
@@ -574,11 +576,16 @@ getHeader          : 获取具体的请求头信息
 
 > - **Image相关→[ImageUtils.kt][ImageUtils]**
 ```
-drawable2Bitmap  : drawable转bitmap
-bitmap2Drawable  : bitmap转drawable
-view2Bitmap      : view转Bitmap
-shotActivity     : Activity截图
-addBitmapShadows : 增加遮罩
+resource2Drawable     : 资源转Drawable
+resource2Bitmap       : 资源转Bitmap
+drawable2Bitmap       : drawable转bitmap
+bitmap2Drawable       : bitmap转drawable
+view2Bitmap           : view转Bitmap
+shotActivity          : Activity截图
+createBitmap          : 创建空白Bitmap
+addBitmapShadows      : 增加遮罩
+zoomImg               : 图片等比缩小
+setRendScriptCacheDir : 高斯模糊配置，Android7.0上却会导致应用 crash
 ```
 
 > - **常见的Intent相关→[IntentUtils.kt][IntentUtils]**
@@ -676,6 +683,8 @@ readMac                 : 读取Mac地址：优先获取Eth的MAC，当Eth为空
 getMac                  : 获取Mac地址：使用Eth时读取Eth的MAC，否则读取WiFi的MAC
 getWiredMac             : 获取有线Mac地址
 getWirelessMac          : 获取无线Mac地址
+formatTcpSpeed          : 格式化比特率
+formatNetSpeed          : 格式化网速
 ```
 
 > - **路径相关→[PathUtils.kt][PathUtils]**

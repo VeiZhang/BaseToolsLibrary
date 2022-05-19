@@ -6,9 +6,11 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.NinePatchDrawable
+import android.os.Build
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import java.io.File
 
 
 /**
@@ -212,5 +214,48 @@ object ImageUtils {
         canvas.drawBitmap(source, 0f, 0f, paint)
 
         return blankBitmap
+    }
+
+    /**
+     * 图片等比缩小
+     *
+     * @param bm
+     * @param newWidth
+     * @param newHeight
+     * @return
+     */
+    @JvmStatic
+    fun zoomImg(bm: Bitmap, newWidth: Int, newHeight: Int): Bitmap? {
+        // 获得图片的宽高
+        val width = bm.width
+        val height = bm.height
+        // 计算缩放比例
+        val scaleWidth = newWidth.toFloat() / width
+        val scaleHeight = newHeight.toFloat() / height
+        // 取得想要缩放的matrix参数
+        val matrix = Matrix()
+        matrix.postScale(scaleWidth, scaleHeight)
+        // 得到新的图片
+        return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true)
+    }
+
+
+    /**
+     * 高斯模糊配置，Android7.0上却会导致应用 crash:"RenderScript code cache directory uninitialized"
+     */
+    @JvmStatic
+    fun setRendScriptCacheDir(context: Context) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            return
+        }
+        val methodName = "setupDiskCache"
+        val className = "android.renderscript.RenderScriptCacheDir"
+        try {
+            val c = Class.forName(className)
+            val setupDiskCache = c.getMethod(methodName, File::class.java)
+            setupDiskCache.invoke(null, context.cacheDir)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

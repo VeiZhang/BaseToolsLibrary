@@ -33,6 +33,7 @@ import java.util.concurrent.Executors
 object NetworkUtils {
 
     const val DEFAULT_WIRELESS_MAC = "02:00:00:00:00:00"
+    const val BYTE_SCALE: Long = 1024
 
     enum class NetworkType {
         NETWORK_ETH,
@@ -503,5 +504,43 @@ object NetworkUtils {
             macAddress = getWiredMac("wlan0")
         }
         return macAddress
+    }
+
+    /**
+     * bps 比特率
+     *
+     * @param bytes
+     * @return
+     */
+    @JvmStatic
+    fun formatTcpSpeed(bytes: Long): String {
+        if (bytes <= 0) {
+            return "0bps"
+        }
+        return if (bytes >= BYTE_SCALE) {
+            String.format(Locale.getDefault(), "%dkbps", bytes / BYTE_SCALE)
+        } else {
+            String.format(Locale.getDefault(), "%dbps", bytes)
+        }
+    }
+
+    /**
+     * KB/s 网速
+     *
+     * @param bytes
+     * @return
+     */
+    @JvmStatic
+    fun formatNetSpeed(bytes: Long): String {
+        val kbScale = BYTE_SCALE
+        val mbScale = BYTE_SCALE * kbScale
+        if (bytes <= 0) {
+            return "0KB/s"
+        }
+        return if (bytes >= mbScale) {
+            String.format(Locale.getDefault(), "%dMB/s", bytes / mbScale)
+        } else {
+            String.format(Locale.getDefault(), "%dKB/s", bytes / kbScale)
+        }
     }
 }
