@@ -735,6 +735,14 @@ formatTcpSpeed          : 格式化比特率
 formatNetSpeed          : 格式化网速
 ```
 
+> - **解析字段值相关→[ParseUtils.kt][ParseUtils]**
+```
+number    : 数值/评分解析
+timestamp : 文本时间解析
+year      : 文本时间解析出年份
+```
+
+
 > - **路径相关→[PathUtils.kt][PathUtils]**
 ```
 getRootPath                     : 获取根路径
@@ -1061,6 +1069,7 @@ HanziToPinyin : Android汉字转拼音类
 [MathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MathUtils.kt
 [MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.kt
+[ParseUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ParseUtils.kt
 [PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.kt
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
 [ReflectUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ReflectUtils.kt
