@@ -838,6 +838,11 @@ execProcessBuilderCommand : 执行命令
 execRuntimeCommand        : 执行命令
 ```
 
+> - **按键快捷键相关→[ShortcutTrigger.kt][ShortcutTrigger]**
+```
+inputKey : 连续的按键生成快捷键，如四位数字键快捷键 0000
+```
+
 > - **SD、TF等存储相关→[StorageUtils.kt][StorageUtils]**
 ```
 getStorageList       : 获取所有的内置、外置存储设备
@@ -1048,6 +1053,7 @@ HanziToPinyin : Android汉字转拼音类
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.kt
 [ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.kt
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.kt
+[ShortcutTrigger]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShortcutTrigger.kt
 [StorageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StorageUtils.kt
 [StringUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StringUtils.kt
 [SurfaceViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SurfaceViewUtils.kt
