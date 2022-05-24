@@ -659,7 +659,12 @@ toggleSoftInput              : 如果输入法在窗口上已经显示，则隐�
 clickBlankArea2HideSoftInput : 击屏幕空白区域隐藏软键盘
 ```
 
-> - **键盘相关→[KeyEventUtils.kt][KeyEventUtils]**
+> - **按键速度相关→[KeyController.kt][KeyController]**
+```
+dispatchKeyEvent : 控制按键速度
+```
+
+> - **按键相关→[KeyEventUtils.kt][KeyEventUtils]**
 ```
 listKeyUp    : 向上循环
 listKeyDown  : 向下循环
@@ -1032,6 +1037,7 @@ HanziToPinyin : Android汉字转拼音类
 [ImageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ImageUtils.kt
 [IntentUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/IntentUtils.kt
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.kt
+[KeyController]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyController.kt
 [KeyEventUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyEventUtils.kt
 [MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
 [MathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MathUtils.kt

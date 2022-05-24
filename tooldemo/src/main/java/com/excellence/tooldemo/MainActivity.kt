@@ -2,12 +2,14 @@ package com.excellence.tooldemo
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.excellence.basetoolslibrary.utils.ActivityUtils.startAnotherActivity
+import com.excellence.basetoolslibrary.utils.KeyController
 import java.util.*
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     private var mListView: ListView? = null
     private var mActivityNameList: MutableMap<String, String>? = null
     private var mActivityClsList: MutableMap<String, Class<out Activity>?>? = null
+    private val mKeyController = KeyController(100)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +50,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
                 mActivityClsList!![activityNames[i]] = null
             }
         }
+    }
+
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (mKeyController.dispatchKeyEvent(event)) {
+            return true
+        }
+        return super.dispatchKeyEvent(event)
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
