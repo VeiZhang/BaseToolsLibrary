@@ -674,6 +674,14 @@ listPageUp   : 上翻页循环
 listPageDown : 下翻页循环
 ```
 
+> - **LiveData相关→[LiveDataUtils.kt][LiveDataUtils]**
+```
+TIMESTAMP_LIVE_DATA      : 秒级时间戳
+MILL_TIMESTAMP_LIVE_DATA : 毫秒级时间戳
+timer                    : 定时器
+```
+
+
 > - **数学函数相关→[MathUtils.kt][MathUtils]**
 ```
 gcd       : 求最大公约数
@@ -830,6 +838,11 @@ getLocal           : 获取当前系统语言
 getLanguage        : 获取当前系统语言
 getCountry         : 获取当前系统语言国家
 getIdentifier      : 跨APP，读取其他应用的资源
+```
+
+> - **RxJava相关→[RxJavaUtils.kt][RxJavaUtils]**
+```
+dispose : 销毁订阅
 ```
 
 > - **命令相关→[ShellUtils.kt][ShellUtils]**
@@ -1044,14 +1057,16 @@ HanziToPinyin : Android汉字转拼音类
 [KeyboardUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyboardUtils.kt
 [KeyController]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyController.kt
 [KeyEventUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/KeyEventUtils.kt
-[MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
+[LiveDataUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/LiveDataUtils.kt
 [MathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MathUtils.kt
+[MediaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/MediaUtils.kt
 [NetworkUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/NetworkUtils.kt
 [PathUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PathUtils.kt
 [PinyinUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/PinyinUtils.java
 [ReflectUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ReflectUtils.kt
 [RegexUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RegexUtils.kt
 [ResourceUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ResourceUtils.kt
+[RxJavaUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/RxJavaUtils.kt
 [ShellUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShellUtils.kt
 [ShortcutTrigger]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ShortcutTrigger.kt
 [StorageUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/StorageUtils.kt

@@ -15,6 +15,10 @@ dependencies {
     implementation libs["leanback"]
     implementation libs["kotlin-stdlib"]
     implementation libs["core-ktx"]
+    implementation libs["rxjava2"]
+    implementation libs["rxandroid2"]
+    implementation libs["androidx-lifecycle-extensions"]
+    implementation libs["androidx-lifecycle-reactivestreams"]
 }
 
 //apply from: 'bintray.gradle' /** gradle 3.5.0 <-> 5.4.1 使用 **/
