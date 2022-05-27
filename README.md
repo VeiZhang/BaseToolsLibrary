@@ -958,6 +958,7 @@ HanziToPinyin : Android汉字转拼音类
 ## 版本更新<a name="版本更新">
 |            版本          |                              描述                               |
 |------------------------- | -------------------------------------------------------------- |
+| [1.3.1][BaseToolsV1.3.1] | 新增工具类 & 方法 **2022-05-27** |
 | [1.3.0][BaseToolsV1.3.0] | 转换Kotlin **2022-04-15** |
 | [1.2.9][BaseToolsV1.2.9] | 新增ListAdapter，补充一些工具方法 **2020-08-24** |
 | [1.2.8][BaseToolsV1.2.8] | 兼容AndroidX **2020-04-09** |
@@ -1004,6 +1005,7 @@ HanziToPinyin : Android汉字转拼音类
 
 <!-- 版本 -->
 
+[BaseToolsV1.3.1]:https://bintray.com/veizhang/maven/basetools/1.3.1
 [BaseToolsV1.3.0]:https://bintray.com/veizhang/maven/basetools/1.3.0
 [BaseToolsV1.2.9]:https://bintray.com/veizhang/maven/basetools/1.2.9
 [BaseToolsV1.2.8]:https://bintray.com/veizhang/maven/basetools/1.2.8

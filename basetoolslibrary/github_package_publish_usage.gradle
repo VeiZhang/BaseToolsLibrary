@@ -3,7 +3,7 @@ apply from: 'https://gist.githubusercontent.com/VeiZhang/aebbbd6d9d570dffac81eea
 /**发布到GitHub Packages仓库**/
 def LIB_GROUP_ID = 'com.excellence'
 def LIB_ARTIFACT_ID = 'basetools'
-def LIB_VERSION = '1.3.0'
+def LIB_VERSION = '1.3.1'
 def LIB_DESC = 'Android通用适配器和常用的工具类'
 def LIB_URL = 'https://github.com/VeiZhang/BaseToolsLibrary'
 
