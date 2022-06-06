@@ -1,5 +1,6 @@
 package com.excellence.basetoolslibrary.utils
 
+import android.os.StatFs
 import com.excellence.basetoolslibrary.utils.ConvertUtils.bytes2HexString
 import java.io.File
 import java.io.FileInputStream
@@ -7,6 +8,7 @@ import java.io.IOException
 import java.security.DigestInputStream
 import java.security.MessageDigest
 import java.text.DecimalFormat
+
 
 /**
  * <pre>
@@ -199,6 +201,34 @@ object FileUtils {
             }
         }
         return sizeFormat.format(fileSize.toDouble() / unit) + unitStr
+    }
+
+    /**
+     * 获取文件可用大小
+     */
+    @JvmStatic
+    fun getAvailableSize(path: String): Long {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            val fileStats = StatFs(path)
+            fileStats.restat(path)
+            fileStats.availableBlocksLong * fileStats.blockSizeLong
+        } else {
+            0
+        }
+    }
+
+    /**
+     * 获取文件总大小
+     */
+    @JvmStatic
+    fun getTotalSize(path: String): Long {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            val fileStats = StatFs(path)
+            fileStats.restat(path)
+            fileStats.blockCountLong * fileStats.blockSizeLong
+        } else {
+            0
+        }
     }
 
     /**
