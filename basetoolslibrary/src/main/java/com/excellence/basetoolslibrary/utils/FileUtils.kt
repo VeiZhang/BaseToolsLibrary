@@ -204,7 +204,7 @@ object FileUtils {
     }
 
     /**
-     * 获取文件可用大小
+     * 获取文件已用大小
      */
     @JvmStatic
     fun getAvailableSize(path: String): Long {
