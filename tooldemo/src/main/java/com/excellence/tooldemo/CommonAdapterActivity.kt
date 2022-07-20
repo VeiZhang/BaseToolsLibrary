@@ -10,8 +10,13 @@ import com.excellence.basetoolslibrary.baseadapter.CommonAdapter
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder
 import com.excellence.basetoolslibrary.utils.ActivityUtils.startAnotherActivity
 import com.excellence.basetoolslibrary.utils.AppUtils.getAllInstalledApps
+import com.excellence.basetoolslibrary.utils.AppUtils.getRunningApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getSystemInstalledApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getUserInstalledApps
+import com.excellence.tooldemo.RecyclerAdapterActivity.Companion.APP_TYPE_ALL
+import com.excellence.tooldemo.RecyclerAdapterActivity.Companion.APP_TYPE_RUNNING
+import com.excellence.tooldemo.RecyclerAdapterActivity.Companion.APP_TYPE_SYSTEM
+import com.excellence.tooldemo.RecyclerAdapterActivity.Companion.APP_TYPE_USER
 
 class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemClickListener {
 
@@ -52,6 +57,10 @@ class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, Adapter
                 mAppList = getUserInstalledApps(this)
                 mRefreshBtn!!.setText(R.string.user_apps)
             }
+            APP_TYPE_RUNNING -> {
+                mAppList = getRunningApps(this)
+                mRefreshBtn!!.setText(R.string.running_apps)
+            }
         }
         mAppType++
         if (mAppGridAdapter == null) {
@@ -84,9 +93,6 @@ class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, Adapter
     companion object {
 
         private val TAG = CommonAdapterActivity::class.java.simpleName
-        private const val APP_TYPE_ALL = 0
-        private const val APP_TYPE_SYSTEM = 1
-        private const val APP_TYPE_USER = 2
 
     }
 }

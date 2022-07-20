@@ -411,6 +411,7 @@ alphaView              : 透明度动画
 getInstalledApps       : 获取安装的全部应用
 getSystemInstalledApps : 获取安装的系统应用
 getUserInstalledApps   : 获取安装的第三方应用
+getRunningApps         : 获取正在运行的应用
 getPermissionList      : 获取某应用的所有权限
 checkPermission        : 检测某应用是否有某权限
 getAppVersionName      : 获取当前应用版本名
@@ -420,7 +421,7 @@ getAppTime             : 获取当前应用安装时间
 getAppPath             : 获取当前应用路径
 getAPKFileSignature    : 获取apk文件的签名
 getPackageSignature    : 获取某安装应用的签名
-isAppInstalled         : 判断应用是否安装
+isAppExist             : 判断应用是否存在
 isAppDebug             : 判断当前应用是否是Debug版本
 getMaxMemory           : 当前应用分配的最大内存
 getTotalMemory         : 当前应用分配的总内存

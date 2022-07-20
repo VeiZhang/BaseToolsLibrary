@@ -14,6 +14,7 @@ import com.excellence.basetoolslibrary.recycleradapter.BaseRecyclerAdapter
 import com.excellence.basetoolslibrary.recycleradapter.OnItemClickListener
 import com.excellence.basetoolslibrary.recycleradapter.RecyclerViewHolder
 import com.excellence.basetoolslibrary.utils.AppUtils.getAllInstalledApps
+import com.excellence.basetoolslibrary.utils.AppUtils.getRunningApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getSystemInstalledApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getUserInstalledApps
 
@@ -42,7 +43,7 @@ class RecyclerAdapterActivity : AppCompatActivity(), View.OnClickListener, OnIte
 
     private fun setAdapter() {
         // 模拟刷新
-        when (mAppType % 3) {
+        when (mAppType % 4) {
             APP_TYPE_ALL -> {
                 mAppList = getAllInstalledApps(this)
                 mRefreshBtn!!.setText(R.string.all_apps)
@@ -54,6 +55,10 @@ class RecyclerAdapterActivity : AppCompatActivity(), View.OnClickListener, OnIte
             APP_TYPE_USER -> {
                 mAppList = getUserInstalledApps(this)
                 mRefreshBtn!!.setText(R.string.user_apps)
+            }
+            APP_TYPE_RUNNING -> {
+                mAppList = getRunningApps(this)
+                mRefreshBtn!!.setText(R.string.running_apps)
             }
         }
         mAppType++
@@ -93,9 +98,12 @@ class RecyclerAdapterActivity : AppCompatActivity(), View.OnClickListener, OnIte
     }
 
     companion object {
+
         private val TAG = RecyclerAdapterActivity::class.java.simpleName
-        private const val APP_TYPE_ALL = 0
-        private const val APP_TYPE_SYSTEM = 1
-        private const val APP_TYPE_USER = 2
+
+        const val APP_TYPE_ALL = 0
+        const val APP_TYPE_SYSTEM = 1
+        const val APP_TYPE_USER = 2
+        const val APP_TYPE_RUNNING = 3
     }
 }

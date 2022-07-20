@@ -15,4 +15,5 @@
     <string name="all_apps">所有应用</string>
     <string name="system_apps">系统应用</string>
     <string name="user_apps">第三方应用</string>
+    <string name="running_apps">正在运行应用</string>
 </resources>

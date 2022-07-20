@@ -1,5 +1,7 @@
 package com.excellence.basetoolslibrary.utils
 
+import android.app.ActivityManager
+import android.app.ActivityManager.RunningAppProcessInfo
 import android.content.Context
 import android.content.Intent
 import android.content.pm.*
@@ -67,6 +69,34 @@ object AppUtils {
     }
 
     /**
+     * 获取正在运行的应用：系统权限获取更多进程
+     */
+    @JvmStatic
+    fun getRunningApps(context: Context): List<ResolveInfo> {
+        val manager = (context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager)
+        val appProcessList = manager.runningAppProcesses
+
+        val pgkProcessAppMap: MutableMap<String, RunningAppProcessInfo> = HashMap()
+        for (appProcess in appProcessList) {
+            val pkgNameList = appProcess.pkgList
+            for (i in pkgNameList.indices) {
+                val pkgName = pkgNameList[i]
+                pgkProcessAppMap[pkgName] = appProcess
+            }
+        }
+
+        val resolveInfoList = ArrayList<ResolveInfo>()
+        val appList = getAllInstalledApps(context)
+        for (info in appList) {
+            val packageName = info.activityInfo.packageName
+            if (pgkProcessAppMap.containsKey(packageName)) {
+                resolveInfoList.add(info)
+            }
+        }
+        return resolveInfoList
+    }
+
+    /**
      * 获取某应用的所有权限
      */
     @JvmStatic
@@ -119,10 +149,10 @@ object AppUtils {
     }
 
     /**
-     * 判断应用是否安装
+     * 判断应用是否存在
      */
     @JvmStatic
-    fun isAppInstalled(context: Context, packageName: String) = getPackageInfo(context, packageName) != null
+    fun isAppExist(context: Context, packageName: String) = getPackageInfo(context, packageName) != null
 
     /**
      * 获取当前应用版本名
