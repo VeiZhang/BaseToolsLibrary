@@ -104,7 +104,7 @@ open class MultiItemTypeRecyclerAdapter<T>() : RecyclerView.Adapter<RecyclerView
 
     override fun getItemViewType(position: Int): Int {
         return if (userItemViewDelegateManager()) {
-            mItemViewDelegateManager.getItemViewType(mData[position], position)
+            mItemViewDelegateManager.getItemViewType(getItem(position), position)
         } else super.getItemViewType(position)
     }
 
