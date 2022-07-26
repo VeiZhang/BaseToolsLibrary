@@ -173,11 +173,11 @@ open class MultiItemTypeRecyclerListAdapter<T> : ListAdapter<T, RecyclerViewHold
     }
 
     override fun submitList(list: MutableList<T>?) {
+        mData.clear()
         if (isEmpty(list)) {
             /**
              * 当list为空或者size为0时，使用null清空快速
              */
-            mData.clear()
             super.submitList(null)
         } else {
             mData.addAll(list!!)
