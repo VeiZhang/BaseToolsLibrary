@@ -326,6 +326,7 @@ object NetworkUtils {
 
     /**
      * 获取内网网络IP地址
+     * 注意事项：读出的地址可能是VPN：如果不是192.168的地址，使用ifconfig查看一下 tun + 数字
      *
      * @return IP地址
      */
