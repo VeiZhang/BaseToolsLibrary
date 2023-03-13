@@ -1,6 +1,7 @@
 package com.excellence.basetoolslibrary.utils
 
 import java.io.Closeable
+import java.net.Socket
 
 /**
  * <pre>
@@ -40,4 +41,31 @@ object CloseUtils {
         }
     }
 
+    /**
+     * 关闭IO
+     */
+    @JvmStatic
+    fun closeIO(vararg closeables: Socket) {
+        for (closeable in closeables) {
+            try {
+                closeable.close()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    /**
+     * 安静关闭IO
+     */
+    @JvmStatic
+    fun closeIOQuietly(vararg closeables: Socket) {
+        for (closeable in closeables) {
+            try {
+                closeable.close()
+            } catch (ignored: java.lang.Exception) {
+
+            }
+        }
+    }
 }
