@@ -27,6 +27,8 @@ dependencies {
     implementation libs["androidx-appcompat"]
     implementation libs["kotlin-stdlib"]
     implementation libs["core-ktx"]
+    implementation libs["kt-coroutines-android"]
+    implementation libs["kt-coroutines-core"]
 
     /**可以使用远程库或者使用本地Module Library*/
     /**远程库**/
