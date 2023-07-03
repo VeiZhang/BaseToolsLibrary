@@ -927,6 +927,11 @@ milliSeconds2HourString : 毫秒转 时:分:秒 字符串
 createSimpleDateFormat  : 创建时间格式化
 ```
 
+> - **URI相关→[UriUtils.java][UriUtils]**
+```
+getFileAbsolutePath     : 从Uri中读取文件路径
+```
+
 > - **View相关→[ViewUtils.kt][ViewUtils]**
 ```
 observeViewLayout        : 监听绘制完成
@@ -1089,6 +1094,7 @@ HanziToPinyin : Android汉字转拼音类
 [SystemPropertyUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/SystemPropertyUtils.java
 [TimeUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/TimeUtils.java
 [ViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/ViewUtils.kt
+[UriUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/UriUtils.java
 [WebViewUtils]:https://github.com/VeiZhang/BaseToolsLibrary/blob/master/basetoolslibrary/src/main/java/com/excellence/basetoolslibrary/utils/WebViewUtils.java
 
 <!-- 转载方法 -->
