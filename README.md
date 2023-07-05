@@ -929,7 +929,7 @@ createSimpleDateFormat  : 创建时间格式化
 
 > - **URI相关→[UriUtils.java][UriUtils]**
 ```
-getFileAbsolutePath     : 从Uri中读取文件路径
+getFilePathByUri : 从Uri中读取文件路径
 ```
 
 > - **View相关→[ViewUtils.kt][ViewUtils]**
