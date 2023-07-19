@@ -869,6 +869,7 @@ inputKey : 连续的按键生成快捷键，如四位数字键快捷键 0000
 
 > - **SD、TF等存储相关→[StorageUtils.kt][StorageUtils]**
 ```
+registerStorageListener : USB/SD设备拔插监听
 getStorageList       : 获取所有的内置、外置存储设备
 getStorageVolumeList : 获取存储卷的相关信息
 ```

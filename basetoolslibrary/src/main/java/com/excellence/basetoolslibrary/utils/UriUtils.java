@@ -23,7 +23,10 @@ public class UriUtils {
 
     private static final String TAG = UriUtils.class.getSimpleName();
 
-    public static String getFilePathByUri(Context context, Uri uri) {
+    /**
+     * 获取高通Android 10 的Uri路径
+     */
+    public static String getSqcomFilePathByUri(Context context, Uri uri) {
         String path = null;
         // 以 file:// 开头的
         if (ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
