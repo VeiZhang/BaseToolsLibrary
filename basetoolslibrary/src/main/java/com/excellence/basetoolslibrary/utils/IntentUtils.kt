@@ -11,7 +11,8 @@ import android.webkit.MimeTypeMap
 import androidx.core.content.FileProvider
 import com.excellence.basetoolslibrary.utils.FileUtils.isFileExists
 import java.io.File
-import java.util.*
+import java.util.Locale
+
 
 /**
  * <pre>
@@ -84,7 +85,8 @@ object IntentUtils {
     val directWiFiIntent: Intent
         get() {
             val intent = Intent()
-            val componentName = ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings")
+            val componentName =
+                ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings")
             intent.component = componentName
             return intent
         }
@@ -413,6 +415,129 @@ object IntentUtils {
         val file = File(filePath)
         val uri = Uri.fromFile(file)
         intent.setDataAndType(uri, "audio/*")
+        return intent
+    }
+
+    /**
+     * 文件选择器
+     */
+    @JvmStatic
+    fun fileChooseIntent(type: String, title: CharSequence): Intent {
+        var intent = Intent(Intent.ACTION_GET_CONTENT)
+        // */*
+        intent.type = type
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        // 使用 startActivityForResult 接收
+        return Intent.createChooser(intent, title)
+    }
+
+    /**
+     * 打开文件
+     */
+    @JvmStatic
+    fun fileOpenIntent(path: String): Intent {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val uri = Uri.parse("file://$path")
+
+        // 这里是所有能打开的应用，如果要指定文件管理器打开，需要指定包名或者设置type类型
+        // {后缀名，MIME类型}
+        val mimeMapTable = arrayOf(
+            arrayOf(".3gp", "video/3gpp"),
+            arrayOf(".apk", "application/vnd.android.package-archive"),
+            arrayOf(".asf", "video/x-ms-asf"),
+            arrayOf(".avi", "video/x-msvideo"),
+            arrayOf(".bin", "application/octet-stream"),
+            arrayOf(".bmp", "image/bmp"),
+            arrayOf(".c", "text/plain"),
+            arrayOf(".class", "application/octet-stream"),
+            arrayOf(".conf", "text/plain"),
+            arrayOf(".cpp", "text/plain"),
+            arrayOf(".doc", "application/msword"),
+            arrayOf(
+                ".docx",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ),
+            arrayOf(".xls", "application/vnd.ms-excel"),
+            arrayOf(".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+            arrayOf(".exe", "application/octet-stream"),
+            arrayOf(".gif", "image/gif"),
+            arrayOf(".gtar", "application/x-gtar"),
+            arrayOf(".gz", "application/x-gzip"),
+            arrayOf(".h", "text/plain"),
+            arrayOf(".htm", "text/html"),
+            arrayOf(".html", "text/html"),
+            arrayOf(".jar", "application/java-archive"),
+            arrayOf(".java", "text/plain"),
+            arrayOf(".jpeg", "image/jpeg"),
+            arrayOf(".jpg", "image/jpeg"),
+            arrayOf(".js", "application/x-javascript"),
+            arrayOf(".log", "text/plain"),
+            arrayOf(".m3u", "audio/x-mpegurl"),
+            arrayOf(".m4a", "audio/mp4a-latm"),
+            arrayOf(".m4b", "audio/mp4a-latm"),
+            arrayOf(".m4p", "audio/mp4a-latm"),
+            arrayOf(".m4u", "video/vnd.mpegurl"),
+            arrayOf(".m4v", "video/x-m4v"),
+            arrayOf(".mov", "video/quicktime"),
+            arrayOf(".mp2", "audio/x-mpeg"),
+            arrayOf(".mp3", "audio/x-mpeg"),
+            arrayOf(".mp4", "video/mp4"),
+            arrayOf(".mpc", "application/vnd.mpohun.certificate"),
+            arrayOf(".mpe", "video/mpeg"),
+            arrayOf(".mpeg", "video/mpeg"),
+            arrayOf(".mpg", "video/mpeg"),
+            arrayOf(".mpg4", "video/mp4"),
+            arrayOf(".mpga", "audio/mpeg"),
+            arrayOf(".msg", "application/vnd.ms-outlook"),
+            arrayOf(".ogg", "audio/ogg"),
+            arrayOf(".pdf", "application/pdf"),
+            arrayOf(".png", "image/png"),
+            arrayOf(".pps", "application/vnd.ms-powerpoint"),
+            arrayOf(".ppt", "application/vnd.ms-powerpoint"),
+            arrayOf(
+                ".pptx",
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            ),
+            arrayOf(".prop", "text/plain"),
+            arrayOf(".rc", "text/plain"),
+            arrayOf(".rmvb", "audio/x-pn-realaudio"),
+            arrayOf(".rtf", "application/rtf"),
+            arrayOf(".sh", "text/plain"),
+            arrayOf(".tar", "application/x-tar"),
+            arrayOf(".tgz", "application/x-compressed"),
+            arrayOf(".txt", "text/plain"),
+            arrayOf(".wav", "audio/x-wav"),
+            arrayOf(".wma", "audio/x-ms-wma"),
+            arrayOf(".wmv", "audio/x-ms-wmv"),
+            arrayOf(".wps", "application/vnd.ms-works"),
+            arrayOf(".xml", "text/plain"),
+            arrayOf(".z", "application/x-compress"),
+            arrayOf(".zip", "application/x-zip-compressed"),
+            arrayOf("", "*/*")
+        )
+
+        var type = "*/*"
+        val dotIndex = path.lastIndexOf(".")
+        if (dotIndex > 0) {
+            val suffix = path.substring(dotIndex).toLowerCase(Locale.getDefault())
+            for (i in mimeMapTable.indices) {
+                if (suffix == mimeMapTable[i][0]) {
+                    type = mimeMapTable[i][1]
+                }
+            }
+        }
+
+        intent.setDataAndType(uri, type)
+
+        // 检查设备上是否有能够处理此Intent的应用程序
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            // 启动Intent
+//            startActivity(intent)
+//        } else {
+//            // 如果没有应用程序能够处理此Intent，显示提示消息
+//            Toast.makeText(this, "No app to handle this type of file", Toast.LENGTH_SHORT).show()
+//        }
+
         return intent
     }
 }

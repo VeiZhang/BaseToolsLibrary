@@ -652,6 +652,8 @@ getCaptureIntent       : 打开相机
 getVideoIntent         : 播放本地视频
 getNetVideoIntent      : 播放网络视频
 getAudioIntent         : 播放本地音乐
+fileChooseIntent       : 文件管理器选择
+fileOpenIntent         : 打开文件
 ```
 
 > - **键盘相关→[KeyboardUtils.kt][KeyboardUtils]**
