@@ -238,4 +238,23 @@ object HttpUtils {
         return headerFields[key]
     }
 
+    /**
+     * contentDisposition 头信息字符串的解析
+     * attachment; filename="应用宝.apk" -> filename : 应用宝.apk
+     */
+    @JvmStatic
+    fun getContentHeader(contentDisposition: String?, key: String): String? {
+        if (contentDisposition == null) {
+            return null
+        }
+
+        val content = contentDisposition.split(";")
+        for (value in content) {
+            if (value.trim().startsWith(key)) {
+                return value.substring(value.indexOf('=') + 1).trim().replace("\"", "")
+            }
+        }
+        return null
+    }
+
 }

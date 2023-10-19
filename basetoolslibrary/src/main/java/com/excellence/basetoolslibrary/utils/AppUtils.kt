@@ -4,14 +4,19 @@ import android.app.ActivityManager
 import android.app.ActivityManager.RunningAppProcessInfo
 import android.content.Context
 import android.content.Intent
-import android.content.pm.*
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+import android.content.pm.Signature
 import android.os.Build
 import android.util.DisplayMetrics
 import java.io.File
 import java.security.MessageDigest
 import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Collections
+import java.util.Date
+import java.util.Locale
 
 /**
  * <pre>
@@ -146,6 +151,51 @@ object AppUtils {
             e.printStackTrace()
         }
         return null
+    }
+
+    /**
+     * 判断应用是否已安装
+     * 系统应用是否已更新
+     */
+    @JvmStatic
+    fun isAppInstalled(context: Context, packageName: String): Boolean {
+        return isUserApp(context, packageName) || isUpdatedSystemApp(context, packageName)
+    }
+
+    /**
+     * 判断是否系统应用
+     */
+    @JvmStatic
+    fun isSystemApp(context: Context, packageName: String): Boolean {
+        val packageInfo = getPackageInfo(context, packageName)
+        if (packageInfo != null) {
+            return packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM != 0
+        }
+        return false
+    }
+
+    /**
+     * 判断系统应用是否已更新安装
+     */
+    @JvmStatic
+    fun isUpdatedSystemApp(context: Context, packageName: String): Boolean {
+        val packageInfo = getPackageInfo(context, packageName)
+        if (packageInfo != null) {
+            return packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP != 0
+        }
+        return false
+    }
+
+    /**
+     * 判断是否第三方应用
+     */
+    @JvmStatic
+    fun isUserApp(context: Context, packageName: String): Boolean {
+        val packageInfo = getPackageInfo(context, packageName)
+        if (packageInfo != null) {
+            return packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM <= 0
+        }
+        return false
     }
 
     /**

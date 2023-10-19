@@ -414,6 +414,10 @@ getUserInstalledApps   : 获取安装的第三方应用
 getRunningApps         : 获取正在运行的应用
 getPermissionList      : 获取某应用的所有权限
 checkPermission        : 检测某应用是否有某权限
+isAppInstalled         : 判断应用是否安装，系统应用是否安装更新
+isSystemApp            : 判断是否为系统应用
+isUpdatedSystemApp     : 判断系统应用是否安装更新
+isUserApp              : 判断第三方安装应用
 getAppVersionName      : 获取当前应用版本名
 getAppVersionCode      : 获取当前应用版本号
 getAppSize             : 获取当前应用大小
@@ -603,6 +607,7 @@ convertInputStream : 通过类型转换流
 setConnectParam    : 设置请求头信息
 printHeader        : 打印全部请求头信息
 getHeader          : 获取具体的请求头信息
+getContentHeader   : 获取具体的请求头信息
 ```
 
 
