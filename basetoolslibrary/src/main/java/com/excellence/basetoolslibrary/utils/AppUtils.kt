@@ -325,6 +325,22 @@ object AppUtils {
     }
 
     /**
+     * 获取系统的签名
+     */
+    @JvmStatic
+    fun getFirmwareSignature(context: Context): String {
+        var signatureMD5 = ""
+        try {
+            val pi = context.packageManager.getPackageInfo("android", PackageManager.GET_SIGNATURES)
+            // signatures[0].toCharsString()
+            signatureMD5 = getSignatureMD5(pi.signatures[0])
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        return signatureMD5
+    }
+
+    /**
      * 获取某安装应用的签名
      */
     @JvmStatic

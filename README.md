@@ -423,6 +423,7 @@ getAppVersionCode      : 获取当前应用版本号
 getAppSize             : 获取当前应用大小
 getAppTime             : 获取当前应用安装时间
 getAppPath             : 获取当前应用路径
+getFirmwareSignature   : 获取系统的签名
 getAPKFileSignature    : 获取apk文件的签名
 getPackageSignature    : 获取某安装应用的签名
 isAppExist             : 判断应用是否存在
