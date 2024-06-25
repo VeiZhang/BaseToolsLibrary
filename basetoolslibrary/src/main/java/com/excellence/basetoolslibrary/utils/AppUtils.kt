@@ -29,6 +29,15 @@ import java.util.Locale
 object AppUtils {
 
     /**
+     * 获取所有应用包
+     */
+    @JvmStatic
+    fun getAllApps(context: Context): List<PackageInfo> {
+        val packageManager = context.packageManager
+        return packageManager.getInstalledPackages(0)
+    }
+
+    /**
      * 获取安装的所有应用
      */
     @JvmStatic

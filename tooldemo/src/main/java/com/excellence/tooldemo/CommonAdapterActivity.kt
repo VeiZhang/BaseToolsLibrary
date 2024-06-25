@@ -4,11 +4,16 @@ import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.GridView
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.excellence.basetoolslibrary.baseadapter.CommonAdapter
 import com.excellence.basetoolslibrary.baseadapter.ViewHolder
 import com.excellence.basetoolslibrary.utils.ActivityUtils.startAnotherActivity
+import com.excellence.basetoolslibrary.utils.AppUtils.getAllApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getAllInstalledApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getRunningApps
 import com.excellence.basetoolslibrary.utils.AppUtils.getSystemInstalledApps
@@ -44,7 +49,7 @@ class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, Adapter
 
     private fun setAdapter() {
         // 模拟刷新
-        when (mAppType % 3) {
+        when (mAppType % 5) {
             APP_TYPE_ALL -> {
                 mAppList = getAllInstalledApps(this)
                 mRefreshBtn!!.setText(R.string.all_apps)
@@ -61,6 +66,14 @@ class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, Adapter
                 mAppList = getRunningApps(this)
                 mRefreshBtn!!.setText(R.string.running_apps)
             }
+            else -> {
+                val packageList = getAllApps(this)
+                for (item in packageList) {
+                    println(item.packageName)
+                }
+                mAppList = ArrayList()
+                mRefreshBtn!!.setText(R.string.all_packages)
+            }
         }
         mAppType++
         if (mAppGridAdapter == null) {
@@ -76,9 +89,11 @@ class CommonAdapterActivity : AppCompatActivity(), View.OnClickListener, Adapter
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-        val result = startAnotherActivity(this, mAppList!![position].activityInfo.packageName)
+        val item = mAppList!![position]
+        println(item.activityInfo.packageName)
+        val result = startAnotherActivity(this, item.activityInfo.packageName)
         if (!result) {
-            Toast.makeText(this, mAppList!![position].loadLabel(packageManager).toString() + "打开失败", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, item.loadLabel(packageManager).toString() + "打开失败", Toast.LENGTH_SHORT).show()
         }
     }
 
