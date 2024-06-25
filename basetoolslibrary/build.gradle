@@ -1,4 +1,4 @@
-apply from: 'https://gist.githubusercontent.com/VeiZhang/f703697d56fe717c3433f4218f296b36/raw/library.gradle'
+apply from: 'https://gist.githubusercontent.com/VeiZhang/f703697d56fe717c3433f4218f296b36/raw/d31dd566949a38c253bf03aab60fcc01680f92c2/library.gradle'
 
 def plugins = rootProject.ext.plugins
 def libs = rootProject.ext.dependencies
@@ -7,7 +7,7 @@ apply plugin: plugins.kotlin
 apply plugin: plugins."kotlin-extensions"
 
 dependencies {
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'

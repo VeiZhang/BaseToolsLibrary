@@ -1,4 +1,4 @@
-apply from: 'https://gist.githubusercontent.com/VeiZhang/01779005843bc5b70b11551ca13c2ced/raw/application.gradle'
+apply from: 'https://gist.githubusercontent.com/VeiZhang/01779005843bc5b70b11551ca13c2ced/raw/2d8db5c057fd6bb7161a3abc9455bbd1aaf3b5c0/application.gradle'
 
 def plugins = rootProject.ext.plugins
 def libs = rootProject.ext.dependencies
@@ -19,7 +19,7 @@ configurations.all {
 }
 
 dependencies {
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
