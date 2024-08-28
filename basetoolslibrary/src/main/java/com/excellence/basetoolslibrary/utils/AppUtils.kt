@@ -30,6 +30,10 @@ object AppUtils {
 
     /**
      * 获取所有应用包
+     * targetSDK高版本需要权限
+     * <uses-permission
+     *      android:name="android.permission.QUERY_ALL_PACKAGES"
+     *      tools:ignore="QueryAllPackagesPermission" />
      */
     @JvmStatic
     fun getAllApps(context: Context): List<PackageInfo> {

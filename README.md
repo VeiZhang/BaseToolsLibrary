@@ -408,7 +408,8 @@ alphaView              : 透明度动画
 
 > - **应用相关→[AppUtils.kt][AppUtils]**
 ```
-getInstalledApps       : 获取安装的全部应用
+getAllApps             : 获取所有应用包
+getAllInstalledApps    : 获取安装的全部应用
 getSystemInstalledApps : 获取安装的系统应用
 getUserInstalledApps   : 获取安装的第三方应用
 getRunningApps         : 获取正在运行的应用
