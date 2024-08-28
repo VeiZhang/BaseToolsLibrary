@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import androidx.annotation.FloatRange
 import androidx.annotation.NonNull
@@ -79,4 +80,18 @@ object ActivityUtils {
         return ""
     }
 
+    /**
+     * 获取某应用入口Activity
+     */
+    @JvmStatic
+    fun getAppLauncherActivity(context: Context, packageName: String): String {
+        val intent = Intent(Intent.ACTION_MAIN, null)
+        intent.addCategory(Intent.CATEGORY_LAUNCHER)
+        intent.setPackage(packageName)
+        val pm: PackageManager = context.packageManager
+        val info = pm.queryIntentActivities(intent, 0)
+        return if (info == null || info.size == 0) {
+            ""
+        } else info[0].activityInfo.name
+    }
 }

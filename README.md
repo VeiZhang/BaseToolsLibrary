@@ -367,6 +367,7 @@ startAnotherActivity   : Activity跳转
 setActivityWindowAlpha : 设置Activity窗口透明值
 isActivityTopStack     : 判断Activity是否在栈顶
 getLauncherActivity    : 获取某应用入口Activity
+getAppLauncherActivity : 获取某应用入口Activity
 ```
 
 > - **算法相关→[AlgorithmUtils.java][AlgorithmUtils]**
@@ -408,6 +409,8 @@ alphaView              : 透明度动画
 
 > - **应用相关→[AppUtils.kt][AppUtils]**
 ```
+exitApp                : 退出应用
+relaunchApp            : 重启应用
 getAllApps             : 获取所有应用包
 getAllInstalledApps    : 获取安装的全部应用
 getSystemInstalledApps : 获取安装的系统应用
@@ -629,6 +632,7 @@ setRendScriptCacheDir : 高斯模糊配置，Android7.0上却会导致应用 cra
 
 > - **常见的Intent相关→[IntentUtils.kt][IntentUtils]**
 ```
+getLaunchAppIntent     : 获取某应用入口Intent
 isIntentAvailable      : 判断Intent是否存在
 startIntent            : Intent跳转
 getSettingIntent       : 跳转Settings

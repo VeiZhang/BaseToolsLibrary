@@ -25,6 +25,18 @@ import java.util.Locale
 object IntentUtils {
 
     /**
+     * 获取App启动入口
+     */
+    @JvmStatic
+    fun getLaunchAppIntent(context: Context, pkgName: String): Intent? {
+        val launcherActivity: String = ActivityUtils.getAppLauncherActivity(context, pkgName)
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_LAUNCHER)
+        intent.setClassName(pkgName, launcherActivity)
+        return intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    }
+
+    /**
      * 判断Intent是否存在
      *
      * @param context

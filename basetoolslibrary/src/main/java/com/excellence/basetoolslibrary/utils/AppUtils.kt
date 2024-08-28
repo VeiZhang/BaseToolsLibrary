@@ -10,13 +10,16 @@ import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.content.pm.Signature
 import android.os.Build
+import android.os.Process
 import android.util.DisplayMetrics
+import android.util.Log
 import java.io.File
 import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.Collections
 import java.util.Date
 import java.util.Locale
+import kotlin.system.exitProcess
 
 /**
  * <pre>
@@ -27,6 +30,60 @@ import java.util.Locale
  * </pre>
  */
 object AppUtils {
+
+    /**
+     * 退出应用
+     */
+    @JvmStatic
+    fun exitApp(context: Context) {
+        try {
+            // 清除Activity栈
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+                am.appTasks?.forEach {
+                    Log.d("exitApp", "activity task : ${it.taskInfo}")
+                    it.finishAndRemoveTask()
+                }
+            }
+
+            // 进入Launcher主界面
+            val homeIntent = Intent(Intent.ACTION_MAIN)
+            homeIntent.addCategory(Intent.CATEGORY_HOME)
+            homeIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED or Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(homeIntent)
+
+            // 杀死该应用进程
+            Process.killProcess(Process.myPid())
+            System.exit(0)
+            Runtime.getRuntime().exit(0)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Runtime.getRuntime().exit(-1)
+        }
+    }
+
+    /**
+     * 重启应用
+     */
+    @JvmStatic
+    fun relaunchApp(context: Context) {
+        try {
+            val intent: Intent? = IntentUtils.getLaunchAppIntent(context, context.packageName)
+            if (intent == null) {
+                Log.e("AppUtils", "Didn't exist launcher activity.")
+                return
+            }
+            intent.addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK
+                        or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            )
+            context.startActivity(intent)
+            Process.killProcess(Process.myPid())
+            exitProcess(0)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     /**
      * 获取所有应用包
